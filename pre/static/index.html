@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>AO测试用例生成平台</title>
+<style>
+:root{--bg:#f0f2f5;--card:#fff;--pri:#4361ee;--txt:#2d3748;--sub:#718096;--bd:#e2e8f0;--gr:#48bb78;--rd:#f56565;--or:#ed8936}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:"Microsoft YaHei","PingFang SC",sans-serif;background:var(--bg);display:flex;min-height:100vh}
+
+/* Sidebar */
+.sidebar{width:200px;background:linear-gradient(180deg,#1a365d,#2a4a7f);color:#fff;padding:16px 0;flex-shrink:0;position:fixed;top:0;left:0;bottom:0;z-index:10;display:flex;flex-direction:column}
+.sidebar .logo{text-align:center;padding:0 14px 16px;border-bottom:1px solid rgba(255,255,255,.12);margin-bottom:10px}
+.sidebar .logo h2{font-size:15px;font-weight:500;line-height:1.5}
+.sidebar .logo .sub{font-size:10px;opacity:.55;margin-top:4px}
+.sidebar nav{flex:1}
+.sidebar nav a{display:flex;align-items:center;gap:8px;padding:10px 18px;font-size:13px;color:rgba(255,255,255,.65);text-decoration:none;transition:.2s;border-left:3px solid transparent;cursor:pointer}
+.sidebar nav a:hover,.sidebar nav a.active{background:rgba(255,255,255,.07);color:#fff;border-left-color:#60a5fa}
+.sidebar .status{padding:10px 16px;font-size:10px;opacity:.55;border-top:1px solid rgba(255,255,255,.1)}
+.sidebar .status .dot{display:inline-block;width:6px;height:6px;border-radius:50%;margin-right:4px}
+.dot.on{background:var(--gr)}.dot.off{background:var(--rd)}.dot.warn{background:var(--or)}
+
+/* Main */
+.main{margin-left:200px;flex:1;padding:16px 20px;overflow-y:auto;min-height:100vh}
+.panel{display:none}.panel.active{display:block}
+
+/* Cards */
+.card{background:var(--card);border-radius:10px;padding:16px 18px;margin-bottom:12px;box-shadow:0 1px 3px rgba(0,0,0,.05)}
+.card h3{font-size:14px;color:var(--txt);margin-bottom:10px;padding-bottom:8px;border-bottom:2px solid var(--pri)}
+.card h4{font-size:13px;color:var(--sub);margin-bottom:6px}
+
+/* Summary Cards */
+.grid4{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:10px}
+.sc{background:var(--card);border-radius:10px;padding:14px;box-shadow:0 1px 3px rgba(0,0,0,.05);border-top:4px solid var(--pri)}
+.sc.best{border-top-color:var(--gr)}
+.sc .vn{font-size:11px;color:var(--sub);margin-bottom:3px}
+.sc .vs{font-size:26px;font-weight:700;color:var(--txt)}
+.sc .vd{font-size:10px;color:#a0aec0;margin-top:2px}
+
+/* Tables */
+table{width:100%;border-collapse:collapse;font-size:12px}
+th{background:#f1f5f9;padding:6px 8px;text-align:left;font-weight:600;color:#475569;border-bottom:2px solid var(--bd);white-space:nowrap;font-size:11px}
+td{padding:5px 8px;border-bottom:1px solid #edf2f7;color:var(--txt);max-width:280px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+tr:hover td{background:#f8fafc}
+
+.scroll{overflow-x:auto;max-height:65vh;overflow-y:auto;border:1px solid var(--bd);border-radius:6px}
+.scroll table{font-size:11px;min-width:800px}
+.scroll th{background:#4a5568;color:#fff;padding:4px 6px;font-size:10px;position:sticky;top:0;z-index:2}
+.scroll td{padding:3px 6px;font-size:10px;max-width:250px}
+
+/* Search */
+.search-row{display:flex;gap:8px;margin-bottom:10px;align-items:center}
+.search-row input{padding:7px 12px;border:2px solid var(--bd);border-radius:8px;font-size:13px;outline:none;flex:1}
+.search-row input:focus{border-color:var(--pri)}
+
+/* Buttons */
+.btn{display:inline-block;padding:8px 16px;background:var(--pri);color:#fff;border:none;border-radius:8px;font-size:13px;cursor:pointer;font-weight:600;transition:.2s}
+.btn:hover{opacity:.85}.btn:disabled{opacity:.5;cursor:not-allowed}
+.btn-sm{padding:4px 10px;font-size:11px}
+.btn-out{background:none;color:var(--pri);border:1px solid var(--pri)}
+.btn-out:hover{background:var(--pri);color:#fff}
+
+/* Infer */
+.infer-wrap{display:flex;flex-direction:column;gap:12px}
+.io-row{display:flex;gap:12px;height:calc(100vh-140px)}
+.io-input{flex:1;min-width:400px}
+.io-input textarea{width:100%;height:200px;border:2px solid var(--bd);border-radius:8px;padding:12px;font-size:13px;font-family:inherit;resize:vertical;line-height:1.6}
+.io-input textarea:focus{outline:none;border-color:var(--pri)}
+.io-input .btn-row{display:flex;gap:6px;margin-top:8px;align-items:center}
+.io-result{flex:2;min-width:500px;max-height:calc(100vh-110px);overflow-y:auto;padding:4px}
+.io-card{background:var(--card);border-radius:10px;padding:12px 14px;box-shadow:0 1px 3px rgba(0,0,0,.05);min-height:0;overflow:visible}
+.io-card h4{font-size:12px;color:var(--sub);margin-bottom:6px;padding-bottom:4px;border-bottom:1px solid var(--bd)}
+
+/* Tags */
+.tag{display:inline-block;padding:2px 6px;border-radius:4px;font-size:10px;font-weight:600}
+.tag.q3{background:#dbeafe;color:#1e40af}.tag.lr{background:#d1fae5;color:#065f46}.tag.ok{background:#c6f6d5;color:#22543d}.tag.er{background:#fed7d7;color:#9b2c2c}
+
+/* Heatmap */
+.hm{text-align:center;font-size:10px;font-weight:600;padding:3px 5px;border-radius:3px;display:inline-block;min-width:42px}
+
+/* Variant selector tabs */
+.vtabs{display:flex;gap:0;margin-bottom:8px;flex-wrap:wrap}
+.vtab{padding:5px 12px;font-size:11px;background:#f1f5f9;border:1px solid var(--bd);cursor:pointer;transition:.2s;border-radius:0}
+.vtab:first-child{border-radius:6px 0 0 6px}
+.vtab:last-child{border-radius:0 6px 6px 0}
+.vtab.active{background:var(--pri);color:#fff;border-color:var(--pri)}
+
+/* Toast */
+.toast{position:fixed;top:16px;right:16px;padding:10px 16px;background:#333;color:#fff;border-radius:8px;font-size:12px;z-index:99;opacity:0;transition:opacity .3s}
+.toast.show{opacity:1}
+
+/* Loading spinner */
+.spinner{display:inline-block;width:16px;height:16px;border:2px solid var(--bd);border-top-color:var(--pri);border-radius:50%;animation:spin .6s linear infinite;vertical-align:middle;margin-right:4px}
+@keyframes spin{to{transform:rotate(360deg)}}
+</style>
+</head>
+<body>
+
+<aside class="sidebar">
+ <div class="logo"><h2>AO 测试用例<br>生成平台</h2><div class="sub">Assembly Order -> Test Case</div></div>
+ <nav>
+  <a data-panel="eval" class="active" onclick="showPanel('eval')">📊 评估结果</a>
+  <a data-panel="infer" onclick="showPanel('infer')">🧠 实时推理</a>
+  <a data-panel="about" onclick="showPanel('about')">ℹ️ 系统状态</a>
+ </nav>
+ <div class="status">
+  <div><span class="dot" id="dotEval"></span> Eval数据</div>
+  <div style="margin-top:4px"><span class="dot" id="dotVllm"></span> vLLM</div>
+  <div style="margin-top:4px"><span class="dot" id="dotQwen"></span> Qwen API</div>
+ </div>
+</aside>
+
+<div class="main">
+ <!-- ===== EVAL PANEL ===== -->
+ <section class="panel active" id="panel-eval">
+  <div class="card">
+   <h3>📊 综合得分</h3>
+   <div class="grid4" id="summaryCards"></div>
+  </div>
+  <div class="card">
+   <h3>🔍 样本详情</h3>
+   <div class="search-row">
+    <input type="text" id="sSearch" placeholder="输入样本ID搜索 (如 1079)..." onkeyup="if(event.key==='Enter')loadSamples()">
+    <button class="btn btn-sm" onclick="loadSamples()">搜索</button>
+    <button class="btn btn-sm btn-out" onclick="pickRandom()">随机</button>
+    <span style="font-size:11px;color:var(--sub);margin-left:8px" id="sCount"></span>
+   </div>
+   <div class="scroll" style="max-height:300px;margin-bottom:10px" id="sampleList">
+    <p style="color:var(--sub);padding:12px">加载中...</p>
+   </div>
+   <div id="sampleDetail" style="margin-top:10px">
+    <p style="color:var(--sub)">点击上方样本查看详情</p>
+   </div>
+  </div>
+  <div class="card" id="fieldHeatmapCard" style="display:none">
+   <h3>🔥 逐字段得分热力图</h3>
+   <div class="vtabs" id="vtabRow"></div>
+   <div class="scroll" id="heatmapTable"></div>
+  </div>
+ </section>
+
+ <!-- ===== INFER PANEL ===== -->
+ <section class="panel" id="panel-infer">
+  <div class="infer-wrap">
+   <div class="io-row">
+    <div class="io-input">
+     <h4 style="margin-bottom:6px">📝 输入AO指令</h4>
+     <textarea id="aoin" placeholder="项目名称：客舱爬升率指示器检查，项目编码：TASK 21-33-00-700-801。1. 获取位于P5-16客舱压力控制面板上的客舱爬升率指示器的接近权限。2. 执行以下检查：1) 打开一个客舱入口门，确保客舱未增压；2) 转动仪表左下角的零位调节螺钉，确认指针可在零刻度两侧至少调整至400英尺/分钟；3) 将指针复位至零。"></textarea>
+     <div class="btn-row">
+      <select id="inferMode" style="padding:6px 10px;border:2px solid var(--bd);border-radius:8px;font-size:12px">
+       <option value="qwen3+compressed">Qwen3-max (压缩prompt)</option>
+       <option value="qwen3+full">Qwen3-max (全量prompt)</option>
+       <option value="lora+compressed">LoRA vLLM (压缩prompt)</option>
+       <option value="lora+full">LoRA vLLM (全量prompt)</option>
+      </select>
+      <button class="btn" id="ibtn" onclick="doInfer()">🚀 开始推理</button>
+      <span id="istatus" style="font-size:11px;color:var(--sub)"></span>
+     </div>
+    </div>
+    <div class="io-result" id="inferResults">
+     <p style="color:var(--sub);padding:20px">输入AO指令后点击推理，结果将显示在这里</p>
+    </div>
+   </div>
+  </div>
+ </section>
+
+ <!-- ===== ABOUT PANEL ===== -->
+ <section class="panel" id="panel-about">
+  <div class="card">
+   <h3>ℹ️ 系统状态</h3>
+   <div id="sysStatus" style="font-size:13px;line-height:2">检查中...</div>
+   <div style="margin-top:12px;display:flex;gap:8px">
+    <button class="btn btn-sm" onclick="reconnectVllm()">🔄 重连vLLM</button>
+    <span id="reconStatus" style="font-size:11px;color:var(--sub);align-self:center"></span>
+   </div>
+  </div>
+  <div class="card">
+   <h3>📋 模型与数据</h3>
+   <table style="width:auto;min-width:500px">
+    <tr><th>组件</th><th>说明</th></tr>
+    <tr><td>Qwen3-max API</td><td>阿里云DashScope，实时推理</td></tr>
+    <tr><td>Qwen2.5-7B LoRA</td><td>vLLM本地部署，LoRA适配器推理</td></tr>
+    <tr><td>评估数据集</td><td>593条测试样本，6个变体对比</td></tr>
+    <tr><td>设备指令库</td><td>从GT中提取的设备指令号集合</td></tr>
+   </table>
+  </div>
+ </section>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+// ===== Navigation =====
+function showPanel(name){
+ document.querySelectorAll('.panel').forEach(p=>p.classList.remove('active'));
+ document.querySelectorAll('.sidebar nav a').forEach(a=>a.classList.remove('active'));
+ document.getElementById('panel-'+name).classList.add('active');
+ document.querySelector('[data-panel="'+name+'"]').classList.add('active');
+ if(name==='eval'){loadSummary();loadSamples()}
+ if(name==='about')checkHealth()
+}
+
+// ===== Toast =====
+function toast(msg){
+ var t=document.getElementById('toast');
+ t.textContent=msg;t.classList.add('show');
+ setTimeout(function(){t.classList.remove('show')},2000);
+}
+
+// ===== EVAL: Load Summary =====
+var VARIANTS=['base+compressed','base+full','lora+compressed','lora+full','qwen3+compressed','qwen3+full'];
+var VN={};
+
+async function loadSummary(){
+ try{
+  var r=await fetch('/api/eval/summary');
+  var d=await r.json();
+  var cards=document.getElementById('summaryCards');
+  var html='';
+  for(var i=0;i<d.table.length;i++){
+   var row=d.table[i];
+   VN[row.variant]=row.label;
+   var score=(row['Overall Score']||row['overall']||0)*100;
+   html+='<div class="sc'+(score>70?' best':'')+'"><div class="vn">'+row.label+'</div><div class="vs">'+score.toFixed(1)+'%</div><div class="vd">综合得分</div></div>';
+  }
+  cards.innerHTML=html;
+  loadFieldHeatmap();
+ }catch(e){console.error(e);document.getElementById('sampleDetail').innerHTML='<p style="color:var(--rd);padding:12px">Failed: '+e.message+'</p>';}
+}
+
+// ===== EVAL: Field Heatmap =====
+async function loadFieldHeatmap(){
+ try{
+  var r=await fetch('/api/eval/field_scores');
+  var d=await r.json();
+  if(!d.fields||d.fields.length===0)return;
+  document.getElementById('fieldHeatmapCard').style.display='block';
+  VN=d.variant_labels||{};
+  
+  // Variant tabs
+  var vkeys=Object.keys(d.variants);
+  var vtabs='';
+  for(var i=0;i<vkeys.length;i++){
+   vtabs+='<span class="vtab'+(i===0?' active':'')+'" onclick="switchVariant(\''+vkeys[i]+'\')" data-vk="'+vkeys[i]+'">'+VN[vkeys[i]].split(' ')[0]+'</span>';
+  }
+  document.getElementById('vtabRow').innerHTML=vtabs;
+  window._fieldData=d;
+  renderHeatmap(vkeys[0]);
+ }catch(e){console.error(e);document.getElementById('sampleDetail').innerHTML='<p style="color:var(--rd);padding:12px">Failed: '+e.message+'</p>';}
+}
+
+function switchVariant(vk){
+ document.querySelectorAll('#vtabRow .vtab').forEach(t=>t.classList.remove('active'));
+ document.querySelector('#vtabRow .vtab[data-vk="'+vk+'"]').classList.add('active');
+ renderHeatmap(vk);
+}
+
+function renderHeatmap(vk){
+ var d=window._fieldData;
+ var fields=d.fields;
+ var scores=d.variants[vk];
+ var html='<table style="min-width:'+(fields.length*60+120)+'px"><thead><tr><th>字段</th><th>得分</th></tr></thead><tbody>';
+ for(var i=0;i<fields.length;i++){
+  var f=fields[i];
+  var v=scores[f]||0;
+  var pct=(v*100).toFixed(1);
+  var r=Math.round((1-v)*255),g=Math.round(v*255),b=Math.round((1-v)*200);
+  html+='<tr><td>'+f+'</td><td style="background:rgba('+r+','+g+','+b+',0.3)"><span class="hm" style="color:rgb('+r+','+Math.round(g*0.7)+','+b+')">'+pct+'%</span></td></tr>';
+ }
+ html+='</tbody></table>';
+ document.getElementById('heatmapTable').innerHTML=html;
+}
+
+// ===== EVAL: Samples =====
+async function loadSamples(){
+ var search=document.getElementById('sSearch').value.trim();
+ try{
+  var r=await fetch('/api/eval/samples?search='+encodeURIComponent(search)+'&page_size=200');
+  var d=await r.json();
+  document.getElementById('sCount').textContent='共 '+d.total+' 条';
+  var html='<table><thead><tr><th>ID</th><th>来源</th><th>最高分</th><th>GT行数</th><th>操作</th></tr></thead><tbody>';
+  for(var i=0;i<d.samples.length;i++){
+   var s=d.samples[i];
+   var pct=(s.best_score*100).toFixed(1);
+   var color=pct>75?'var(--gr)':pct>55?'var(--or)':'var(--rd)';
+   html+='<tr><td><b>'+s.id+'</b></td><td>'+s.source+'</td><td style="color:'+color+';font-weight:600">'+pct+'%</td><td>'+s.gt_rows_count+'</td><td><button class="btn btn-sm btn-out" onclick="loadDetail(\''+s.id+'\')">查看</button></td></tr>';
+  }
+  html+='</tbody></table>';
+  document.getElementById('sampleList').innerHTML=html;
+ }catch(e){console.error(e);document.getElementById('sampleDetail').innerHTML='<p style="color:var(--rd);padding:12px">Failed: '+e.message+'</p>';}
+}
+
+function pickRandom(){
+ fetch('/api/eval/samples?page_size=500').then(r=>r.json()).then(d=>{
+  var s=d.samples[Math.floor(Math.random()*d.samples.length)];
+  document.getElementById('sSearch').value=s.id;
+  loadDetail(s.id);
+ });
+}
+
+async function loadDetail(sid){
+ document.getElementById('sampleDetail').innerHTML='<p style="color:var(--sub);padding:12px"><span class="spinner"></span> Loading sample '+sid+'...</p>';
+ try{
+  var r=await fetch('/api/eval/samples/'+sid);
+  if(!r.ok){document.getElementById('sampleDetail').innerHTML='<p style="color:var(--rd);padding:12px">Error '+r.status+': Could not load sample '+sid+'</p>';return;}
+  var d=await r.json();
+  if(!d||!d.variants){document.getElementById('sampleDetail').innerHTML='<p style="color:var(--rd);padding:12px">Invalid data for sample '+sid+'</p>';return;}
+  var html='<h4 style="margin:10px 0 6px">样本 #'+d.id+' (来源: '+d.source+', GT共'+d.gt_rows_count+'行)</h4>';
+  
+  // GT preview
+  html+='<details style="margin-bottom:8px"><summary style="cursor:pointer;font-weight:600;color:var(--pri)">📋 Ground Truth ('+d.gt_rows_count+'行)</summary>';
+  html+=renderTable(d.gt_rows.slice(0,30));
+  if(d.gt_rows.length>30)html+='<p style="font-size:10px;color:var(--sub)">... 共'+d.gt_rows.length+'行</p>';
+  html+='</details>';
+  
+  // Variant selector
+  var vks=d.variant_keys;
+  html+='<div class="vtabs">';
+  for(var i=0;i<vks.length;i++){
+   var vk=vks[i];
+   var vd=d.variants[vk];
+   var sc=(vd.metrics.overall*100).toFixed(1);
+   html+='<span class="vtab'+(i===0?' active':'')+'" onclick="switchDetailVariant(\''+sid+'\',\''+vk+'\')" data-dvk="'+vk+'">'+VN[vk]+' <b>'+sc+'%</b></span>';
+  }
+  html+='</div>';
+  
+  // First variant detail
+  html+='<div id="dvDetail"></div>';
+  document.getElementById('sampleDetail').innerHTML=html;
+  window._detailData=d;
+  switchDetailVariant(sid,vks[0]);
+  
+  // Scroll to detail
+  document.getElementById('sampleDetail').scrollIntoView({behavior:'smooth'});
+ }catch(e){console.error(e);document.getElementById('sampleDetail').innerHTML='<p style="color:var(--rd);padding:12px">Failed: '+e.message+'</p>';}
+}
+
+function switchDetailVariant(sid,vk){
+ document.querySelectorAll('[data-dvk]').forEach(t=>t.classList.remove('active'));
+ var tab=document.querySelector('[data-dvk="'+vk+'"]');
+ if(tab)tab.classList.add('active');
+ 
+ var d=window._detailData;
+ if(!d)return;
+ var vd=d.variants[vk];
+ if(!vd)return;
+ 
+ var html='';
+ var m=vd.metrics;
+ var ds=(d.device_scores||{})[vk];
+ var dev_sc = (ds!=null ? ds : 0);
+ var combined = (0.35*m.structure + 0.50*m.content + 0.15*dev_sc)*100;
+ var orig = (m.overall*100).toFixed(1);
+ var diff = (combined - orig).toFixed(1);
+ var diffSign = diff>=0 ? '+' : '';
+ html+='<div style="display:flex;gap:20px;margin:8px 0;padding:8px 12px;background:#f8fafc;border-radius:8px;font-size:13px;flex-wrap:wrap">';
+ html+='<span><b>Overall:</b> '+(m.overall*100).toFixed(1)+'% <span style="font-size:10px;color:var(--sub)">(orig)</span></span>';
+ html+='<span><b>Weighted:</b> <span style="font-weight:700;color:var(--pri);font-size:15px">'+combined.toFixed(1)+'%</span> <span style="font-size:10px;color:'+(diff>=0?'var(--gr)':'var(--rd)')+'">'+diffSign+diff+'% vs orig</span></span>';
+ html+='<span><b>Structure:</b> '+(m.structure*100).toFixed(1)+'%</span>';
+ html+='<span><b>Content:</b> '+(m.content*100).toFixed(1)+'%</span>';
+ html+='<span><b>Device:</b> '+(ds!=null?(ds*100).toFixed(0)+'%':'N/A')+'</span>';
+ html+='<span><b>Rows:</b> '+vd.rows.length+'</span>';
+ html+='</div>';
+ var tabEl = document.querySelector('[data-dvk="'+vk+'"] b');
+ if(tabEl) tabEl.textContent = combined.toFixed(1)+'%';
+ 
+ var gtRows=d.gt_rows||[];
+  var predRows=vd.rows||[];
+  
+  if(predRows.length===0){
+   html+='<div style="padding:20px;text-align:center;color:var(--sub);background:#fffbeb;border-radius:8px;margin-top:8px"><b>No prediction data</b> for this variant. Only GT rows ('+gtRows.length+') available.</div>';
+  } else {
+   // Build GT value sets per column for cross-reference highlighting
+   var gtColVals={};
+   for(var i=0;i<gtRows.length;i++){
+    if(gtRows[i]&&typeof gtRows[i]==='object')
+     Object.keys(gtRows[i]).forEach(function(k){
+      if(!gtColVals[k])gtColVals[k]=new Set();
+      var v=String(gtRows[i][k]||'').trim();
+      if(v)gtColVals[k].add(v);
+     });
+   }
+   // Collect all columns
+   var allCols={};
+   for(var i=0;i<gtRows.length;i++){if(gtRows[i]&&typeof gtRows[i]==='object')Object.keys(gtRows[i]).forEach(function(k){allCols[k]=1})}
+   for(var i=0;i<predRows.length;i++){if(predRows[i]&&typeof predRows[i]==='object')Object.keys(predRows[i]).forEach(function(k){allCols[k]=1})}
+   var cols=Object.keys(allCols);
+   // GT table
+   html+='<div style="margin-bottom:12px"><b style="font-size:12px;color:#3182ce">GT ('+gtRows.length+' rows)</b>';
+   html+=renderTable(gtRows);
+   html+='</div>';
+   // Pred table with cross-ref color hints
+   html+='<div><b style="font-size:12px;color:#e53e3e">'+VN[vk]+' ('+predRows.length+' rows)</b>';
+   html+='<div style="font-size:10px;color:var(--sub);margin:2px 0 4px">pink = value not in any GT row of same column</div>';
+   html+='<div class="scroll" style="max-height:400px"><table style="min-width:'+(cols.length*80+60)+'px"><thead><tr>';
+   for(var i=0;i<cols.length;i++){html+='<th>'+cols[i]+'</th>'}
+   html+='</tr></thead><tbody>';
+   for(var i=0;i<Math.min(predRows.length,50);i++){
+    var pr=predRows[i]||{};
+    html+='<tr>';
+    for(var j=0;j<cols.length;j++){
+     var pv=String(pr[cols[j]]||'').trim();
+     var inGT=gtColVals[cols[j]]&&gtColVals[cols[j]].has(pv);
+     html+='<td style="'+(inGT||!pv?'':'background:#fff0f0')+';font-size:10px">'+pv.slice(0,40)+(pv.length>40?'...':'')+'</td>';
+    }
+    html+='</tr>';
+   }
+   if(predRows.length>50)html+='<tr><td colspan="'+cols.length+'" style="text-align:center;color:var(--sub);font-size:10px">... '+predRows.length+' rows total, showing first 50</td></tr>';
+   html+='</tbody></table></div></div>';
+  }
+
+ document.getElementById('dvDetail').innerHTML=html;
+}
+
+
+function renderTable(rows){
+ if(!rows||rows.length===0)return'<p style="color:var(--sub)">无数据</p>';
+ // Collect ALL unique keys from ALL rows, not just the first
+ var allCols={};
+ for(var i=0;i<rows.length;i++){
+  if(typeof rows[i]==='object')Object.keys(rows[i]).forEach(function(k){allCols[k]=1});
+ }
+ var cols=Object.keys(allCols);
+ var html='<div class="scroll" style="max-height:350px"><table style="min-width:'+(cols.length*80+60)+'px"><thead><tr>';
+ for(var i=0;i<cols.length;i++){html+='<th>'+cols[i]+'</th>'}
+ html+='</tr></thead><tbody>';
+ for(var i=0;i<rows.length;i++){
+  html+='<tr>';
+  for(var j=0;j<cols.length;j++){
+   var v=String(rows[i][cols[j]]||'');
+   html+='<td>'+v.slice(0,40)+(v.length>40?'...':'')+'</td>';
+  }
+  html+='</tr>';
+ }
+ html+='</tbody></table></div>';
+ return html;
+}
+
+// ===== INFER =====
+async function doInfer(){
+ var ao=document.getElementById('aoin').value.trim();
+ if(ao.length<20){toast('AO文本至少20字符');return}
+ var mode=document.getElementById('inferMode').value;
+ var btn=document.getElementById('ibtn');
+ btn.disabled=true;btn.textContent='推理中...';
+ document.getElementById('istatus').innerHTML='<span class="spinner"></span>请求中...';
+ document.getElementById('inferResults').innerHTML='<p style="color:var(--sub)"><span class="spinner"></span>推理中...</p>';
+ 
+ var endpoint=mode.startsWith('lora')?'/api/infer/lora':'/api/infer/qwen3';
+ try{
+  var res=await fetch(endpoint,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({ao_text:ao,variant:mode})});
+  var r=await res.json();
+  renderInferResult(r,mode);
+  document.getElementById('istatus').textContent=r.success?'完成':'失败';
+ }catch(e){
+  document.getElementById('inferResults').innerHTML='<div class="io-card" style="border:1px solid var(--rd)"><h4 style="color:var(--rd)">连接失败</h4><p style="font-size:12px;color:var(--rd)">'+e.message+'</p></div>';
+  document.getElementById('istatus').textContent='连接失败';
+ }
+ btn.disabled=false;btn.textContent='🚀 开始推理';
+}
+
+function renderInferResult(r,mode){
+ var html='';
+ if(!r.success){
+  html='<div class="io-card" style="border:1px solid var(--rd)"><h4 style="color:var(--rd)">推理失败</h4><p style="font-size:12px;color:var(--rd)">'+r.error+'</p></div>';
+ }else{
+  var name=mode.startsWith('lora')?'LoRA vLLM':'Qwen3-max';
+  var tag=mode.startsWith('lora')?'lr':'q3';
+  html+='<div class="io-card"><h4><span class="tag '+tag+'">'+name+'</span> 输出表格 ('+(r.row_count||0)+'行)</h4>';
+  if(r.device_check){
+   var dc=r.device_check;
+   html+='<div style="margin:4px 0;padding:6px 10px;background:#f0fff4;border-radius:6px;font-size:11px"><b>设备校验:</b> <span class="tag ok">✓'+dc.found+'</span>'+(dc.not_found>0?' <span class="tag er">✗'+dc.not_found+'</span>':'')+' 共'+dc.total+'条设备</div>';
+  }
+  if(r.table&&Array.isArray(r.table)&&r.table.length>0){
+   html+=renderTable(r.table);
+   // Add raw JSON section
+   html+='<details style="margin-top:8px"><summary style="cursor:pointer;font-size:11px;color:var(--sub)">查看原始JSON输出</summary><pre style="font-size:9px;background:#1e293b;color:#e2e8f0;padding:10px;max-height:300px;overflow:auto;white-space:pre-wrap;border-radius:6px;margin-top:4px">'+JSON.stringify(r.table,null,2)+'</pre></details>';
+  }else{
+   html+='<p style="color:var(--sub);font-size:12px">未解析到有效表格</p><pre style="font-size:9px;background:#f7fafc;padding:8px;max-height:150px;overflow:auto;white-space:pre-wrap">'+JSON.stringify(r.raw,null,2)+'</pre>';
+  }
+  html+='</div>';
+ }
+ document.getElementById('inferResults').innerHTML=html;
+}
+
+// ===== HEALTH =====
+async function checkHealth(){
+ try{
+  var r=await fetch('/api/health');
+  var d=await r.json();
+  var html='';
+  html+='<div>📊 Eval数据: <b style="color:'+(d.eval_data?'var(--gr)':'var(--rd)')+'">'+(d.eval_data?'✅ 可用':'❌ 不可用')+'</b></div>';
+  html+='<div>📋 样本: <b style="color:'+(d.eval_samples?'var(--gr)':'var(--rd)')+'">'+(d.eval_samples?'✅ 可用':'❌ 不可用')+'</b></div>';
+  html+='<div>🔍 设备库: <b style="color:'+(d.retrieval_db?'var(--gr)':'var(--rd)')+'">'+(d.retrieval_db?'✅ 可用':'❌ 不可用')+'</b></div>';
+  html+='<div>🤖 Qwen API: <b style="color:'+(d.qwen_api?'var(--gr)':'var(--rd)')+'">'+(d.qwen_api?'✅ 已配置':'❌ 未配置')+'</b></div>';
+  html+='<div>🖥️ vLLM: <b style="color:'+(d.vllm?'var(--gr)':'var(--rd)')+'">'+(d.vllm?'✅ 运行中':'❌ 未连接')+'</b></div>';
+  document.getElementById('sysStatus').innerHTML=html;
+  
+  // Update sidebar dots
+  document.getElementById('dotEval').className='dot '+(d.eval_data?'on':'off');
+  document.getElementById('dotVllm').className='dot '+(d.vllm?'on':'off');
+  document.getElementById('dotQwen').className='dot '+(d.qwen_api?'on':'off');
+ }catch(e){console.error(e);document.getElementById('sampleDetail').innerHTML='<p style="color:var(--rd);padding:12px">Failed: '+e.message+'</p>';}
+}
+
+async function reconnectVllm(){
+ var btn=event.target;
+ btn.disabled=true;btn.textContent='重连中...';
+ document.getElementById('reconStatus').innerHTML='<span class="spinner"></span>';
+ try{
+  var r=await fetch('/api/vllm/reconnect',{method:'POST'});
+  var d=await r.json();
+  document.getElementById('reconStatus').textContent=d.success?'✅ 已重连':'❌ '+d.error;
+  document.getElementById('dotVllm').className='dot '+(d.vllm?'on':'off');
+ }catch(e){
+  document.getElementById('reconStatus').textContent='❌ '+e.message;
+ }
+ btn.disabled=false;btn.textContent='🔄 重连vLLM';
+ setTimeout(checkHealth,2000);
+}
+
+// ===== Init =====
+loadSummary();
+checkHealth();
+setInterval(checkHealth,30000);
+</script>
+</body>
+</html>

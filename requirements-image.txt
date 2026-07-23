@@ -1,0 +1,6 @@
+torch
+pillow
+tqdm
+transformers
+accelerate
+colpali-engine
