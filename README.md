@@ -51,6 +51,7 @@ python train/train_sft_final.py \
 ```
 
 模型权重不在仓库中，必须把 `--model_dir` 改为服务器上的 Qwen3.5-9B 路径。当前代码不提供关闭 Qwen3.5 thinking 的选项，不要迁移旧版关闭 thinking 的配置。
+LoRA 目标层默认使用 `--lora_target_modules auto`：代码会读取实际模型结构。Qwen3.5 会同时覆盖全注意力、线性注意力、FFN 和受 PEFT 支持的 `conv1d` 模块；Qwen2.5 自动回退到原有目标层。只有排查兼容性时才需要显式传入逗号分隔的目标层。
 
 ## vLLM 和网页服务
 

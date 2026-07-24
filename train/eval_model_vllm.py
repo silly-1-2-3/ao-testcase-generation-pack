@@ -23,6 +23,12 @@ def parse_args():
     p.add_argument("--output_dir", default="./eval_results")
     p.add_argument("--max_samples", type=int, default=None)
     p.add_argument("--max_new_tokens", type=int, default=2048)
+    p.add_argument(
+        "--max_model_len",
+        type=int,
+        default=8192,
+        help="vLLM context limit; keep it >= the SFT prompt length plus generated thinking/output",
+    )
     p.add_argument("--temperature", type=float, default=0.1)
     p.add_argument("--gpu_memory", type=float, default=0.85)
     return p.parse_args()
@@ -199,7 +205,7 @@ def main():
         enable_lora=True,
         max_lora_rank=32,
         gpu_memory_utilization=args.gpu_memory,
-        max_model_len=4096,
+        max_model_len=args.max_model_len,
         dtype="bfloat16",
         trust_remote_code=True,
     )
@@ -250,4 +256,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-

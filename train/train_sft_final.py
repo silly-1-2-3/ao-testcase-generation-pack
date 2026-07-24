@@ -46,6 +46,7 @@ import os
 import sys
 import json
 import argparse
+import re
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any, Dict, List
@@ -69,10 +70,20 @@ DEFAULT_TRAIN_FILE = "data/train_sft.jsonl"
 DEFAULT_EVAL_FILE = "data/eval_sft.jsonl"
 DEFAULT_OUTPUT_DIR = "outputs/qwen3_7b_use_case_lora"
 
-LORA_TARGET_MODULES = [
+LEGACY_LORA_TARGET_MODULES = [
     "q_proj", "k_proj", "v_proj", "o_proj",
     "gate_proj", "up_proj", "down_proj",
 ]
+
+QWEN35_LORA_LEAF_MODULES = {
+    # Full attention blocks, shared with Qwen2.5.
+    "q_proj", "k_proj", "v_proj", "o_proj",
+    # Dense FFN blocks, shared with Qwen2.5.
+    "gate_proj", "up_proj", "down_proj",
+    # Gated DeltaNet / linear-attention blocks in Qwen3.5.
+    "in_proj_qkv", "in_proj_z", "in_proj_a", "in_proj_b", "out_proj",
+    "conv1d",
+}
 
 
 def parse_args():
@@ -96,6 +107,12 @@ def parse_args():
     p.add_argument("--lora_r", type=int, default=32)
     p.add_argument("--lora_alpha", type=int, default=16)
     p.add_argument("--lora_dropout", type=float, default=0.05)
+    p.add_argument(
+        "--lora_target_modules",
+        type=str,
+        default="auto",
+        help="auto detects model modules; otherwise comma-separated PEFT target suffixes",
+    )
     p.add_argument("--gradient_checkpointing", action="store_true")
     p.add_argument("--resume_from_checkpoint", type=str, default=None)
     p.add_argument("--run_name", type=str, default=None)
@@ -203,6 +220,79 @@ def get_dtype() -> torch.dtype:
     return torch.float16
 
 
+def _is_text_decoder_module(name: str, model_type: str) -> bool:
+    """Keep auto-selection in the language decoder, excluding vision/MTP heads."""
+    lowered = name.lower()
+    if ".visual." in lowered or lowered.startswith("visual."):
+        return False
+    if ".mtp." in lowered or lowered.startswith("mtp."):
+        return False
+    if "qwen3_5" in model_type.lower():
+        # Depending on the Transformers loading class, Qwen3.5 can expose
+        # either model.layers.* or model.language_model.layers.*.
+        return bool(re.search(r"(?:^|\.)layers\.\d+\.", lowered))
+    return bool(re.search(r"(?:^|\.)(?:layers|h)\.\d+\.", lowered))
+
+
+def resolve_lora_target_modules(model, requested: str, model_dir: Path) -> List[str]:
+    """Resolve actual module names so hybrid Qwen3.5 blocks are not skipped."""
+    if requested.strip().lower() != "auto":
+        targets = [item.strip() for item in requested.split(",") if item.strip()]
+        if not targets:
+            raise ValueError("--lora_target_modules cannot be empty")
+        print(f"[INFO] LoRA target modules (explicit suffixes): {targets}")
+        return targets
+
+    config = getattr(model, "config", None)
+    model_type = str(getattr(config, "model_type", ""))
+    model_hint = str(model_dir).lower()
+    is_qwen35 = "qwen3_5" in model_type.lower() or "qwen3.5" in model_hint
+    leaves = QWEN35_LORA_LEAF_MODULES if is_qwen35 else set(LEGACY_LORA_TARGET_MODULES)
+
+    # PEFT support for torch.nn.Conv1d was added after the old Qwen2.5 setup.
+    # Do not make an older PEFT installation fail just because conv1d exists.
+    if "conv1d" in leaves:
+        try:
+            from peft.tuners.lora.layer import Conv1d as _PeftConv1d  # noqa: F401
+        except ImportError:
+            leaves = leaves - {"conv1d"}
+            print("[WARN] PEFT has no Conv1d LoRA support; omitting Qwen3.5 conv1d")
+
+    # Full names prevent suffix matching from accidentally adapting the vision
+    # tower or Qwen3.5's auxiliary MTP head.
+    actual = []
+    for name, module in model.named_modules():
+        leaf = name.rsplit(".", 1)[-1]
+        if leaf not in leaves or not _is_text_decoder_module(name, model_type):
+            continue
+        if isinstance(module, (torch.nn.Linear, torch.nn.Conv1d)):
+            actual.append(name)
+
+    if not actual:
+        raise RuntimeError(
+            f"No LoRA target modules found for model_type={model_type!r}. "
+            "Inspect model.named_modules() or pass --lora_target_modules explicitly."
+        )
+
+    selected_leaves = sorted({name.rsplit(".", 1)[-1] for name in actual})
+    layer_count = len({
+        match.group(0) for name in actual
+        for match in re.finditer(r"(?:layers|h)\.\d+", name)
+    })
+    print(
+        f"[INFO] LoRA auto mode: model_type={model_type or 'unknown'}, "
+        f"targets={len(actual)} modules across ~{layer_count} decoder layers"
+    )
+    print(f"[INFO] LoRA target leaves: {selected_leaves}")
+    if is_qwen35 and not any("language_model" in name for name in actual):
+        print(
+            "[WARN] Qwen3.5 adapter targets use a text-only Transformers path. "
+            "Before vLLM LoRA serving, verify/convert the adapter prefix to "
+            "language_model.model.layers.*."
+        )
+    return actual
+
+
 def main():
     args = parse_args()
     root_dir = Path(__file__).resolve().parent
@@ -261,14 +351,15 @@ def main():
         local_files_only=True,
     )
 
-    # 注入 LoRA
+    # 根据真实模型结构注入 LoRA；Qwen3.5 的线性注意力不能沿用旧目标层。
+    lora_targets = resolve_lora_target_modules(model, args.lora_target_modules, model_dir)
     lora_config = LoraConfig(
         r=args.lora_r,
         lora_alpha=args.lora_alpha,
         lora_dropout=args.lora_dropout,
         bias="none",
         task_type="CAUSAL_LM",
-        target_modules=LORA_TARGET_MODULES,
+        target_modules=lora_targets,
     )
     model = get_peft_model(model, lora_config)
     model.print_trainable_parameters()
@@ -346,10 +437,11 @@ def main():
             wandb.init(
                 project=args.wandb_project,
                 entity=args.wandb_entity,
-                name=args.run_name or f"qwen25-lora-{args.num_train_epochs}ep",
+                name=args.run_name or f"lora-{args.num_train_epochs}ep",
                 config={
-                    "model": "Qwen2.5-7B-Instruct",
+                    "model": str(model_dir),
                     "method": "LoRA",
+                    "lora_target_modules": lora_targets,
                     "lora_r": args.lora_r,
                     "lora_alpha": args.lora_alpha,
                     "epochs": args.num_train_epochs,
