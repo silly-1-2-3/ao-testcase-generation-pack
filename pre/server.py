@@ -43,6 +43,7 @@ DB_PATH = Path(
 
 VLLM_URL = os.environ.get("VLLM_URL", "http://127.0.0.1:8000/v1")
 VLLM_MODEL = os.environ.get("VLLM_MODEL", "qwen25-7b-lora")
+ENABLE_THINKING = os.environ.get("VLLM_ENABLE_THINKING", "0").lower() in {"1", "true", "yes"}
 STEP_LIST_KEY = "\u6b65\u9aa4\u5217\u8868"
 
 _http_client = None
@@ -312,6 +313,9 @@ async def infer_lora(req: InferReq):
         ],
         "temperature": 0.1,
         "max_tokens": 4096,
+        "extra_body": {
+            "chat_template_kwargs": {"enable_thinking": ENABLE_THINKING},
+        },
     }
     try:
         response = await _get_client().post(f"{VLLM_URL}/chat/completions", json=payload)
@@ -375,9 +379,10 @@ if __name__ == "__main__":
     parser.add_argument("--port", type=int, default=int(os.environ.get("PORT", 8081)))
     parser.add_argument("--vllm-url", default=VLLM_URL)
     parser.add_argument("--vllm-model", default=VLLM_MODEL)
+    parser.add_argument("--enable-thinking", action="store_true")
     args = parser.parse_args()
     VLLM_URL = args.vllm_url
     VLLM_MODEL = args.vllm_model
+    ENABLE_THINKING = args.enable_thinking
     print(f"AO Platform on http://{args.host}:{args.port}")
     uvicorn.run(app, host=args.host, port=args.port)
-

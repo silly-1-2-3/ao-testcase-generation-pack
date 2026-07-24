@@ -24,6 +24,11 @@ def parse_args():
     p.add_argument("--max_samples", type=int, default=None)
     p.add_argument("--max_new_tokens", type=int, default=2048)
     p.add_argument(
+        "--enable_thinking",
+        action="store_true",
+        help="enable Qwen3.5 thinking in the chat template; disabled by default",
+    )
+    p.add_argument(
         "--max_model_len",
         type=int,
         default=8192,
@@ -124,7 +129,8 @@ def parse_output(response):
     return rows if rows is not None else []
 
 
-def run_vllm_eval(llm, sampling_params, test_data, tokenizer, adapter_path, label):
+def run_vllm_eval(llm, sampling_params, test_data, tokenizer, adapter_path, label,
+                  enable_thinking=False):
     from vllm.lora.request import LoRARequest
 
     print(f"\n{'=' * 60}")
@@ -136,7 +142,10 @@ def run_vllm_eval(llm, sampling_params, test_data, tokenizer, adapter_path, labe
     for sample in test_data:
         messages = build_prompt(sample.get("messages", []))
         prompt = tokenizer.apply_chat_template(
-            messages, tokenize=False, add_generation_prompt=True
+            messages,
+            tokenize=False,
+            add_generation_prompt=True,
+            enable_thinking=enable_thinking,
         )
         prompts.append(prompt)
         metadatas.append({
@@ -217,13 +226,13 @@ def main():
     )
 
     base_results = run_vllm_eval(
-        llm, sampling_params, test_data, tokenizer, None, "BASE"
+        llm, sampling_params, test_data, tokenizer, None, "BASE", args.enable_thinking
     )
     base_metrics = compute_metrics(base_results, "BASE")
 
     adapter_path = str(Path(args.adapter).resolve())
     lora_results = run_vllm_eval(
-        llm, sampling_params, test_data, tokenizer, adapter_path, "LORA"
+        llm, sampling_params, test_data, tokenizer, adapter_path, "LORA", args.enable_thinking
     )
     lora_metrics = compute_metrics(lora_results, "LORA")
 

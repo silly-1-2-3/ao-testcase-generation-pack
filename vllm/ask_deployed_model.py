@@ -40,6 +40,8 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--temperature", type=float, default=0.7)
     parser.add_argument("--top-p", type=float, default=0.9)
     parser.add_argument("--max-tokens", type=int, default=512)
+    parser.add_argument("--enable-thinking", action="store_true",
+                        help="enable Qwen3.5 thinking; disabled by default")
     parser.add_argument("--timeout", type=int, default=120)
     parser.add_argument("--interactive", action="store_true", help="Run interactive chat mode")
     return parser.parse_args()
@@ -63,6 +65,9 @@ def ask_once(args: argparse.Namespace, messages: List[Dict[str, str]]) -> str:
         "temperature": args.temperature,
         "top_p": args.top_p,
         "max_tokens": args.max_tokens,
+        "extra_body": {
+            "chat_template_kwargs": {"enable_thinking": args.enable_thinking},
+        },
     }
     data = json.dumps(payload).encode("utf-8")
 

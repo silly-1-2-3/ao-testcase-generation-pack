@@ -108,6 +108,11 @@ def parse_args():
     p.add_argument("--lora_alpha", type=int, default=16)
     p.add_argument("--lora_dropout", type=float, default=0.05)
     p.add_argument(
+        "--enable_thinking",
+        action="store_true",
+        help="enable Qwen3.5 thinking in the chat template; disabled by default for final-only GT",
+    )
+    p.add_argument(
         "--lora_target_modules",
         type=str,
         default="auto",
@@ -189,10 +194,15 @@ def to_messages(example: dict) -> List[Dict[str, str]]:
     ]
 
 
-def build_preprocess_fn(tokenizer, max_seq_length: int):
+def build_preprocess_fn(tokenizer, max_seq_length: int, enable_thinking: bool = False):
     def preprocess(example: dict) -> dict:
         messages = to_messages(example)
-        text = tokenizer.apply_chat_template(messages, tokenize=False, add_generation_prompt=False)
+        text = tokenizer.apply_chat_template(
+            messages,
+            tokenize=False,
+            add_generation_prompt=False,
+            enable_thinking=enable_thinking,
+        )
         tokenized = tokenizer(text, truncation=True, max_length=max_seq_length, padding=False)
         tokenized["labels"] = tokenized["input_ids"].copy()
         return tokenized
@@ -337,6 +347,7 @@ def main():
     print(f"[INFO] train_file: {train_file}")
     print(f"[INFO] eval_file: {eval_file}")
     print(f"[INFO] output_dir: {output_dir}")
+    print(f"[INFO] enable_thinking: {args.enable_thinking}")
     print(f"[INFO] CUDA_VISIBLE_DEVICES: {os.environ.get('CUDA_VISIBLE_DEVICES', 'auto')}")
 
     # 加载 tokenizer 和模型
@@ -370,7 +381,7 @@ def main():
 
     # 加载数据
     raw_dataset = load_dataset("json", data_files=str(train_file), split="train")
-    preprocess = build_preprocess_fn(tokenizer, args.max_seq_length)
+    preprocess = build_preprocess_fn(tokenizer, args.max_seq_length, args.enable_thinking)
     tokenized_dataset = raw_dataset.map(
         preprocess,
         remove_columns=raw_dataset.column_names,
