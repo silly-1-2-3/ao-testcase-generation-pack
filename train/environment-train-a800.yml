@@ -1,0 +1,43 @@
+# Qwen3.5-9B LoRA 训练环境
+# 目标平台：Linux x86_64 + NVIDIA A800（SM80）
+# CUDA 运行时：12.9；建议宿主机 NVIDIA Driver >= 575.51.03。
+#
+# 本文件刻意不包含：
+#   - pip / pip: 依赖段；
+#   - vLLM（推理服务应使用独立环境）；
+#   - 检索、图片模型和 Web 服务依赖；
+#   - flash-linear-attention（当前不在 conda-forge，避免基础环境混用渠道）。
+#
+# 创建：
+#   conda env create -f environment-train-a800.yml
+#   conda activate ao-qwen35-train
+
+name: ao-qwen35-train
+
+channels:
+  - conda-forge
+  - nodefaults
+
+dependencies:
+  # Python 与 GPU 运行时
+  - python=3.11
+  - "pytorch-gpu=2.11.0=cuda129_*"
+  - cuda-version=12.9
+
+  # 已通过当前 Qwen3.5-9B 冒烟训练验证的核心版本
+  - transformers=5.14.1
+  - datasets=5.0.0
+  - peft=0.19.1
+  - accelerate=1.14.0
+
+  # 模型、Tokenizer 与运行期基础依赖
+  - safetensors=0.8.0
+  - sentencepiece=0.2.1
+  - numpy
+  - packaging
+  - psutil
+  - pyyaml
+  - tqdm
+
+  # 将完整 Conda 环境打包为可迁移压缩包
+  - conda-pack

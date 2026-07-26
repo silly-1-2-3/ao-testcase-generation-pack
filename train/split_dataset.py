@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 """
-split_dataset.py —— 将 output_all.jsonl（Ground Truth）切分为 train / eval / test 三部分。
+split_dataset.py —— 将 all.jsonl（Ground Truth）切分为 train / eval / test 三部分。
 
 输入：
-    - ./mock_data/outputs/output_all.jsonl    (Ground Truth，6331 条)
-    - ./mock_data/mock_data_ch/cleaned_translations.jsonl   (AO 原文，6296 条)
+    - ./mock_data/outputs/all.jsonl    (Ground Truth，6331 条)
+    - ./mock_data/mock_data_ch/ao.jsonl   (AO 原文，6296 条)
 
 输出：
     - ./data/train.jsonl    (80%)
@@ -12,7 +12,7 @@ split_dataset.py —— 将 output_all.jsonl（Ground Truth）切分为 train / 
     - ./data/test.jsonl     (10%)
 
 策略：
-    1. 以 output_all.jsonl 为基准，通过 id 关联 cleaned_translations.jsonl 的 AO 原文
+    1. 以 all.jsonl 为基准，通过 id 关联 ao.jsonl 的 AO 原文
     2. 按照 source（ATA 章节）做分层抽样（stratified split），保证各章节比例一致
     3. 固定随机种子确保可复现
 
@@ -29,9 +29,9 @@ from pathlib import Path
 
 def parse_args():
     p = argparse.ArgumentParser(description="Split dataset into train/eval/test")
-    p.add_argument("--output-all", default="../mock_data/outputs/output_all.jsonl",
+    p.add_argument("--output-all", default="../mock_data/outputs/all.jsonl",
                    help="Ground Truth JSONL file")
-    p.add_argument("--cleaned-ao", default="../mock_data/mock_data_ch/cleaned_translations.jsonl",
+    p.add_argument("--cleaned-ao", default="../mock_data/mock_data_ch/ao.jsonl",
                    help="Cleaned AO translations JSONL file")
     p.add_argument("--out-dir", default="./data", help="Output directory")
     p.add_argument("--train-ratio", type=float, default=0.80)
