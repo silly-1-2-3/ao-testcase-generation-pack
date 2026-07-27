@@ -1,4 +1,33 @@
+# Large local model and training artifacts
+qwen3_5_9b_deploy/
+models/
+outputs/
+eval_results/
+*.safetensors
+*.ckpt
+
+# Packed environments and downloaded packages
+*.tar.gz
+*.conda
+*.whl
+
+# Python caches and virtual environments
 __pycache__/
 *.py[cod]
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
 .venv/
+venv/
 
+# IDE and operating-system files
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+
+# Local secrets and runtime configuration
+.env
+.env.*
+*.pem
+*.key
