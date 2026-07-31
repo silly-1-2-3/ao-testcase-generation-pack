@@ -7,6 +7,8 @@ Linux 服务器**上完成以下工作：
 2. 使用本地 vLLM 对 Base 与 Base+LoRA 进行成对评测。
 3. 启动 vLLM OpenAI-compatible 服务。
 4. 启动 FastAPI 网页，实时比较 Base 与 Base+LoRA。
+5. 使用本地 BM25+BGE 检索真实设备指令，并在网页中人工审核、应用候选。
+6. 分别将 Base 与 Base+LoRA 的最终结果导出为带审计信息的 Excel。
 
 所有示例命令均从项目根目录 `ao-testcase-generation` 执行。
 ---
@@ -19,10 +21,14 @@ Linux 服务器**上完成以下工作：
 浏览器
   ↓ 127.0.0.1:8081
 pre/server.py
-  ↓ 127.0.0.1:8000/v1
-Conda 环境中的 vLLM 0.24.0
-  ├─ qwen35-base：本地 Qwen3.5-9B Base
-  └─ qwen35-lora：同一个 Base + 本地 LoRA Adapter
+  ├─ 127.0.0.1:8000/v1
+  │    └─ Conda 环境中的 vLLM 0.24.0
+  │         ├─ qwen35-base：本地 Qwen3.5-9B Base
+  │         └─ qwen35-lora：同一个 Base + 本地 LoRA Adapter
+  └─ 本地设备指令检索
+       ├─ devices.jsonl：真实设备语料
+       ├─ BM25：关键词粗召回
+       └─ BGE：语义精排
 ```
 
 安全约束：
@@ -32,6 +38,11 @@ Conda 环境中的 vLLM 0.24.0
   处于离线/禁用状态。
 - `train/eval_model_vllm.py` 强制 Hugging Face 和 vLLM 使用统计处于禁用状态。
 - `pre/server.py` 不加载模型，也不访问外部 Qwen API，只请求本机 vLLM。
+- BGE 只从本地模型目录加载，设备语料和索引只从本地路径读取。
+- Web 设备检索固定使用 `annotate`：服务端只返回候选，不自动改写 Base 或
+  Base+LoRA 的原始结果。
+- 用户在网页中应用候选时，只修改页面内的最终副本；Excel 同时保存最终结果、
+  原始模型结果和人工修改审计。
 - 每条 AO 是独立请求，只包含 System Prompt 和本次 AO，不携带上一条 AO 的
   对话历史。
 - 默认只监听回环地址；可以在服务器本机访问，也可以在安全策略允许时通过
@@ -48,13 +59,16 @@ Conda 环境中的 vLLM 0.24.0
 
 ---
 
-## 2. 三种运行模式
+## 2. 四类运行任务
 
-| 目标 | Conda 环境 | 是否先运行 `vllm serve` |
+| 任务 | Conda 环境 | 是否先运行 `vllm serve` |
 |---|---|---|
-| 直接部署已有 LoRA 和网页 | `ao-qwen35-vllm` | 是 |
+| 启动 Base+LoRA HTTP 推理服务 | `ao-qwen35-vllm` | 当前任务本身 |
+| 启动网页、设备检索和 Excel 导出 | `ao-retrieval` | 是 |
 | Base/LoRA 离线批量评测 | `ao-qwen35-vllm` | 否 |
 | 从数据开始重新训练 | `ao-qwen35-train` | 否 |
+
+设备 CSV 转换、BM25+BGE 建库和命令行检索也使用 `ao-retrieval`。
 
 不要混淆两种 vLLM 用法：
 
@@ -101,11 +115,35 @@ ao-testcase-generation/
 │   └── qwen35_lora_prefixfix_full/     # 成对评测结果
 ├── pre/
 │   ├── server.py                       # 离线 FastAPI 后端
-│   └── static/index.html               # 网页前端
-├── retrieval/                          # 可选设备指令检索
+│   ├── xlsx_export.py                  # 最终/原始/审计三工作表 Excel
+│   ├── static/index.html               # 网页前端
+│   └── tests/                          # Excel 与前端状态回归测试
+├── retrieval/
+│   ├── bm25_index.py                   # 中文 BM25 实现
+│   └── production/
+│       ├── csv_to_devices_jsonl.py     # 真实 CSV 转 devices.jsonl
+│       ├── build_device_indexes.py     # 构建 BM25+BGE 索引
+│       ├── device_retrieval_engine.py  # 在线检索引擎
+│       ├── apply_device_retrieval.py   # JSONL 标注/受控替换
+│       ├── CSV_SCHEMA_MAPPING.md
+│       ├── README.md                   # 检索专项说明
+│       └── tests/                      # 检索安全回归测试
+├── retrieval_runtime/                  # 本地运行产物，不作为源码上传
+│   └── <数据版本>/
+│       ├── devices.jsonl
+│       └── index_hybrid/
 ├── img_retrieval/                      # 可选图像检索
 └── scripts/                            # XLSX/XML 辅助解析
 ```
+
+BGE 模型通常放在项目目录外，例如：
+
+```text
+/root/autodl-tmp/XIFEI_Agent/task1/retrieval_models/bge-small-zh-v1.5/
+```
+
+设备检索的完整数据准备、决策规则和离线迁移说明见
+[`retrieval/production/README.md`](retrieval/production/README.md)。
 
 原始 PEFT Adapter 与 vLLM 前缀转换版用途不同，不能互相替代：
 
@@ -132,14 +170,16 @@ ao-testcase-generation/
 | Accelerate | 1.14.0 |
 | vLLM | 0.24.0+cu129 |
 
-训练与 vLLM 使用两个独立环境：
+训练、vLLM 和检索网页使用三个独立环境：
 
 - `ao-qwen35-train`：Transformers、PEFT、Datasets，用于训练。
-- `ao-qwen35-vllm`：vLLM、Triton、FastAPI、Uvicorn、HTTPX，用于评测和网页
-  部署。
+- `ao-qwen35-vllm`：vLLM、Triton，用于离线评测和 HTTP 推理服务。
+- `ao-retrieval`：FastAPI、Uvicorn、HTTPX、Sentence Transformers、NumPy、
+  jieba，用于网页、BM25+BGE 和 Excel 导出。
 
-不要在同一个环境中混装两套 PyTorch/CUDA 依赖。目标服务器仍需提供兼容的
-NVIDIA 驱动；Conda 压缩包不会包含宿主机驱动和 Linux 内核。
+不要在同一个环境中混装训练、vLLM 和检索的不同 PyTorch/CUDA 依赖。当前
+`server.py` 推荐使用 CPU 运行 BGE，不会与 vLLM 争用显存。目标服务器仍需
+提供兼容的 NVIDIA 驱动；Conda 压缩包不会包含宿主机驱动和 Linux 内核。
 
 ---
 
@@ -152,9 +192,22 @@ NVIDIA 驱动；Conda 压缩包不会包含宿主机驱动和 Linux 内核。
 ```text
 ao-testcase-generation/
   pre/server.py
+  pre/xlsx_export.py
   pre/static/index.html
   train/system_prompt_v4.txt
   train/system_prompt_v4_full.txt
+  retrieval/__init__.py
+  retrieval/bm25_index.py
+  retrieval/production/__init__.py
+  retrieval/production/apply_device_retrieval.py
+  retrieval/production/device_retrieval_engine.py
+  retrieval_runtime/<数据版本>/
+    devices.jsonl
+    index_hybrid/
+      bm25_devices.pkl
+      index_manifest.json
+      bge_vectors.npy
+      bge_meta.json
   outputs/qwen35_lora_full_v1_vllm_prefixfix/
     adapter_model.safetensors
     adapter_config.json
@@ -171,20 +224,26 @@ qwen3_5_9b_deploy/models/Qwen3.5-9B/
   model.safetensors-00003-of-00004.safetensors
   model.safetensors-00004-of-00004.safetensors
 
+retrieval_models/bge-small-zh-v1.5/
+  完整 SentenceTransformer 模型文件
+
 ao-qwen35-vllm.tar.gz
+ao-retrieval.tar.gz
 ```
 
-如果网页还要展示历史评测结果，额外传入：
+如果现场保密服务器还要根据原始设备 CSV 重新生成语料或索引，还需传入：
 
 ```text
-eval_results/qwen35_lora_prefixfix_full/
-  evaluation_manifest.json
-  base_predictions.jsonl
-  base_metrics.json
-  lora_predictions.jsonl
-  lora_metrics.json
-  vllm_compare_summary.json
+retrieval/production/csv_to_devices_jsonl.py
+retrieval/production/build_device_indexes.py
+retrieval/production/CSV_SCHEMA_MAPPING.md
+设备指令 CSV
+设备类别 CSV
 ```
+
+`pre/tests/` 和 `retrieval/production/tests/` 不参与正式运行，但建议保留在源码
+仓库和研发环境中，用于验证 Excel、前端人工修订和检索安全逻辑。
+
 
 ### 5.2 需要重新训练
 
@@ -211,8 +270,23 @@ export AO_BASE_MODEL_DIR=/root/autodl-tmp/XIFEI_Agent/task1/qwen3_5_9b_deploy/mo
 export AO_PEFT_ADAPTER_DIR="$AO_PROJECT_ROOT/outputs/qwen35_lora_full_v1"
 export AO_VLLM_ADAPTER_DIR="$AO_PROJECT_ROOT/outputs/qwen35_lora_full_v1_vllm_prefixfix"
 export AO_EVAL_DIR="$AO_PROJECT_ROOT/eval_results/qwen35_lora_prefixfix_full"
+export AO_RETRIEVAL_RUN_DIR="$AO_PROJECT_ROOT/retrieval_runtime/smoke_bm25_v1"
+export AO_RETRIEVAL_DB="$AO_RETRIEVAL_RUN_DIR/devices.jsonl"
+export AO_RETRIEVAL_INDEX_DIR="$AO_RETRIEVAL_RUN_DIR/index_hybrid_bge_v1"
+export AO_RETRIEVAL_BGE_MODEL=/root/autodl-tmp/XIFEI_Agent/task1/retrieval_models/bge-small-zh-v1.5
 cd "$AO_PROJECT_ROOT"
 ```
+
+上述 `smoke_bm25_v1` 是当前两条测试设备的研发目录。现场真实数据应使用新的
+版本化目录，例如：
+
+```bash
+export AO_RETRIEVAL_RUN_DIR="$AO_PROJECT_ROOT/retrieval_runtime/production_devices_v1"
+export AO_RETRIEVAL_DB="$AO_RETRIEVAL_RUN_DIR/devices.jsonl"
+export AO_RETRIEVAL_INDEX_DIR="$AO_RETRIEVAL_RUN_DIR/index_hybrid_bge_v1"
+```
+
+不要用真实数据覆盖示例目录；分开保存便于审计语料和索引版本。
 
 这些变量只在当前终端有效。每个新终端都需要重新设置。
 
@@ -224,22 +298,145 @@ test -f "$AO_BASE_MODEL_DIR/model.safetensors.index.json"
 test -f "$AO_VLLM_ADAPTER_DIR/adapter_model.safetensors"
 test -f "$AO_VLLM_ADAPTER_DIR/adapter_config.json"
 test -f "$AO_PROJECT_ROOT/train/system_prompt_v4.txt"
+test -f "$AO_PROJECT_ROOT/pre/xlsx_export.py"
 test -f "$AO_PROJECT_ROOT/pre/static/index.html"
+test -f "$AO_RETRIEVAL_DB"
+test -f "$AO_RETRIEVAL_INDEX_DIR/bm25_devices.pkl"
+test -f "$AO_RETRIEVAL_INDEX_DIR/index_manifest.json"
+test -f "$AO_RETRIEVAL_INDEX_DIR/bge_vectors.npy"
+test -f "$AO_RETRIEVAL_INDEX_DIR/bge_meta.json"
+test -d "$AO_RETRIEVAL_BGE_MODEL"
 echo "核心文件检查通过"
 ```
 
 ---
 
-## 7. 直接部署 Base、Base+LoRA 和网页
+## 7. 准备本地设备指令检索
 
-这是已经训练完成后最常用的运行方式，需要两个终端。
+如果已经有经过确认的 `devices.jsonl`、四个混合索引文件和完整 BGE 模型，可以
+跳过转换与建库，直接执行第 7.4 节检查。修改设备语料后必须重新建库。
 
-### 7.1 终端一：启动 vLLM
+### 7.1 激活检索环境
+
+```bash
+conda activate ao-retrieval
+
+export HF_HUB_OFFLINE=1
+export TRANSFORMERS_OFFLINE=1
+export HF_HUB_DISABLE_TELEMETRY=1
+export TOKENIZERS_PARALLELISM=false
+export OMP_NUM_THREADS=1
+
+unset HF_TOKEN HUGGING_FACE_HUB_TOKEN WANDB_API_KEY
+unset http_proxy https_proxy all_proxy HTTP_PROXY HTTPS_PROXY ALL_PROXY
+
+cd "$AO_PROJECT_ROOT"
+mkdir -p "$AO_RETRIEVAL_RUN_DIR"
+```
+
+当前推荐 BGE 使用 CPU。`ao-retrieval` 环境即使
+`torch.cuda.is_available() == False` 也能正常运行，不影响另一个环境中的
+vLLM 使用 GPU。
+
+### 7.2 将设备 CSV 转为 `devices.jsonl`
+
+当前两条测试夹具的冒烟命令：
+
+```bash
+python retrieval/production/csv_to_devices_jsonl.py \
+  --commands retrieval/production/tests/fixtures/device_commands.csv \
+  --categories retrieval/production/tests/fixtures/device_categories.csv \
+  --output "$AO_RETRIEVAL_DB"
+```
+
+现场拿到真实设备数据后，必须把两个输入路径替换为真实 CSV。转换会同时生成：
+
+```text
+devices.jsonl
+devices.conversion_report.json
+devices.rejected.jsonl
+```
+
+正式建库前必须检查转换报告、重复主键、被拒绝记录和缺失业务指令号。两条测试
+夹具只能标记为 `example`，不能冒充生产设备库。
+
+### 7.3 构建 BM25+BGE 混合索引
+
+```bash
+python retrieval/production/build_device_indexes.py \
+  --devices "$AO_RETRIEVAL_DB" \
+  --output-dir "$AO_RETRIEVAL_INDEX_DIR" \
+  --bge-model "$AO_RETRIEVAL_BGE_MODEL" \
+  --device cpu
+```
+
+网页启动要求索引目录包含：
+
+```text
+bm25_devices.pkl
+index_manifest.json
+bge_vectors.npy
+bge_meta.json
+```
+
+索引已存在时脚本会拒绝覆盖。只有确认语料版本正确且需要重建时才增加
+`--force`。`devices.jsonl` 与索引的 SHA-256 不一致时，检索引擎会拒绝加载。
+
+### 7.4 检索和回归测试
+
+先执行一条人工可判断的查询：
+
+```bash
+python retrieval/production/device_retrieval_engine.py \
+  --devices "$AO_RETRIEVAL_DB" \
+  --index-dir "$AO_RETRIEVAL_INDEX_DIR" \
+  --bge-model "$AO_RETRIEVAL_BGE_MODEL" \
+  --device cpu \
+  --query "将万用表连接到测试点，测量直流电压并记录" \
+  --top-k 5 \
+  --candidate-pool 50
+```
+
+然后运行检索安全回归测试：
+
+```bash
+python -m unittest \
+  retrieval.production.tests.test_row_selection \
+  -v
+```
+
+当前实现只为 `步骤层级 == "执行步骤"` 的行检索。Query 会使用当前执行步骤和
+前面最多三行的非执行步骤上下文，并跳过其他执行步骤，避免不同设备轨迹互相
+污染。已有的 `设备指令号` 不进入 Query。
+
+BM25 负责粗召回，BGE 对 Query 编码并对候选精排，最后使用 RRF 融合两路排名。
+Web 服务只返回候选和审计，不执行批处理脚本的自动替换模式。完整转换规则、
+决策代码、阈值说明和离线迁移清单见
+[`retrieval/production/README.md`](retrieval/production/README.md)。
+
+---
+
+## 8. 直接部署 Base、Base+LoRA、设备检索和网页
+
+这是已经训练完成后最常用的运行方式，需要两个终端：终端一运行 vLLM，终端二
+使用独立的 `ao-retrieval` 环境运行网页和设备检索。
+
+### 8.1 终端一：启动 vLLM
 
 激活 vLLM 环境并设置严格离线变量：
 
 ```bash
-激活 vllm 环境
+export AO_PROJECT_ROOT=/root/autodl-tmp/XIFEI_Agent/task1/ao-testcase-generation
+export AO_BASE_MODEL_DIR=/root/autodl-tmp/XIFEI_Agent/task1/qwen3_5_9b_deploy/models/Qwen3.5-9B
+export AO_PEFT_ADAPTER_DIR="$AO_PROJECT_ROOT/outputs/qwen35_lora_full_v1"
+export AO_VLLM_ADAPTER_DIR="$AO_PROJECT_ROOT/outputs/qwen35_lora_full_v1_vllm_prefixfix"
+export AO_EVAL_DIR="$AO_PROJECT_ROOT/eval_results/qwen35_lora_prefixfix_full"
+export AO_RETRIEVAL_RUN_DIR="$AO_PROJECT_ROOT/retrieval_runtime/smoke_bm25_v1"
+export AO_RETRIEVAL_DB="$AO_RETRIEVAL_RUN_DIR/devices.jsonl"
+export AO_RETRIEVAL_INDEX_DIR="$AO_RETRIEVAL_RUN_DIR/index_hybrid_bge_v1"
+export AO_RETRIEVAL_BGE_MODEL=/root/autodl-tmp/XIFEI_Agent/task1/retrieval_models/bge-small-zh-v1.5
+
+conda activate ao-qwen35-vllm
 
 export HF_HUB_OFFLINE=1
 export TRANSFORMERS_OFFLINE=1
@@ -296,7 +493,7 @@ vllm serve "$AO_BASE_MODEL_DIR" \
 不要将原始 `outputs/qwen35_lora_full_v1` 传给 `--lora-modules`，否则可能出现
 服务不报错但 LoRA 实际未生效的情况。
 
-### 7.2 检查 vLLM
+### 8.2 检查 vLLM
 
 在另一个终端执行：
 
@@ -314,20 +511,26 @@ qwen35-lora
 只出现 Base 时，网页无法进行成对比较，应检查 `--lora-modules` 路径、Adapter
 前缀和启动日志。
 
-### 7.3 终端二：启动网页后端
+### 8.3 终端二：启动网页和设备检索
 
-网页后端本身不加载模型，可以继续使用 `ao-qwen35-vllm` 环境：
+网页后端本身不加载 Qwen 权重，但会加载本地 BGE，因此使用
+`ao-retrieval` 环境：
 
 ```bash
+conda activate ao-retrieval
+
 export AO_PROJECT_ROOT=/root/autodl-tmp/XIFEI_Agent/task1/ao-testcase-generation
 export AO_BASE_MODEL_DIR=/root/autodl-tmp/XIFEI_Agent/task1/qwen3_5_9b_deploy/models/Qwen3.5-9B
 export AO_PEFT_ADAPTER_DIR="$AO_PROJECT_ROOT/outputs/qwen35_lora_full_v1"
 export AO_VLLM_ADAPTER_DIR="$AO_PROJECT_ROOT/outputs/qwen35_lora_full_v1_vllm_prefixfix"
 export AO_EVAL_DIR="$AO_PROJECT_ROOT/eval_results/qwen35_lora_prefixfix_full"
-cd "$AO_PROJECT_ROOT"
+export AO_RETRIEVAL_RUN_DIR="$AO_PROJECT_ROOT/retrieval_runtime/smoke_bm25_v1"
+export AO_RETRIEVAL_DB="$AO_RETRIEVAL_RUN_DIR/devices.jsonl"
+export AO_RETRIEVAL_INDEX_DIR="$AO_RETRIEVAL_RUN_DIR/index_hybrid_bge_v1"
+export AO_RETRIEVAL_BGE_MODEL=/root/autodl-tmp/XIFEI_Agent/task1/retrieval_models/bge-small-zh-v1.5
 
-激活 vllm 环境
-
+export HF_HUB_OFFLINE=1
+export TRANSFORMERS_OFFLINE=1
 export OMP_NUM_THREADS=1
 cd "$AO_PROJECT_ROOT"
 
@@ -338,6 +541,15 @@ python pre/server.py \
   --base-model qwen35-base \
   --lora-model qwen35-lora \
   --eval-dir "$AO_EVAL_DIR" \
+  --device-retrieval-mode annotate \
+  --retrieval-db "$AO_RETRIEVAL_DB" \
+  --retrieval-index-dir "$AO_RETRIEVAL_INDEX_DIR" \
+  --retrieval-bge-model "$AO_RETRIEVAL_BGE_MODEL" \
+  --retrieval-device cpu \
+  --retrieval-data-kind example \
+  --retrieval-data-label "示例设备库（2 条，仅研发验证）" \
+  --retrieval-top-k 5 \
+  --retrieval-candidate-pool 50 \
   --prompt-mode compressed \
   --temperature 0 \
   --top-p 1 \
@@ -345,31 +557,44 @@ python pre/server.py \
   --request-timeout 600
 ```
 
+以上是两条测试设备的示例启动命令。现场真实设备库启用后，先把
+`AO_RETRIEVAL_RUN_DIR` 改为第 6 节所述的生产版本目录，并将以下两项改为：
+
+```text
+--retrieval-data-kind production
+--retrieval-data-label "生产设备指令库"
+```
+
+`server.py` 不接受 `replace-invalid`，因此启动网页不会自动覆盖模型生成字段。
+Base 与 Base+LoRA 共用同一个检索器，但分别生成审计结果。
+
 评测目录不是网页实时推理的必要条件：
 
 - 存在完整评测目录时，网页会展示汇总指标、字段指标和逐样本结果。
 - 不存在评测目录时，历史评测面板显示不可用，但实时 Base/LoRA 推理仍可运行。
 
-### 7.4 检查网页服务
 
-```bash
-curl -s http://127.0.0.1:8081/api/health | python -m json.tool
-```
+### 8.4 网页中的实时推理、人工修订和 Excel
 
-实时对比就绪时，关键字段应类似：
+输入一条 AO 后执行实时对比，网页会分别显示 Base 和 Base+LoRA：
 
-```json
-{
-  "comparison_ready": true,
-  "base_model_available": true,
-  "lora_model_available": true,
-  "qwen_api_status": "offline_disabled"
-}
-```
+1. 原始模型输出和解析后的结构化表；
+2. 设备指令精确命中状态；
+3. 每个执行步骤的 BM25+BGE 候选与审计决策；
+4. 应用候选、撤销单行或撤销全部修改的按钮；
+5. 各自独立的“下载当前最终结果 Excel”按钮。
 
-`qwen_api_status=offline_disabled` 是预期状态，不是故障。
+人工应用候选只修改页面内最终副本的 `设备类型` 和 `设备指令号`，不会修改
+`设备单元号`、`设备参数` 或原始模型结果。页面刷新或重新推理会清空尚未导出
+的人工修改。
 
-### 7.5 访问网页的两种方式
+每个 Excel 包含：
+
+- `最终结果`；
+- `原始模型结果`；
+- `修改审计`。
+
+### 8.5 访问网页的两种方式
 
 无论使用哪种方式，都保持 `pre/server.py` 使用 `--host 127.0.0.1`，不要改成
 `0.0.0.0`。
@@ -409,89 +634,20 @@ ssh -N -o ExitOnForwardFailure=yes -L 127.0.0.1:8081:127.0.0.1:8081 -p <SSH端�
 http://127.0.0.1:8081
 ```
 
-该流量路径为：
-
-```text
-本地浏览器 127.0.0.1:8081
-  → SSH 加密隧道
-  → 服务器 127.0.0.1:8081
-  → pre/server.py
-```
-
-关闭本地 SSH 终端或按 `Ctrl+C` 即可关闭隧道，不会停止服务器上的 vLLM 和
-网页后端。保密服务器如果禁止端口转发，只能使用方式一或管理员批准的访问方式。
-
-#### 如果打开后仍然是旧版网页
-
-第 7.5 节只改变访问路径，不会把新版前端自动上传到服务器。新版网页依赖服务器
-上的以下两个文件：
-
-```text
-pre/server.py
-pre/static/index.html
-```
-
-先在部署服务器上进入实际项目目录，确认文件是新版：
-
-```bash
-cd "$AO_PROJECT_ROOT"
-
-grep -n "api/infer/compare" pre/server.py
-grep -n "Base / LoRA 成对评测" pre/static/index.html
-grep -n "同一 AO 实时对比" pre/static/index.html
-```
-
-三条命令都应找到内容。如果没有输出，说明服务器上仍是旧代码，需要先按照保密
-服务器允许的文件传输方式更新整个 `pre/` 目录。
-
-然后检查当前占用 8081 端口的进程：
-
-```bash
-ss -lntp | grep ':8081'
-ps -ef | grep '[p]re/server.py'
-```
-
-如果存在旧的 `pre/server.py`，优先回到启动它的终端按 `Ctrl+C`。找不到原终端
-时，根据上一步显示的准确 PID 结束对应进程：
-
-```bash
-kill <PID>
-```
-
-不要使用不带目标确认的批量结束命令。确认 8081 已释放后，严格按照第 7.3 节从
-`$AO_PROJECT_ROOT` 重新启动 `pre/server.py`。
-
-重启后先在服务器本机验证实际返回的 HTML：
-
-```bash
-curl -s http://127.0.0.1:8081/ \
-  | grep -E "Base / LoRA 成对评测|同一 AO 实时对比"
-```
-
-能够看到这两个新版标志，说明服务器已经正确返回新版网页。如果服务器端检查
-通过，但浏览器仍显示旧页面，可使用 `Ctrl+F5` 强制刷新，或者访问：
-
-```text
-http://127.0.0.1:8081/?v=2
-```
-
-如果使用 SSH 隧道，还要确认隧道连接的是当前这台租用服务器及其正确 SSH
-端口；必要时关闭旧隧道并重新建立。
-
 ---
 
-## 8. 从数据开始重新训练
+## 9. 从数据开始重新训练
 
 训练前激活 `ao-qwen35-train`：
 
 ```bash
-激活 train 环境
+conda activate ao-qwen35-train
 
 export OMP_NUM_THREADS=1
 cd "$AO_PROJECT_ROOT"
 ```
 
-### 8.1 切分数据
+### 9.1 切分数据
 
 输入：
 
@@ -523,7 +679,7 @@ data/test.jsonl
 `id` 是业务样本 ID，不是 JSONL 行号。分层切分和打乱后，ID 不会按数字顺序
 排列。
 
-### 8.2 转换为 SFT messages
+### 9.2 转换为 SFT messages
 
 ```bash
 python train/prepare_sft_data.py \
@@ -548,7 +704,7 @@ data/test_sft.jsonl
 训练只计算 assistant JSON 和结束标记的因果语言模型交叉熵；system、user 和
 padding token 的 label 为 `-100`，不参与损失。
 
-### 8.3 统计真实 Token 长度
+### 9.3 统计真实 Token 长度
 
 更换数据或 Prompt 后必须重新统计：
 
@@ -566,7 +722,7 @@ python train/prepare_training/count_dataset.py \
 总长度为 7780 token，因此训练使用 `--max_seq_length 8192`。训练脚本遇到
 超长样本会直接报错，不会静默截断 assistant 答案。
 
-### 8.4 一步冒烟训练
+### 9.4 一步冒烟训练
 
 ```bash
 python train/train_sft_final.py \
@@ -588,7 +744,7 @@ python train/train_sft_final.py \
 只有在模型类别、纯语言模型检查、LoRA 目标层、assistant-only labels、一步训练、
 一次验证和 Adapter 保存都成功后，才能开始正式训练。
 
-### 8.5 正式训练
+### 9.5 正式训练
 
 当前在 A800 80GB 上验证过的命令：
 
@@ -639,7 +795,7 @@ outputs/qwen35_lora_full_v1/
 
 ---
 
-## 9. 训练后必须转换 Adapter 前缀
+## 10. 训练后必须转换 Adapter 前缀
 
 当前 PEFT 输出使用：
 
@@ -753,19 +909,19 @@ LoRA-B 不应全部为零。
 
 ---
 
-## 10. 使用 vLLM 进行离线成对评测
+## 11. 使用 vLLM 进行离线成对评测
 
 评测前先停止 `vllm serve`，然后激活 `ao-qwen35-vllm`。评测脚本自己创建
 vLLM 引擎，不需要启动 HTTP 服务：
 
 ```bash
-激活 vllm 环境
+conda activate ao-qwen35-vllm
 
 export OMP_NUM_THREADS=1
 cd "$AO_PROJECT_ROOT"
 ```
 
-### 10.1 先评测 8 条
+### 11.1 先评测 8 条
 
 ```bash
 python train/eval_model_vllm.py \
@@ -791,7 +947,7 @@ metric_version=v2
 必须检查 Base 与 LoRA 原始输出不是全部相同。全部相同时停止后续评测，检查是否
 误用了原始 PEFT Adapter。
 
-### 10.2 完整验证集
+### 11.2 完整验证集
 
 不传 `--max_samples`：
 
@@ -803,7 +959,7 @@ python train/eval_model_vllm.py \
   --output_dir eval_results/qwen35_lora_prefixfix_full
 ```
 
-### 10.3 最终测试集
+### 11.3 最终测试集
 
 只有模型、Prompt、解码参数、checkpoint 和指标全部冻结后，才执行一次：
 
@@ -816,7 +972,7 @@ python train/eval_model_vllm.py \
 ```
 
 
-### 10.4 评测输出
+### 11.4 评测输出
 
 每次成功评测生成：
 

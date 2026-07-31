@@ -3,6 +3,8 @@ qwen3_5_9b_deploy/
 models/
 outputs/
 eval_results/
+retrieval_runtime/
+retrieval_models/
 *.safetensors
 *.ckpt
 

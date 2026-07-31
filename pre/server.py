@@ -14,6 +14,10 @@
 4. 默认读取 eval_results 下样本数最多的成对评测目录，也可显式指定。
 5. 默认仅监听 127.0.0.1，适合通过 SSH 端口转发访问。
 6. 外部 Qwen API、Hugging Face 下载和运行时 LoRA 更新均不参与此服务。
+7. 设备检索默认关闭；开启后固定为 annotate，只返回候选和审计信息，
+   不改写 Base 或 Base+LoRA 的原始结构化输出。
+8. 用户可在网页副本中显式应用/撤销候选；Excel 同时保存最终结果、
+   原始模型结果与人工修改审计，服务端不长期保存该副本。
 """
 
 from __future__ import annotations
@@ -23,21 +27,30 @@ import asyncio
 import json
 import os
 import re
+import sys
 import time
 from pathlib import Path
 from typing import Any, Optional
+
 
 import httpx
 import uvicorn
 from fastapi import FastAPI, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.responses import Response
 from fastapi.staticfiles import StaticFiles
 from pydantic import BaseModel
-
 
 PROJECT_ROOT = Path(__file__).resolve().parent.parent
 TRAIN_DIR = PROJECT_ROOT / "train"
 EVAL_ROOT = PROJECT_ROOT / "eval_results"
+if str(PROJECT_ROOT) not in sys.path:
+    sys.path.insert(0, str(PROJECT_ROOT))
+try:
+    from pre.xlsx_export import build_ao_workbook
+except ModuleNotFoundError:
+    # 兼容 ``python pre/server.py``：此时脚本目录本身位于 sys.path。
+    from xlsx_export import build_ao_workbook
 
 
 def _parse_cors_origins(raw_value: str) -> list[str]:
@@ -56,6 +69,11 @@ def _resolve_project_path(raw_path: str | Path) -> Path:
     if not path.is_absolute():
         path = PROJECT_ROOT / path
     return path.resolve()
+
+
+def _resolve_optional_project_path(raw_path: str | Path | None) -> Path | None:
+    value = str(raw_path or "").strip()
+    return _resolve_project_path(value) if value else None
 
 
 def _safe_load_json_file(path: Path) -> dict[str, Any]:
@@ -122,6 +140,42 @@ DB_PATH = _resolve_project_path(
         str(PROJECT_ROOT / "retrieval" / "device_corpus.jsonl"),
     )
 )
+DEVICE_RETRIEVAL_MODE = os.environ.get(
+    "AO_DEVICE_RETRIEVAL_MODE",
+    "off",
+).strip().lower()
+RETRIEVAL_INDEX_DIR = _resolve_optional_project_path(
+    os.environ.get("AO_RETRIEVAL_INDEX_DIR")
+)
+RETRIEVAL_BGE_MODEL = _resolve_optional_project_path(
+    os.environ.get("AO_RETRIEVAL_BGE_MODEL")
+)
+RETRIEVAL_DEVICE = os.environ.get(
+    "AO_RETRIEVAL_DEVICE",
+    "cpu",
+).strip()
+RETRIEVAL_DATA_KIND = os.environ.get(
+    "AO_RETRIEVAL_DATA_KIND",
+    "example",
+).strip().lower()
+RETRIEVAL_DATA_LABEL = os.environ.get(
+    "AO_RETRIEVAL_DATA_LABEL",
+    (
+        "示例设备库（2 条，仅研发验证）"
+        if RETRIEVAL_DATA_KIND == "example"
+        else "生产设备库"
+    ),
+).strip()
+RETRIEVAL_TOP_K = int(os.environ.get("AO_RETRIEVAL_TOP_K", "5"))
+RETRIEVAL_CANDIDATE_POOL = int(
+    os.environ.get("AO_RETRIEVAL_CANDIDATE_POOL", "50")
+)
+RETRIEVAL_BGE_THRESHOLD = float(
+    os.environ.get("AO_RETRIEVAL_BGE_THRESHOLD", "0.68")
+)
+RETRIEVAL_BGE_MARGIN = float(
+    os.environ.get("AO_RETRIEVAL_BGE_MARGIN", "0.05")
+)
 
 VLLM_URL = os.environ.get(
     "VLLM_URL",
@@ -152,6 +206,10 @@ DEVICE_UNIT_KEY = "设备单元号"
 
 _http_client: Optional[httpx.AsyncClient] = None
 _file_cache: dict[str, tuple[tuple[int, int] | None, Any]] = {}
+_device_retriever: Any | None = None
+_device_retrieval_error: str | None = None
+_retrieval_initialization_attempted = False
+_device_retrieval_lock = asyncio.Lock()
 
 
 app = FastAPI(title="AO Test Case R&D Platform")
@@ -409,6 +467,229 @@ def _check_device_rows(rows: Any) -> dict[str, Any] | None:
     }
 
 
+def _retrieval_warning() -> str | None:
+    if DEVICE_RETRIEVAL_MODE == "off":
+        return None
+    if RETRIEVAL_DATA_KIND == "example":
+        return (
+            "当前使用示例设备库，仅用于验证检索链路；候选结果不能作为"
+            "现场设备指令依据，且网页不会自动改写模型输出。"
+        )
+    return (
+        "检索以 annotate 模式运行：只提供候选与审计信息，"
+        "不会自动改写模型输出。"
+    )
+
+
+def _retrieval_corpus_records() -> int:
+    if _device_retriever is not None:
+        devices = getattr(_device_retriever, "devices", [])
+        return len(devices) if isinstance(devices, list) else 0
+    if not DB_PATH.is_file():
+        return 0
+    try:
+        return len(_load_jsonl(DB_PATH))
+    except ValueError:
+        return 0
+
+
+def _device_retrieval_status() -> dict[str, Any]:
+    enabled = DEVICE_RETRIEVAL_MODE == "annotate"
+    ready = (
+        enabled
+        and _device_retriever is not None
+        and _device_retrieval_error is None
+    )
+    return {
+        "enabled": enabled,
+        "ready": ready,
+        "mode": DEVICE_RETRIEVAL_MODE,
+        "data_kind": RETRIEVAL_DATA_KIND,
+        "data_label": RETRIEVAL_DATA_LABEL,
+        "corpus_records": _retrieval_corpus_records(),
+        "devices_path": str(DB_PATH),
+        "index_dir": (
+            str(RETRIEVAL_INDEX_DIR)
+            if RETRIEVAL_INDEX_DIR is not None
+            else None
+        ),
+        "bge_model": (
+            str(RETRIEVAL_BGE_MODEL)
+            if RETRIEVAL_BGE_MODEL is not None
+            else None
+        ),
+        "device": RETRIEVAL_DEVICE,
+        "top_k": RETRIEVAL_TOP_K,
+        "candidate_pool": RETRIEVAL_CANDIDATE_POOL,
+        "error": _device_retrieval_error,
+        "warning": _retrieval_warning(),
+    }
+
+
+def _initialize_device_retrieval_sync() -> None:
+    """按需加载 BM25+BGE；失败时保留 Web 服务并通过健康接口报告。"""
+
+    global _device_retriever
+    global _device_retrieval_error
+    global _retrieval_initialization_attempted
+
+    _retrieval_initialization_attempted = True
+    _device_retriever = None
+    _device_retrieval_error = None
+    if DEVICE_RETRIEVAL_MODE == "off":
+        return
+
+    try:
+        if DEVICE_RETRIEVAL_MODE != "annotate":
+            raise ValueError(
+                "设备检索只允许 off 或 annotate；Web 服务禁止自动替换模式"
+            )
+        if not DB_PATH.is_file():
+            raise FileNotFoundError(f"设备语料不存在: {DB_PATH}")
+        if RETRIEVAL_INDEX_DIR is None:
+            raise ValueError("已开启设备检索，但未设置检索索引目录")
+        if not RETRIEVAL_INDEX_DIR.is_dir():
+            raise FileNotFoundError(
+                f"检索索引目录不存在: {RETRIEVAL_INDEX_DIR}"
+            )
+        required_index_files = (
+            "bm25_devices.pkl",
+            "index_manifest.json",
+            "bge_vectors.npy",
+            "bge_meta.json",
+        )
+        missing = [
+            name
+            for name in required_index_files
+            if not (RETRIEVAL_INDEX_DIR / name).is_file()
+        ]
+        if missing:
+            raise FileNotFoundError(
+                "检索索引缺少文件: " + ", ".join(missing)
+            )
+        if RETRIEVAL_BGE_MODEL is None:
+            raise ValueError("已开启设备检索，但未设置本地 BGE 模型目录")
+        if not RETRIEVAL_BGE_MODEL.is_dir():
+            raise FileNotFoundError(
+                f"本地 BGE 模型目录不存在: {RETRIEVAL_BGE_MODEL}"
+            )
+
+        from retrieval.production.device_retrieval_engine import (
+            DeviceRetriever,
+        )
+
+        _device_retriever = DeviceRetriever(
+            DB_PATH,
+            RETRIEVAL_INDEX_DIR,
+            RETRIEVAL_BGE_MODEL,
+            RETRIEVAL_DEVICE,
+        )
+    except Exception as exc:
+        _device_retriever = None
+        _device_retrieval_error = f"{type(exc).__name__}: {str(exc)[:500]}"
+
+
+def _annotate_device_rows_sync(rows: list[dict[str, Any]]) -> dict[str, Any]:
+    started = time.perf_counter()
+    if not _retrieval_initialization_attempted:
+        _initialize_device_retrieval_sync()
+
+    status = _device_retrieval_status()
+    result = {
+        **status,
+        "processed_rows": 0,
+        "elapsed_ms": 0.0,
+        "query_instruction": None,
+        "rows": [],
+    }
+    if not status["enabled"] or not status["ready"]:
+        return result
+
+    try:
+        from retrieval.production.apply_device_retrieval import (
+            build_query,
+            replacement_decision,
+            should_search,
+        )
+
+        retriever = _device_retriever
+        audits: list[dict[str, Any]] = []
+        for row_index, row in enumerate(rows):
+            if not isinstance(row, dict) or not should_search(row, False):
+                continue
+            query = build_query(rows, row_index)
+            candidates = (
+                retriever.search(
+                    query,
+                    RETRIEVAL_TOP_K,
+                    RETRIEVAL_CANDIDATE_POOL,
+                )
+                if query
+                else []
+            )
+            original = {
+                "设备类型": row.get("设备类型", ""),
+                "设备单元号": row.get("设备单元号", ""),
+                "设备指令号": row.get("设备指令号", ""),
+                "设备参数": row.get("设备参数", ""),
+            }
+            decision, replaced = replacement_decision(
+                str(original["设备指令号"]),
+                candidates,
+                retriever,
+                "annotate",
+                RETRIEVAL_BGE_THRESHOLD,
+                RETRIEVAL_BGE_MARGIN,
+            )
+            if replaced:
+                raise RuntimeError(
+                    "annotate 模式意外产生了替换操作，已中止检索后处理"
+                )
+            audits.append(
+                {
+                    "row_index": row_index,
+                    "query": query,
+                    "original": original,
+                    "decision": decision,
+                    "replaced": False,
+                    "candidates": candidates,
+                }
+            )
+
+        result.update(
+            {
+                "processed_rows": len(audits),
+                "elapsed_ms": round(
+                    (time.perf_counter() - started) * 1000,
+                    1,
+                ),
+                "query_instruction": getattr(
+                    retriever,
+                    "bge_query_instruction",
+                    None,
+                ),
+                "rows": audits,
+            }
+        )
+        return result
+    except Exception as exc:
+        result["ready"] = False
+        result["error"] = f"{type(exc).__name__}: {str(exc)[:500]}"
+        result["elapsed_ms"] = round(
+            (time.perf_counter() - started) * 1000,
+            1,
+        )
+        return result
+
+
+async def _annotate_device_rows(
+    rows: list[dict[str, Any]],
+) -> dict[str, Any]:
+    # SentenceTransformer 的同一实例不并发调用；Base/LoRA 的 vLLM 请求仍并行。
+    async with _device_retrieval_lock:
+        return await asyncio.to_thread(_annotate_device_rows_sync, rows)
+
+
 def _normalize_prompt_mode(variant: str = "") -> str:
     normalized = str(variant or "").strip().lower()
     if normalized.endswith("+full") or normalized == "full":
@@ -455,12 +736,43 @@ def _validate_runtime_config() -> None:
         raise ValueError("AO_VLLM_TIMEOUT/--request-timeout 必须大于 0")
     if DEFAULT_PROMPT_MODE not in {"compressed", "full"}:
         raise ValueError("AO_PROMPT_MODE/--prompt-mode 只能是 compressed 或 full")
+    if DEVICE_RETRIEVAL_MODE not in {"off", "annotate"}:
+        raise ValueError(
+            "AO_DEVICE_RETRIEVAL_MODE/--device-retrieval-mode "
+            "只能是 off 或 annotate"
+        )
+    if RETRIEVAL_DATA_KIND not in {"example", "production"}:
+        raise ValueError(
+            "AO_RETRIEVAL_DATA_KIND/--retrieval-data-kind "
+            "只能是 example 或 production"
+        )
+    if not RETRIEVAL_DATA_LABEL:
+        raise ValueError("AO_RETRIEVAL_DATA_LABEL/--retrieval-data-label 不能为空")
+    if not RETRIEVAL_DEVICE:
+        raise ValueError("AO_RETRIEVAL_DEVICE/--retrieval-device 不能为空")
+    if RETRIEVAL_TOP_K <= 0:
+        raise ValueError("AO_RETRIEVAL_TOP_K/--retrieval-top-k 必须大于 0")
+    if RETRIEVAL_CANDIDATE_POOL < RETRIEVAL_TOP_K:
+        raise ValueError(
+            "candidate-pool 必须大于等于 top-k"
+        )
     _system_prompt(DEFAULT_PROMPT_MODE)
 
 
 class InferReq(BaseModel):
     ao_text: str
     variant: str = "compare+compressed"
+
+
+class ExportWorkbookReq(BaseModel):
+    variant: str
+    model_name: str
+    ao_text: str
+    prompt_mode: str
+    original_rows: list[dict[str, Any]]
+    final_rows: list[dict[str, Any]]
+    modifications: list[dict[str, Any]]
+    generation: dict[str, Any]
 
 
 def _validate_ao_text(raw_text: str) -> str:
@@ -509,6 +821,7 @@ async def _infer_one(
         raw_output = _extract_response_text(data)
         table = _parse_json(raw_output)
         usage = data.get("usage")
+        device_retrieval = await _annotate_device_rows(table)
         return {
             "success": True,
             "model": model_name,
@@ -518,6 +831,7 @@ async def _infer_one(
             "row_count": len(table),
             "parse_success": bool(table),
             "device_check": _check_device_rows(table),
+            "device_retrieval": device_retrieval,
             "finish_reason": (
                 data.get("choices", [{}])[0].get("finish_reason")
                 if isinstance(data.get("choices"), list) and data["choices"]
@@ -914,6 +1228,71 @@ async def infer_qwen3(_: InferReq):
     }
 
 
+@app.post("/api/export/xlsx")
+async def export_xlsx(req: ExportWorkbookReq):
+    """下载一个模型结果；不在服务器保存用户编辑后的副本。"""
+
+    if req.variant not in {"base", "lora"}:
+        raise HTTPException(400, "variant 只能是 base 或 lora")
+    if not req.final_rows:
+        raise HTTPException(400, "没有可导出的结构化测试用例")
+    if len(req.final_rows) > 1000:
+        raise HTTPException(400, "单次最多导出 1000 行")
+    if len(req.original_rows) != len(req.final_rows):
+        raise HTTPException(400, "原始结果与最终结果行数不一致")
+    if len(req.modifications) > len(req.final_rows):
+        raise HTTPException(400, "修改审计数量不能超过结果行数")
+    if len(req.ao_text) > 200_000:
+        raise HTTPException(400, "AO 原文过长，无法导出")
+
+    modified_indexes: set[int] = set()
+    for modification in req.modifications:
+        row_index = modification.get("row_index")
+        if (
+            isinstance(row_index, bool)
+            or not isinstance(row_index, int)
+            or row_index < 0
+            or row_index >= len(req.final_rows)
+        ):
+            raise HTTPException(400, "修改审计中存在非法 row_index")
+        if row_index in modified_indexes:
+            raise HTTPException(400, "同一输出行不能出现重复修改审计")
+        modified_indexes.add(row_index)
+
+    try:
+        workbook = await asyncio.to_thread(
+            build_ao_workbook,
+            variant=req.variant,
+            model_name=req.model_name,
+            ao_text=req.ao_text,
+            prompt_mode=req.prompt_mode,
+            original_rows=req.original_rows,
+            final_rows=req.final_rows,
+            modifications=req.modifications,
+            generation=req.generation,
+        )
+    except Exception as exc:
+        raise HTTPException(
+            500,
+            f"Excel 生成失败: {type(exc).__name__}: {str(exc)[:400]}",
+        ) from exc
+
+    timestamp = time.strftime("%Y%m%d_%H%M%S")
+    filename = f"ao_qwen35_{req.variant}_{timestamp}.xlsx"
+    return Response(
+        content=workbook,
+        media_type=(
+            "application/vnd.openxmlformats-officedocument."
+            "spreadsheetml.sheet"
+        ),
+        headers={
+            "Content-Disposition": f'attachment; filename="{filename}"',
+            "Cache-Control": "no-store",
+            "X-Content-Type-Options": "nosniff",
+        },
+    )
+
+
 @app.post("/api/infer/base")
 async def infer_base(req: InferReq):
     ao_text = _validate_ao_text(req.ao_text)
@@ -1027,8 +1406,12 @@ async def health():
         summary = _load_json(EVAL_DIR / "did_batch_summary.json") or {}
         sample_count = int(summary.get("num_samples", 0) or 0)
 
+    retrieval = _device_retrieval_status()
+    service_ready = comparison_ready and (
+        not retrieval["enabled"] or retrieval["ready"]
+    )
     return {
-        "status": "ok" if comparison_ready else "degraded",
+        "status": "ok" if service_ready else "degraded",
         "eval_data": layout != "missing",
         "eval_samples": sample_count > 0,
         "eval_layout": layout,
@@ -1036,6 +1419,18 @@ async def health():
         "eval_sample_count": sample_count,
         "retrieval_db": DB_PATH.is_file(),
         "retrieval_db_path": str(DB_PATH),
+        "retrieval_enabled": retrieval["enabled"],
+        "retrieval_ready": retrieval["ready"],
+        "retrieval_mode": retrieval["mode"],
+        "retrieval_data_kind": retrieval["data_kind"],
+        "retrieval_data_label": retrieval["data_label"],
+        "retrieval_corpus_records": retrieval["corpus_records"],
+        "retrieval_index_dir": retrieval["index_dir"],
+        "retrieval_bge_model": retrieval["bge_model"],
+        "retrieval_device": retrieval["device"],
+        "retrieval_error": retrieval["error"],
+        "retrieval_warning": retrieval["warning"],
+        "device_retrieval": retrieval,
         "qwen_api": False,
         "qwen_api_status": "offline_disabled",
         "vllm": vllm_reachable and lora_available,
@@ -1054,6 +1449,7 @@ async def health():
             "max_tokens": INFER_MAX_TOKENS,
             "enable_thinking": False,
         },
+        "xlsx_export": True,
     }
 
 
@@ -1080,6 +1476,22 @@ async def vllm_reconnect():
         "available_models": available_models,
         "error": error,
     }
+
+
+@app.on_event("startup")
+async def initialize_device_retrieval():
+    await asyncio.to_thread(_initialize_device_retrieval_sync)
+    status = _device_retrieval_status()
+    if status["enabled"] and status["ready"]:
+        print(
+            "[retrieval] ready: "
+            f"{status['data_label']}, records={status['corpus_records']}, "
+            "mode=annotate (no replacement)"
+        )
+    elif status["enabled"]:
+        print(f"[retrieval] unavailable: {status['error']}")
+    else:
+        print("[retrieval] disabled (AO_DEVICE_RETRIEVAL_MODE=off)")
 
 
 @app.on_event("shutdown")
@@ -1121,7 +1533,49 @@ if __name__ == "__main__":
     parser.add_argument(
         "--retrieval-db",
         default=str(DB_PATH),
-        help="可选的设备指令库 device_corpus.jsonl",
+        help="设备指令语料 devices.jsonl；也用于原有的指令号精确命中校验",
+    )
+    parser.add_argument(
+        "--device-retrieval-mode",
+        choices=("off", "annotate"),
+        default=DEVICE_RETRIEVAL_MODE,
+        help="默认 off；annotate 仅返回 BM25+BGE 候选，不改写模型输出",
+    )
+    parser.add_argument(
+        "--retrieval-index-dir",
+        default=str(RETRIEVAL_INDEX_DIR or ""),
+        help="包含 BM25 与 BGE 索引文件的本地目录",
+    )
+    parser.add_argument(
+        "--retrieval-bge-model",
+        default=str(RETRIEVAL_BGE_MODEL or ""),
+        help="本地 BGE 模型目录；开启 annotate 时必填",
+    )
+    parser.add_argument(
+        "--retrieval-device",
+        default=RETRIEVAL_DEVICE,
+        help="BGE 运行设备；建议 server.py 使用 cpu，避免占用 vLLM 显存",
+    )
+    parser.add_argument(
+        "--retrieval-data-kind",
+        choices=("example", "production"),
+        default=RETRIEVAL_DATA_KIND,
+        help="设备语料性质；示例数据必须保持 example",
+    )
+    parser.add_argument(
+        "--retrieval-data-label",
+        default=os.environ.get("AO_RETRIEVAL_DATA_LABEL", "").strip(),
+        help="网页展示的设备语料名称；留空时按 data-kind 自动生成",
+    )
+    parser.add_argument(
+        "--retrieval-top-k",
+        type=int,
+        default=RETRIEVAL_TOP_K,
+    )
+    parser.add_argument(
+        "--retrieval-candidate-pool",
+        type=int,
+        default=RETRIEVAL_CANDIDATE_POOL,
     )
     parser.add_argument(
         "--temperature",
@@ -1158,6 +1612,22 @@ if __name__ == "__main__":
     VLLM_LORA_MODEL = args.lora_model.strip()
     EVAL_DIR = _resolve_project_path(args.eval_dir)
     DB_PATH = _resolve_project_path(args.retrieval_db)
+    DEVICE_RETRIEVAL_MODE = args.device_retrieval_mode
+    RETRIEVAL_INDEX_DIR = _resolve_optional_project_path(
+        args.retrieval_index_dir
+    )
+    RETRIEVAL_BGE_MODEL = _resolve_optional_project_path(
+        args.retrieval_bge_model
+    )
+    RETRIEVAL_DEVICE = args.retrieval_device.strip()
+    RETRIEVAL_DATA_KIND = args.retrieval_data_kind
+    RETRIEVAL_DATA_LABEL = args.retrieval_data_label.strip() or (
+        "示例设备库（2 条，仅研发验证）"
+        if RETRIEVAL_DATA_KIND == "example"
+        else "生产设备库"
+    )
+    RETRIEVAL_TOP_K = args.retrieval_top_k
+    RETRIEVAL_CANDIDATE_POOL = args.retrieval_candidate_pool
     INFER_TEMPERATURE = args.temperature
     INFER_TOP_P = args.top_p
     INFER_MAX_TOKENS = args.max_tokens
@@ -1173,6 +1643,20 @@ if __name__ == "__main__":
     print(f"LoRA model: {VLLM_LORA_MODEL}")
     print(f"Evaluation: {EVAL_DIR} (layout={_eval_layout()})")
     print(f"Retrieval DB: {DB_PATH} (exists={DB_PATH.is_file()})")
+    print(
+        "Device retrieval: "
+        f"mode={DEVICE_RETRIEVAL_MODE}, "
+        f"data_kind={RETRIEVAL_DATA_KIND}, "
+        f"label={RETRIEVAL_DATA_LABEL}"
+    )
+    print(f"Retrieval index: {RETRIEVAL_INDEX_DIR}")
+    print(f"Retrieval BGE model: {RETRIEVAL_BGE_MODEL}")
+    print(
+        "Retrieval runtime: "
+        f"device={RETRIEVAL_DEVICE}, "
+        f"top_k={RETRIEVAL_TOP_K}, "
+        f"candidate_pool={RETRIEVAL_CANDIDATE_POOL}"
+    )
     print(
         "Generation: "
         f"temperature={INFER_TEMPERATURE}, "

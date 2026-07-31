@@ -1,0 +1,4 @@
+dev_cat_id,dev_cat_name,dev_cat_desc,deleted,created_at,updated_at,created_by,updated_by,subject_id,device_cat_code,device_cat_alias,is_support_device
+CAT-001,数字万用表,用于测量电压电阻和通断,0,,,,,,DMM,万用表,1
+CAT-002,数字扭矩扳手,用于施加并记录紧固力矩,0,,,,,,TORQUE-WRENCH,扭矩扳手,1
+CAT-DEL,停用设备,不应进入数据库,1,,,,,,DELETED,旧设备,0

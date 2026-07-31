@@ -1,0 +1,5 @@
+device_command_id,dev_cat_id,command_desc,command_code,param_type,param_desc,test_data_standard_id,res_type,timeout,paint,paint_model_id,deleted,created_at,updated_at,created_by,updated_by
+CMD-001,CAT-001,测量指定测试点的直流电压,measure_dc_voltage,number,测试点和电压量程,,number,30,,,,,,,
+CMD-002,CAT-002,顺时针拧紧螺栓至目标力矩,apply_torque_cw,object,螺栓位置和目标力矩,,result,60,,,,,,,
+CMD-DEL,CAT-DEL,不应进入数据库,deleted_command,text,无,,text,10,,,1,,,,
+CMD-ORPHAN,CAT-404,孤立外键指令,orphan_command,text,无,,text,10,,,,,,,
