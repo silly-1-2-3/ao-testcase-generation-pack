@@ -1,0 +1,491 @@
+<!doctype html><html><head><meta charset="utf-8"><title>矢量 PDF 表格结构提取</title><style>
+*{box-sizing:border-box}body{margin:0;background:#d8d8d8;font-family:Arial,'Microsoft YaHei',sans-serif;color:#222}
+.page{position:relative;margin:24px auto;background:#fff;box-shadow:0 2px 8px #777;page-break-after:always;overflow:hidden}
+.page-label{position:absolute;left:5px;top:3px;padding:1px 4px;background:rgba(255,255,255,.82);font-size:11px;color:#555;z-index:8}
+.canvas{position:absolute;inset:0}.rule{position:absolute;background:#777;display:block;z-index:1}.rule.h{height:1px}.rule.v{width:1px}
+.cell{position:absolute;border:1px solid rgba(30,110,210,.72);background:rgba(210,230,255,.16);z-index:3;overflow:hidden}
+.cell.page-text,.cell.container{border:0;background:transparent;outline:0;pointer-events:none}.cell.page-text{z-index:2}
+.word{position:absolute;white-space:pre;z-index:4;background:rgba(255,255,220,.72)}
+.debug{width:min(1100px,96vw);margin:-12px auto 24px;background:#fff;padding:6px 10px;font-size:12px}
+pre{white-space:pre-wrap;background:#f5f5f5;padding:8px;max-height:320px;overflow:auto}
+@media print{body{background:#fff}.page{margin:0;box-shadow:none}.debug{display:none}}
+.pdf-image{object-fit:contain;pointer-events:none}
+</style></head><body><section class="page" data-page="1" style="width:803.6px;height:1136.6px">
+<div class="page-label">第 1 页 · edges=23 · corners=40 · cells=17</div>
+<div class="canvas">
+<i class="rule h" style="left:91.0px;top:221.6px;width:626.0px"></i>
+<i class="rule h" style="left:91.0px;top:241.2px;width:626.0px"></i>
+<i class="rule h" style="left:91.0px;top:269.2px;width:625.6px"></i>
+<i class="rule h" style="left:90.7px;top:287.6px;width:626.0px"></i>
+<i class="rule h" style="left:90.7px;top:306.8px;width:626.0px"></i>
+<i class="rule h" style="left:90.7px;top:325.6px;width:626.0px"></i>
+<i class="rule h" style="left:90.3px;top:344.8px;width:626.7px"></i>
+<i class="rule h" style="left:90.3px;top:362.9px;width:626.3px"></i>
+<i class="rule h" style="left:90.3px;top:381.7px;width:626.3px"></i>
+<i class="rule h" style="left:90.3px;top:400.8px;width:626.3px"></i>
+<i class="rule h" style="left:90.3px;top:419.7px;width:626.3px"></i>
+<i class="rule h" style="left:90.3px;top:438.5px;width:626.3px"></i>
+<i class="rule h" style="left:90.3px;top:457.3px;width:626.3px"></i>
+<i class="rule h" style="left:90.7px;top:476.1px;width:626.0px"></i>
+<i class="rule h" style="left:90.3px;top:494.9px;width:626.3px"></i>
+<i class="rule h" style="left:90.3px;top:513.7px;width:626.3px"></i>
+<i class="rule h" style="left:90.3px;top:532.9px;width:626.3px"></i>
+<i class="rule h" style="left:90.7px;top:551.7px;width:626.0px"></i>
+<i class="rule h" style="left:90.3px;top:630.6px;width:626.0px"></i>
+<i class="rule v" style="left:90.7px;top:287.6px;height:344.4px"></i>
+<i class="rule v" style="left:340.6px;top:382.4px;height:58.3px"></i>
+<i class="rule v" style="left:622.3px;top:382.0px;height:57.9px"></i>
+<i class="rule v" style="left:715.5px;top:288.4px;height:343.3px"></i>
+<div class="cell" style="left:90.8px;top:287.6px;width:624.7px;height:19.2px"><span class="word" style="left:2.6px;top:4.3px;font-size:9.5px;line-height:10.6px">所需产品图样及设计文件</span></div>
+<div class="cell" style="left:90.8px;top:306.8px;width:624.7px;height:18.9px"><span class="word" style="left:2.6px;top:4.2px;font-size:9.5px;line-height:10.6px">图样编号/设计技术文件编号</span></div>
+<div class="cell" style="left:90.8px;top:325.7px;width:624.7px;height:19.2px"><span class="word" style="left:2.6px;top:4.1px;font-size:9.5px;line-height:10.6px">XXX-JTXXX-XXX</span><span class="word" style="left:534.2px;top:4.1px;font-size:9.5px;line-height:10.6px">XXX</span></div>
+<div class="cell" style="left:90.8px;top:344.9px;width:624.7px;height:17.9px"><span class="word" style="left:2.6px;top:4.0px;font-size:9.5px;line-height:10.6px">技术条件、表示该AO的编制依据</span></div>
+<div class="cell" style="left:90.8px;top:362.8px;width:624.7px;height:18.9px"><span class="word" style="left:2.6px;top:4.2px;font-size:9.5px;line-height:10.6px">所需其他技术文件</span></div>
+<div class="cell" style="left:90.8px;top:381.7px;width:249.8px;height:19.2px"><span class="word" style="left:2.6px;top:4.1px;font-size:9.5px;line-height:10.6px">技术文档编号</span></div>
+<div class="cell" style="left:90.8px;top:401.0px;width:249.8px;height:18.6px"><span class="word" style="left:2.6px;top:4.1px;font-size:9.5px;line-height:10.6px">AA</span></div>
+<div class="cell" style="left:622.4px;top:401.0px;width:93.2px;height:18.6px"><span class="word" style="left:2.6px;top:4.1px;font-size:9.5px;line-height:10.6px">A1</span></div>
+<div class="cell" style="left:90.8px;top:419.5px;width:249.8px;height:18.9px"><span class="word" style="left:2.6px;top:4.3px;font-size:9.5px;line-height:10.6px">BB</span></div>
+<div class="cell" style="left:622.4px;top:419.5px;width:93.2px;height:18.9px"><span class="word" style="left:2.6px;top:4.3px;font-size:9.5px;line-height:10.6px">B1</span></div>
+<div class="cell" style="left:90.8px;top:457.3px;width:624.7px;height:18.9px"><span class="word" style="left:2.6px;top:4.1px;font-size:9.5px;line-height:10.6px">设备汇总</span></div>
+<div class="cell" style="left:90.8px;top:476.2px;width:624.7px;height:18.6px"><span class="word" style="left:2.6px;top:4.1px;font-size:9.5px;line-height:10.6px">设备编号</span><span class="word" style="left:252.5px;top:4.1px;font-size:9.5px;line-height:10.6px">设备名称</span></div>
+<div class="cell" style="left:90.8px;top:494.8px;width:624.7px;height:18.9px"><span class="word" style="left:2.6px;top:4.3px;font-size:9.5px;line-height:10.6px">MX</span><span class="word" style="left:252.5px;top:4.3px;font-size:9.5px;line-height:10.6px">XX设备</span></div>
+<div class="cell" style="left:90.8px;top:513.7px;width:624.7px;height:19.2px"><span class="word" style="left:2.6px;top:4.2px;font-size:9.5px;line-height:10.6px">技术条件,表示该AO的编制依据</span></div>
+<div class="cell" style="left:90.8px;top:532.9px;width:624.7px;height:18.9px"><span class="word" style="left:2.6px;top:4.1px;font-size:9.5px;line-height:10.6px">工作说明</span></div>
+<div class="cell" style="left:90.8px;top:551.8px;width:624.7px;height:78.6px"><span class="word" style="left:2.6px;top:37.5px;font-size:9.5px;line-height:10.6px">注意事项:1.此工序执行前,应确定已完成以下工序:a)完成通电前软件版本检查工序</span></div>
+<div class="cell page-text" style="left:0.0px;top:0.0px;width:803.6px;height:1136.6px"><span class="word" style="left:389.2px;top:25.7px;font-size:9.7px;line-height:10.8px">受控</span><span class="word" style="left:366.6px;top:59.6px;font-size:10.9px;line-height:12.2px">装配指令 AO</span><span class="word" style="left:121.6px;top:114.5px;font-size:7.5px;line-height:8.4px">编号</span><span class="word" style="left:206.4px;top:114.5px;font-size:7.5px;line-height:8.4px">0X0X-XXX-010-XXX00-XXX-XXX</span><span class="word" style="left:512.4px;top:114.5px;font-size:7.5px;line-height:8.4px">版次</span><span class="word" style="left:558.5px;top:114.5px;font-size:7.5px;line-height:8.4px">AJ</span><span class="word" style="left:442.4px;top:140.3px;font-size:7.5px;line-height:8.4px">F</span><span class="word" style="left:92.1px;top:180.9px;font-size:7.5px;line-height:8.4px">名称/说明</span><span class="word" style="left:191.7px;top:180.9px;font-size:7.5px;line-height:8.4px">xxx系统通电检查</span><span class="word" style="left:92.1px;top:201.1px;font-size:7.5px;line-height:8.4px">有效性</span><span class="word" style="left:191.7px;top:201.1px;font-size:7.5px;line-height:8.4px">xxx-xxx</span><span class="word" style="left:93.4px;top:225.8px;font-size:9.5px;line-height:10.6px">换版说明</span><span class="word" style="left:93.4px;top:253.4px;font-size:9.5px;line-height:10.6px">工艺完善:优化xx。</span><span class="word" style="left:718.2px;top:329.8px;font-size:9.5px;line-height:10.6px">D</span><span class="word" style="left:718.2px;top:499.1px;font-size:9.5px;line-height:10.6px">/</span><span class="word" style="left:133.9px;top:1061.0px;font-size:7.0px;line-height:7.8px">更改单编号/划改原因    划改人员    更改日期    相关页次    更改标志</span><span class="word" style="left:710.8px;top:1091.6px;font-size:7.0px;line-height:7.8px">共7页 第1页</span></div>
+</div></section>
+<details class="debug"><summary>按闭合矩形提取的文本顺序（含页面兜底框）</summary>
+<pre>[1] 所需产品图样及设计文件
+[2] 图样编号/设计技术文件编号
+[3] XXX-JTXXX-XXX                                XXX
+[4] 技术条件、表示该AO的编制依据
+[5] 所需其他技术文件
+[6] 技术文档编号
+[7] AA
+[8] A1
+[9] BB
+[10] B1
+[11] 设备汇总
+[12] 设备编号                                设备名称
+[13] MX                                XX设备
+[14] 技术条件,表示该AO的编制依据
+[15] 工作说明
+[16] 注意事项:1.此工序执行前,应确定已完成以下工序:a)完成通电前软件版本检查工序
+[17] 受控
+装配指令 AO
+编号               0X0X-XXX-010-XXX00-XXX-XXX                                版次      AJ
+F
+名称/说明             xxx系统通电检查
+有效性                xxx-xxx
+换版说明
+工艺完善:优化xx。
+D
+/
+更改单编号/划改原因    划改人员    更改日期    相关页次    更改标志
+共7页 第1页</pre></details>
+<section class="page" data-page="2" style="width:803.6px;height:1136.6px">
+<div class="page-label">第 2 页 · edges=8 · corners=14 · cells=8</div>
+<div class="canvas">
+<i class="rule h" style="left:85.9px;top:143.8px;width:632.2px"></i>
+<i class="rule h" style="left:85.9px;top:163.0px;width:632.2px"></i>
+<i class="rule h" style="left:85.9px;top:181.4px;width:632.2px"></i>
+<i class="rule h" style="left:85.5px;top:656.4px;width:632.9px"></i>
+<i class="rule v" style="left:85.9px;top:143.8px;height:514.8px"></i>
+<i class="rule v" style="left:148.6px;top:163.0px;height:495.7px"></i>
+<i class="rule v" style="left:243.8px;top:163.3px;height:494.9px"></i>
+<i class="rule v" style="left:716.2px;top:143.8px;height:515.2px"></i>
+<div class="cell" style="left:86.1px;top:143.8px;width:630.1px;height:19.2px"><span class="word" style="left:254.0px;top:5.2px;font-size:11.0px;line-height:12.2px">******工作内容******</span></div>
+<div class="cell" style="left:86.1px;top:163.0px;width:62.4px;height:18.6px"><span class="word" style="left:20.4px;top:5.3px;font-size:9.7px;line-height:10.8px">工种</span></div>
+<div class="cell" style="left:148.5px;top:163.0px;width:95.2px;height:18.6px"><span class="word" style="left:36.9px;top:5.3px;font-size:9.7px;line-height:10.8px">序号</span></div>
+<div class="cell" style="left:243.7px;top:163.0px;width:472.5px;height:18.6px"><span class="word" style="left:214.7px;top:5.3px;font-size:9.7px;line-height:10.8px">工序内容</span></div>
+<div class="cell" style="left:86.1px;top:181.6px;width:62.4px;height:474.9px"><span class="word" style="left:2.6px;top:188.2px;font-size:9.4px;line-height:10.5px">XXX00XX</span><span class="word" style="left:2.6px;top:200.1px;font-size:9.4px;line-height:10.5px">XXX:单位编</span><span class="word" style="left:2.6px;top:212.0px;font-size:9.4px;line-height:10.5px">号 XX:专业</span><span class="word" style="left:2.6px;top:223.8px;font-size:9.4px;line-height:10.5px">编号 工步</span><span class="word" style="left:2.6px;top:235.7px;font-size:9.4px;line-height:10.5px">号</span></div>
+<div class="cell" style="left:148.5px;top:181.6px;width:95.2px;height:474.9px"><span class="word" style="left:42.2px;top:209.8px;font-size:9.9px;line-height:11.0px">10</span></div>
+<div class="cell" style="left:243.7px;top:181.6px;width:472.5px;height:474.9px"><span class="word" style="left:2.8px;top:172.4px;font-size:8.9px;line-height:9.9px">项目名称：XX检查前准备</span><span class="word" style="left:2.8px;top:183.8px;font-size:8.9px;line-height:9.9px">项目编码：</span><span class="word" style="left:2.8px;top:195.1px;font-size:8.9px;line-height:9.9px">按XX检查技术条件XXX-JTXXX-XXX的第X条检查前准备工作要求进行XX检查前准备。</span><span class="word" style="left:2.8px;top:206.5px;font-size:8.9px;line-height:9.9px">1.设备外观应符合以下条件：</span><span class="word" style="left:2.8px;top:217.8px;font-size:8.9px;line-height:9.9px">a)xx的……当清晰，涂漆均匀无脱落；</span><span class="word" style="left:2.8px;top:229.2px;font-size:8.9px;line-height:9.9px">2.注意事项</span><span class="word" style="left:2.8px;top:240.5px;font-size:8.9px;line-height:9.9px">1)进行试验前，应确保xx断路器处于断开状态。</span><span class="word" style="left:2.8px;top:251.9px;font-size:8.9px;line-height:9.9px">5.按照bb第x章第x条进行xx操作。</span><span class="word" style="left:2.8px;top:431.8px;font-size:9.1px;line-height:10.1px">设备编号 设备名称 设备参数</span><span class="word" style="left:2.8px;top:443.3px;font-size:9.1px;line-height:10.1px">MX XX设备 /</span><span class="word" style="left:2.8px;top:462.0px;font-size:9.1px;line-height:10.1px">工检: 复检: 专检:</span></div>
+<div class="cell page-text" style="left:0.0px;top:0.0px;width:803.6px;height:1136.6px"><span class="word" style="left:154.9px;top:56.5px;font-size:10.3px;line-height:11.5px">装配指令 AO</span><span class="word" style="left:90.3px;top:103.4px;font-size:7.5px;line-height:8.4px">编号</span><span class="word" style="left:184.4px;top:103.6px;font-size:7.3px;line-height:8.1px">0X0X-XXX-010-XXX00-XXX-XXX</span><span class="word" style="left:523.7px;top:103.4px;font-size:7.5px;line-height:8.4px">版次</span><span class="word" style="left:564.3px;top:103.4px;font-size:7.5px;line-height:8.4px">AJ</span><span class="word" style="left:442.6px;top:123.7px;font-size:7.5px;line-height:8.4px">F</span><span class="word" style="left:133.9px;top:1061.0px;font-size:7.0px;line-height:7.8px">更改单编号/划改原因    划改人员    更改日期    相关页次    更改标志</span><span class="word" style="left:710.8px;top:1091.6px;font-size:7.0px;line-height:7.8px">共7页 第2页</span></div>
+</div></section>
+<details class="debug"><summary>按闭合矩形提取的文本顺序（含页面兜底框）</summary>
+<pre>[1] ******工作内容******
+[2] 工种
+[3] 序号
+[4] 工序内容
+[5] XXX00XX
+XXX:单位编
+号 XX:专业
+编号 工步
+号
+[6] 10
+[7] 项目名称：XX检查前准备
+项目编码：
+按XX检查技术条件XXX-JTXXX-XXX的第X条检查前准备工作要求进行XX检查前准备。
+1.设备外观应符合以下条件：
+a)xx的……当清晰，涂漆均匀无脱落；
+2.注意事项
+1)进行试验前，应确保xx断路器处于断开状态。
+5.按照bb第x章第x条进行xx操作。
+设备编号 设备名称 设备参数
+MX XX设备 /
+工检: 复检: 专检:
+[8] 装配指令 AO
+编号                 0X0X-XXX-010-XXX00-XXX-XXX                                版次     AJ
+F
+更改单编号/划改原因    划改人员    更改日期    相关页次    更改标志
+共7页 第2页</pre></details>
+<section class="page" data-page="3" style="width:803.6px;height:1136.6px">
+<div class="page-label">第 3 页 · edges=8 · corners=14 · cells=8</div>
+<div class="canvas">
+<i class="rule h" style="left:89.2px;top:151.2px;width:626.3px"></i>
+<i class="rule h" style="left:89.2px;top:170.3px;width:626.3px"></i>
+<i class="rule h" style="left:89.6px;top:188.8px;width:625.6px"></i>
+<i class="rule h" style="left:89.2px;top:940.7px;width:626.3px"></i>
+<i class="rule v" style="left:89.2px;top:150.8px;height:791.8px"></i>
+<i class="rule v" style="left:150.8px;top:170.7px;height:772.2px"></i>
+<i class="rule v" style="left:244.4px;top:170.7px;height:772.2px"></i>
+<i class="rule v" style="left:714.1px;top:151.5px;height:791.1px"></i>
+<div class="cell" style="left:89.1px;top:151.2px;width:625.1px;height:19.2px"><span class="word" style="left:2.8px;top:4.2px;font-size:9.8px;line-height:10.9px">****** 工作内容 ******</span></div>
+<div class="cell" style="left:89.1px;top:170.4px;width:61.8px;height:18.2px"><span class="word" style="left:2.8px;top:4.1px;font-size:9.8px;line-height:10.9px">工种</span></div>
+<div class="cell" style="left:150.9px;top:170.4px;width:93.5px;height:18.2px"><span class="word" style="left:2.6px;top:4.1px;font-size:9.8px;line-height:10.9px">序号</span></div>
+<div class="cell" style="left:244.4px;top:170.4px;width:469.8px;height:18.2px"><span class="word" style="left:2.7px;top:4.1px;font-size:9.8px;line-height:10.9px">工序内容</span></div>
+<div class="cell" style="left:89.1px;top:188.7px;width:61.8px;height:752.0px"><span class="word" style="left:2.8px;top:374.2px;font-size:9.8px;line-height:10.9px">XXX0011</span></div>
+<div class="cell" style="left:150.9px;top:188.7px;width:93.5px;height:752.0px"><span class="word" style="left:2.6px;top:374.2px;font-size:9.8px;line-height:10.9px">40</span></div>
+<div class="cell" style="left:244.4px;top:188.7px;width:469.8px;height:752.0px"><span class="word" style="left:2.7px;top:368.0px;font-size:9.8px;line-height:10.9px">项目名称:XX功能检查 项目编码:根据xx通电检查技术条件xxx-JTxxx-xxx的第x条XX功能检查内容</span><span class="word" style="left:2.7px;top:380.3px;font-size:9.8px;line-height:10.9px">进行xx功能检查。工检:____专检:____</span></div>
+<div class="cell page-text" style="left:0.0px;top:0.0px;width:803.6px;height:1136.6px"><span class="word" style="left:154.8px;top:56.5px;font-size:10.3px;line-height:11.5px">装配指令 AO</span><span class="word" style="left:90.3px;top:103.4px;font-size:7.5px;line-height:8.4px">编号</span><span class="word" style="left:184.3px;top:103.6px;font-size:7.3px;line-height:8.1px">0X0X-XXX-010-XXX00-XXX-XXX</span><span class="word" style="left:523.5px;top:103.4px;font-size:7.5px;line-height:8.4px">版次</span><span class="word" style="left:564.0px;top:103.4px;font-size:7.5px;line-height:8.4px">AJ</span><span class="word" style="left:442.4px;top:123.7px;font-size:7.5px;line-height:8.4px">F</span><span class="word" style="left:133.9px;top:1061.0px;font-size:7.0px;line-height:7.8px">更改单编号/划改原因    划改人员    更改日期    相关页次    更改标志</span><span class="word" style="left:710.8px;top:1091.6px;font-size:7.0px;line-height:7.8px">共7页 第3页</span></div>
+</div></section>
+<details class="debug"><summary>按闭合矩形提取的文本顺序（含页面兜底框）</summary>
+<pre>[1] ****** 工作内容 ******
+[2] 工种
+[3] 序号
+[4] 工序内容
+[5] XXX0011
+[6] 40
+[7] 项目名称:XX功能检查 项目编码:根据xx通电检查技术条件xxx-JTxxx-xxx的第x条XX功能检查内容
+进行xx功能检查。工检:____专检:____
+[8] 装配指令 AO
+编号                 0X0X-XXX-010-XXX00-XXX-XXX                                版次     AJ
+F
+更改单编号/划改原因    划改人员    更改日期    相关页次    更改标志
+共7页 第3页</pre></details>
+<section class="page" data-page="4" style="width:803.6px;height:1136.6px">
+<div class="page-label">第 4 页 · edges=16 · corners=32 · cells=13</div>
+<div class="canvas">
+<i class="rule h" style="left:87.4px;top:144.5px;width:630.7px"></i>
+<i class="rule h" style="left:87.4px;top:164.1px;width:630.7px"></i>
+<i class="rule h" style="left:87.4px;top:182.9px;width:630.7px"></i>
+<i class="rule h" style="left:250.0px;top:188.4px;width:463.2px"></i>
+<i class="rule h" style="left:250.0px;top:207.2px;width:463.2px"></i>
+<i class="rule h" style="left:250.8px;top:438.8px;width:462.1px"></i>
+<i class="rule h" style="left:250.8px;top:555.4px;width:462.9px"></i>
+<i class="rule h" style="left:251.2px;top:788.4px;width:461.8px"></i>
+<i class="rule h" style="left:87.4px;top:798.0px;width:630.3px"></i>
+<i class="rule v" style="left:87.0px;top:144.5px;height:654.6px"></i>
+<i class="rule v" style="left:149.7px;top:164.4px;height:635.4px"></i>
+<i class="rule v" style="left:244.9px;top:164.4px;height:635.4px"></i>
+<i class="rule v" style="left:250.0px;top:188.8px;height:601.1px"></i>
+<i class="rule v" style="left:305.7px;top:188.8px;height:601.9px"></i>
+<i class="rule v" style="left:711.8px;top:188.8px;height:601.1px"></i>
+<i class="rule v" style="left:716.6px;top:144.9px;height:655.0px"></i>
+<div class="cell" style="left:87.1px;top:144.5px;width:629.4px;height:19.6px"><span class="word" style="left:251.0px;top:5.3px;font-size:11.5px;line-height:12.8px">******工作内容******</span></div>
+<div class="cell" style="left:87.1px;top:164.0px;width:62.8px;height:18.9px"><span class="word" style="left:20.2px;top:5.4px;font-size:10.2px;line-height:11.3px">工种</span></div>
+<div class="cell" style="left:149.9px;top:164.0px;width:95.2px;height:18.9px"><span class="word" style="left:36.1px;top:5.4px;font-size:10.2px;line-height:11.3px">序号</span></div>
+<div class="cell" style="left:245.0px;top:164.0px;width:471.5px;height:18.9px"><span class="word" style="left:213.1px;top:5.4px;font-size:10.2px;line-height:11.3px">工序内容</span></div>
+<div class="cell" style="left:250.1px;top:188.3px;width:55.7px;height:18.9px"><span class="word" style="left:16.8px;top:5.6px;font-size:9.9px;line-height:11.0px">序号</span></div>
+<div class="cell" style="left:305.8px;top:188.3px;width:406.0px;height:18.9px"><span class="word" style="left:181.8px;top:5.6px;font-size:9.9px;line-height:11.0px">项目内容</span></div>
+<div class="cell" style="left:250.1px;top:207.2px;width:55.7px;height:231.5px"><span class="word" style="left:17.2px;top:112.0px;font-size:9.5px;line-height:10.6px">40.1</span></div>
+<div class="cell" style="left:305.8px;top:207.2px;width:406.0px;height:231.5px"><span class="word" style="left:2.7px;top:75.1px;font-size:8.8px;line-height:9.8px">1.依据xxx-JTxxx-xxx第x条，音视频记录设备上电</span><span class="word" style="left:2.7px;top:86.3px;font-size:8.8px;line-height:9.8px">1)接通xx处的xx断路器；</span><span class="word" style="left:2.7px;top:97.5px;font-size:8.8px;line-height:9.8px">2)上电后，xx的红色自检灯燃亮、绿色电源灯燃亮；自检结束后，红色自检灯应熄灭，绿色电</span><span class="word" style="left:2.7px;top:108.7px;font-size:8.8px;line-height:9.8px">源灯应保持燃亮；</span><span class="word" style="left:2.7px;top:119.9px;font-size:8.8px;line-height:9.8px">3)将xx板上“xx”旋钮转至“记录”档，xx设备开始记录。</span><span class="word" style="left:2.7px;top:142.3px;font-size:8.8px;line-height:9.8px">2.xx上电</span><span class="word" style="left:2.7px;top:153.5px;font-size:8.8px;line-height:9.8px">1)接通xx处的xx断路器；</span></div>
+<div class="cell" style="left:250.1px;top:438.8px;width:55.7px;height:116.8px"><span class="word" style="left:17.2px;top:54.5px;font-size:9.5px;line-height:10.6px">40.2</span></div>
+<div class="cell" style="left:305.8px;top:438.8px;width:406.0px;height:116.8px"><span class="word" style="left:2.7px;top:40.0px;font-size:8.8px;line-height:9.8px">xx功能检查</span><span class="word" style="left:2.7px;top:51.2px;font-size:8.8px;line-height:9.8px">1.飞机及系统上电后，xx画面默认显示xx为xx；</span><span class="word" style="left:2.7px;top:62.4px;font-size:8.8px;line-height:9.8px">2.旋转xx上的“xx”旋钮外层，xx上的xx以10为单位进行变化（左旋减小，右旋增大，变化范</span><span class="word" style="left:2.7px;top:73.6px;font-size:8.8px;line-height:9.8px">围：xxx~xxx）。</span></div>
+<div class="cell" style="left:250.1px;top:555.5px;width:55.7px;height:232.9px"><span class="word" style="left:17.2px;top:112.6px;font-size:9.5px;line-height:10.6px">40.3</span></div>
+<div class="cell" style="left:305.8px;top:555.5px;width:406.0px;height:232.9px"><span class="word" style="left:2.7px;top:70.9px;font-size:8.6px;line-height:9.6px">xx极性检查</span><span class="word" style="left:2.7px;top:81.9px;font-size:8.6px;line-height:9.6px">1.在xx的xx点击“xx”按键，xx显示xx页面。</span><span class="word" style="left:2.7px;top:92.9px;font-size:8.6px;line-height:9.6px">2.点击xx的xx选键，xx显示xx页面。</span><span class="word" style="left:2.7px;top:103.9px;font-size:8.6px;line-height:9.6px">3.通过按压xx画面的“xx”快捷键，选择xx，画面xx显示xxx，如下图所示。</span><span class="word" style="left:2.7px;top:125.9px;font-size:8.6px;line-height:9.6px">注：</span><span class="word" style="left:2.7px;top:136.9px;font-size:8.6px;line-height:9.6px">1)当xx为xx时，向下扳动xx，当x小于xx时，x保持显示xx；向上扳动xx，当x大于xxx时，保持</span><span class="word" style="left:2.7px;top:147.9px;font-size:8.6px;line-height:9.6px">显示为xxx；</span><span class="word" style="left:2.7px;top:159.0px;font-size:8.6px;line-height:9.6px">2)xx误差为±xx。</span></div>
+<div class="cell page-text" style="left:0.0px;top:0.0px;width:803.6px;height:1136.6px"><span class="word" style="left:154.9px;top:56.5px;font-size:10.3px;line-height:11.5px">装配指令 AO</span><span class="word" style="left:90.3px;top:103.4px;font-size:7.5px;line-height:8.4px">编号</span><span class="word" style="left:184.4px;top:103.6px;font-size:7.3px;line-height:8.1px">0X0X-XXX-010-XXX00-XXX-XXX</span><span class="word" style="left:523.7px;top:103.4px;font-size:7.5px;line-height:8.4px">版次</span><span class="word" style="left:564.3px;top:103.4px;font-size:7.5px;line-height:8.4px">AJ</span><span class="word" style="left:442.6px;top:123.7px;font-size:7.5px;line-height:8.4px">F</span><span class="word" style="left:133.9px;top:1061.0px;font-size:7.0px;line-height:7.8px">更改单编号/划改原因    划改人员    更改日期    相关页次    更改标志</span><span class="word" style="left:710.8px;top:1091.6px;font-size:7.0px;line-height:7.8px">共7页 第4页</span></div>
+</div></section>
+<details class="debug"><summary>按闭合矩形提取的文本顺序（含页面兜底框）</summary>
+<pre>[1] ******工作内容******
+[2] 工种
+[3] 序号
+[4] 工序内容
+[5] 序号
+[6] 项目内容
+[7] 40.1
+[8] 1.依据xxx-JTxxx-xxx第x条，音视频记录设备上电
+1)接通xx处的xx断路器；
+2)上电后，xx的红色自检灯燃亮、绿色电源灯燃亮；自检结束后，红色自检灯应熄灭，绿色电
+源灯应保持燃亮；
+3)将xx板上“xx”旋钮转至“记录”档，xx设备开始记录。
+2.xx上电
+1)接通xx处的xx断路器；
+[9] 40.2
+[10] xx功能检查
+1.飞机及系统上电后，xx画面默认显示xx为xx；
+2.旋转xx上的“xx”旋钮外层，xx上的xx以10为单位进行变化（左旋减小，右旋增大，变化范
+围：xxx~xxx）。
+[11] 40.3
+[12] xx极性检查
+1.在xx的xx点击“xx”按键，xx显示xx页面。
+2.点击xx的xx选键，xx显示xx页面。
+3.通过按压xx画面的“xx”快捷键，选择xx，画面xx显示xxx，如下图所示。
+注：
+1)当xx为xx时，向下扳动xx，当x小于xx时，x保持显示xx；向上扳动xx，当x大于xxx时，保持
+显示为xxx；
+2)xx误差为±xx。
+[13] 装配指令 AO
+编号                 0X0X-XXX-010-XXX00-XXX-XXX                                版次     AJ
+F
+更改单编号/划改原因    划改人员    更改日期    相关页次    更改标志
+共7页 第4页</pre></details>
+<section class="page" data-page="5" style="width:803.6px;height:1136.6px">
+<div class="page-label">第 5 页 · edges=25 · corners=62 · cells=27</div>
+<div class="canvas">
+<i class="rule h" style="left:87.2px;top:139.8px;width:629.9px"></i>
+<i class="rule h" style="left:87.2px;top:159.3px;width:630.3px"></i>
+<i class="rule h" style="left:87.6px;top:178.8px;width:629.9px"></i>
+<i class="rule h" style="left:251.4px;top:306.1px;width:446.6px"></i>
+<i class="rule h" style="left:251.4px;top:325.6px;width:446.6px"></i>
+<i class="rule h" style="left:251.4px;top:372.7px;width:446.6px"></i>
+<i class="rule h" style="left:251.4px;top:391.5px;width:446.6px"></i>
+<i class="rule h" style="left:248.5px;top:594.9px;width:464.6px"></i>
+<i class="rule h" style="left:248.5px;top:614.1px;width:464.2px"></i>
+<i class="rule h" style="left:248.1px;top:847.4px;width:464.6px"></i>
+<i class="rule h" style="left:86.9px;top:858.0px;width:630.6px"></i>
+<i class="rule v" style="left:87.2px;top:140.5px;height:720.5px"></i>
+<i class="rule v" style="left:148.7px;top:160.0px;height:699.8px"></i>
+<i class="rule v" style="left:243.3px;top:159.7px;height:699.8px"></i>
+<i class="rule v" style="left:248.5px;top:306.1px;height:543.1px"></i>
+<i class="rule v" style="left:304.1px;top:306.1px;height:543.1px"></i>
+<i class="rule v" style="left:363.0px;top:306.1px;height:87.2px"></i>
+<i class="rule v" style="left:418.2px;top:306.1px;height:86.8px"></i>
+<i class="rule v" style="left:473.4px;top:306.1px;height:86.8px"></i>
+<i class="rule v" style="left:529.7px;top:306.1px;height:87.2px"></i>
+<i class="rule v" style="left:585.7px;top:306.1px;height:87.2px"></i>
+<i class="rule v" style="left:641.3px;top:306.1px;height:87.6px"></i>
+<i class="rule v" style="left:696.9px;top:306.1px;height:87.6px"></i>
+<i class="rule v" style="left:711.2px;top:594.9px;height:253.9px"></i>
+<i class="rule v" style="left:716.0px;top:140.5px;height:718.6px"></i>
+<div class="cell" style="left:87.1px;top:139.7px;width:629.1px;height:19.6px"><span class="word" style="left:253.3px;top:5.4px;font-size:11.0px;line-height:12.3px">******工作内容******</span></div>
+<div class="cell" style="left:87.1px;top:159.3px;width:61.8px;height:19.6px"><span class="word" style="left:20.0px;top:5.8px;font-size:9.8px;line-height:10.9px">工种</span></div>
+<div class="cell" style="left:148.8px;top:159.3px;width:94.5px;height:19.6px"><span class="word" style="left:36.3px;top:5.8px;font-size:9.8px;line-height:10.9px">序号</span></div>
+<div class="cell" style="left:243.3px;top:159.3px;width:472.8px;height:19.6px"><span class="word" style="left:214.6px;top:5.8px;font-size:9.8px;line-height:10.9px">工序内容</span></div>
+<div class="cell" style="left:87.1px;top:178.9px;width:61.8px;height:679.1px"><span class="word" style="left:13.1px;top:330.6px;font-size:9.1px;line-height:10.2px">XXX00XX</span></div>
+<div class="cell" style="left:148.8px;top:178.9px;width:94.5px;height:679.1px"><span class="word" style="left:41.9px;top:330.4px;font-size:9.5px;line-height:10.5px">50</span></div>
+<div class="cell container" style="left:243.3px;top:178.9px;width:472.8px;height:679.1px"><span class="word" style="left:7.8px;top:56.6px;font-size:8.7px;line-height:9.6px">项目名称：xx功能检查 项目编码：</span><span class="word" style="left:7.8px;top:67.6px;font-size:8.7px;line-height:9.6px">按照xx通电检查技术条件xxx-JTxxx-xx的第x条第k)~t)条进行xx检查，并将结果填写于表5-8中。</span><span class="word" style="left:7.8px;top:320.7px;font-size:8.2px;line-height:9.1px">工检：________________ 复检：________________</span></div>
+<div class="cell" style="left:248.4px;top:306.1px;width:55.7px;height:19.6px"><span class="word" style="left:5.7px;top:4.0px;font-size:8.7px;line-height:9.6px">表5 xx记录表</span></div>
+<div class="cell" style="left:304.1px;top:325.7px;width:58.7px;height:46.9px"><span class="word" style="left:6.0px;top:22.9px;font-size:6.5px;line-height:7.2px">设备输入1</span></div>
+<div class="cell" style="left:362.8px;top:325.7px;width:55.4px;height:46.9px"><span class="word" style="left:2.9px;top:22.9px;font-size:6.5px;line-height:7.2px">设备输入2</span></div>
+<div class="cell" style="left:418.2px;top:325.7px;width:55.4px;height:46.9px"><span class="word" style="left:2.7px;top:22.9px;font-size:6.5px;line-height:7.2px">条件3</span></div>
+<div class="cell" style="left:473.5px;top:325.7px;width:56.4px;height:46.9px"><span class="word" style="left:2.6px;top:18.6px;font-size:6.5px;line-height:7.2px">目标值1</span><span class="word" style="left:2.6px;top:27.2px;font-size:6.5px;line-height:7.2px">(km/h)</span></div>
+<div class="cell" style="left:529.9px;top:325.7px;width:55.7px;height:46.9px"><span class="word" style="left:2.6px;top:18.6px;font-size:6.5px;line-height:7.2px">实测值1</span><span class="word" style="left:2.6px;top:27.2px;font-size:6.5px;line-height:7.2px">(km/h)</span></div>
+<div class="cell" style="left:585.6px;top:325.7px;width:55.7px;height:46.9px"><span class="word" style="left:2.8px;top:18.6px;font-size:6.5px;line-height:7.2px">目标值2</span><span class="word" style="left:2.8px;top:27.2px;font-size:6.5px;line-height:7.2px">(km/h)</span></div>
+<div class="cell" style="left:641.2px;top:325.7px;width:55.7px;height:46.9px"><span class="word" style="left:2.7px;top:18.6px;font-size:6.5px;line-height:7.2px">实测值2</span><span class="word" style="left:2.7px;top:27.2px;font-size:6.5px;line-height:7.2px">(m)</span></div>
+<div class="cell" style="left:248.4px;top:372.6px;width:55.7px;height:18.9px"><span class="word" style="left:24.7px;top:6.5px;font-size:7.6px;line-height:8.4px">1#x</span></div>
+<div class="cell" style="left:304.1px;top:372.6px;width:58.7px;height:18.9px"><span class="word" style="left:26.9px;top:6.5px;font-size:7.6px;line-height:8.4px">ax</span></div>
+<div class="cell" style="left:362.8px;top:372.6px;width:55.4px;height:18.9px"><span class="word" style="left:23.6px;top:6.5px;font-size:7.6px;line-height:8.4px">cz</span></div>
+<div class="cell" style="left:418.2px;top:372.6px;width:55.4px;height:18.9px"><span class="word" style="left:23.4px;top:6.5px;font-size:7.6px;line-height:8.4px">cs</span></div>
+<div class="cell" style="left:473.5px;top:372.6px;width:56.4px;height:18.9px"><span class="word" style="left:21.8px;top:6.5px;font-size:7.6px;line-height:8.4px">XXX</span></div>
+<div class="cell" style="left:585.6px;top:372.6px;width:55.7px;height:18.9px"><span class="word" style="left:21.6px;top:6.5px;font-size:7.6px;line-height:8.4px">XXX</span></div>
+<div class="cell" style="left:248.4px;top:391.5px;width:55.7px;height:203.5px"><span class="word" style="left:2.8px;top:118.6px;font-size:8.2px;line-height:9.1px">专检：________________</span></div>
+<div class="cell" style="left:248.4px;top:595.0px;width:55.7px;height:19.2px"><span class="word" style="left:18.9px;top:6.3px;font-size:8.0px;line-height:8.9px">序号</span></div>
+<div class="cell" style="left:304.1px;top:595.0px;width:407.0px;height:19.2px"><span class="word" style="left:2.7px;top:3.9px;font-size:8.0px;line-height:8.9px">项目内容</span></div>
+<div class="cell" style="left:248.4px;top:614.2px;width:55.7px;height:233.2px"><span class="word" style="left:18.9px;top:113.3px;font-size:8.0px;line-height:8.9px">50.1</span></div>
+<div class="cell" style="left:304.1px;top:614.2px;width:407.0px;height:233.2px"><span class="word" style="left:2.7px;top:86.0px;font-size:7.6px;line-height:8.4px">XX功能检查</span><span class="word" style="left:2.7px;top:95.8px;font-size:7.6px;line-height:8.4px">1.通电检查前，确保xx的“X”，断开；</span><span class="word" style="left:2.7px;top:105.6px;font-size:7.6px;line-height:8.4px">2.接通XX的XX。</span><span class="word" style="left:2.7px;top:115.4px;font-size:7.6px;line-height:8.4px">3.将XX连接至XX。</span><span class="word" style="left:2.7px;top:125.3px;font-size:7.6px;line-height:8.4px">4.XX将条件3保持为cs、将测量值填入表5中对应位置。</span><span class="word" style="left:2.7px;top:135.1px;font-size:7.6px;line-height:8.4px">5.使用大xx设备对xx进行xx，按表5中第2~3列设置xx设备上的输入1和输入2，XX显示的XX和XX要求为表5-8的</span><span class="word" style="left:2.7px;top:144.9px;font-size:7.6px;line-height:8.4px">第4、6列（目标值1和目标值2）。将显示数据填入表5中。</span></div>
+<div class="cell page-text" style="left:0.0px;top:0.0px;width:803.6px;height:1136.6px"><span class="word" style="left:154.6px;top:56.3px;font-size:10.3px;line-height:11.5px">装配指令 AO</span><span class="word" style="left:90.2px;top:103.2px;font-size:7.5px;line-height:8.4px">编号</span><span class="word" style="left:184.1px;top:103.4px;font-size:7.3px;line-height:8.1px">0X0X-XXX-010-XXX00-XXX-XXX</span><span class="word" style="left:522.8px;top:103.2px;font-size:7.5px;line-height:8.4px">版次</span><span class="word" style="left:563.2px;top:103.2px;font-size:7.5px;line-height:8.4px">AJ</span><span class="word" style="left:441.8px;top:123.4px;font-size:7.5px;line-height:8.4px">F</span><span class="word" style="left:133.9px;top:1061.0px;font-size:7.0px;line-height:7.8px">更改单编号/划改原因    划改人员    更改日期    相关页次    更改标志</span><span class="word" style="left:710.8px;top:1091.6px;font-size:7.0px;line-height:7.8px">共7页 第5页</span></div>
+</div></section>
+<details class="debug"><summary>按闭合矩形提取的文本顺序（含页面兜底框）</summary>
+<pre>[1] ******工作内容******
+[2] 工种
+[3] 序号
+[4] 工序内容
+[5] XXX00XX
+[6] 50
+[7] 项目名称：xx功能检查 项目编码：
+按照xx通电检查技术条件xxx-JTxxx-xx的第x条第k)~t)条进行xx检查，并将结果填写于表5-8中。
+工检：________________ 复检：________________
+[8] 表5 xx记录表
+[9] 设备输入1
+[10] 设备输入2
+[11] 条件3
+[12] 目标值1
+(km/h)
+[13] 实测值1
+(km/h)
+[14] 目标值2
+(km/h)
+[15] 实测值2
+(m)
+[16] 1#x
+[17] ax
+[18] cz
+[19] cs
+[20] XXX
+[21] XXX
+[22] 专检：________________
+[23] 序号
+[24] 项目内容
+[25] 50.1
+[26] XX功能检查
+1.通电检查前，确保xx的“X”，断开；
+2.接通XX的XX。
+3.将XX连接至XX。
+4.XX将条件3保持为cs、将测量值填入表5中对应位置。
+5.使用大xx设备对xx进行xx，按表5中第2~3列设置xx设备上的输入1和输入2，XX显示的XX和XX要求为表5-8的
+第4、6列（目标值1和目标值2）。将显示数据填入表5中。
+[27] 装配指令 AO
+编号                 0X0X-XXX-010-XXX00-XXX-XXX                                版次     AJ
+F
+更改单编号/划改原因    划改人员    更改日期    相关页次    更改标志
+共7页 第5页</pre></details>
+<section class="page" data-page="6" style="width:803.6px;height:1136.6px">
+<div class="page-label">第 6 页 · edges=21 · corners=42 · cells=25</div>
+<div class="canvas">
+<i class="rule h" style="left:90.1px;top:145.7px;width:624.8px"></i>
+<i class="rule h" style="left:90.5px;top:165.5px;width:624.5px"></i>
+<i class="rule h" style="left:90.5px;top:185.0px;width:624.5px"></i>
+<i class="rule h" style="left:257.9px;top:273.0px;width:390.4px"></i>
+<i class="rule h" style="left:257.9px;top:287.7px;width:390.4px"></i>
+<i class="rule h" style="left:257.9px;top:302.8px;width:390.4px"></i>
+<i class="rule h" style="left:257.9px;top:317.9px;width:390.4px"></i>
+<i class="rule h" style="left:257.9px;top:333.0px;width:390.4px"></i>
+<i class="rule h" style="left:257.9px;top:347.3px;width:390.4px"></i>
+<i class="rule h" style="left:299.5px;top:417.2px;width:401.8px"></i>
+<i class="rule h" style="left:90.9px;top:433.8px;width:624.1px"></i>
+<i class="rule h" style="left:299.9px;top:639.8px;width:401.5px"></i>
+<i class="rule h" style="left:90.5px;top:656.0px;width:624.5px"></i>
+<i class="rule v" style="left:90.5px;top:145.7px;height:511.8px"></i>
+<i class="rule v" style="left:152.3px;top:165.9px;height:492.3px"></i>
+<i class="rule v" style="left:246.2px;top:165.9px;height:492.0px"></i>
+<i class="rule v" style="left:257.9px;top:273.4px;height:75.8px"></i>
+<i class="rule v" style="left:289.2px;top:273.0px;height:76.2px"></i>
+<i class="rule v" style="left:450.4px;top:273.7px;height:75.1px"></i>
+<i class="rule v" style="left:647.3px;top:272.6px;height:76.2px"></i>
+<i class="rule v" style="left:713.5px;top:146.0px;height:511.5px"></i>
+<div class="cell" style="left:90.5px;top:145.8px;width:623.0px;height:19.9px"><span class="word" style="left:250.9px;top:5.5px;font-size:10.9px;line-height:12.1px">******工作内容******</span></div>
+<div class="cell" style="left:90.5px;top:165.7px;width:61.8px;height:19.2px"><span class="word" style="left:20.2px;top:5.7px;font-size:9.7px;line-height:10.7px">工种</span></div>
+<div class="cell" style="left:152.2px;top:165.7px;width:93.8px;height:19.2px"><span class="word" style="left:36.3px;top:5.7px;font-size:9.7px;line-height:10.7px">序号</span></div>
+<div class="cell" style="left:246.0px;top:165.7px;width:467.4px;height:19.2px"><span class="word" style="left:212.3px;top:5.7px;font-size:9.7px;line-height:10.7px">工序内容</span></div>
+<div class="cell" style="left:90.5px;top:185.0px;width:61.8px;height:248.7px"><span class="word" style="left:13.4px;top:120.9px;font-size:9.0px;line-height:10.1px">XXX0011</span></div>
+<div class="cell" style="left:152.2px;top:185.0px;width:93.8px;height:248.7px"><span class="word" style="left:41.8px;top:120.7px;font-size:9.4px;line-height:10.4px">90</span></div>
+<div class="cell container" style="left:246.0px;top:185.0px;width:467.4px;height:248.7px"><span class="word" style="left:2.8px;top:37.2px;font-size:8.6px;line-height:9.5px">项目名称：XXX通电 项目编码：</span><span class="word" style="left:2.8px;top:48.1px;font-size:8.6px;line-height:9.5px">1.按照XX系统通电文件XXX-JTXXX-XX的X条检查程序进行通电</span><span class="word" style="left:2.8px;top:204.4px;font-size:8.1px;line-height:9.0px">工检：________________ 专检：________________</span></div>
+<div class="cell" style="left:257.9px;top:273.0px;width:31.4px;height:14.5px"><span class="word" style="left:7.1px;top:4.2px;font-size:7.8px;line-height:8.7px">序号</span></div>
+<div class="cell" style="left:289.2px;top:273.0px;width:161.0px;height:14.5px"><span class="word" style="left:54.6px;top:4.2px;font-size:7.8px;line-height:8.7px">检查操作程序</span></div>
+<div class="cell" style="left:450.2px;top:273.0px;width:197.1px;height:14.5px"><span class="word" style="left:76.9px;top:4.2px;font-size:7.8px;line-height:8.7px">响应及显示</span></div>
+<div class="cell" style="left:257.9px;top:287.6px;width:31.4px;height:15.2px"><span class="word" style="left:13.6px;top:4.6px;font-size:7.8px;line-height:8.7px">1</span></div>
+<div class="cell" style="left:289.2px;top:287.6px;width:161.0px;height:15.2px"><span class="word" style="left:2.7px;top:4.0px;font-size:7.3px;line-height:8.1px">确认XX应位于XX位置</span></div>
+<div class="cell" style="left:257.9px;top:302.7px;width:31.4px;height:15.2px"><span class="word" style="left:13.6px;top:4.5px;font-size:7.8px;line-height:8.7px">2</span></div>
+<div class="cell" style="left:289.2px;top:302.7px;width:161.0px;height:15.2px"><span class="word" style="left:2.7px;top:3.9px;font-size:7.3px;line-height:8.1px">目视检查XX和XX的XX页面</span></div>
+<div class="cell" style="left:450.2px;top:302.7px;width:197.1px;height:15.2px"><span class="word" style="left:2.9px;top:3.9px;font-size:7.3px;line-height:8.1px">XX页面上应显示XX</span></div>
+<div class="cell" style="left:257.9px;top:317.9px;width:31.4px;height:15.2px"><span class="word" style="left:13.6px;top:4.4px;font-size:7.8px;line-height:8.7px">3</span></div>
+<div class="cell" style="left:289.2px;top:317.9px;width:161.0px;height:15.2px"><span class="word" style="left:2.7px;top:3.8px;font-size:7.3px;line-height:8.1px">断开XX处的XX断路器</span></div>
+<div class="cell" style="left:450.2px;top:317.9px;width:197.1px;height:15.2px"><span class="word" style="left:2.9px;top:3.8px;font-size:7.3px;line-height:8.1px">XX画面上应显示XX，有调制音告警</span></div>
+<div class="cell" style="left:257.9px;top:333.1px;width:31.4px;height:14.2px"><span class="word" style="left:13.6px;top:3.9px;font-size:7.8px;line-height:8.7px">4</span></div>
+<div class="cell" style="left:289.2px;top:333.1px;width:161.0px;height:14.2px"><span class="word" style="left:2.7px;top:3.1px;font-size:7.3px;line-height:8.1px">接通XX处的XX断路器</span></div>
+<div class="cell" style="left:450.2px;top:333.1px;width:197.1px;height:14.2px"><span class="word" style="left:2.9px;top:3.1px;font-size:7.3px;line-height:8.1px">XX画面上XX应消失</span></div>
+<div class="cell" style="left:90.5px;top:433.7px;width:61.8px;height:222.4px"><span class="word" style="left:13.4px;top:107.6px;font-size:9.0px;line-height:10.1px">XXX0011</span></div>
+<div class="cell" style="left:152.2px;top:433.7px;width:93.8px;height:222.4px"><span class="word" style="left:39.2px;top:107.5px;font-size:9.4px;line-height:10.4px">100</span></div>
+<div class="cell" style="left:246.0px;top:433.7px;width:467.4px;height:222.4px"><span class="word" style="left:2.8px;top:104.3px;font-size:8.6px;line-height:9.5px">项目名称：XXX通电后收尾 项目编码：</span><span class="word" style="left:2.8px;top:115.3px;font-size:8.6px;line-height:9.5px">1.按BB的第X章第X条进行XX。</span></div>
+<div class="cell page-text" style="left:0.0px;top:0.0px;width:803.6px;height:1136.6px"><span class="word" style="left:154.5px;top:56.3px;font-size:10.3px;line-height:11.5px">装配指令 AO</span><span class="word" style="left:90.1px;top:103.2px;font-size:7.5px;line-height:8.4px">编号</span><span class="word" style="left:184.0px;top:103.4px;font-size:7.3px;line-height:8.1px">0X0X-XXX-010-XXX00-XXX-XXX</span><span class="word" style="left:522.5px;top:103.2px;font-size:7.5px;line-height:8.4px">版次</span><span class="word" style="left:563.0px;top:103.2px;font-size:7.5px;line-height:8.4px">AJ</span><span class="word" style="left:441.6px;top:123.4px;font-size:7.5px;line-height:8.4px">F</span><span class="word" style="left:133.9px;top:1061.0px;font-size:7.0px;line-height:7.8px">更改单编号/划改原因    划改人员    更改日期    相关页次    更改标志</span><span class="word" style="left:710.8px;top:1091.6px;font-size:7.0px;line-height:7.8px">共7页 第6页</span></div>
+</div></section>
+<details class="debug"><summary>按闭合矩形提取的文本顺序（含页面兜底框）</summary>
+<pre>[1] ******工作内容******
+[2] 工种
+[3] 序号
+[4] 工序内容
+[5] XXX0011
+[6] 90
+[7] 项目名称：XXX通电 项目编码：
+1.按照XX系统通电文件XXX-JTXXX-XX的X条检查程序进行通电
+工检：________________ 专检：________________
+[8] 序号
+[9] 检查操作程序
+[10] 响应及显示
+[11] 1
+[12] 确认XX应位于XX位置
+[13] 2
+[14] 目视检查XX和XX的XX页面
+[15] XX页面上应显示XX
+[16] 3
+[17] 断开XX处的XX断路器
+[18] XX画面上应显示XX，有调制音告警
+[19] 4
+[20] 接通XX处的XX断路器
+[21] XX画面上XX应消失
+[22] XXX0011
+[23] 100
+[24] 项目名称：XXX通电后收尾 项目编码：
+1.按BB的第X章第X条进行XX。
+[25] 装配指令 AO
+编号                 0X0X-XXX-010-XXX00-XXX-XXX                                版次     AJ
+F
+更改单编号/划改原因    划改人员    更改日期    相关页次    更改标志
+共7页 第6页</pre></details>
+<section class="page" data-page="7" style="width:803.6px;height:1136.6px">
+<div class="page-label">第 7 页 · edges=12 · corners=28 · cells=14</div>
+<div class="canvas">
+<i class="rule h" style="left:96.7px;top:171.2px;width:613.6px"></i>
+<i class="rule h" style="left:97.5px;top:189.3px;width:612.8px"></i>
+<i class="rule h" style="left:97.5px;top:207.3px;width:612.8px"></i>
+<i class="rule h" style="left:97.5px;top:225.3px;width:612.8px"></i>
+<i class="rule h" style="left:95.8px;top:256.1px;width:614.8px"></i>
+<i class="rule h" style="left:96.2px;top:287.2px;width:614.4px"></i>
+<i class="rule v" style="left:95.8px;top:171.2px;height:117.2px"></i>
+<i class="rule v" style="left:216.7px;top:207.7px;height:81.5px"></i>
+<i class="rule v" style="left:340.4px;top:208.1px;height:81.1px"></i>
+<i class="rule v" style="left:463.7px;top:208.1px;height:81.1px"></i>
+<i class="rule v" style="left:587.0px;top:208.1px;height:80.7px"></i>
+<i class="rule v" style="left:709.0px;top:171.6px;height:117.2px"></i>
+<div class="cell" style="left:95.9px;top:171.1px;width:613.2px;height:18.2px"><span class="word" style="left:3.5px;top:4.3px;font-size:9.2px;line-height:10.2px">辅助件配套表 测试用例不用关注</span></div>
+<div class="cell" style="left:95.9px;top:189.3px;width:613.2px;height:17.9px"><span class="word" style="left:3.5px;top:4.1px;font-size:9.2px;line-height:10.2px">工人:</span></div>
+<div class="cell" style="left:95.9px;top:207.2px;width:120.8px;height:18.2px"><span class="word" style="left:3.5px;top:4.2px;font-size:9.2px;line-height:10.2px">名称</span></div>
+<div class="cell" style="left:216.7px;top:207.2px;width:123.9px;height:18.2px"><span class="word" style="left:2.7px;top:4.2px;font-size:9.2px;line-height:10.2px">件号</span></div>
+<div class="cell" style="left:340.5px;top:207.2px;width:123.2px;height:18.2px"><span class="word" style="left:2.5px;top:4.2px;font-size:9.2px;line-height:10.2px">版次</span></div>
+<div class="cell" style="left:463.7px;top:207.2px;width:123.2px;height:18.2px"><span class="word" style="left:2.6px;top:4.2px;font-size:9.2px;line-height:10.2px">单装数量</span></div>
+<div class="cell" style="left:586.9px;top:207.2px;width:122.2px;height:18.2px"><span class="word" style="left:2.7px;top:4.2px;font-size:9.2px;line-height:10.2px">备注</span></div>
+<div class="cell" style="left:95.9px;top:225.5px;width:120.8px;height:30.7px"><span class="word" style="left:3.5px;top:13.6px;font-size:9.2px;line-height:10.2px">航剂</span></div>
+<div class="cell" style="left:216.7px;top:225.5px;width:123.9px;height:30.7px"><span class="word" style="left:2.7px;top:13.6px;font-size:9.2px;line-height:10.2px">XX</span></div>
+<div class="cell" style="left:463.7px;top:225.5px;width:123.2px;height:30.7px"><span class="word" style="left:2.6px;top:13.6px;font-size:9.2px;line-height:10.2px">千克</span></div>
+<div class="cell" style="left:95.9px;top:256.2px;width:120.8px;height:31.1px"><span class="word" style="left:3.5px;top:13.8px;font-size:9.2px;line-height:10.2px">航布</span></div>
+<div class="cell" style="left:216.7px;top:256.2px;width:123.9px;height:31.1px"><span class="word" style="left:2.7px;top:13.8px;font-size:9.2px;line-height:10.2px">XX</span></div>
+<div class="cell" style="left:463.7px;top:256.2px;width:123.2px;height:31.1px"><span class="word" style="left:2.6px;top:13.8px;font-size:9.2px;line-height:10.2px">平方米</span></div>
+<div class="cell page-text" style="left:0.0px;top:0.0px;width:803.6px;height:1136.6px"><span class="word" style="left:172.0px;top:63.9px;font-size:10.3px;line-height:11.5px">装配指令 AO</span><span class="word" style="left:100.3px;top:115.7px;font-size:7.5px;line-height:8.4px">编号</span><span class="word" style="left:204.8px;top:115.9px;font-size:7.3px;line-height:8.1px">0X0X-XXX-010-XXX00-XXX-XXX</span><span class="word" style="left:581.6px;top:115.7px;font-size:7.5px;line-height:8.4px">版次</span><span class="word" style="left:626.7px;top:115.7px;font-size:7.5px;line-height:8.4px">AJ</span><span class="word" style="left:491.5px;top:138.2px;font-size:7.5px;line-height:8.4px">F</span><span class="word" style="left:133.9px;top:1061.0px;font-size:7.0px;line-height:7.8px">更改单编号/划改原因    划改人员    更改日期    相关页次    更改标志</span><span class="word" style="left:710.8px;top:1091.6px;font-size:7.0px;line-height:7.8px">共7页 第7页</span></div>
+</div></section>
+<details class="debug"><summary>按闭合矩形提取的文本顺序（含页面兜底框）</summary>
+<pre>[1] 辅助件配套表 测试用例不用关注
+[2] 工人:
+[3] 名称
+[4] 件号
+[5] 版次
+[6] 单装数量
+[7] 备注
+[8] 航剂
+[9] XX
+[10] 千克
+[11] 航布
+[12] XX
+[13] 平方米
+[14] 装配指令 AO
+编号                    0X0X-XXX-010-XXX00-XXX-XXX                                版次      AJ
+F
+更改单编号/划改原因    划改人员    更改日期    相关页次    更改标志
+共7页 第7页</pre></details>
+<section class="page" data-page="8" style="width:803.6px;height:1136.6px">
+<div class="page-label">第 8 页 · edges=7 · corners=12 · cells=6</div>
+<div class="canvas"><img class="pdf-image" data-image="images/page-0008-image-001.png" src="images/page-0008-image-001.png" style="position:absolute;left:324.7px;top:212.9px;width:352.1px;height:220.3px;z-index:2" alt="PDF image">
+
+<i class="rule h" style="left:57.0px;top:143.3px;width:689.6px"></i>
+<i class="rule h" style="left:57.0px;top:175.9px;width:689.6px"></i>
+<i class="rule h" style="left:57.0px;top:468.5px;width:689.6px"></i>
+<i class="rule v" style="left:57.3px;top:143.6px;height:324.7px"></i>
+<i class="rule v" style="left:169.6px;top:143.6px;height:324.7px"></i>
+<i class="rule v" style="left:270.5px;top:143.6px;height:324.7px"></i>
+<i class="rule v" style="left:746.4px;top:143.6px;height:324.7px"></i>
+<div class="cell" style="left:57.4px;top:143.4px;width:112.4px;height:32.4px"><span class="word" style="left:41.9px;top:10.4px;font-size:12.8px;line-height:14.2px">工种</span></div>
+<div class="cell" style="left:169.8px;top:143.4px;width:100.6px;height:32.4px"><span class="word" style="left:36.1px;top:10.4px;font-size:12.8px;line-height:14.2px">序号</span></div>
+<div class="cell" style="left:270.3px;top:143.4px;width:475.9px;height:32.4px"><span class="word" style="left:8.5px;top:10.4px;font-size:12.8px;line-height:14.2px">工序内容</span></div>
+<div class="cell" style="left:57.4px;top:175.8px;width:112.4px;height:292.6px"><span class="word" style="left:25.9px;top:11.4px;font-size:12.8px;line-height:14.2px">XXX0011</span></div>
+<div class="cell" style="left:169.8px;top:175.8px;width:100.6px;height:292.6px"><span class="word" style="left:39.6px;top:11.4px;font-size:12.8px;line-height:14.2px">110</span></div>
+<div class="cell" style="left:270.3px;top:175.8px;width:475.9px;height:292.6px"><span class="word" style="left:8.5px;top:11.4px;font-size:12.8px;line-height:14.2px">1.</span><span class="word" style="left:25.8px;top:10.6px;font-size:12.8px;line-height:14.2px">检查下图所示位置。</span><span class="word" style="left:8.5px;top:279.6px;font-size:12.8px;line-height:14.2px">2.</span><span class="word" style="left:25.8px;top:278.8px;font-size:12.8px;line-height:14.2px">确认连接状态正常。</span></div>
+</div></section>
+<details class="debug"><summary>按闭合矩形提取的文本顺序（含页面兜底框）</summary>
+<pre>[1] 工种
+[2] 序号
+[3] 工序内容
+[4] XXX0011
+[5] 110
+[6] 1. 检查下图所示位置。
+2. 确认连接状态正常。</pre></details></body></html>
