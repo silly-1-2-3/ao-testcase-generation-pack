@@ -1,0 +1,32 @@
+{
+  "variables": [
+    "$by$",
+    "$date$",
+    "$days$",
+    "$description$",
+    "$doc_id$",
+    "$doc_id2$",
+    "$doc_name$",
+    "$doc_name2$",
+    "$doc_rev$",
+    "$doc_rev2$",
+    "$draw_rev$",
+    "$drawing_id$",
+    "$drawing_name$",
+    "$eq_id$",
+    "$eq_name$",
+    "$eq_param$",
+    "$mark$",
+    "$model$",
+    "$no$",
+    "$pages$",
+    "$precautions$",
+    "$reason$",
+    "$rev$",
+    "$revision_notes$",
+    "$sec$",
+    "$validity$",
+    "$work_notes$"
+  ],
+  "note": "fields 为封面元信息；tables 沿用工序模板的简版单元格结构。机种代号为一个字段，PDF标签分两行。"
+}

@@ -1,0 +1,308 @@
+[
+  {
+    "work_type": "$work_type$",
+    "index": "$index$",
+    "blocks": [
+      {
+        "kind": "text",
+        "text": "项目名称：$project_name$\n项目编码：$project_code$"
+      },
+      {
+        "kind": "text",
+        "text": "$raw_content$"
+      },
+      {
+        "kind": "text",
+        "text": "$before_image$"
+      },
+      {
+        "kind": "image",
+        "src": "$image_path$"
+      },
+      {
+        "kind": "text",
+        "text": "$after_image$"
+      },
+      {
+        "kind": "table",
+        "headers": [
+          "设备编号",
+          "设备名称",
+          "设备参数"
+        ],
+        "rows": [
+          [
+            [
+              {
+                "kind": "text",
+                "text": "$eq_id$"
+              }
+            ],
+            [
+              {
+                "kind": "text",
+                "text": "$eq_name$"
+              }
+            ],
+            [
+              {
+                "kind": "text",
+                "text": "$eq_param$"
+              }
+            ]
+          ]
+        ],
+        "widths": [
+          0.29,
+          0.35,
+          0.36
+        ]
+      }
+    ]
+  },
+  {
+    "work_type": "$work_type2$",
+    "index": "$index2$",
+    "blocks": [
+      {
+        "kind": "text",
+        "text": "项目名称：$project_name2$\n项目编码：$project_code2$"
+      },
+      {
+        "kind": "text",
+        "text": "$raw_content2$"
+      },
+      {
+        "kind": "table",
+        "headers": [
+          "序号",
+          "项目内容"
+        ],
+        "rows": [
+          [
+            [
+              {
+                "kind": "text",
+                "text": "$sub_id$"
+              }
+            ],
+            [
+              {
+                "kind": "text",
+                "text": "$sub_content$"
+              },
+              {
+                "kind": "table",
+                "headers": [
+                  "检查项目",
+                  "目标值",
+                  "实测值"
+                ],
+                "rows": [
+                  [
+                    [
+                      {
+                        "kind": "text",
+                        "text": "$item$"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "text",
+                        "text": "$target$"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "text",
+                        "text": "$actual$"
+                      }
+                    ]
+                  ],
+                  [
+                    [
+                      {
+                        "kind": "text",
+                        "text": "$item2$"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "text",
+                        "text": "$target2$"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "text",
+                        "text": "$actual2$"
+                      }
+                    ]
+                  ]
+                ],
+                "widths": [
+                  0.32,
+                  0.34,
+                  0.34
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "kind": "text",
+                "text": "$sub_id2$"
+              }
+            ],
+            [
+              {
+                "kind": "text",
+                "text": "$sub_content2$"
+              }
+            ]
+          ]
+        ],
+        "widths": [
+          0.23,
+          0.77
+        ]
+      }
+    ]
+  },
+  {
+    "work_type": "$work_type3$",
+    "index": "$index3$",
+    "blocks": [
+      {
+        "kind": "text",
+        "text": "项目名称：$project_name3$\n项目编码：$project_code3$"
+      },
+      {
+        "kind": "text",
+        "text": "$raw_content3$"
+      },
+      {
+        "kind": "table",
+        "headers": [
+          "图样编号/设计技术文件编号",
+          "图样名称/设计技术文件名称",
+          "版次"
+        ],
+        "rows": [
+          [
+            [
+              {
+                "kind": "text",
+                "text": "$drawing_id$"
+              }
+            ],
+            [
+              {
+                "kind": "text",
+                "text": "$drawing_name$"
+              }
+            ],
+            [
+              {
+                "kind": "text",
+                "text": "$rev$"
+              }
+            ]
+          ]
+        ],
+        "widths": [
+          0.38,
+          0.44,
+          0.18
+        ]
+      },
+      {
+        "kind": "table",
+        "headers": [
+          "技术文件编号",
+          "名称",
+          "版次"
+        ],
+        "rows": [
+          [
+            [
+              {
+                "kind": "text",
+                "text": "$doc_id$"
+              }
+            ],
+            [
+              {
+                "kind": "text",
+                "text": "$doc_name$"
+              }
+            ],
+            [
+              {
+                "kind": "text",
+                "text": "$doc_rev$"
+              }
+            ]
+          ]
+        ],
+        "widths": [
+          0.38,
+          0.44,
+          0.18
+        ]
+      },
+      {
+        "kind": "table",
+        "headers": [
+          "名称",
+          "件号",
+          "版次",
+          "单装数量",
+          "备注"
+        ],
+        "rows": [
+          [
+            [
+              {
+                "kind": "text",
+                "text": "$name$"
+              }
+            ],
+            [
+              {
+                "kind": "text",
+                "text": "$part$"
+              }
+            ],
+            [
+              {
+                "kind": "text",
+                "text": "$ver$"
+              }
+            ],
+            [
+              {
+                "kind": "text",
+                "text": "$qty$"
+              }
+            ],
+            [
+              {
+                "kind": "text",
+                "text": "$note$"
+              }
+            ]
+          ]
+        ],
+        "widths": [
+          0.2,
+          0.2,
+          0.2,
+          0.2,
+          0.2
+        ]
+      }
+    ]
+  }
+]

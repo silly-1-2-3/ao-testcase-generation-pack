@@ -1,0 +1,690 @@
+[
+  {
+    "work_type": "模拟工种",
+    "index": "10",
+    "blocks": [
+      {
+        "kind": "text",
+        "text": "项目名称：维护监控测试\n项目编码：TASK 22-11-00-740-813"
+      },
+      {
+        "kind": "text",
+        "text": "原文 1. 执行供电任务 TASK 24-22-00-860-811。"
+      },
+      {
+        "kind": "text",
+        "text": "原文 2. 将P5后顶板上的左右IRS选择开关置于NAV位。"
+      },
+      {
+        "kind": "text",
+        "text": "原文 3. 确认以下跳开关已闭合："
+      },
+      {
+        "kind": "table",
+        "headers": [
+          "序号",
+          "项目内容"
+        ],
+        "rows": [
+          [
+            [
+              {
+                "kind": "text",
+                "text": "3.1"
+              }
+            ],
+            [
+              {
+                "kind": "text",
+                "text": "P18-1面板D1 C01049 AFCS SYS A WARN LIGHT (BAT)"
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "kind": "text",
+                "text": "3.2"
+              }
+            ],
+            [
+              {
+                "kind": "text",
+                "text": "P6-1面板A12 C01375 RADIO NAVIGATION VOR 2"
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "kind": "text",
+                "text": "3.3"
+              }
+            ],
+            [
+              {
+                "kind": "text",
+                "text": "P6-3面板D18 C00451 LANDING GEAR AURAL WARN"
+              }
+            ]
+          ]
+        ],
+        "widths": [
+          0.16,
+          0.84
+        ]
+      },
+      {
+        "kind": "text",
+        "text": "原文 4. 警告：人员和设备远离飞行操纵面。供液压时副翼、升降舵、方向舵、襟翼、缝翼、扰流板、安定面和前起落架可能突然移动，造成伤害或损坏。"
+      },
+      {
+        "kind": "text",
+        "text": "原文 5. 对液压系统A和B供压（执行TASK 29-11-00-860-801）。"
+      }
+    ],
+    "source_id": 1151,
+    "source_items": [
+      1,
+      2,
+      3,
+      4,
+      5
+    ]
+  },
+  {
+    "work_type": "模拟工种",
+    "index": "20",
+    "blocks": [
+      {
+        "kind": "text",
+        "text": "项目名称：维护监控测试\n项目编码：TASK 22-11-00-740-813"
+      },
+      {
+        "kind": "text",
+        "text": "原文 6. 执行自动驾驶接通/断开测试："
+      },
+      {
+        "kind": "table",
+        "headers": [
+          "序号",
+          "项目内容"
+        ],
+        "rows": [
+          [
+            [
+              {
+                "kind": "text",
+                "text": "6.1"
+              }
+            ],
+            [
+              {
+                "kind": "text",
+                "text": "断开并挂牌P6-3面板D1 C01399 PSEU PRI和D2 C01400 PSEU ALTN；"
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "kind": "text",
+                "text": "6.2"
+              }
+            ],
+            [
+              {
+                "kind": "text",
+                "text": "等待5秒后按MCP上A/P接通电门使A通道进入CMD模式；"
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "kind": "text",
+                "text": "6.3"
+              }
+            ],
+            [
+              {
+                "kind": "text",
+                "text": "按ALT HOLD和HDG SEL按钮，打开机长F/D开关；"
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "kind": "text",
+                "text": "6.4"
+              }
+            ],
+            [
+              {
+                "kind": "text",
+                "text": "确认F/D杆保持显示且A/P保持接通；"
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "kind": "text",
+                "text": "6.5"
+              }
+            ],
+            [
+              {
+                "kind": "text",
+                "text": "断开P18-1面板C5 C01041 AFCS SYS A SNSR EXC AC，确认A/P断开、ASA红灯闪亮并有音响警告；"
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "kind": "text",
+                "text": "6.6"
+              }
+            ],
+            [
+              {
+                "kind": "text",
+                "text": "按断开电门复位，确认红灯熄灭、警告停止；"
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "kind": "text",
+                "text": "6.7"
+              }
+            ],
+            [
+              {
+                "kind": "text",
+                "text": "闭合C5 C01041，等待5秒后关闭机长F/D；"
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "kind": "text",
+                "text": "6.8"
+              }
+            ],
+            [
+              {
+                "kind": "text",
+                "text": "接通B通道A/P，重复类似步骤验证B通道；"
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "kind": "text",
+                "text": "6.9"
+              }
+            ],
+            [
+              {
+                "kind": "text",
+                "text": "移除挂牌并闭合相关跳开关，等待20秒。"
+              }
+            ]
+          ]
+        ],
+        "widths": [
+          0.16,
+          0.84
+        ]
+      },
+      {
+        "kind": "text",
+        "text": "原文 7. 在CDU上依次选择INIT REF → INDEX → MAINT → DFCS → FAULT REVIEW → FAULT HISTORY SORTED BY FLIGHT LEG → CHANNEL A/B → LEG 01，确认显示对应故障记录。"
+      },
+      {
+        "kind": "text",
+        "text": "原文 8. 执行安定面配平切断测试并验证A/P无法接通及警告功能。"
+      },
+      {
+        "kind": "text",
+        "text": "原文 9. 验证MCP直流电源：分别断开P6-2 C3 C01047和P18-1 D5 C01044，确认A/P断开及警告。"
+      }
+    ],
+    "source_id": 1151,
+    "source_items": [
+      6,
+      7,
+      8,
+      9
+    ]
+  },
+  {
+    "work_type": "模拟工种",
+    "index": "30",
+    "blocks": [
+      {
+        "kind": "text",
+        "text": "项目名称：维护监控测试\n项目编码：TASK 22-11-00-740-813"
+      },
+      {
+        "kind": "text",
+        "text": "原文 10. 在CDU上选择ERASE FAULT HISTORY → CHANNEL A AND B → YES，确认故障历史已清除。"
+      },
+      {
+        "kind": "text",
+        "text": "原文 11. 移除液压（执行TASK 29-11-00-860-805）。"
+      }
+    ],
+    "source_id": 1151,
+    "source_items": [
+      10,
+      11
+    ]
+  },
+  {
+    "work_type": "模拟工种",
+    "index": "40",
+    "blocks": [
+      {
+        "kind": "text",
+        "text": "项目名称：马赫配平校装测试\n项目编码：TASK 22-11-00-820-808"
+      },
+      {
+        "kind": "text",
+        "text": "原文 1. 准备测试："
+      },
+      {
+        "kind": "table",
+        "headers": [
+          "序号",
+          "项目内容"
+        ],
+        "rows": [
+          [
+            [
+              {
+                "kind": "text",
+                "text": "1.1"
+              }
+            ],
+            [
+              {
+                "kind": "text",
+                "text": "断开P6-3面板D18位C00451跳开关并挂安全标签。"
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "kind": "text",
+                "text": "1.2"
+              }
+            ],
+            [
+              {
+                "kind": "text",
+                "text": "将操纵台上的自动驾驶安定面配平切断电门置于CUTOUT位。"
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "kind": "text",
+                "text": "1.3"
+              }
+            ],
+            [
+              {
+                "kind": "text",
+                "text": "确认P5前顶板VHF NAV和IRS电门在NORMAL位。"
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "kind": "text",
+                "text": "1.4"
+              }
+            ],
+            [
+              {
+                "kind": "text",
+                "text": "将P5后顶板左右IRS选择电门置于ALIGN或NAV位。"
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "kind": "text",
+                "text": "1.5"
+              }
+            ],
+            [
+              {
+                "kind": "text",
+                "text": "警告：人员设备远离飞行操纵面！供液压时舵面可能突然移动，造成伤害或损坏。"
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "kind": "text",
+                "text": "1.6"
+              }
+            ],
+            [
+              {
+                "kind": "text",
+                "text": "按TASK 29-11-00-860-801对A、B液压系统增压。"
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "kind": "text",
+                "text": "1.7"
+              }
+            ],
+            [
+              {
+                "kind": "text",
+                "text": "打开311BL安定面配平接近门。"
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "kind": "text",
+                "text": "1.8"
+              }
+            ],
+            [
+              {
+                "kind": "text",
+                "text": "设置B尺寸（图502）："
+              },
+              {
+                "kind": "table",
+                "headers": [
+                  "项次",
+                  "操作与检查要求"
+                ],
+                "rows": [
+                  [
+                    [
+                      {
+                        "kind": "text",
+                        "text": "a)"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "text",
+                        "text": "转动操纵台配平手轮；"
+                      }
+                    ]
+                  ],
+                  [
+                    [
+                      {
+                        "kind": "text",
+                        "text": "b)"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "text",
+                        "text": "使用SPL-1677量规测量；"
+                      }
+                    ]
+                  ],
+                  [
+                    [
+                      {
+                        "kind": "text",
+                        "text": "c)"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "text",
+                        "text": "确保B尺寸为39.89±0.01英寸。"
+                      }
+                    ]
+                  ]
+                ],
+                "widths": [
+                  0.14,
+                  0.86
+                ]
+              }
+            ]
+          ]
+        ],
+        "widths": [
+          0.16,
+          0.84
+        ]
+      }
+    ],
+    "source_id": 1161,
+    "source_items": [
+      1
+    ]
+  },
+  {
+    "work_type": "模拟工种",
+    "index": "50",
+    "blocks": [
+      {
+        "kind": "text",
+        "text": "项目名称：马赫配平校装测试\n项目编码：TASK 22-11-00-820-808"
+      },
+      {
+        "kind": "text",
+        "text": "原文 2. 执行测试（适用于FCC软件-704或后续版本）："
+      },
+      {
+        "kind": "table",
+        "headers": [
+          "序号",
+          "项目内容"
+        ],
+        "rows": [
+          [
+            [
+              {
+                "kind": "text",
+                "text": "2.1"
+              }
+            ],
+            [
+              {
+                "kind": "text",
+                "text": "在CDU按INIT REF键，依次选择INDEX→MAINT→DFCS→EXTENDED MAINTENANCE→RIGGING→MACH TRIM→CHANNEL A。"
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "kind": "text",
+                "text": "2.2"
+              }
+            ],
+            [
+              {
+                "kind": "text",
+                "text": "按CDU提示操作，确认各参数在限值内（如STAB POS: -0.07~0.07等）。"
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "kind": "text",
+                "text": "2.3"
+              }
+            ],
+            [
+              {
+                "kind": "text",
+                "text": "再次测量B尺寸，确保为39.89±0.01英寸。"
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "kind": "text",
+                "text": "2.4"
+              }
+            ],
+            [
+              {
+                "kind": "text",
+                "text": "测量升降舵后缘偏转距离，应为2.55~3.05英寸。"
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "kind": "text",
+                "text": "2.5"
+              }
+            ],
+            [
+              {
+                "kind": "text",
+                "text": "完成A通道后，返回选择CHANNEL B，重复上述步骤。"
+              }
+            ]
+          ]
+        ],
+        "widths": [
+          0.16,
+          0.84
+        ]
+      }
+    ],
+    "source_id": 1161,
+    "source_items": [
+      2
+    ]
+  },
+  {
+    "work_type": "模拟工种",
+    "index": "60",
+    "blocks": [
+      {
+        "kind": "text",
+        "text": "项目名称：马赫配平校装测试\n项目编码：TASK 22-11-00-820-808"
+      },
+      {
+        "kind": "text",
+        "text": "原文 3. 恢复飞机状态："
+      },
+      {
+        "kind": "table",
+        "headers": [
+          "序号",
+          "项目内容"
+        ],
+        "rows": [
+          [
+            [
+              {
+                "kind": "text",
+                "text": "3.1"
+              }
+            ],
+            [
+              {
+                "kind": "text",
+                "text": "按压任一驾驶盘自动驾驶脱开电门确认脱开。"
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "kind": "text",
+                "text": "3.2"
+              }
+            ],
+            [
+              {
+                "kind": "text",
+                "text": "取下标签并闭合C00451跳开关。"
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "kind": "text",
+                "text": "3.3"
+              }
+            ],
+            [
+              {
+                "kind": "text",
+                "text": "将安定面配平切断电门恢复至NORMAL位。"
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "kind": "text",
+                "text": "3.4"
+              }
+            ],
+            [
+              {
+                "kind": "text",
+                "text": "按TASK 29-11-00-860-805释压液压系统。"
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "kind": "text",
+                "text": "3.5"
+              }
+            ],
+            [
+              {
+                "kind": "text",
+                "text": "关闭311BL接近门。"
+              }
+            ]
+          ]
+        ],
+        "widths": [
+          0.16,
+          0.84
+        ]
+      }
+    ],
+    "source_id": 1161,
+    "source_items": [
+      3
+    ]
+  }
+]

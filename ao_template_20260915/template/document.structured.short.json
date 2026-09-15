@@ -1,0 +1,486 @@
+{
+  "format": "ao-structured-v3-reading-order",
+  "selection": {
+    "headers": "工种,序号,工序内容",
+    "matched_tables": 3,
+    "geometry_only": true
+  },
+  "images": [
+    {
+      "page": 1,
+      "src": "images/page-0001-image-001.png",
+      "width": null,
+      "height": null,
+      "alt": "PDF image"
+    }
+  ],
+  "tables": [
+    {
+      "page": 1,
+      "title": "",
+      "headers": [
+        "工种",
+        "序号",
+        "工序内容"
+      ],
+      "rows": [
+        [
+          {
+            "row": 1,
+            "column": 0,
+            "colspan": 1,
+            "content": [
+              {
+                "text": "$work_type$"
+              }
+            ]
+          },
+          {
+            "row": 1,
+            "column": 1,
+            "colspan": 1,
+            "content": [
+              {
+                "text": "$index$"
+              }
+            ]
+          },
+          {
+            "row": 1,
+            "column": 2,
+            "colspan": 1,
+            "nested_tables": [
+              {
+                "page": 1,
+                "title": "",
+                "headers": [
+                  "设备编号",
+                  "设备名称",
+                  "设备参数"
+                ],
+                "rows": [
+                  [
+                    {
+                      "row": 1,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "$eq_id$"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 1,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "$eq_name$"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 1,
+                      "column": 2,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "$eq_param$"
+                        }
+                      ]
+                    }
+                  ]
+                ]
+              }
+            ],
+            "content": [
+              {
+                "text": "项目名称：$project_name$\n项目编码：$project_code$\n$raw_content$\n$before_image$"
+              },
+              {
+                "type": "image",
+                "src": "images/page-0001-image-001.png"
+              },
+              {
+                "text": "$after_image$"
+              }
+            ]
+          }
+        ]
+      ]
+    },
+    {
+      "page": 2,
+      "title": "",
+      "headers": [
+        "工种",
+        "序号",
+        "工序内容"
+      ],
+      "rows": [
+        [
+          {
+            "row": 1,
+            "column": 0,
+            "colspan": 1,
+            "content": [
+              {
+                "text": "$work_type2$"
+              }
+            ]
+          },
+          {
+            "row": 1,
+            "column": 1,
+            "colspan": 1,
+            "content": [
+              {
+                "text": "$index2$"
+              }
+            ]
+          },
+          {
+            "row": 1,
+            "column": 2,
+            "colspan": 1,
+            "nested_tables": [
+              {
+                "page": 2,
+                "title": "",
+                "headers": [
+                  "序号",
+                  "项目内容"
+                ],
+                "rows": [
+                  [
+                    {
+                      "row": 1,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "$sub_id$"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 1,
+                      "column": 1,
+                      "colspan": 1,
+                      "nested_tables": [
+                        {
+                          "page": 2,
+                          "title": "",
+                          "headers": [
+                            "检查项目",
+                            "目标值",
+                            "实测值"
+                          ],
+                          "rows": [
+                            [
+                              {
+                                "row": 1,
+                                "column": 0,
+                                "colspan": 1,
+                                "content": [
+                                  {
+                                    "text": "$item$"
+                                  }
+                                ]
+                              },
+                              {
+                                "row": 1,
+                                "column": 1,
+                                "colspan": 1,
+                                "content": [
+                                  {
+                                    "text": "$target$"
+                                  }
+                                ]
+                              },
+                              {
+                                "row": 1,
+                                "column": 2,
+                                "colspan": 1,
+                                "content": [
+                                  {
+                                    "text": "$actual$"
+                                  }
+                                ]
+                              }
+                            ],
+                            [
+                              {
+                                "row": 2,
+                                "column": 0,
+                                "colspan": 1,
+                                "content": [
+                                  {
+                                    "text": "$item2$"
+                                  }
+                                ]
+                              },
+                              {
+                                "row": 2,
+                                "column": 1,
+                                "colspan": 1,
+                                "content": [
+                                  {
+                                    "text": "$target2$"
+                                  }
+                                ]
+                              },
+                              {
+                                "row": 2,
+                                "column": 2,
+                                "colspan": 1,
+                                "content": [
+                                  {
+                                    "text": "$actual2$"
+                                  }
+                                ]
+                              }
+                            ]
+                          ]
+                        }
+                      ],
+                      "content": [
+                        {
+                          "text": "$sub_content$"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 2,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "$sub_id2$"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 2,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "$sub_content2$"
+                        }
+                      ]
+                    }
+                  ]
+                ]
+              }
+            ],
+            "content": [
+              {
+                "text": "项目名称：$project_name2$\n项目编码：$project_code2$\n$raw_content2$"
+              }
+            ]
+          }
+        ]
+      ]
+    },
+    {
+      "page": 3,
+      "title": "",
+      "headers": [
+        "工种",
+        "序号",
+        "工序内容"
+      ],
+      "rows": [
+        [
+          {
+            "row": 1,
+            "column": 0,
+            "colspan": 1,
+            "content": [
+              {
+                "text": "$work_type3$"
+              }
+            ]
+          },
+          {
+            "row": 1,
+            "column": 1,
+            "colspan": 1,
+            "content": [
+              {
+                "text": "$index3$"
+              }
+            ]
+          },
+          {
+            "row": 1,
+            "column": 2,
+            "colspan": 1,
+            "nested_tables": [
+              {
+                "page": 3,
+                "title": "",
+                "headers": [
+                  "图样编号/设计技术文件编\n号",
+                  "图样名称/设计技术文件名称",
+                  "版次"
+                ],
+                "rows": [
+                  [
+                    {
+                      "row": 1,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "$drawing_id$"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 1,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "$drawing_name$"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 1,
+                      "column": 2,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "$rev$"
+                        }
+                      ]
+                    }
+                  ]
+                ]
+              },
+              {
+                "page": 3,
+                "title": "",
+                "headers": [
+                  "技术文件编号",
+                  "名称",
+                  "版次"
+                ],
+                "rows": [
+                  [
+                    {
+                      "row": 1,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "$doc_id$"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 1,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "$doc_name$"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 1,
+                      "column": 2,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "$doc_rev$"
+                        }
+                      ]
+                    }
+                  ]
+                ]
+              },
+              {
+                "page": 3,
+                "title": "",
+                "headers": [
+                  "名称",
+                  "件号",
+                  "版次",
+                  "单装数量",
+                  "备注"
+                ],
+                "rows": [
+                  [
+                    {
+                      "row": 1,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "$name$"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 1,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "$part$"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 1,
+                      "column": 2,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "$ver$"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 1,
+                      "column": 3,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "$qty$"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 1,
+                      "column": 4,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "$note$"
+                        }
+                      ]
+                    }
+                  ]
+                ]
+              }
+            ],
+            "content": [
+              {
+                "text": "项目名称：$project_name3$\n项目编码：$project_code3$\n$raw_content3$"
+              }
+            ]
+          }
+        ]
+      ]
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+[
+  {
+    "id": 1151,
+    "source": "22",
+    "content": "项目名称：维护监控测试，项目编码：TASK 22-11-00-740-813\n1. 执行供电任务 TASK 24-22-00-860-811。\n2. 将P5后顶板上的左右IRS选择开关置于NAV位。\n3. 确认以下跳开关已闭合：\n1) P18-1面板D1 C01049 AFCS SYS A WARN LIGHT (BAT)\n2) P6-1面板A12 C01375 RADIO NAVIGATION VOR 2\n3) P6-3面板D18 C00451 LANDING GEAR AURAL WARN\n4. 警告：人员和设备远离飞行操纵面。供液压时副翼、升降舵、方向舵、襟翼、缝翼、扰流板、安定面和前起落架可能突然移动，造成伤害或损坏。\n5. 对液压系统A和B供压（执行TASK 29-11-00-860-801）。\n6. 执行自动驾驶接通/断开测试：\n1) 断开并挂牌P6-3面板D1 C01399 PSEU PRI和D2 C01400 PSEU ALTN；\n2) 等待5秒后按MCP上A/P接通电门使A通道进入CMD模式；\n3) 按ALT HOLD和HDG SEL按钮，打开机长F/D开关；\n4) 确认F/D杆保持显示且A/P保持接通；\n5) 断开P18-1面板C5 C01041 AFCS SYS A SNSR EXC AC，确认A/P断开、ASA红灯闪亮并有音响警告；\n6) 按断开电门复位，确认红灯熄灭、警告停止；\n7) 闭合C5 C01041，等待5秒后关闭机长F/D；\n8) 接通B通道A/P，重复类似步骤验证B通道；\n9) 移除挂牌并闭合相关跳开关，等待20秒。\n7. 在CDU上依次选择INIT REF → INDEX → MAINT → DFCS → FAULT REVIEW → FAULT HISTORY SORTED BY FLIGHT LEG → CHANNEL A/B → LEG 01，确认显示对应故障记录。\n8. 执行安定面配平切断测试并验证A/P无法接通及警告功能。\n9. 验证MCP直流电源：分别断开P6-2 C3 C01047和P18-1 D5 C01044，确认A/P断开及警告。\n10. 在CDU上选择ERASE FAULT HISTORY → CHANNEL A AND B → YES，确认故障历史已清除。\n11. 移除液压（执行TASK 29-11-00-860-805）。"
+  },
+  {
+    "id": 1161,
+    "source": "22",
+    "content": "项目名称：马赫配平校装测试，项目编码：TASK 22-11-00-820-808\n1. 准备测试：\n1) 断开P6-3面板D18位C00451跳开关并挂安全标签。\n2) 将操纵台上的自动驾驶安定面配平切断电门置于CUTOUT位。\n3) 确认P5前顶板VHF NAV和IRS电门在NORMAL位。\n4) 将P5后顶板左右IRS选择电门置于ALIGN或NAV位。\n5) 警告：人员设备远离飞行操纵面！供液压时舵面可能突然移动，造成伤害或损坏。\n6) 按TASK 29-11-00-860-801对A、B液压系统增压。\n7) 打开311BL安定面配平接近门。\n8) 设置B尺寸（图502）： a) 转动操纵台配平手轮； b) 使用SPL-1677量规测量； c) 确保B尺寸为39.89±0.01英寸。\n2. 执行测试（适用于FCC软件-704或后续版本）：\n1) 在CDU按INIT REF键，依次选择INDEX→MAINT→DFCS→EXTENDED MAINTENANCE→RIGGING→MACH TRIM→CHANNEL A。\n2) 按CDU提示操作，确认各参数在限值内（如STAB POS: -0.07~0.07等）。\n3) 再次测量B尺寸，确保为39.89±0.01英寸。\n4) 测量升降舵后缘偏转距离，应为2.55~3.05英寸。\n5) 完成A通道后，返回选择CHANNEL B，重复上述步骤。\n3. 恢复飞机状态：\n1) 按压任一驾驶盘自动驾驶脱开电门确认脱开。\n2) 取下标签并闭合C00451跳开关。\n3) 将安定面配平切断电门恢复至NORMAL位。\n4) 按TASK 29-11-00-860-805释压液压系统。\n5) 关闭311BL接近门。"
+  }
+]

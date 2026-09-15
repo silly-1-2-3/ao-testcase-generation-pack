@@ -1,0 +1,870 @@
+{
+  "format": "ao-structured-v3-reading-order",
+  "selection": {
+    "headers": "工种,序号,工序内容",
+    "matched_tables": 3,
+    "geometry_only": true
+  },
+  "images": [
+    {
+      "page": 1,
+      "src": "images/page-0001-image-001.png",
+      "bbox": [
+        325.4,
+        351.0,
+        676.4,
+        570.7
+      ],
+      "width": null,
+      "height": null,
+      "alt": "PDF image"
+    }
+  ],
+  "tables": [
+    {
+      "page": 1,
+      "bbox": [
+        58.1,
+        198.5,
+        745.2,
+        1004.4
+      ],
+      "title": "",
+      "headers": [
+        "工种",
+        "序号",
+        "工序内容"
+      ],
+      "rows": [
+        [
+          {
+            "row": 1,
+            "column": 0,
+            "colspan": 1,
+            "text": "$work_type$",
+            "bbox": [
+              58.1,
+              232.2,
+              168.8,
+              1004.4
+            ],
+            "nested_tables": [],
+            "content": [
+              {
+                "type": "text",
+                "text": "$work_type$"
+              }
+            ]
+          },
+          {
+            "row": 1,
+            "column": 1,
+            "colspan": 1,
+            "text": "$index$",
+            "bbox": [
+              168.8,
+              232.2,
+              256.6,
+              1004.4
+            ],
+            "nested_tables": [],
+            "content": [
+              {
+                "type": "text",
+                "text": "$index$"
+              }
+            ]
+          },
+          {
+            "row": 1,
+            "column": 2,
+            "colspan": 1,
+            "text": "项目名称：$project_name$\n项目编码：$project_code$\n$raw_content$\n$before_image$\n$after_image$",
+            "bbox": [
+              256.5,
+              232.2,
+              745.2,
+              1004.4
+            ],
+            "images": [
+              {
+                "page": 1,
+                "src": "images/page-0001-image-001.png",
+                "bbox": [
+                  325.4,
+                  351.0,
+                  676.4,
+                  570.7
+                ],
+                "alt": "PDF image"
+              }
+            ],
+            "nested_tables": [
+              {
+                "page": 1,
+                "bbox": [
+                  266.0,
+                  618.6,
+                  735.8,
+                  698.3
+                ],
+                "title": "",
+                "headers": [
+                  "设备编号",
+                  "设备名称",
+                  "设备参数"
+                ],
+                "rows": [
+                  [
+                    {
+                      "row": 1,
+                      "column": 0,
+                      "colspan": 1,
+                      "text": "$eq_id$",
+                      "bbox": [
+                        266.0,
+                        658.5,
+                        402.4,
+                        698.3
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "$eq_id$"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 1,
+                      "column": 1,
+                      "colspan": 1,
+                      "text": "$eq_name$",
+                      "bbox": [
+                        402.3,
+                        658.5,
+                        566.7,
+                        698.3
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "$eq_name$"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 1,
+                      "column": 2,
+                      "colspan": 1,
+                      "text": "$eq_param$",
+                      "bbox": [
+                        566.7,
+                        658.5,
+                        735.8,
+                        698.3
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "$eq_param$"
+                        }
+                      ]
+                    }
+                  ]
+                ],
+                "nested_tables": []
+              }
+            ],
+            "content": [
+              {
+                "type": "text",
+                "text": "项目名称：$project_name$\n项目编码：$project_code$\n$raw_content$\n$before_image$"
+              },
+              {
+                "type": "image",
+                "src": "images/page-0001-image-001.png",
+                "page": 1,
+                "bbox": [
+                  325.4,
+                  351.0,
+                  676.4,
+                  570.7
+                ],
+                "alt": "PDF image"
+              },
+              {
+                "type": "text",
+                "text": "$after_image$"
+              }
+            ]
+          }
+        ]
+      ],
+      "nested_tables": []
+    },
+    {
+      "page": 2,
+      "bbox": [
+        58.1,
+        198.5,
+        745.2,
+        1004.4
+      ],
+      "title": "",
+      "headers": [
+        "工种",
+        "序号",
+        "工序内容"
+      ],
+      "rows": [
+        [
+          {
+            "row": 1,
+            "column": 0,
+            "colspan": 1,
+            "text": "$work_type2$",
+            "bbox": [
+              58.1,
+              232.2,
+              168.8,
+              1004.4
+            ],
+            "nested_tables": [],
+            "content": [
+              {
+                "type": "text",
+                "text": "$work_type2$"
+              }
+            ]
+          },
+          {
+            "row": 1,
+            "column": 1,
+            "colspan": 1,
+            "text": "$index2$",
+            "bbox": [
+              168.8,
+              232.2,
+              256.6,
+              1004.4
+            ],
+            "nested_tables": [],
+            "content": [
+              {
+                "type": "text",
+                "text": "$index2$"
+              }
+            ]
+          },
+          {
+            "row": 1,
+            "column": 2,
+            "colspan": 1,
+            "text": "项目名称：$project_name2$\n项目编码：$project_code2$\n$raw_content2$",
+            "bbox": [
+              256.5,
+              232.2,
+              745.2,
+              1004.4
+            ],
+            "nested_tables": [
+              {
+                "page": 2,
+                "bbox": [
+                  266.0,
+                  322.0,
+                  735.8,
+                  574.4
+                ],
+                "title": "",
+                "headers": [
+                  "序号",
+                  "项目内容"
+                ],
+                "rows": [
+                  [
+                    {
+                      "row": 1,
+                      "column": 0,
+                      "colspan": 1,
+                      "text": "$sub_id$",
+                      "bbox": [
+                        266.0,
+                        361.8,
+                        374.0,
+                        534.6
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "$sub_id$"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 1,
+                      "column": 1,
+                      "colspan": 1,
+                      "text": "$sub_content$",
+                      "bbox": [
+                        374.0,
+                        361.8,
+                        735.8,
+                        534.6
+                      ],
+                      "nested_tables": [
+                        {
+                          "page": 2,
+                          "bbox": [
+                            379.4,
+                            396.2,
+                            730.4,
+                            515.7
+                          ],
+                          "title": "",
+                          "headers": [
+                            "检查项目",
+                            "目标值",
+                            "实测值"
+                          ],
+                          "rows": [
+                            [
+                              {
+                                "row": 1,
+                                "column": 0,
+                                "colspan": 1,
+                                "text": "$item$",
+                                "bbox": [
+                                  379.4,
+                                  436.1,
+                                  491.8,
+                                  475.9
+                                ],
+                                "nested_tables": [],
+                                "content": [
+                                  {
+                                    "type": "text",
+                                    "text": "$item$"
+                                  }
+                                ]
+                              },
+                              {
+                                "row": 1,
+                                "column": 1,
+                                "colspan": 1,
+                                "text": "$target$",
+                                "bbox": [
+                                  491.7,
+                                  436.1,
+                                  610.8,
+                                  475.9
+                                ],
+                                "nested_tables": [],
+                                "content": [
+                                  {
+                                    "type": "text",
+                                    "text": "$target$"
+                                  }
+                                ]
+                              },
+                              {
+                                "row": 1,
+                                "column": 2,
+                                "colspan": 1,
+                                "text": "$actual$",
+                                "bbox": [
+                                  610.9,
+                                  436.1,
+                                  730.4,
+                                  475.9
+                                ],
+                                "nested_tables": [],
+                                "content": [
+                                  {
+                                    "type": "text",
+                                    "text": "$actual$"
+                                  }
+                                ]
+                              }
+                            ],
+                            [
+                              {
+                                "row": 2,
+                                "column": 0,
+                                "colspan": 1,
+                                "text": "$item2$",
+                                "bbox": [
+                                  379.4,
+                                  475.9,
+                                  491.8,
+                                  515.7
+                                ],
+                                "nested_tables": [],
+                                "content": [
+                                  {
+                                    "type": "text",
+                                    "text": "$item2$"
+                                  }
+                                ]
+                              },
+                              {
+                                "row": 2,
+                                "column": 1,
+                                "colspan": 1,
+                                "text": "$target2$",
+                                "bbox": [
+                                  491.7,
+                                  475.9,
+                                  610.8,
+                                  515.7
+                                ],
+                                "nested_tables": [],
+                                "content": [
+                                  {
+                                    "type": "text",
+                                    "text": "$target2$"
+                                  }
+                                ]
+                              },
+                              {
+                                "row": 2,
+                                "column": 2,
+                                "colspan": 1,
+                                "text": "$actual2$",
+                                "bbox": [
+                                  610.9,
+                                  475.9,
+                                  730.4,
+                                  515.7
+                                ],
+                                "nested_tables": [],
+                                "content": [
+                                  {
+                                    "type": "text",
+                                    "text": "$actual2$"
+                                  }
+                                ]
+                              }
+                            ]
+                          ],
+                          "nested_tables": []
+                        }
+                      ],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "$sub_content$"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 2,
+                      "column": 0,
+                      "colspan": 1,
+                      "text": "$sub_id2$",
+                      "bbox": [
+                        266.0,
+                        534.6,
+                        374.0,
+                        574.4
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "$sub_id2$"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 2,
+                      "column": 1,
+                      "colspan": 1,
+                      "text": "$sub_content2$",
+                      "bbox": [
+                        374.0,
+                        534.6,
+                        735.8,
+                        574.4
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "$sub_content2$"
+                        }
+                      ]
+                    }
+                  ]
+                ],
+                "nested_tables": []
+              }
+            ],
+            "content": [
+              {
+                "type": "text",
+                "text": "项目名称：$project_name2$\n项目编码：$project_code2$\n$raw_content2$"
+              }
+            ]
+          }
+        ]
+      ],
+      "nested_tables": []
+    },
+    {
+      "page": 3,
+      "bbox": [
+        58.1,
+        198.5,
+        745.2,
+        1004.4
+      ],
+      "title": "",
+      "headers": [
+        "工种",
+        "序号",
+        "工序内容"
+      ],
+      "rows": [
+        [
+          {
+            "row": 1,
+            "column": 0,
+            "colspan": 1,
+            "text": "$work_type3$",
+            "bbox": [
+              58.1,
+              232.2,
+              168.8,
+              1004.4
+            ],
+            "nested_tables": [],
+            "content": [
+              {
+                "type": "text",
+                "text": "$work_type3$"
+              }
+            ]
+          },
+          {
+            "row": 1,
+            "column": 1,
+            "colspan": 1,
+            "text": "$index3$",
+            "bbox": [
+              168.8,
+              232.2,
+              256.6,
+              1004.4
+            ],
+            "nested_tables": [],
+            "content": [
+              {
+                "type": "text",
+                "text": "$index3$"
+              }
+            ]
+          },
+          {
+            "row": 1,
+            "column": 2,
+            "colspan": 1,
+            "text": "项目名称：$project_name3$\n项目编码：$project_code3$\n$raw_content3$",
+            "bbox": [
+              256.5,
+              232.2,
+              745.2,
+              1004.4
+            ],
+            "nested_tables": [
+              {
+                "page": 3,
+                "bbox": [
+                  266.0,
+                  322.0,
+                  735.7,
+                  423.9
+                ],
+                "title": "",
+                "headers": [
+                  "图样编号/设计技术文件编\n号",
+                  "图样名称/设计技术文件名称",
+                  "版次"
+                ],
+                "rows": [
+                  [
+                    {
+                      "row": 1,
+                      "column": 0,
+                      "colspan": 1,
+                      "text": "$drawing_id$",
+                      "bbox": [
+                        266.0,
+                        384.1,
+                        444.5,
+                        423.9
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "$drawing_id$"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 1,
+                      "column": 1,
+                      "colspan": 1,
+                      "text": "$drawing_name$",
+                      "bbox": [
+                        444.5,
+                        384.1,
+                        651.1,
+                        423.9
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "$drawing_name$"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 1,
+                      "column": 2,
+                      "colspan": 1,
+                      "text": "$rev$",
+                      "bbox": [
+                        651.0,
+                        384.1,
+                        735.7,
+                        423.9
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "$rev$"
+                        }
+                      ]
+                    }
+                  ]
+                ],
+                "nested_tables": []
+              },
+              {
+                "page": 3,
+                "bbox": [
+                  266.0,
+                  437.4,
+                  735.7,
+                  517.0
+                ],
+                "title": "",
+                "headers": [
+                  "技术文件编号",
+                  "名称",
+                  "版次"
+                ],
+                "rows": [
+                  [
+                    {
+                      "row": 1,
+                      "column": 0,
+                      "colspan": 1,
+                      "text": "$doc_id$",
+                      "bbox": [
+                        266.0,
+                        477.2,
+                        444.5,
+                        517.0
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "$doc_id$"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 1,
+                      "column": 1,
+                      "colspan": 1,
+                      "text": "$doc_name$",
+                      "bbox": [
+                        444.5,
+                        477.2,
+                        651.1,
+                        517.0
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "$doc_name$"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 1,
+                      "column": 2,
+                      "colspan": 1,
+                      "text": "$doc_rev$",
+                      "bbox": [
+                        651.0,
+                        477.2,
+                        735.7,
+                        517.0
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "$doc_rev$"
+                        }
+                      ]
+                    }
+                  ]
+                ],
+                "nested_tables": []
+              },
+              {
+                "page": 3,
+                "bbox": [
+                  266.0,
+                  530.6,
+                  735.7,
+                  610.2
+                ],
+                "title": "",
+                "headers": [
+                  "名称",
+                  "件号",
+                  "版次",
+                  "单装数量",
+                  "备注"
+                ],
+                "rows": [
+                  [
+                    {
+                      "row": 1,
+                      "column": 0,
+                      "colspan": 1,
+                      "text": "$name$",
+                      "bbox": [
+                        266.0,
+                        570.4,
+                        359.8,
+                        610.2
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "$name$"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 1,
+                      "column": 1,
+                      "colspan": 1,
+                      "text": "$part$",
+                      "bbox": [
+                        359.8,
+                        570.4,
+                        454.0,
+                        610.2
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "$part$"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 1,
+                      "column": 2,
+                      "colspan": 1,
+                      "text": "$ver$",
+                      "bbox": [
+                        453.9,
+                        570.4,
+                        547.7,
+                        610.2
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "$ver$"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 1,
+                      "column": 3,
+                      "colspan": 1,
+                      "text": "$qty$",
+                      "bbox": [
+                        547.8,
+                        570.4,
+                        642.0,
+                        610.2
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "$qty$"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 1,
+                      "column": 4,
+                      "colspan": 1,
+                      "text": "$note$",
+                      "bbox": [
+                        641.9,
+                        570.4,
+                        735.7,
+                        610.2
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "$note$"
+                        }
+                      ]
+                    }
+                  ]
+                ],
+                "nested_tables": []
+              }
+            ],
+            "content": [
+              {
+                "type": "text",
+                "text": "项目名称：$project_name3$\n项目编码：$project_code3$\n$raw_content3$"
+              }
+            ]
+          }
+        ]
+      ],
+      "nested_tables": []
+    }
+  ]
+}

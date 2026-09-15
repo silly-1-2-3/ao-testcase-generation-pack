@@ -1,0 +1,119 @@
+<!doctype html><html><head><meta charset="utf-8"><title>矢量 PDF 表格结构提取</title><style>
+*{box-sizing:border-box}body{margin:0;background:#d8d8d8;font-family:Arial,'Microsoft YaHei',sans-serif;color:#222}
+.page{position:relative;margin:24px auto;background:#fff;box-shadow:0 2px 8px #777;page-break-after:always;overflow:hidden}
+.page-label{position:absolute;left:5px;top:3px;padding:1px 4px;background:rgba(255,255,255,.82);font-size:11px;color:#555;z-index:8}
+.canvas{position:absolute;inset:0}.rule{position:absolute;background:#777;display:block;z-index:1}.rule.h{height:1px}.rule.v{width:1px}
+.cell{position:absolute;border:1px solid rgba(30,110,210,.72);background:rgba(210,230,255,.16);z-index:3;overflow:hidden}
+.cell.page-text,.cell.container{border:0;background:transparent;outline:0;pointer-events:none}.cell.page-text{z-index:2}
+.word{position:absolute;white-space:pre;z-index:4;background:rgba(255,255,220,.72)}
+.debug{width:min(1100px,96vw);margin:-12px auto 24px;background:#fff;padding:6px 10px;font-size:12px}
+pre{white-space:pre-wrap;background:#f5f5f5;padding:8px;max-height:320px;overflow:auto}
+@media print{body{background:#fff}.page{margin:0;box-shadow:none}.debug{display:none}}
+.pdf-image{object-fit:contain;pointer-events:none}
+</style></head><body><section class="page" data-page="1" style="width:803.6px;height:1136.6px">
+<div class="page-label">第 1 页 · edges=35 · corners=58 · cells=29</div>
+<div class="canvas">
+<i class="rule h" style="left:90.8px;top:233.2px;width:624.6px"></i>
+<i class="rule h" style="left:90.8px;top:252.4px;width:624.6px"></i>
+<i class="rule h" style="left:90.8px;top:271.7px;width:624.6px"></i>
+<i class="rule h" style="left:90.8px;top:288.3px;width:624.6px"></i>
+<i class="rule h" style="left:90.8px;top:308.3px;width:624.6px"></i>
+<i class="rule h" style="left:90.8px;top:331.9px;width:624.6px"></i>
+<i class="rule h" style="left:90.8px;top:358.1px;width:624.6px"></i>
+<i class="rule h" style="left:90.8px;top:375.6px;width:624.6px"></i>
+<i class="rule h" style="left:90.8px;top:395.7px;width:624.6px"></i>
+<i class="rule h" style="left:90.8px;top:419.3px;width:624.6px"></i>
+<i class="rule h" style="left:90.8px;top:445.5px;width:624.6px"></i>
+<i class="rule h" style="left:90.8px;top:471.7px;width:624.6px"></i>
+<i class="rule h" style="left:90.8px;top:489.2px;width:624.6px"></i>
+<i class="rule h" style="left:90.8px;top:509.3px;width:624.6px"></i>
+<i class="rule h" style="left:90.8px;top:532.8px;width:624.6px"></i>
+<i class="rule h" style="left:90.8px;top:559.0px;width:624.6px"></i>
+<i class="rule h" style="left:90.8px;top:577.4px;width:624.6px"></i>
+<i class="rule h" style="left:90.8px;top:596.6px;width:624.6px"></i>
+<i class="rule h" style="left:90.8px;top:674.3px;width:624.6px"></i>
+<i class="rule v" style="left:90.8px;top:233.2px;height:38.4px"></i>
+<i class="rule v" style="left:90.8px;top:288.3px;height:69.9px"></i>
+<i class="rule v" style="left:90.8px;top:375.6px;height:96.1px"></i>
+<i class="rule v" style="left:90.8px;top:489.2px;height:69.9px"></i>
+<i class="rule v" style="left:90.8px;top:577.4px;height:97.0px"></i>
+<i class="rule v" style="left:299.6px;top:509.3px;height:49.8px"></i>
+<i class="rule v" style="left:340.7px;top:308.3px;height:49.8px"></i>
+<i class="rule v" style="left:340.7px;top:395.7px;height:76.0px"></i>
+<i class="rule v" style="left:505.8px;top:509.3px;height:49.8px"></i>
+<i class="rule v" style="left:622.8px;top:308.3px;height:49.8px"></i>
+<i class="rule v" style="left:622.8px;top:395.7px;height:76.0px"></i>
+<i class="rule v" style="left:715.4px;top:233.2px;height:38.4px"></i>
+<i class="rule v" style="left:715.4px;top:288.3px;height:69.9px"></i>
+<i class="rule v" style="left:715.4px;top:375.6px;height:96.1px"></i>
+<i class="rule v" style="left:715.4px;top:489.2px;height:69.9px"></i>
+<i class="rule v" style="left:715.4px;top:577.4px;height:97.0px"></i>
+<div class="cell" style="left:90.8px;top:233.2px;width:624.7px;height:19.2px"><span class="word" style="left:285.3px;top:2.2px;font-size:12.2px;line-height:13.5px">换版说明</span></div>
+<div class="cell" style="left:90.8px;top:252.5px;width:624.7px;height:19.2px"><span class="word" style="left:5.3px;top:2.2px;font-size:12.4px;line-height:13.8px">$revision_notes$</span></div>
+<div class="cell" style="left:90.8px;top:288.2px;width:624.7px;height:20.2px"><span class="word" style="left:238.1px;top:2.3px;font-size:12.2px;line-height:13.5px">所需产品图样及设计文件</span></div>
+<div class="cell" style="left:90.8px;top:308.5px;width:249.8px;height:23.3px"><span class="word" style="left:2.7px;top:2.1px;font-size:12.2px;line-height:13.5px">图样编号/设计技术文件编号</span></div>
+<div class="cell" style="left:340.5px;top:308.5px;width:282.2px;height:23.3px"><span class="word" style="left:2.7px;top:2.1px;font-size:12.2px;line-height:13.5px">图样名称/设计技术文件名称</span></div>
+<div class="cell" style="left:622.7px;top:308.5px;width:92.8px;height:23.3px"><span class="word" style="left:2.7px;top:2.1px;font-size:12.2px;line-height:13.5px">版次</span></div>
+<div class="cell" style="left:90.8px;top:331.8px;width:249.8px;height:26.3px"><span class="word" style="left:2.7px;top:2.4px;font-size:12.2px;line-height:13.5px">$drawing_id$</span></div>
+<div class="cell" style="left:340.5px;top:331.8px;width:282.2px;height:26.3px"><span class="word" style="left:2.7px;top:2.4px;font-size:12.2px;line-height:13.5px">$drawing_name$</span></div>
+<div class="cell" style="left:622.7px;top:331.8px;width:92.8px;height:26.3px"><span class="word" style="left:2.7px;top:2.4px;font-size:12.2px;line-height:13.5px">$draw_rev$</span></div>
+<div class="cell" style="left:90.8px;top:375.6px;width:624.7px;height:19.9px"><span class="word" style="left:258.3px;top:2.2px;font-size:12.2px;line-height:13.5px">所需其他技术文件</span></div>
+<div class="cell" style="left:90.8px;top:395.6px;width:249.8px;height:23.6px"><span class="word" style="left:2.7px;top:2.4px;font-size:12.2px;line-height:13.5px">技术文件编号</span></div>
+<div class="cell" style="left:340.5px;top:395.6px;width:282.2px;height:23.6px"><span class="word" style="left:2.7px;top:2.4px;font-size:12.2px;line-height:13.5px">名称</span></div>
+<div class="cell" style="left:622.7px;top:395.6px;width:92.8px;height:23.6px"><span class="word" style="left:2.7px;top:2.4px;font-size:12.2px;line-height:13.5px">版次</span></div>
+<div class="cell" style="left:90.8px;top:419.2px;width:249.8px;height:26.3px"><span class="word" style="left:2.7px;top:2.3px;font-size:12.2px;line-height:13.5px">$doc_id$</span></div>
+<div class="cell" style="left:340.5px;top:419.2px;width:282.2px;height:26.3px"><span class="word" style="left:2.7px;top:2.3px;font-size:12.2px;line-height:13.5px">$doc_name$</span></div>
+<div class="cell" style="left:622.7px;top:419.2px;width:92.8px;height:26.3px"><span class="word" style="left:2.7px;top:2.3px;font-size:12.2px;line-height:13.5px">$doc_rev$</span></div>
+<div class="cell" style="left:90.8px;top:445.5px;width:249.8px;height:26.3px"><span class="word" style="left:2.7px;top:2.2px;font-size:12.2px;line-height:13.5px">$doc_id2$</span></div>
+<div class="cell" style="left:340.5px;top:445.5px;width:282.2px;height:26.3px"><span class="word" style="left:2.7px;top:2.2px;font-size:12.2px;line-height:13.5px">$doc_name2$</span></div>
+<div class="cell" style="left:622.7px;top:445.5px;width:92.8px;height:26.3px"><span class="word" style="left:2.7px;top:2.2px;font-size:12.2px;line-height:13.5px">$doc_rev2$</span></div>
+<div class="cell" style="left:90.8px;top:489.0px;width:624.7px;height:20.2px"><span class="word" style="left:285.3px;top:2.3px;font-size:12.2px;line-height:13.5px">设备汇总</span></div>
+<div class="cell" style="left:90.8px;top:509.3px;width:208.9px;height:23.6px"><span class="word" style="left:2.7px;top:2.2px;font-size:12.2px;line-height:13.5px">设备编号</span></div>
+<div class="cell" style="left:299.7px;top:509.3px;width:206.2px;height:23.6px"><span class="word" style="left:2.5px;top:2.2px;font-size:12.2px;line-height:13.5px">设备名称</span></div>
+<div class="cell" style="left:505.9px;top:509.3px;width:209.6px;height:23.6px"><span class="word" style="left:2.5px;top:2.2px;font-size:12.2px;line-height:13.5px">设备参数</span></div>
+<div class="cell" style="left:90.8px;top:532.9px;width:208.9px;height:26.0px"><span class="word" style="left:2.7px;top:2.1px;font-size:12.2px;line-height:13.5px">$eq_id$</span></div>
+<div class="cell" style="left:299.7px;top:532.9px;width:206.2px;height:26.0px"><span class="word" style="left:2.5px;top:2.1px;font-size:12.2px;line-height:13.5px">$eq_name$</span></div>
+<div class="cell" style="left:505.9px;top:532.9px;width:209.6px;height:26.0px"><span class="word" style="left:2.5px;top:2.1px;font-size:12.2px;line-height:13.5px">$eq_param$</span></div>
+<div class="cell" style="left:90.8px;top:577.5px;width:624.7px;height:19.2px"><span class="word" style="left:285.3px;top:2.1px;font-size:12.2px;line-height:13.5px">工作说明</span></div>
+<div class="cell" style="left:90.8px;top:596.7px;width:624.7px;height:77.6px"><span class="word" style="left:5.3px;top:11.7px;font-size:12.4px;line-height:13.8px">$work_notes$</span><span class="word" style="left:5.3px;top:44.9px;font-size:12.4px;line-height:13.8px">注意事项：$precautions$</span></div>
+<div class="cell page-text" style="left:0.0px;top:0.0px;width:803.6px;height:1136.6px"><span class="word" style="left:346.1px;top:71.0px;font-size:18.2px;line-height:20.2px">装配指令 AO</span><span class="word" style="left:94.3px;top:117.5px;font-size:12.2px;line-height:13.5px">编号 $no$</span><span class="word" style="left:270.8px;top:117.5px;font-size:12.2px;line-height:13.5px">版次 $rev$</span><span class="word" style="left:391.3px;top:117.5px;font-size:12.2px;line-height:13.5px">预估天数 $days$</span><span class="word" style="left:531.1px;top:117.5px;font-size:12.2px;line-height:13.5px">机种</span><span class="word" style="left:576.5px;top:117.5px;font-size:12.2px;line-height:13.5px">$model$</span><span class="word" style="left:642.0px;top:117.5px;font-size:12.2px;line-height:13.5px">密级 $sec$</span><span class="word" style="left:531.1px;top:133.2px;font-size:12.2px;line-height:13.5px">代号</span><span class="word" style="left:94.3px;top:165.6px;font-size:12.4px;line-height:13.8px">有效性 $validity$</span><span class="word" style="left:94.3px;top:199.6px;font-size:12.4px;line-height:13.8px">名称/说明 $description$</span><span class="word" style="left:298.5px;top:943.0px;font-size:10.9px;line-height:12.2px">*************划改记录*************</span><span class="word" style="left:90.8px;top:964.9px;font-size:10.4px;line-height:11.6px">相关页次</span><span class="word" style="left:183.4px;top:964.9px;font-size:10.4px;line-height:11.6px">更改标志</span><span class="word" style="left:281.3px;top:964.9px;font-size:10.4px;line-height:11.6px">更改单编号/划改原因</span><span class="word" style="left:496.1px;top:964.9px;font-size:10.4px;line-height:11.6px">划改人员</span><span class="word" style="left:602.7px;top:964.9px;font-size:10.4px;line-height:11.6px">更改日期</span><span class="word" style="left:90.8px;top:990.2px;font-size:11.5px;line-height:12.8px">$pages$</span><span class="word" style="left:183.4px;top:990.2px;font-size:11.5px;line-height:12.8px">$mark$</span><span class="word" style="left:281.3px;top:990.2px;font-size:11.5px;line-height:12.8px">$reason$</span><span class="word" style="left:496.1px;top:990.2px;font-size:11.5px;line-height:12.8px">$by$</span><span class="word" style="left:602.7px;top:990.2px;font-size:11.5px;line-height:12.8px">$date$</span><span class="word" style="left:602.7px;top:1056.6px;font-size:10.9px;line-height:12.2px">封面  第1页</span></div>
+</div></section>
+<details class="debug"><summary>按闭合矩形提取的文本顺序（含页面兜底框）</summary>
+<pre>[1] 换版说明
+[2] $revision_notes$
+[3] 所需产品图样及设计文件
+[4] 图样编号/设计技术文件编号
+[5] 图样名称/设计技术文件名称
+[6] 版次
+[7] $drawing_id$
+[8] $drawing_name$
+[9] $draw_rev$
+[10] 所需其他技术文件
+[11] 技术文件编号
+[12] 名称
+[13] 版次
+[14] $doc_id$
+[15] $doc_name$
+[16] $doc_rev$
+[17] $doc_id2$
+[18] $doc_name2$
+[19] $doc_rev2$
+[20] 设备汇总
+[21] 设备编号
+[22] 设备名称
+[23] 设备参数
+[24] $eq_id$
+[25] $eq_name$
+[26] $eq_param$
+[27] 工作说明
+[28] $work_notes$
+注意事项：$precautions$
+[29] 装配指令 AO
+编号 $no$                版次 $rev$       预估天数 $days$     机种  $model$  密级 $sec$
+代号
+有效性 $validity$
+名称/说明 $description$
+*************划改记录*************
+相关页次       更改标志        更改单编号/划改原因                划改人员         更改日期
+$pages$       $mark$        $reason$                       $by$           $date$
+封面  第1页</pre></details></body></html>

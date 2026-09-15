@@ -1,0 +1,567 @@
+<!doctype html><html><head><meta charset="utf-8"><title>矢量 PDF 表格结构提取</title><style>
+*{box-sizing:border-box}body{margin:0;background:#d8d8d8;font-family:Arial,'Microsoft YaHei',sans-serif;color:#222}
+.page{position:relative;margin:24px auto;background:#fff;box-shadow:0 2px 8px #777;page-break-after:always;overflow:hidden}
+.page-label{position:absolute;left:5px;top:3px;padding:1px 4px;background:rgba(255,255,255,.82);font-size:11px;color:#555;z-index:8}
+.canvas{position:absolute;inset:0}.rule{position:absolute;background:#777;display:block;z-index:1}.rule.h{height:1px}.rule.v{width:1px}
+.cell{position:absolute;border:1px solid rgba(30,110,210,.72);background:rgba(210,230,255,.16);z-index:3;overflow:hidden}
+.cell.page-text,.cell.container{border:0;background:transparent;outline:0;pointer-events:none}.cell.page-text{z-index:2}
+.word{position:absolute;white-space:pre;z-index:4;background:rgba(255,255,220,.72)}
+.debug{width:min(1100px,96vw);margin:-12px auto 24px;background:#fff;padding:6px 10px;font-size:12px}
+pre{white-space:pre-wrap;background:#f5f5f5;padding:8px;max-height:320px;overflow:auto}
+@media print{body{background:#fff}.page{margin:0;box-shadow:none}.debug{display:none}}
+.pdf-image{object-fit:contain;pointer-events:none}
+</style></head><body><section class="page" data-page="1" style="width:803.6px;height:1136.6px">
+<div class="page-label">第 1 页 · edges=24 · corners=53 · cells=32</div>
+<div class="canvas">
+<i class="rule h" style="left:58.1px;top:167.4px;width:687.2px"></i>
+<i class="rule h" style="left:58.1px;top:198.5px;width:687.2px"></i>
+<i class="rule h" style="left:58.1px;top:232.2px;width:687.2px"></i>
+<i class="rule h" style="left:212.0px;top:322.0px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:361.8px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:401.6px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:486.0px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:525.8px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:565.7px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:605.5px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:667.6px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:707.4px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:769.5px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:831.6px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:893.7px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:955.8px;width:523.8px"></i>
+<i class="rule h" style="left:58.1px;top:1004.4px;width:687.2px"></i>
+<i class="rule v" style="left:58.1px;top:167.4px;height:837.0px"></i>
+<i class="rule v" style="left:129.6px;top:198.5px;height:806.0px"></i>
+<i class="rule v" style="left:202.5px;top:198.5px;height:806.0px"></i>
+<i class="rule v" style="left:212.0px;top:322.0px;height:633.8px"></i>
+<i class="rule v" style="left:295.8px;top:322.0px;height:633.8px"></i>
+<i class="rule v" style="left:735.8px;top:322.0px;height:633.8px"></i>
+<i class="rule v" style="left:745.2px;top:167.4px;height:837.0px"></i>
+<div class="cell" style="left:58.1px;top:167.4px;width:687.2px;height:31.1px"><span class="word" style="left:254.5px;top:6.3px;font-size:13.4px;line-height:14.9px">********工作内容********</span></div>
+<div class="cell" style="left:58.1px;top:198.5px;width:71.6px;height:33.8px"><span class="word" style="left:6.8px;top:7.7px;font-size:12.8px;line-height:14.2px">工种</span></div>
+<div class="cell" style="left:129.6px;top:198.5px;width:72.9px;height:33.8px"><span class="word" style="left:6.8px;top:7.7px;font-size:12.8px;line-height:14.2px">序号</span></div>
+<div class="cell" style="left:202.5px;top:198.5px;width:542.7px;height:33.8px"><span class="word" style="left:6.8px;top:7.7px;font-size:12.8px;line-height:14.2px">工序内容</span></div>
+<div class="cell" style="left:58.1px;top:232.2px;width:71.6px;height:772.2px"><span class="word" style="left:6.8px;top:9.1px;font-size:11.2px;line-height:12.4px">模拟工种</span></div>
+<div class="cell" style="left:129.6px;top:232.2px;width:72.9px;height:772.2px"><span class="word" style="left:6.8px;top:9.1px;font-size:11.2px;line-height:12.4px">10</span></div>
+<div class="cell container" style="left:202.5px;top:232.2px;width:542.7px;height:772.2px"><span class="word" style="left:9.5px;top:9.0px;font-size:12.8px;line-height:14.2px">项目名称：气源系统管路渗漏测试</span><span class="word" style="left:9.5px;top:31.3px;font-size:12.8px;line-height:14.2px">项目编码：TASK 36-13-00-700-801</span><span class="word" style="left:9.5px;top:60.3px;font-size:12.8px;line-height:14.2px">原文 1. 准备渗漏测试。</span></div>
+<div class="cell" style="left:212.0px;top:322.0px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">序号</span></div>
+<div class="cell" style="left:295.7px;top:322.0px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">项目内容</span></div>
+<div class="cell" style="left:212.0px;top:361.8px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">1.1</span></div>
+<div class="cell" style="left:295.7px;top:361.8px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">执行供电任务：TASK 24-22-00-860-811。</span></div>
+<div class="cell" style="left:212.0px;top:401.6px;width:83.7px;height:84.4px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">1.2</span></div>
+<div class="cell" style="left:295.7px;top:401.6px;width:440.1px;height:84.4px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">设置以下开关至 OFF 位：1/2 BLEED、APU BLEED、L/R PACK、WING</span><span class="word" style="left:5.5px;top:27.3px;font-size:12.8px;line-height:14.2px">ANTI-ICE、1/2 ENG ANTI-ICE、1/2 ENGINE START；ISOLATION VALV</span><span class="word" style="left:5.5px;top:49.5px;font-size:12.8px;line-height:14.2px">E 置于 OPEN。</span></div>
+<div class="cell" style="left:212.0px;top:486.0px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">1.3</span></div>
+<div class="cell" style="left:295.7px;top:486.0px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">确认发动机油门杆在切断位，并挂“禁止操作”标签。</span></div>
+<div class="cell" style="left:212.0px;top:525.8px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">1.4</span></div>
+<div class="cell" style="left:295.7px;top:525.8px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">打开接近面板：192CL、192CR、311BL。</span></div>
+<div class="cell" style="left:212.0px;top:565.7px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">1.5</span></div>
+<div class="cell" style="left:295.7px;top:565.7px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">确认隔离活门位置指示器在 OPEN 位。</span></div>
+<div class="cell" style="left:212.0px;top:605.5px;width:83.7px;height:62.1px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">1.6</span></div>
+<div class="cell" style="left:295.7px;top:605.5px;width:440.1px;height:62.1px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">对左反推执行 TASK 78-31-00-010-801-F00（按指定顺序操作前缘、</span><span class="word" style="left:5.5px;top:27.3px;font-size:12.8px;line-height:14.2px">反推及风扇整流罩）。</span></div>
+<div class="cell" style="left:212.0px;top:667.6px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">1.7</span></div>
+<div class="cell" style="left:295.7px;top:667.6px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">确认左右发 5 级引气单向活门已安装。</span></div>
+<div class="cell" style="left:212.0px;top:707.4px;width:83.7px;height:62.1px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">1.8</span></div>
+<div class="cell" style="left:295.7px;top:707.4px;width:440.1px;height:62.1px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">确认 PRSOV 关闭；若未关闭，则更换（参考 TASK 36-11-04-000/40</span><span class="word" style="left:5.5px;top:27.3px;font-size:12.8px;line-height:14.2px">0-801）。</span></div>
+<div class="cell" style="left:212.0px;top:769.5px;width:83.7px;height:62.1px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">1.9</span></div>
+<div class="cell" style="left:295.7px;top:769.5px;width:440.1px;height:62.1px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">确认高压级活门关闭；若未关闭，则更换（参考 TASK 36-11-06-000</span><span class="word" style="left:5.5px;top:27.3px;font-size:12.8px;line-height:14.2px">/400-801）。</span></div>
+<div class="cell" style="left:212.0px;top:831.6px;width:83.7px;height:62.1px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">1.10</span></div>
+<div class="cell" style="left:295.7px;top:831.6px;width:440.1px;height:62.1px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">确认起动活门关闭；若未关闭，则更换（参考 TASK 80-11-03-000/4</span><span class="word" style="left:5.5px;top:27.3px;font-size:12.8px;line-height:14.2px">00-801-F00）。</span></div>
+<div class="cell" style="left:212.0px;top:893.7px;width:83.7px;height:62.1px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">1.11</span></div>
+<div class="cell" style="left:295.7px;top:893.7px;width:440.1px;height:62.1px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">确认流量控制活门、机翼及整流罩 TAI 活门均关闭；否则手动超控</span><span class="word" style="left:5.5px;top:27.3px;font-size:12.8px;line-height:14.2px">关闭。</span></div>
+<div class="cell page-text" style="left:0.0px;top:0.0px;width:803.6px;height:1136.6px"><span class="word" style="left:338.5px;top:57.4px;font-size:20.7px;line-height:23.0px">装配指令 AO</span><span class="word" style="left:58.1px;top:102.2px;font-size:11.5px;line-height:12.8px">气源与液压系统</span><span class="word" style="left:58.1px;top:129.2px;font-size:10.9px;line-height:12.2px">模拟排版数据 · 非实际作业依据</span><span class="word" style="left:591.0px;top:1063.4px;font-size:10.9px;line-height:12.2px">第 1 页 / 共 7 页</span></div>
+</div></section>
+<details class="debug"><summary>按闭合矩形提取的文本顺序（含页面兜底框）</summary>
+<pre>[1] ********工作内容********
+[2] 工种
+[3] 序号
+[4] 工序内容
+[5] 模拟工种
+[6] 10
+[7] 项目名称：气源系统管路渗漏测试
+项目编码：TASK 36-13-00-700-801
+原文 1. 准备渗漏测试。
+[8] 序号
+[9] 项目内容
+[10] 1.1
+[11] 执行供电任务：TASK 24-22-00-860-811。
+[12] 1.2
+[13] 设置以下开关至 OFF 位：1/2 BLEED、APU BLEED、L/R PACK、WING
+ANTI-ICE、1/2 ENG ANTI-ICE、1/2 ENGINE START；ISOLATION VALV
+E 置于 OPEN。
+[14] 1.3
+[15] 确认发动机油门杆在切断位，并挂“禁止操作”标签。
+[16] 1.4
+[17] 打开接近面板：192CL、192CR、311BL。
+[18] 1.5
+[19] 确认隔离活门位置指示器在 OPEN 位。
+[20] 1.6
+[21] 对左反推执行 TASK 78-31-00-010-801-F00（按指定顺序操作前缘、
+反推及风扇整流罩）。
+[22] 1.7
+[23] 确认左右发 5 级引气单向活门已安装。
+[24] 1.8
+[25] 确认 PRSOV 关闭；若未关闭，则更换（参考 TASK 36-11-04-000/40
+0-801）。
+[26] 1.9
+[27] 确认高压级活门关闭；若未关闭，则更换（参考 TASK 36-11-06-000
+/400-801）。
+[28] 1.10
+[29] 确认起动活门关闭；若未关闭，则更换（参考 TASK 80-11-03-000/4
+00-801-F00）。
+[30] 1.11
+[31] 确认流量控制活门、机翼及整流罩 TAI 活门均关闭；否则手动超控
+关闭。
+[32] 装配指令 AO
+气源与液压系统
+模拟排版数据 · 非实际作业依据
+第 1 页 / 共 7 页</pre></details>
+<section class="page" data-page="2" style="width:803.6px;height:1136.6px">
+<div class="page-label">第 2 页 · edges=20 · corners=41 · cells=24</div>
+<div class="canvas">
+<i class="rule h" style="left:58.1px;top:167.4px;width:687.2px"></i>
+<i class="rule h" style="left:58.1px;top:198.5px;width:687.2px"></i>
+<i class="rule h" style="left:58.1px;top:232.2px;width:687.2px"></i>
+<i class="rule h" style="left:212.0px;top:322.0px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:361.8px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:401.6px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:441.5px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:503.6px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:543.4px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:605.5px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:667.6px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:707.4px;width:523.8px"></i>
+<i class="rule h" style="left:58.1px;top:1004.4px;width:687.2px"></i>
+<i class="rule v" style="left:58.1px;top:167.4px;height:837.0px"></i>
+<i class="rule v" style="left:129.6px;top:198.5px;height:806.0px"></i>
+<i class="rule v" style="left:202.5px;top:198.5px;height:806.0px"></i>
+<i class="rule v" style="left:212.0px;top:322.0px;height:385.4px"></i>
+<i class="rule v" style="left:295.8px;top:322.0px;height:385.4px"></i>
+<i class="rule v" style="left:735.8px;top:322.0px;height:385.4px"></i>
+<i class="rule v" style="left:745.2px;top:167.4px;height:837.0px"></i>
+<div class="cell" style="left:58.1px;top:167.4px;width:687.2px;height:31.1px"><span class="word" style="left:254.5px;top:6.3px;font-size:13.4px;line-height:14.9px">********工作内容********</span></div>
+<div class="cell" style="left:58.1px;top:198.5px;width:71.6px;height:33.8px"><span class="word" style="left:6.8px;top:7.7px;font-size:12.8px;line-height:14.2px">工种</span></div>
+<div class="cell" style="left:129.6px;top:198.5px;width:72.9px;height:33.8px"><span class="word" style="left:6.8px;top:7.7px;font-size:12.8px;line-height:14.2px">序号</span></div>
+<div class="cell" style="left:202.5px;top:198.5px;width:542.7px;height:33.8px"><span class="word" style="left:6.8px;top:7.7px;font-size:12.8px;line-height:14.2px">工序内容</span></div>
+<div class="cell" style="left:58.1px;top:232.2px;width:71.6px;height:772.2px"><span class="word" style="left:6.8px;top:9.1px;font-size:11.2px;line-height:12.4px">模拟工种</span></div>
+<div class="cell" style="left:129.6px;top:232.2px;width:72.9px;height:772.2px"><span class="word" style="left:6.8px;top:9.1px;font-size:11.2px;line-height:12.4px">20</span></div>
+<div class="cell container" style="left:202.5px;top:232.2px;width:542.7px;height:772.2px"><span class="word" style="left:9.5px;top:9.0px;font-size:12.8px;line-height:14.2px">项目名称：气源系统管路渗漏测试</span><span class="word" style="left:9.5px;top:31.3px;font-size:12.8px;line-height:14.2px">项目编码：TASK 36-13-00-700-801</span><span class="word" style="left:9.5px;top:60.3px;font-size:12.8px;line-height:14.2px">原文 2. 执行渗漏测试。</span></div>
+<div class="cell" style="left:212.0px;top:322.0px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">序号</span></div>
+<div class="cell" style="left:295.7px;top:322.0px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">项目内容</span></div>
+<div class="cell" style="left:212.0px;top:361.8px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">2.1</span></div>
+<div class="cell" style="left:295.7px;top:361.8px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">将 1/2 BLEED 开关置于 ON。</span></div>
+<div class="cell" style="left:212.0px;top:401.6px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">2.2</span></div>
+<div class="cell" style="left:295.7px;top:401.6px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">执行 TASK 36-00-00-860-802，通过地面气源供压。</span></div>
+<div class="cell" style="left:212.0px;top:441.5px;width:83.7px;height:62.1px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">2.3</span></div>
+<div class="cell" style="left:295.7px;top:441.5px;width:440.1px;height:62.1px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">使用棘轮扳手将 PRSOV 手动打开（注意：系统带压时 PRSOV 可能快</span><span class="word" style="left:5.5px;top:27.3px;font-size:12.8px;line-height:14.2px">速开启，导致工具脱手）。</span></div>
+<div class="cell" style="left:212.0px;top:503.6px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">2.4</span></div>
+<div class="cell" style="left:295.7px;top:503.6px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">系统加压至 42–48 psig（289–331 kPa）。</span></div>
+<div class="cell" style="left:212.0px;top:543.4px;width:83.7px;height:62.1px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">2.5</span></div>
+<div class="cell" style="left:295.7px;top:543.4px;width:440.1px;height:62.1px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">检查所有接头：允许弥散泄漏，集中泄漏（手距 12 英寸可感）必须</span><span class="word" style="left:5.5px;top:27.3px;font-size:12.8px;line-height:14.2px">修复。</span></div>
+<div class="cell" style="left:212.0px;top:605.5px;width:83.7px;height:62.1px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">2.6</span></div>
+<div class="cell" style="left:295.7px;top:605.5px;width:440.1px;height:62.1px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">测试交输下游管路：分别将 L/R PACK 置 AUTO，检查泄漏情况后恢</span><span class="word" style="left:5.5px;top:27.3px;font-size:12.8px;line-height:14.2px">复 OFF。</span></div>
+<div class="cell" style="left:212.0px;top:667.6px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">2.7</span></div>
+<div class="cell" style="left:295.7px;top:667.6px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">将 1/2 BLEED 开关置于 OFF。</span></div>
+<div class="cell page-text" style="left:0.0px;top:0.0px;width:803.6px;height:1136.6px"><span class="word" style="left:338.5px;top:57.4px;font-size:20.7px;line-height:23.0px">装配指令 AO</span><span class="word" style="left:58.1px;top:102.2px;font-size:11.5px;line-height:12.8px">气源与液压系统</span><span class="word" style="left:58.1px;top:129.2px;font-size:10.9px;line-height:12.2px">模拟排版数据 · 非实际作业依据</span><span class="word" style="left:591.0px;top:1063.4px;font-size:10.9px;line-height:12.2px">第 2 页 / 共 7 页</span></div>
+</div></section>
+<details class="debug"><summary>按闭合矩形提取的文本顺序（含页面兜底框）</summary>
+<pre>[1] ********工作内容********
+[2] 工种
+[3] 序号
+[4] 工序内容
+[5] 模拟工种
+[6] 20
+[7] 项目名称：气源系统管路渗漏测试
+项目编码：TASK 36-13-00-700-801
+原文 2. 执行渗漏测试。
+[8] 序号
+[9] 项目内容
+[10] 2.1
+[11] 将 1/2 BLEED 开关置于 ON。
+[12] 2.2
+[13] 执行 TASK 36-00-00-860-802，通过地面气源供压。
+[14] 2.3
+[15] 使用棘轮扳手将 PRSOV 手动打开（注意：系统带压时 PRSOV 可能快
+速开启，导致工具脱手）。
+[16] 2.4
+[17] 系统加压至 42–48 psig（289–331 kPa）。
+[18] 2.5
+[19] 检查所有接头：允许弥散泄漏，集中泄漏（手距 12 英寸可感）必须
+修复。
+[20] 2.6
+[21] 测试交输下游管路：分别将 L/R PACK 置 AUTO，检查泄漏情况后恢
+复 OFF。
+[22] 2.7
+[23] 将 1/2 BLEED 开关置于 OFF。
+[24] 装配指令 AO
+气源与液压系统
+模拟排版数据 · 非实际作业依据
+第 2 页 / 共 7 页</pre></details>
+<section class="page" data-page="3" style="width:803.6px;height:1136.6px">
+<div class="page-label">第 3 页 · edges=17 · corners=32 · cells=18</div>
+<div class="canvas">
+<i class="rule h" style="left:58.1px;top:167.4px;width:687.2px"></i>
+<i class="rule h" style="left:58.1px;top:198.5px;width:687.2px"></i>
+<i class="rule h" style="left:58.1px;top:232.2px;width:687.2px"></i>
+<i class="rule h" style="left:212.0px;top:322.0px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:361.8px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:401.6px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:441.5px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:481.3px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:521.1px;width:523.8px"></i>
+<i class="rule h" style="left:58.1px;top:1004.4px;width:687.2px"></i>
+<i class="rule v" style="left:58.1px;top:167.4px;height:837.0px"></i>
+<i class="rule v" style="left:129.6px;top:198.5px;height:806.0px"></i>
+<i class="rule v" style="left:202.5px;top:198.5px;height:806.0px"></i>
+<i class="rule v" style="left:212.0px;top:322.0px;height:199.1px"></i>
+<i class="rule v" style="left:295.8px;top:322.0px;height:199.1px"></i>
+<i class="rule v" style="left:735.8px;top:322.0px;height:199.1px"></i>
+<i class="rule v" style="left:745.2px;top:167.4px;height:837.0px"></i>
+<div class="cell" style="left:58.1px;top:167.4px;width:687.2px;height:31.1px"><span class="word" style="left:254.5px;top:6.3px;font-size:13.4px;line-height:14.9px">********工作内容********</span></div>
+<div class="cell" style="left:58.1px;top:198.5px;width:71.6px;height:33.8px"><span class="word" style="left:6.8px;top:7.7px;font-size:12.8px;line-height:14.2px">工种</span></div>
+<div class="cell" style="left:129.6px;top:198.5px;width:72.9px;height:33.8px"><span class="word" style="left:6.8px;top:7.7px;font-size:12.8px;line-height:14.2px">序号</span></div>
+<div class="cell" style="left:202.5px;top:198.5px;width:542.7px;height:33.8px"><span class="word" style="left:6.8px;top:7.7px;font-size:12.8px;line-height:14.2px">工序内容</span></div>
+<div class="cell" style="left:58.1px;top:232.2px;width:71.6px;height:772.2px"><span class="word" style="left:6.8px;top:9.1px;font-size:11.2px;line-height:12.4px">模拟工种</span></div>
+<div class="cell" style="left:129.6px;top:232.2px;width:72.9px;height:772.2px"><span class="word" style="left:6.8px;top:9.1px;font-size:11.2px;line-height:12.4px">30</span></div>
+<div class="cell container" style="left:202.5px;top:232.2px;width:542.7px;height:772.2px"><span class="word" style="left:9.5px;top:9.0px;font-size:12.8px;line-height:14.2px">项目名称：气源系统管路渗漏测试</span><span class="word" style="left:9.5px;top:31.3px;font-size:12.8px;line-height:14.2px">项目编码：TASK 36-13-00-700-801</span><span class="word" style="left:9.5px;top:60.3px;font-size:12.8px;line-height:14.2px">原文 3. 恢复飞机状态。</span></div>
+<div class="cell" style="left:212.0px;top:322.0px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">序号</span></div>
+<div class="cell" style="left:295.7px;top:322.0px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">项目内容</span></div>
+<div class="cell" style="left:212.0px;top:361.8px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">3.1</span></div>
+<div class="cell" style="left:295.7px;top:361.8px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">执行 TASK 36-00-00-860-806 泄压，确认 P5-10 压力表为 0。</span></div>
+<div class="cell" style="left:212.0px;top:401.6px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">3.2</span></div>
+<div class="cell" style="left:295.7px;top:401.6px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">对左反推执行 TASK 78-31-00-010-804-F00。</span></div>
+<div class="cell" style="left:212.0px;top:441.5px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">3.3</span></div>
+<div class="cell" style="left:295.7px;top:441.5px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">关闭 192CL、192CR、311BL 接近面板。</span></div>
+<div class="cell" style="left:212.0px;top:481.3px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">3.4</span></div>
+<div class="cell" style="left:295.7px;top:481.3px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">执行断电任务：TASK 24-22-00-860-812。</span></div>
+<div class="cell page-text" style="left:0.0px;top:0.0px;width:803.6px;height:1136.6px"><span class="word" style="left:338.5px;top:57.4px;font-size:20.7px;line-height:23.0px">装配指令 AO</span><span class="word" style="left:58.1px;top:102.2px;font-size:11.5px;line-height:12.8px">气源与液压系统</span><span class="word" style="left:58.1px;top:129.2px;font-size:10.9px;line-height:12.2px">模拟排版数据 · 非实际作业依据</span><span class="word" style="left:591.0px;top:1063.4px;font-size:10.9px;line-height:12.2px">第 3 页 / 共 7 页</span></div>
+</div></section>
+<details class="debug"><summary>按闭合矩形提取的文本顺序（含页面兜底框）</summary>
+<pre>[1] ********工作内容********
+[2] 工种
+[3] 序号
+[4] 工序内容
+[5] 模拟工种
+[6] 30
+[7] 项目名称：气源系统管路渗漏测试
+项目编码：TASK 36-13-00-700-801
+原文 3. 恢复飞机状态。
+[8] 序号
+[9] 项目内容
+[10] 3.1
+[11] 执行 TASK 36-00-00-860-806 泄压，确认 P5-10 压力表为 0。
+[12] 3.2
+[13] 对左反推执行 TASK 78-31-00-010-804-F00。
+[14] 3.3
+[15] 关闭 192CL、192CR、311BL 接近面板。
+[16] 3.4
+[17] 执行断电任务：TASK 24-22-00-860-812。
+[18] 装配指令 AO
+气源与液压系统
+模拟排版数据 · 非实际作业依据
+第 3 页 / 共 7 页</pre></details>
+<section class="page" data-page="4" style="width:803.6px;height:1136.6px">
+<div class="page-label">第 4 页 · edges=19 · corners=38 · cells=22</div>
+<div class="canvas">
+<i class="rule h" style="left:58.1px;top:167.4px;width:687.2px"></i>
+<i class="rule h" style="left:58.1px;top:198.5px;width:687.2px"></i>
+<i class="rule h" style="left:58.1px;top:232.2px;width:687.2px"></i>
+<i class="rule h" style="left:212.0px;top:322.0px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:361.8px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:401.6px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:441.5px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:481.3px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:543.4px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:583.2px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:623.0px;width:523.8px"></i>
+<i class="rule h" style="left:58.1px;top:1004.4px;width:687.2px"></i>
+<i class="rule v" style="left:58.1px;top:167.4px;height:837.0px"></i>
+<i class="rule v" style="left:129.6px;top:198.5px;height:806.0px"></i>
+<i class="rule v" style="left:202.5px;top:198.5px;height:806.0px"></i>
+<i class="rule v" style="left:212.0px;top:322.0px;height:301.1px"></i>
+<i class="rule v" style="left:295.8px;top:322.0px;height:301.1px"></i>
+<i class="rule v" style="left:735.8px;top:322.0px;height:301.1px"></i>
+<i class="rule v" style="left:745.2px;top:167.4px;height:837.0px"></i>
+<div class="cell" style="left:58.1px;top:167.4px;width:687.2px;height:31.1px"><span class="word" style="left:254.5px;top:6.3px;font-size:13.4px;line-height:14.9px">********工作内容********</span></div>
+<div class="cell" style="left:58.1px;top:198.5px;width:71.6px;height:33.8px"><span class="word" style="left:6.8px;top:7.7px;font-size:12.8px;line-height:14.2px">工种</span></div>
+<div class="cell" style="left:129.6px;top:198.5px;width:72.9px;height:33.8px"><span class="word" style="left:6.8px;top:7.7px;font-size:12.8px;line-height:14.2px">序号</span></div>
+<div class="cell" style="left:202.5px;top:198.5px;width:542.7px;height:33.8px"><span class="word" style="left:6.8px;top:7.7px;font-size:12.8px;line-height:14.2px">工序内容</span></div>
+<div class="cell" style="left:58.1px;top:232.2px;width:71.6px;height:772.2px"><span class="word" style="left:6.8px;top:9.1px;font-size:11.2px;line-height:12.4px">模拟工种</span></div>
+<div class="cell" style="left:129.6px;top:232.2px;width:72.9px;height:772.2px"><span class="word" style="left:6.8px;top:9.1px;font-size:11.2px;line-height:12.4px">40</span></div>
+<div class="cell container" style="left:202.5px;top:232.2px;width:542.7px;height:772.2px"><span class="word" style="left:9.5px;top:9.0px;font-size:12.8px;line-height:14.2px">项目名称：动力转换组件（PTU）系统测试</span><span class="word" style="left:9.5px;top:31.3px;font-size:12.8px;line-height:14.2px">项目编码：TASK 29-22-00-730-801</span><span class="word" style="left:9.5px;top:60.3px;font-size:12.8px;line-height:14.2px">原文 1. 准备：</span></div>
+<div class="cell" style="left:212.0px;top:322.0px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">序号</span></div>
+<div class="cell" style="left:295.7px;top:322.0px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">项目内容</span></div>
+<div class="cell" style="left:212.0px;top:361.8px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">1.1</span></div>
+<div class="cell" style="left:295.7px;top:361.8px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">必要时按 TASK 12-12-00-610-801 补油；</span></div>
+<div class="cell" style="left:212.0px;top:401.6px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">1.2</span></div>
+<div class="cell" style="left:295.7px;top:401.6px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">确认 AOA 在零位；</span></div>
+<div class="cell" style="left:212.0px;top:441.5px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">1.3</span></div>
+<div class="cell" style="left:295.7px;top:441.5px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">轮挡就位；</span></div>
+<div class="cell" style="left:212.0px;top:481.3px;width:83.7px;height:62.1px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">1.4</span></div>
+<div class="cell" style="left:295.7px;top:481.3px;width:440.1px;height:62.1px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">断开并挂牌 P6-2 A15/C01081、P6-3 C16/C01356、P92 F2/C01449</span><span class="word" style="left:5.5px;top:27.3px;font-size:12.8px;line-height:14.2px">跳开关；</span></div>
+<div class="cell" style="left:212.0px;top:543.4px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">1.5</span></div>
+<div class="cell" style="left:295.7px;top:543.4px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">若襟翼未全收，先供 B 系统液压将其收上后断压；</span></div>
+<div class="cell" style="left:212.0px;top:583.2px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">1.6</span></div>
+<div class="cell" style="left:295.7px;top:583.2px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">确认 PTU 控制活门位置指示器指向内后方（关闭位）。</span></div>
+<div class="cell page-text" style="left:0.0px;top:0.0px;width:803.6px;height:1136.6px"><span class="word" style="left:338.5px;top:57.4px;font-size:20.7px;line-height:23.0px">装配指令 AO</span><span class="word" style="left:58.1px;top:102.2px;font-size:11.5px;line-height:12.8px">气源与液压系统</span><span class="word" style="left:58.1px;top:129.2px;font-size:10.9px;line-height:12.2px">模拟排版数据 · 非实际作业依据</span><span class="word" style="left:591.0px;top:1063.4px;font-size:10.9px;line-height:12.2px">第 4 页 / 共 7 页</span></div>
+</div></section>
+<details class="debug"><summary>按闭合矩形提取的文本顺序（含页面兜底框）</summary>
+<pre>[1] ********工作内容********
+[2] 工种
+[3] 序号
+[4] 工序内容
+[5] 模拟工种
+[6] 40
+[7] 项目名称：动力转换组件（PTU）系统测试
+项目编码：TASK 29-22-00-730-801
+原文 1. 准备：
+[8] 序号
+[9] 项目内容
+[10] 1.1
+[11] 必要时按 TASK 12-12-00-610-801 补油；
+[12] 1.2
+[13] 确认 AOA 在零位；
+[14] 1.3
+[15] 轮挡就位；
+[16] 1.4
+[17] 断开并挂牌 P6-2 A15/C01081、P6-3 C16/C01356、P92 F2/C01449
+跳开关；
+[18] 1.5
+[19] 若襟翼未全收，先供 B 系统液压将其收上后断压；
+[20] 1.6
+[21] 确认 PTU 控制活门位置指示器指向内后方（关闭位）。
+[22] 装配指令 AO
+气源与液压系统
+模拟排版数据 · 非实际作业依据
+第 4 页 / 共 7 页</pre></details>
+<section class="page" data-page="5" style="width:803.6px;height:1136.6px">
+<div class="page-label">第 5 页 · edges=27 · corners=62 · cells=38</div>
+<div class="canvas">
+<i class="rule h" style="left:58.1px;top:167.4px;width:687.2px"></i>
+<i class="rule h" style="left:58.1px;top:198.5px;width:687.2px"></i>
+<i class="rule h" style="left:58.1px;top:232.2px;width:687.2px"></i>
+<i class="rule h" style="left:212.0px;top:322.0px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:361.8px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:401.6px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:463.7px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:503.6px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:543.4px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:583.2px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:623.0px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:662.9px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:702.7px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:742.5px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:782.3px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:822.2px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:884.3px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:924.1px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:963.9px;width:523.8px"></i>
+<i class="rule h" style="left:58.1px;top:1004.4px;width:687.2px"></i>
+<i class="rule v" style="left:58.1px;top:167.4px;height:837.0px"></i>
+<i class="rule v" style="left:129.6px;top:198.5px;height:806.0px"></i>
+<i class="rule v" style="left:202.5px;top:198.5px;height:806.0px"></i>
+<i class="rule v" style="left:212.0px;top:322.0px;height:641.9px"></i>
+<i class="rule v" style="left:295.8px;top:322.0px;height:641.9px"></i>
+<i class="rule v" style="left:735.8px;top:322.0px;height:641.9px"></i>
+<i class="rule v" style="left:745.2px;top:167.4px;height:837.0px"></i>
+<div class="cell" style="left:58.1px;top:167.4px;width:687.2px;height:31.1px"><span class="word" style="left:254.5px;top:6.3px;font-size:13.4px;line-height:14.9px">********工作内容********</span></div>
+<div class="cell" style="left:58.1px;top:198.5px;width:71.6px;height:33.8px"><span class="word" style="left:6.8px;top:7.7px;font-size:12.8px;line-height:14.2px">工种</span></div>
+<div class="cell" style="left:129.6px;top:198.5px;width:72.9px;height:33.8px"><span class="word" style="left:6.8px;top:7.7px;font-size:12.8px;line-height:14.2px">序号</span></div>
+<div class="cell" style="left:202.5px;top:198.5px;width:542.7px;height:33.8px"><span class="word" style="left:6.8px;top:7.7px;font-size:12.8px;line-height:14.2px">工序内容</span></div>
+<div class="cell" style="left:58.1px;top:232.2px;width:71.6px;height:772.2px"><span class="word" style="left:6.8px;top:9.1px;font-size:11.2px;line-height:12.4px">模拟工种</span></div>
+<div class="cell" style="left:129.6px;top:232.2px;width:72.9px;height:772.2px"><span class="word" style="left:6.8px;top:9.1px;font-size:11.2px;line-height:12.4px">50</span></div>
+<div class="cell container" style="left:202.5px;top:232.2px;width:542.7px;height:772.2px"><span class="word" style="left:9.5px;top:9.0px;font-size:12.8px;line-height:14.2px">项目名称：动力转换组件（PTU）系统测试</span><span class="word" style="left:9.5px;top:31.3px;font-size:12.8px;line-height:14.2px">项目编码：TASK 29-22-00-730-801</span><span class="word" style="left:9.5px;top:60.3px;font-size:12.8px;line-height:14.2px">原文 2. 测试：</span></div>
+<div class="cell" style="left:212.0px;top:322.0px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">序号</span></div>
+<div class="cell" style="left:295.7px;top:322.0px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">项目内容</span></div>
+<div class="cell" style="left:212.0px;top:361.8px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">2.1</span></div>
+<div class="cell" style="left:295.7px;top:361.8px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">将 ALTERNATE FLAPS 臂开关置 ARM；</span></div>
+<div class="cell" style="left:212.0px;top:401.6px;width:83.7px;height:62.1px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">2.2</span></div>
+<div class="cell" style="left:295.7px;top:401.6px;width:440.1px;height:62.1px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">控制开关置 DOWN 使后缘襟翼至 1 单位，再将臂开关回 OFF，确认</span><span class="word" style="left:5.5px;top:27.3px;font-size:12.8px;line-height:14.2px">PTU 活门开启；</span></div>
+<div class="cell" style="left:212.0px;top:463.7px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">2.3</span></div>
+<div class="cell" style="left:295.7px;top:463.7px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">闭合 P6-2 A15/C01081 和 P6-3 C16/C01356，确认活门关闭；</span></div>
+<div class="cell" style="left:212.0px;top:503.6px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">2.4</span></div>
+<div class="cell" style="left:295.7px;top:503.6px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">断开 P6-2 A16/C01085，确认活门保持关闭；</span></div>
+<div class="cell" style="left:212.0px;top:543.4px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">2.5</span></div>
+<div class="cell" style="left:295.7px;top:543.4px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">断开 P6-3 C15/C01355，确认活门开启；</span></div>
+<div class="cell" style="left:212.0px;top:583.2px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">2.6</span></div>
+<div class="cell" style="left:295.7px;top:583.2px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">闭合 C15/C01355，确认活门关闭；</span></div>
+<div class="cell" style="left:212.0px;top:623.0px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">2.7</span></div>
+<div class="cell" style="left:295.7px;top:623.0px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">增压油箱（TASK 29-09-00-860-801）；</span></div>
+<div class="cell" style="left:212.0px;top:662.9px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">2.8</span></div>
+<div class="cell" style="left:295.7px;top:662.9px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">用 EDP 或地面车给 A 系统供压至 3000 psig，确认 PTU 不工作；</span></div>
+<div class="cell" style="left:212.0px;top:702.7px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">2.9</span></div>
+<div class="cell" style="left:295.7px;top:702.7px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">闭合 A16/C01085；</span></div>
+<div class="cell" style="left:212.0px;top:742.5px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">2.10</span></div>
+<div class="cell" style="left:295.7px;top:742.5px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">断开 A15/C01081 和 C16/C01356，确认 PTU 约 0.5 秒后启动；</span></div>
+<div class="cell" style="left:212.0px;top:782.3px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">2.11</span></div>
+<div class="cell" style="left:295.7px;top:782.3px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">轮挡就位后进入空中模式（TASK 32-09-00-860-801）；</span></div>
+<div class="cell" style="left:212.0px;top:822.2px;width:83.7px;height:62.1px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">2.12</span></div>
+<div class="cell" style="left:295.7px;top:822.2px;width:440.1px;height:62.1px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">左 AOA 逆时针转动使前缘缝翼全伸，用秒表 STD-1139 确认时间 ≤</span><span class="word" style="left:5.5px;top:27.3px;font-size:12.8px;line-height:14.2px">4 秒；</span></div>
+<div class="cell" style="left:212.0px;top:884.3px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">2.13</span></div>
+<div class="cell" style="left:295.7px;top:884.3px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">AOA 回零；</span></div>
+<div class="cell" style="left:212.0px;top:924.1px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">2.14</span></div>
+<div class="cell" style="left:295.7px;top:924.1px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">返回地面模式；</span></div>
+<div class="cell page-text" style="left:0.0px;top:0.0px;width:803.6px;height:1136.6px"><span class="word" style="left:338.5px;top:57.4px;font-size:20.7px;line-height:23.0px">装配指令 AO</span><span class="word" style="left:58.1px;top:102.2px;font-size:11.5px;line-height:12.8px">气源与液压系统</span><span class="word" style="left:58.1px;top:129.2px;font-size:10.9px;line-height:12.2px">模拟排版数据 · 非实际作业依据</span><span class="word" style="left:591.0px;top:1063.4px;font-size:10.9px;line-height:12.2px">第 5 页 / 共 7 页</span></div>
+</div></section>
+<details class="debug"><summary>按闭合矩形提取的文本顺序（含页面兜底框）</summary>
+<pre>[1] ********工作内容********
+[2] 工种
+[3] 序号
+[4] 工序内容
+[5] 模拟工种
+[6] 50
+[7] 项目名称：动力转换组件（PTU）系统测试
+项目编码：TASK 29-22-00-730-801
+原文 2. 测试：
+[8] 序号
+[9] 项目内容
+[10] 2.1
+[11] 将 ALTERNATE FLAPS 臂开关置 ARM；
+[12] 2.2
+[13] 控制开关置 DOWN 使后缘襟翼至 1 单位，再将臂开关回 OFF，确认
+PTU 活门开启；
+[14] 2.3
+[15] 闭合 P6-2 A15/C01081 和 P6-3 C16/C01356，确认活门关闭；
+[16] 2.4
+[17] 断开 P6-2 A16/C01085，确认活门保持关闭；
+[18] 2.5
+[19] 断开 P6-3 C15/C01355，确认活门开启；
+[20] 2.6
+[21] 闭合 C15/C01355，确认活门关闭；
+[22] 2.7
+[23] 增压油箱（TASK 29-09-00-860-801）；
+[24] 2.8
+[25] 用 EDP 或地面车给 A 系统供压至 3000 psig，确认 PTU 不工作；
+[26] 2.9
+[27] 闭合 A16/C01085；
+[28] 2.10
+[29] 断开 A15/C01081 和 C16/C01356，确认 PTU 约 0.5 秒后启动；
+[30] 2.11
+[31] 轮挡就位后进入空中模式（TASK 32-09-00-860-801）；
+[32] 2.12
+[33] 左 AOA 逆时针转动使前缘缝翼全伸，用秒表 STD-1139 确认时间 ≤
+4 秒；
+[34] 2.13
+[35] AOA 回零；
+[36] 2.14
+[37] 返回地面模式；
+[38] 装配指令 AO
+气源与液压系统
+模拟排版数据 · 非实际作业依据
+第 5 页 / 共 7 页</pre></details>
+<section class="page" data-page="6" style="width:803.6px;height:1136.6px">
+<div class="page-label">第 6 页 · edges=22 · corners=47 · cells=25</div>
+<div class="canvas">
+<i class="rule h" style="left:58.1px;top:167.4px;width:687.2px"></i>
+<i class="rule h" style="left:58.1px;top:198.5px;width:687.2px"></i>
+<i class="rule h" style="left:58.1px;top:232.2px;width:687.2px"></i>
+<i class="rule h" style="left:212.0px;top:241.7px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:281.5px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:343.6px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:383.4px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:423.2px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:463.1px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:502.9px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:542.7px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:582.5px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:622.4px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:684.5px;width:523.8px"></i>
+<i class="rule h" style="left:58.1px;top:1004.4px;width:687.2px"></i>
+<i class="rule v" style="left:58.1px;top:167.4px;height:837.0px"></i>
+<i class="rule v" style="left:129.6px;top:198.5px;height:806.0px"></i>
+<i class="rule v" style="left:202.5px;top:198.5px;height:806.0px"></i>
+<i class="rule v" style="left:212.0px;top:241.7px;height:442.8px"></i>
+<i class="rule v" style="left:295.8px;top:241.7px;height:442.8px"></i>
+<i class="rule v" style="left:735.8px;top:241.7px;height:442.8px"></i>
+<i class="rule v" style="left:745.2px;top:167.4px;height:837.0px"></i>
+<div class="cell" style="left:58.1px;top:167.4px;width:687.2px;height:31.1px"><span class="word" style="left:254.5px;top:6.3px;font-size:13.4px;line-height:14.9px">********工作内容********</span></div>
+<div class="cell" style="left:58.1px;top:198.5px;width:71.6px;height:33.8px"><span class="word" style="left:6.8px;top:7.7px;font-size:12.8px;line-height:14.2px">工种</span></div>
+<div class="cell" style="left:129.6px;top:198.5px;width:72.9px;height:33.8px"><span class="word" style="left:6.8px;top:7.7px;font-size:12.8px;line-height:14.2px">序号</span></div>
+<div class="cell" style="left:202.5px;top:198.5px;width:542.7px;height:33.8px"><span class="word" style="left:6.8px;top:7.7px;font-size:12.8px;line-height:14.2px">工序内容</span></div>
+<div class="cell" style="left:212.0px;top:241.7px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">序号</span></div>
+<div class="cell" style="left:295.7px;top:241.7px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">项目内容</span></div>
+<div class="cell" style="left:212.0px;top:281.5px;width:83.7px;height:62.1px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">2.15</span></div>
+<div class="cell" style="left:295.7px;top:281.5px;width:440.1px;height:62.1px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">臂开关置 ARM，控制开关置 UP 收后缘襟翼，再回 OFF，确认 PTU</span><span class="word" style="left:5.5px;top:27.3px;font-size:12.8px;line-height:14.2px">活门保持关闭；</span></div>
+<div class="cell" style="left:212.0px;top:343.6px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">2.16</span></div>
+<div class="cell" style="left:295.7px;top:343.6px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">臂开关回 OFF；</span></div>
+<div class="cell" style="left:212.0px;top:383.4px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">2.17</span></div>
+<div class="cell" style="left:295.7px;top:383.4px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">切断 A 系统液压；</span></div>
+<div class="cell" style="left:212.0px;top:423.2px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">2.18</span></div>
+<div class="cell" style="left:295.7px;top:423.2px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">襟翼手柄置 1 单位；</span></div>
+<div class="cell" style="left:212.0px;top:463.1px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">2.19</span></div>
+<div class="cell" style="left:295.7px;top:463.1px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">用 B 系统 EDP 供压验证低压电门；</span></div>
+<div class="cell" style="left:212.0px;top:502.9px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">2.20</span></div>
+<div class="cell" style="left:295.7px;top:502.9px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">切断 B 系统液压；</span></div>
+<div class="cell" style="left:212.0px;top:542.7px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">2.21</span></div>
+<div class="cell" style="left:295.7px;top:542.7px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">断开 P6-3 C15/C01355；</span></div>
+<div class="cell" style="left:212.0px;top:582.5px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">2.22</span></div>
+<div class="cell" style="left:295.7px;top:582.5px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">蹬舵使 A、B 系统压力 &lt;200 psig，确认 PTU 活门开启；</span></div>
+<div class="cell" style="left:212.0px;top:622.4px;width:83.7px;height:62.1px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">2.23</span></div>
+<div class="cell" style="left:295.7px;top:622.4px;width:440.1px;height:62.1px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">用 EMDP 或地面车给 B 系统供压，确认 PTU 不工作且 A 系统压力</span><span class="word" style="left:5.5px;top:27.3px;font-size:12.8px;line-height:14.2px">不升；若异常则更换 PTU、单向活门及滤芯。</span></div>
+<div class="cell page-text" style="left:0.0px;top:0.0px;width:803.6px;height:1136.6px"><span class="word" style="left:338.5px;top:57.4px;font-size:20.7px;line-height:23.0px">装配指令 AO</span><span class="word" style="left:58.1px;top:102.2px;font-size:11.5px;line-height:12.8px">气源与液压系统</span><span class="word" style="left:58.1px;top:129.2px;font-size:10.9px;line-height:12.2px">模拟排版数据 · 非实际作业依据</span><span class="word" style="left:58.1px;top:1024.3px;font-size:10.3px;line-height:11.5px">版式延续；同列空序号继承上页</span><span class="word" style="left:591.0px;top:1063.4px;font-size:10.9px;line-height:12.2px">第 6 页 / 共 7 页</span></div>
+</div></section>
+<details class="debug"><summary>按闭合矩形提取的文本顺序（含页面兜底框）</summary>
+<pre>[1] ********工作内容********
+[2] 工种
+[3] 序号
+[4] 工序内容
+[5] 序号
+[6] 项目内容
+[7] 2.15
+[8] 臂开关置 ARM，控制开关置 UP 收后缘襟翼，再回 OFF，确认 PTU
+活门保持关闭；
+[9] 2.16
+[10] 臂开关回 OFF；
+[11] 2.17
+[12] 切断 A 系统液压；
+[13] 2.18
+[14] 襟翼手柄置 1 单位；
+[15] 2.19
+[16] 用 B 系统 EDP 供压验证低压电门；
+[17] 2.20
+[18] 切断 B 系统液压；
+[19] 2.21
+[20] 断开 P6-3 C15/C01355；
+[21] 2.22
+[22] 蹬舵使 A、B 系统压力 &lt;200 psig，确认 PTU 活门开启；
+[23] 2.23
+[24] 用 EMDP 或地面车给 B 系统供压，确认 PTU 不工作且 A 系统压力
+不升；若异常则更换 PTU、单向活门及滤芯。
+[25] 装配指令 AO
+气源与液压系统
+模拟排版数据 · 非实际作业依据
+版式延续；同列空序号继承上页
+第 6 页 / 共 7 页</pre></details>
+<section class="page" data-page="7" style="width:803.6px;height:1136.6px">
+<div class="page-label">第 7 页 · edges=8 · corners=14 · cells=8</div>
+<div class="canvas">
+<i class="rule h" style="left:58.1px;top:167.4px;width:687.2px"></i>
+<i class="rule h" style="left:58.1px;top:198.5px;width:687.2px"></i>
+<i class="rule h" style="left:58.1px;top:232.2px;width:687.2px"></i>
+<i class="rule h" style="left:58.1px;top:1004.4px;width:687.2px"></i>
+<i class="rule v" style="left:58.1px;top:167.4px;height:837.0px"></i>
+<i class="rule v" style="left:129.6px;top:198.5px;height:806.0px"></i>
+<i class="rule v" style="left:202.5px;top:198.5px;height:806.0px"></i>
+<i class="rule v" style="left:745.2px;top:167.4px;height:837.0px"></i>
+<div class="cell" style="left:58.1px;top:167.4px;width:687.2px;height:31.1px"><span class="word" style="left:254.5px;top:6.3px;font-size:13.4px;line-height:14.9px">********工作内容********</span></div>
+<div class="cell" style="left:58.1px;top:198.5px;width:71.6px;height:33.8px"><span class="word" style="left:6.8px;top:7.7px;font-size:12.8px;line-height:14.2px">工种</span></div>
+<div class="cell" style="left:129.6px;top:198.5px;width:72.9px;height:33.8px"><span class="word" style="left:6.8px;top:7.7px;font-size:12.8px;line-height:14.2px">序号</span></div>
+<div class="cell" style="left:202.5px;top:198.5px;width:542.7px;height:33.8px"><span class="word" style="left:6.8px;top:7.7px;font-size:12.8px;line-height:14.2px">工序内容</span></div>
+<div class="cell" style="left:58.1px;top:232.2px;width:71.6px;height:772.2px"><span class="word" style="left:6.8px;top:9.1px;font-size:11.2px;line-height:12.4px">模拟工种</span></div>
+<div class="cell" style="left:129.6px;top:232.2px;width:72.9px;height:772.2px"><span class="word" style="left:6.8px;top:9.1px;font-size:11.2px;line-height:12.4px">60</span></div>
+<div class="cell" style="left:202.5px;top:232.2px;width:542.7px;height:772.2px"><span class="word" style="left:9.5px;top:9.0px;font-size:12.8px;line-height:14.2px">项目名称：动力转换组件（PTU）系统测试</span><span class="word" style="left:9.5px;top:31.3px;font-size:12.8px;line-height:14.2px">项目编码：TASK 29-22-00-730-801</span><span class="word" style="left:9.5px;top:60.3px;font-size:12.8px;line-height:14.2px">原文 3. 恢复：襟翼手柄回 UP；切断 B 系统液压；闭合所有跳开关。</span></div>
+<div class="cell page-text" style="left:0.0px;top:0.0px;width:803.6px;height:1136.6px"><span class="word" style="left:338.5px;top:57.4px;font-size:20.7px;line-height:23.0px">装配指令 AO</span><span class="word" style="left:58.1px;top:102.2px;font-size:11.5px;line-height:12.8px">气源与液压系统</span><span class="word" style="left:58.1px;top:129.2px;font-size:10.9px;line-height:12.2px">模拟排版数据 · 非实际作业依据</span><span class="word" style="left:591.0px;top:1063.4px;font-size:10.9px;line-height:12.2px">第 7 页 / 共 7 页</span></div>
+</div></section>
+<details class="debug"><summary>按闭合矩形提取的文本顺序（含页面兜底框）</summary>
+<pre>[1] ********工作内容********
+[2] 工种
+[3] 序号
+[4] 工序内容
+[5] 模拟工种
+[6] 60
+[7] 项目名称：动力转换组件（PTU）系统测试
+项目编码：TASK 29-22-00-730-801
+原文 3. 恢复：襟翼手柄回 UP；切断 B 系统液压；闭合所有跳开关。
+[8] 装配指令 AO
+气源与液压系统
+模拟排版数据 · 非实际作业依据
+第 7 页 / 共 7 页</pre></details></body></html>

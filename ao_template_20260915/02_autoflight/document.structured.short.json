@@ -1,0 +1,1067 @@
+{
+  "format": "ao-structured-v3-reading-order",
+  "selection": {
+    "headers": "工种,序号,工序内容",
+    "matched_tables": 6,
+    "geometry_only": true
+  },
+  "images": [],
+  "tables": [
+    {
+      "page": 1,
+      "title": "",
+      "headers": [
+        "工种",
+        "序号",
+        "工序内容"
+      ],
+      "rows": [
+        [
+          {
+            "row": 1,
+            "column": 0,
+            "colspan": 1,
+            "content": [
+              {
+                "text": "模拟工种"
+              }
+            ]
+          },
+          {
+            "row": 1,
+            "column": 1,
+            "colspan": 1,
+            "content": [
+              {
+                "text": "10"
+              }
+            ]
+          },
+          {
+            "row": 1,
+            "column": 2,
+            "colspan": 1,
+            "nested_tables": [
+              {
+                "page": 1,
+                "title": "",
+                "headers": [
+                  "序号",
+                  "项目内容"
+                ],
+                "rows": [
+                  [
+                    {
+                      "row": 1,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "3.1"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 1,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "P18-1面板D1 C01049 AFCS SYS A WARN LIGHT (BAT)"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 2,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "3.2"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 2,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "P6-1面板A12 C01375 RADIO NAVIGATION VOR 2"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 3,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "3.3"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 3,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "P6-3面板D18 C00451 LANDING GEAR AURAL WARN"
+                        }
+                      ]
+                    }
+                  ]
+                ]
+              }
+            ],
+            "content": [
+              {
+                "text": "项目名称：维护监控测试\n项目编码：TASK 22-11-00-740-813\n原文 1. 执行供电任务 TASK 24-22-00-860-811。\n原文 2. 将P5后顶板上的左右IRS选择开关置于NAV位。\n原文 3. 确认以下跳开关已闭合：\n原文 4. 警告：人员和设备远离飞行操纵面。供液压时副翼、升降舵、方向舵、襟\n翼、缝翼、扰流板、安定面和前起落架可能突然移动，造成伤害或损坏。\n原文 5. 对液压系统A和B供压（执行TASK 29-11-00-860-801）。"
+              }
+            ]
+          }
+        ]
+      ]
+    },
+    {
+      "page": 2,
+      "title": "",
+      "headers": [
+        "工种",
+        "序号",
+        "工序内容"
+      ],
+      "rows": [
+        [
+          {
+            "row": 1,
+            "column": 0,
+            "colspan": 1,
+            "content": [
+              {
+                "text": "模拟工种"
+              }
+            ]
+          },
+          {
+            "row": 1,
+            "column": 1,
+            "colspan": 1,
+            "content": [
+              {
+                "text": "20"
+              }
+            ]
+          },
+          {
+            "row": 1,
+            "column": 2,
+            "colspan": 1,
+            "nested_tables": [
+              {
+                "page": 2,
+                "title": "",
+                "headers": [
+                  "序号",
+                  "项目内容"
+                ],
+                "rows": [
+                  [
+                    {
+                      "row": 1,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "6.1"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 1,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "断开并挂牌P6-3面板D1 C01399 PSEU PRI和D2 C01400 PSEU ALTN；"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 2,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "6.2"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 2,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "等待5秒后按MCP上A/P接通电门使A通道进入CMD模式；"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 3,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "6.3"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 3,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "按ALT HOLD和HDG SEL按钮，打开机长F/D开关；"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 4,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "6.4"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 4,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "确认F/D杆保持显示且A/P保持接通；"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 5,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "6.5"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 5,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "断开P18-1面板C5 C01041 AFCS SYS A SNSR EXC AC，确认A/P断开、\nASA红灯闪亮并有音响警告；"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 6,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "6.6"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 6,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "按断开电门复位，确认红灯熄灭、警告停止；"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 7,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "6.7"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 7,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "闭合C5 C01041，等待5秒后关闭机长F/D；"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 8,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "6.8"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 8,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "接通B通道A/P，重复类似步骤验证B通道；"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 9,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "6.9"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 9,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "移除挂牌并闭合相关跳开关，等待20秒。"
+                        }
+                      ]
+                    }
+                  ]
+                ]
+              }
+            ],
+            "content": [
+              {
+                "text": "项目名称：维护监控测试\n项目编码：TASK 22-11-00-740-813\n原文 6. 执行自动驾驶接通/断开测试：\n原文 7. 在CDU上依次选择INIT REF → INDEX → MAINT → DFCS → FAULT REVIEW\n→ FAULT HISTORY SORTED BY FLIGHT LEG → CHANNEL A/B → LEG 01，确认显示\n对应故障记录。\n原文 8. 执行安定面配平切断测试并验证A/P无法接通及警告功能。\n原文 9. 验证MCP直流电源：分别断开P6-2 C3 C01047和P18-1 D5 C01044，确认A/P\n断开及警告。"
+              }
+            ]
+          }
+        ]
+      ]
+    },
+    {
+      "page": 3,
+      "title": "",
+      "headers": [
+        "工种",
+        "序号",
+        "工序内容"
+      ],
+      "rows": [
+        [
+          {
+            "row": 1,
+            "column": 0,
+            "colspan": 1,
+            "content": [
+              {
+                "text": "模拟工种"
+              }
+            ]
+          },
+          {
+            "row": 1,
+            "column": 1,
+            "colspan": 1,
+            "content": [
+              {
+                "text": "30"
+              }
+            ]
+          },
+          {
+            "row": 1,
+            "column": 2,
+            "colspan": 1,
+            "content": [
+              {
+                "text": "项目名称：维护监控测试\n项目编码：TASK 22-11-00-740-813\n原文 10. 在CDU上选择ERASE FAULT HISTORY → CHANNEL A AND B → YES，确认故\n障历史已清除。\n原文 11. 移除液压（执行TASK 29-11-00-860-805）。"
+              }
+            ]
+          }
+        ]
+      ]
+    },
+    {
+      "page": 4,
+      "title": "",
+      "headers": [
+        "工种",
+        "序号",
+        "工序内容"
+      ],
+      "rows": [
+        [
+          {
+            "row": 1,
+            "column": 0,
+            "colspan": 1,
+            "content": [
+              {
+                "text": "模拟工种"
+              }
+            ]
+          },
+          {
+            "row": 1,
+            "column": 1,
+            "colspan": 1,
+            "content": [
+              {
+                "text": "40"
+              }
+            ]
+          },
+          {
+            "row": 1,
+            "column": 2,
+            "colspan": 1,
+            "nested_tables": [
+              {
+                "page": 4,
+                "title": "",
+                "headers": [
+                  "序号",
+                  "项目内容"
+                ],
+                "rows": [
+                  [
+                    {
+                      "row": 1,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "1.1"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 1,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "断开P6-3面板D18位C00451跳开关并挂安全标签。"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 2,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "1.2"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 2,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "将操纵台上的自动驾驶安定面配平切断电门置于CUTOUT位。"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 3,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "1.3"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 3,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "确认P5前顶板VHF NAV和IRS电门在NORMAL位。"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 4,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "1.4"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 4,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "将P5后顶板左右IRS选择电门置于ALIGN或NAV位。"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 5,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "1.5"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 5,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "警告：人员设备远离飞行操纵面！供液压时舵面可能突然移动，造成\n伤害或损坏。"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 6,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "1.6"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 6,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "按TASK 29-11-00-860-801对A、B液压系统增压。"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 7,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "1.7"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 7,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "打开311BL安定面配平接近门。"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 8,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "1.8"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 8,
+                      "column": 1,
+                      "colspan": 1,
+                      "nested_tables": [
+                        {
+                          "page": 4,
+                          "title": "",
+                          "headers": [
+                            "项次",
+                            "操作与检查要求"
+                          ],
+                          "rows": [
+                            [
+                              {
+                                "row": 1,
+                                "column": 0,
+                                "colspan": 1,
+                                "content": [
+                                  {
+                                    "text": "a)"
+                                  }
+                                ]
+                              },
+                              {
+                                "row": 1,
+                                "column": 1,
+                                "colspan": 1,
+                                "content": [
+                                  {
+                                    "text": "转动操纵台配平手轮；"
+                                  }
+                                ]
+                              }
+                            ],
+                            [
+                              {
+                                "row": 2,
+                                "column": 0,
+                                "colspan": 1,
+                                "content": [
+                                  {
+                                    "text": "b)"
+                                  }
+                                ]
+                              },
+                              {
+                                "row": 2,
+                                "column": 1,
+                                "colspan": 1,
+                                "content": [
+                                  {
+                                    "text": "使用SPL-1677量规测量；"
+                                  }
+                                ]
+                              }
+                            ],
+                            [
+                              {
+                                "row": 3,
+                                "column": 0,
+                                "colspan": 1,
+                                "content": [
+                                  {
+                                    "text": "c)"
+                                  }
+                                ]
+                              },
+                              {
+                                "row": 3,
+                                "column": 1,
+                                "colspan": 1,
+                                "content": [
+                                  {
+                                    "text": "确保B尺寸为39.89±0.01英寸。"
+                                  }
+                                ]
+                              }
+                            ]
+                          ]
+                        }
+                      ],
+                      "content": [
+                        {
+                          "text": "设置B尺寸（图502）："
+                        }
+                      ]
+                    }
+                  ]
+                ]
+              }
+            ],
+            "content": [
+              {
+                "text": "项目名称：马赫配平校装测试\n项目编码：TASK 22-11-00-820-808\n原文 1. 准备测试："
+              }
+            ]
+          }
+        ]
+      ]
+    },
+    {
+      "page": 5,
+      "title": "",
+      "headers": [
+        "工种",
+        "序号",
+        "工序内容"
+      ],
+      "rows": [
+        [
+          {
+            "row": 1,
+            "column": 0,
+            "colspan": 1,
+            "content": [
+              {
+                "text": "模拟工种"
+              }
+            ]
+          },
+          {
+            "row": 1,
+            "column": 1,
+            "colspan": 1,
+            "content": [
+              {
+                "text": "50"
+              }
+            ]
+          },
+          {
+            "row": 1,
+            "column": 2,
+            "colspan": 1,
+            "nested_tables": [
+              {
+                "page": 5,
+                "title": "",
+                "headers": [
+                  "序号",
+                  "项目内容"
+                ],
+                "rows": [
+                  [
+                    {
+                      "row": 1,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "2.1"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 1,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "在CDU按INIT REF键，依次选择INDEX→MAINT→DFCS→EXTENDED MAIN\nTENANCE→RIGGING→MACH TRIM→CHANNEL A。"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 2,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "2.2"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 2,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "按CDU提示操作，确认各参数在限值内（如STAB POS: -0.07~0.07\n等）。"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 3,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "2.3"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 3,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "再次测量B尺寸，确保为39.89±0.01英寸。"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 4,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "2.4"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 4,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "测量升降舵后缘偏转距离，应为2.55~3.05英寸。"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 5,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "2.5"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 5,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "完成A通道后，返回选择CHANNEL B，重复上述步骤。"
+                        }
+                      ]
+                    }
+                  ]
+                ]
+              }
+            ],
+            "content": [
+              {
+                "text": "项目名称：马赫配平校装测试\n项目编码：TASK 22-11-00-820-808\n原文 2. 执行测试（适用于FCC软件-704或后续版本）："
+              }
+            ]
+          }
+        ]
+      ]
+    },
+    {
+      "page": 6,
+      "title": "",
+      "headers": [
+        "工种",
+        "序号",
+        "工序内容"
+      ],
+      "rows": [
+        [
+          {
+            "row": 1,
+            "column": 0,
+            "colspan": 1,
+            "content": [
+              {
+                "text": "模拟工种"
+              }
+            ]
+          },
+          {
+            "row": 1,
+            "column": 1,
+            "colspan": 1,
+            "content": [
+              {
+                "text": "60"
+              }
+            ]
+          },
+          {
+            "row": 1,
+            "column": 2,
+            "colspan": 1,
+            "nested_tables": [
+              {
+                "page": 6,
+                "title": "",
+                "headers": [
+                  "序号",
+                  "项目内容"
+                ],
+                "rows": [
+                  [
+                    {
+                      "row": 1,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "3.1"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 1,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "按压任一驾驶盘自动驾驶脱开电门确认脱开。"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 2,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "3.2"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 2,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "取下标签并闭合C00451跳开关。"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 3,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "3.3"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 3,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "将安定面配平切断电门恢复至NORMAL位。"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 4,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "3.4"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 4,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "按TASK 29-11-00-860-805释压液压系统。"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 5,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "3.5"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 5,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "关闭311BL接近门。"
+                        }
+                      ]
+                    }
+                  ]
+                ]
+              }
+            ],
+            "content": [
+              {
+                "text": "项目名称：马赫配平校装测试\n项目编码：TASK 22-11-00-820-808\n原文 3. 恢复飞机状态："
+              }
+            ]
+          }
+        ]
+      ]
+    }
+  ]
+}

@@ -1,0 +1,1515 @@
+{
+  "format": "ao-structured-v3-reading-order",
+  "selection": {
+    "headers": "工种,序号,工序内容",
+    "matched_tables": 6,
+    "geometry_only": true
+  },
+  "images": [],
+  "tables": [
+    {
+      "page": 1,
+      "title": "",
+      "headers": [
+        "工种",
+        "序号",
+        "工序内容"
+      ],
+      "rows": [
+        [
+          {
+            "row": 1,
+            "column": 0,
+            "colspan": 1,
+            "content": [
+              {
+                "text": "模拟工种"
+              }
+            ]
+          },
+          {
+            "row": 1,
+            "column": 1,
+            "colspan": 1,
+            "content": [
+              {
+                "text": "10"
+              }
+            ]
+          },
+          {
+            "row": 1,
+            "column": 2,
+            "colspan": 1,
+            "nested_tables": [
+              {
+                "page": 1,
+                "title": "",
+                "headers": [
+                  "序号",
+                  "项目内容"
+                ],
+                "rows": [
+                  [
+                    {
+                      "row": 1,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "1.1"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 1,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "打开并挂牌：P6-2 A6 C00566 FLIGHT CONTROL FLAP LOAD RELIEF\n（警告：防止舵面意外移动）"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 2,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "1.2"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 2,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "接通外电源（执行 TASK 24-22-00-860-813）"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 3,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "1.3"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 3,
+                      "column": 1,
+                      "colspan": 1,
+                      "nested_tables": [
+                        {
+                          "page": 1,
+                          "title": "",
+                          "headers": [
+                            "项次",
+                            "加压约束"
+                          ],
+                          "rows": [
+                            [
+                              {
+                                "row": 1,
+                                "column": 0,
+                                "colspan": 1,
+                                "content": [
+                                  {
+                                    "text": "1"
+                                  }
+                                ]
+                              },
+                              {
+                                "row": 1,
+                                "column": 1,
+                                "colspan": 1,
+                                "content": [
+                                  {
+                                    "text": "ADIRS 须通电"
+                                  }
+                                ]
+                              }
+                            ],
+                            [
+                              {
+                                "row": 2,
+                                "column": 0,
+                                "colspan": 1,
+                                "content": [
+                                  {
+                                    "text": "2"
+                                  }
+                                ]
+                              },
+                              {
+                                "row": 2,
+                                "column": 1,
+                                "colspan": 1,
+                                "content": [
+                                  {
+                                    "text": "压力变化需受控"
+                                  }
+                                ]
+                              }
+                            ],
+                            [
+                              {
+                                "row": 3,
+                                "column": 0,
+                                "colspan": 1,
+                                "content": [
+                                  {
+                                    "text": "3"
+                                  }
+                                ]
+                              },
+                              {
+                                "row": 3,
+                                "column": 1,
+                                "colspan": 1,
+                                "content": [
+                                  {
+                                    "text": "静压范围 3.26–33.31 in Hg，总压 3.26–41.34 in Hg"
+                                  }
+                                ]
+                              }
+                            ],
+                            [
+                              {
+                                "row": 4,
+                                "column": 0,
+                                "colspan": 1,
+                                "content": [
+                                  {
+                                    "text": "4"
+                                  }
+                                ]
+                              },
+                              {
+                                "row": 4,
+                                "column": 1,
+                                "colspan": 1,
+                                "content": [
+                                  {
+                                    "text": "静压与环境压差 ≤28 in Hg"
+                                  }
+                                ]
+                              }
+                            ],
+                            [
+                              {
+                                "row": 5,
+                                "column": 0,
+                                "colspan": 1,
+                                "content": [
+                                  {
+                                    "text": "5"
+                                  }
+                                ]
+                              },
+                              {
+                                "row": 5,
+                                "column": 1,
+                                "colspan": 1,
+                                "content": [
+                                  {
+                                    "text": "空速/高度变化率分别 <300 kt/min、<5000 ft/min"
+                                  }
+                                ]
+                              }
+                            ],
+                            [
+                              {
+                                "row": 6,
+                                "column": 0,
+                                "colspan": 1,
+                                "content": [
+                                  {
+                                    "text": "6"
+                                  }
+                                ]
+                              },
+                              {
+                                "row": 6,
+                                "column": 1,
+                                "colspan": 1,
+                                "content": [
+                                  {
+                                    "text": "pitot 压 > static 压但差值 ≤10 in Hg"
+                                  }
+                                ]
+                              }
+                            ],
+                            [
+                              {
+                                "row": 7,
+                                "column": 0,
+                                "colspan": 1,
+                                "content": [
+                                  {
+                                    "text": "7"
+                                  }
+                                ]
+                              },
+                              {
+                                "row": 7,
+                                "column": 1,
+                                "colspan": 1,
+                                "content": [
+                                  {
+                                    "text": "自动驾驶关闭"
+                                  }
+                                ]
+                              }
+                            ],
+                            [
+                              {
+                                "row": 8,
+                                "column": 0,
+                                "colspan": 1,
+                                "content": [
+                                  {
+                                    "text": "8"
+                                  }
+                                ]
+                              },
+                              {
+                                "row": 8,
+                                "column": 1,
+                                "colspan": 1,
+                                "content": [
+                                  {
+                                    "text": "探头加热关闭"
+                                  }
+                                ]
+                              }
+                            ]
+                          ]
+                        }
+                      ],
+                      "content": [
+                        {
+                          "text": "遵守皮托管-静压系统加压注意事项："
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 4,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "1.4"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 4,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "ATC 应答机置待命（SIA 702-710：Mode Select 置 STBY；SIA 711-\n714/716-999：Mode Reply 置 STBY）"
+                        }
+                      ]
+                    }
+                  ]
+                ]
+              }
+            ],
+            "content": [
+              {
+                "text": "项目名称：大气数据基准 - 系统测试\n项目编码：TASK 34-21-00-730-802\n原文 1. 准备测试"
+              }
+            ]
+          }
+        ]
+      ]
+    },
+    {
+      "page": 2,
+      "title": "",
+      "headers": [
+        "工种",
+        "序号",
+        "工序内容"
+      ],
+      "rows": [
+        [
+          {
+            "row": 1,
+            "column": 0,
+            "colspan": 1,
+            "content": [
+              {
+                "text": "模拟工种"
+              }
+            ]
+          },
+          {
+            "row": 1,
+            "column": 1,
+            "colspan": 1,
+            "content": [
+              {
+                "text": "20"
+              }
+            ]
+          },
+          {
+            "row": 1,
+            "column": 2,
+            "colspan": 1,
+            "nested_tables": [
+              {
+                "page": 2,
+                "title": "",
+                "headers": [
+                  "序号",
+                  "项目内容"
+                ],
+                "rows": [
+                  [
+                    {
+                      "row": 1,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "2.1"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 1,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "断开客舱压差指示器静压管，调三处 BARO 至 29.92 in Hg"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 2,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "2.2"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 2,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "安装 AOA 测试夹具 SPL-1917，AOA 叶片置 0°±5°"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 3,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "2.3"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 3,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "连接测试设备 COM-1914，按表施加六组静压/总压，稳定 1 分钟后\n读数"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 4,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "2.4"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 4,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "验证主/备用高度、空速在容差内，且机长/副驾间差值符合要求"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 5,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "2.5"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 5,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "卸压、拆设备、恢复管路"
+                        }
+                      ]
+                    }
+                  ]
+                ]
+              },
+              {
+                "page": 2,
+                "title": "",
+                "headers": [
+                  "序号",
+                  "项目内容"
+                ],
+                "rows": [
+                  [
+                    {
+                      "row": 1,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "3.1"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 1,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "用 STD-1336 温度计测 TAT 探头温度，对比发动机显示值（误差 ≤\n2°F）"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 2,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "3.2"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 2,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "按机型要求操作 PROBE HEAT A/B 开关，用数据总线分析仪（COM-15\n62/1579）验证 ADR label 270 相应位状态"
+                        }
+                      ]
+                    }
+                  ]
+                ]
+              },
+              {
+                "page": 2,
+                "title": "",
+                "headers": [
+                  "序号",
+                  "项目内容"
+                ],
+                "rows": [
+                  [
+                    {
+                      "row": 1,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "4.1"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 1,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "AOA 传感器接口与加热测试参见 TASK 34-21-05-730-801"
+                        }
+                      ]
+                    }
+                  ]
+                ]
+              },
+              {
+                "page": 3,
+                "title": "",
+                "headers": [
+                  "序号",
+                  "项目内容"
+                ],
+                "rows": [
+                  [
+                    {
+                      "row": 1,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "4.2"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 1,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "ALTERNATE VMO/MMO 开关测试：在 118 区 EE 舱操作开关，验证 AD\nR label 270 bit 23 状态"
+                        }
+                      ]
+                    }
+                  ]
+                ]
+              }
+            ],
+            "content": [
+              {
+                "text": "项目名称：大气数据基准 - 系统测试\n项目编码：TASK 34-21-00-730-802\n原文 2. ADM 与备用飞行显示器测试\n原文 3. TAT 探头及加热测试\n原文 4. 其他测试"
+              }
+            ]
+          }
+        ]
+      ]
+    },
+    {
+      "page": 4,
+      "title": "",
+      "headers": [
+        "工种",
+        "序号",
+        "工序内容"
+      ],
+      "rows": [
+        [
+          {
+            "row": 1,
+            "column": 0,
+            "colspan": 1,
+            "content": [
+              {
+                "text": "模拟工种"
+              }
+            ]
+          },
+          {
+            "row": 1,
+            "column": 1,
+            "colspan": 1,
+            "content": [
+              {
+                "text": "30"
+              }
+            ]
+          },
+          {
+            "row": 1,
+            "column": 2,
+            "colspan": 1,
+            "nested_tables": [
+              {
+                "page": 4,
+                "title": "",
+                "headers": [
+                  "序号",
+                  "项目内容"
+                ],
+                "rows": [
+                  [
+                    {
+                      "row": 1,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "5.1"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 1,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "闭合 FLAP LOAD RELIEF 跳开关"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 2,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "5.2"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 2,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "ALTERNATE VMO/MMO 开关置 NORM，盖上护盖并用 G01912 锁线保险"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 3,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "5.3"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 3,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "关闭 117A 电子设备舱门。"
+                        }
+                      ]
+                    }
+                  ]
+                ]
+              }
+            ],
+            "content": [
+              {
+                "text": "项目名称：大气数据基准 - 系统测试\n项目编码：TASK 34-21-00-730-802\n原文 5. 恢复飞机状态"
+              }
+            ]
+          }
+        ]
+      ]
+    },
+    {
+      "page": 5,
+      "title": "",
+      "headers": [
+        "工种",
+        "序号",
+        "工序内容"
+      ],
+      "rows": [
+        [
+          {
+            "row": 1,
+            "column": 0,
+            "colspan": 1,
+            "content": [
+              {
+                "text": "模拟工种"
+              }
+            ]
+          },
+          {
+            "row": 1,
+            "column": 1,
+            "colspan": 1,
+            "content": [
+              {
+                "text": "40"
+              }
+            ]
+          },
+          {
+            "row": 1,
+            "column": 2,
+            "colspan": 1,
+            "nested_tables": [
+              {
+                "page": 5,
+                "title": "",
+                "headers": [
+                  "序号",
+                  "项目内容"
+                ],
+                "rows": [
+                  [
+                    {
+                      "row": 1,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "2.1"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 1,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "在罗盘摆动区中心放置非磁三脚架STD-1167。"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 2,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "2.2"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 2,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "从备用罗盘校准器（SCC，套件COM-1925）上拆下磁铁组件和旋钮组\n件。"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 3,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "2.3"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 3,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "将主磁罗盘（可用准确备用罗盘替代）用两颗螺钉装于SCC上，确保N\n-S/E-W调节螺钉处于中立位。"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 4,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "2.4"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 4,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "将SCC/主罗盘组件置于三脚架上并调平。"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 5,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "2.5"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 5,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "转动组件使主罗盘指示磁北（N）。"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 6,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "2.6"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 6,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "重新安装磁铁和旋钮组件。"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 7,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "2.7"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 7,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "调SCC上下刻度盘至索引线显示E，记录主罗盘航向；再调至W，记录\n航向。"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 8,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "2.8"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 8,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "调节SCC磁场抵消（MFCA）螺钉，使E/W方向误差最小化，并反复调整\n至误差最小。"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 9,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "2.9"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 9,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "拆下主罗盘。"
+                        }
+                      ]
+                    }
+                  ]
+                ]
+              }
+            ],
+            "content": [
+              {
+                "text": "项目名称：罗盘校准工具 – 主罗盘选项\n项目编码：TASK 34-23-00-820-801\n原文 1. 使用非磁性工具调整备用磁罗盘。\n原文 2. 校准器调整。"
+              }
+            ]
+          }
+        ]
+      ]
+    },
+    {
+      "page": 6,
+      "title": "",
+      "headers": [
+        "工种",
+        "序号",
+        "工序内容"
+      ],
+      "rows": [
+        [
+          {
+            "row": 1,
+            "column": 0,
+            "colspan": 1,
+            "content": [
+              {
+                "text": "模拟工种"
+              }
+            ]
+          },
+          {
+            "row": 1,
+            "column": 1,
+            "colspan": 1,
+            "content": [
+              {
+                "text": "50"
+              }
+            ]
+          },
+          {
+            "row": 1,
+            "column": 2,
+            "colspan": 1,
+            "nested_tables": [
+              {
+                "page": 6,
+                "title": "",
+                "headers": [
+                  "序号",
+                  "项目内容"
+                ],
+                "rows": [
+                  [
+                    {
+                      "row": 1,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "3.1"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 1,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "将飞机拖至罗盘摆动区（参考TASK 09-11-00-580-801），确保周围2\n20英尺内无其他车辆。"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 2,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "3.2"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 2,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "在起落架空地传感器上安装脱作动器（参考TASK 32-09-00-860-80\n1），使起落架锁电磁阀通电20分钟。"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 3,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "3.3"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 3,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "接通飞行中常用电子设备、无线电及驾驶舱灯光。"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 4,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "3.4"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 4,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "将左EFIS控制面板ND模式选至VOR或ILS位。"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 5,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "3.5"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 5,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "松开支架螺钉，将备用罗盘支架向下倾斜约15°，再拧紧。"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 6,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "3.6"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 6,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "拆下备用罗盘左下和右上安装螺钉，用其将SCC装于罗盘正面。"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 7,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "3.7"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 7,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "断开备用罗盘电连接器。"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 8,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "3.8"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 8,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "调SCC刻度盘至E，记录备用罗盘航向；再调至W，记录航向。"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 9,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "3.9"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 9,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "调E-W螺钉使两次记录误差最小（尽量均分误差）。"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 10,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "3.10"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 10,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "同理调N-S方向（N/S航向），调N-S螺钉使误差最小。"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 11,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "3.11"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 11,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "反复调整E-W/N-S螺钉，直至各方向误差最小。"
+                        }
+                      ]
+                    }
+                  ]
+                ]
+              }
+            ],
+            "content": [
+              {
+                "text": "项目名称：罗盘校准工具 – 主罗盘选项\n项目编码：TASK 34-23-00-820-801\n原文 3. 四点校准摆动程序。"
+              }
+            ]
+          }
+        ]
+      ]
+    },
+    {
+      "page": 7,
+      "title": "",
+      "headers": [
+        "工种",
+        "序号",
+        "工序内容"
+      ],
+      "rows": [
+        [
+          {
+            "row": 1,
+            "column": 0,
+            "colspan": 1,
+            "content": [
+              {
+                "text": "模拟工种"
+              }
+            ]
+          },
+          {
+            "row": 1,
+            "column": 1,
+            "colspan": 1,
+            "content": [
+              {
+                "text": "60"
+              }
+            ]
+          },
+          {
+            "row": 1,
+            "column": 2,
+            "colspan": 1,
+            "nested_tables": [
+              {
+                "page": 7,
+                "title": "",
+                "headers": [
+                  "序号",
+                  "项目内容"
+                ],
+                "rows": [
+                  [
+                    {
+                      "row": 1,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "4.1"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 1,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "在摆动区中心，依次将SCC调至0,30,…,330°磁航向。"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 2,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "4.2"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 2,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "记录各30°间隔的磁航向（MH）与备用罗盘航向（CH）。"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 3,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "4.3"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 3,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "将CH填入修正卡STEER栏（STEER = MH - D；000°时特殊处理）。"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 4,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "4.4"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 4,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "若剩余偏差超±5°，重复四点校准或执行FIM 34-23 TASK 801。"
+                        }
+                      ]
+                    }
+                  ]
+                ]
+              },
+              {
+                "page": 7,
+                "title": "",
+                "headers": [
+                  "序号",
+                  "项目内容"
+                ],
+                "rows": [
+                  [
+                    {
+                      "row": 1,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "5.1"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 1,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "重连电连接器。"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 2,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "5.2"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 2,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "拆下SCC，装回备用罗盘原螺钉。"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 3,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "5.3"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 3,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "将支架复位并拧紧螺钉。"
+                        }
+                      ]
+                    }
+                  ]
+                ]
+              }
+            ],
+            "content": [
+              {
+                "text": "项目名称：罗盘校准工具 – 主罗盘选项\n项目编码：TASK 34-23-00-820-801\n原文 4. 十二点精度摆动程序。\n原文 5. 恢复飞机状态。"
+              }
+            ]
+          }
+        ]
+      ]
+    }
+  ]
+}

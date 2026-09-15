@@ -1,0 +1,80 @@
+{
+  "examples": [
+    {
+      "directory": "01_flight_control",
+      "title": "飞行操纵系统",
+      "source_ids": [
+        2424
+      ],
+      "pages": 6,
+      "tables": 3
+    },
+    {
+      "directory": "02_autoflight",
+      "title": "自动飞行系统",
+      "source_ids": [
+        1151,
+        1161
+      ],
+      "pages": 6,
+      "tables": 6
+    },
+    {
+      "directory": "03_communication",
+      "title": "通信与客舱控制",
+      "source_ids": [
+        1371,
+        1423
+      ],
+      "pages": 6,
+      "tables": 6
+    },
+    {
+      "directory": "04_airdata_compass",
+      "title": "大气数据与罗盘",
+      "source_ids": [
+        4153,
+        4176
+      ],
+      "pages": 7,
+      "tables": 6
+    },
+    {
+      "directory": "05_pneumatic_hydraulic",
+      "title": "气源与液压系统",
+      "source_ids": [
+        4492,
+        3196
+      ],
+      "pages": 7,
+      "tables": 6
+    }
+  ],
+  "template_pages": 3,
+  "rejected": [
+    {
+      "id": 2401,
+      "reason": "早期排版中与2424组合超过10页；最终2424单独6页已足够，故不合并"
+    },
+    {
+      "id": 1165,
+      "reason": "完整备选；1161编号和测量结构更便于展示"
+    },
+    {
+      "id": 1192,
+      "reason": "完整备选；和所选自动飞行样例重复"
+    },
+    {
+      "id": 1171,
+      "reason": "结尾截断：2)取下"
+    },
+    {
+      "id": 1954,
+      "reason": "结尾截断：执行TAS"
+    },
+    {
+      "id": 1461,
+      "reason": "结尾完整性存疑，不选用"
+    }
+  ]
+}

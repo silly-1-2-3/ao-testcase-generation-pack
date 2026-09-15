@@ -1,0 +1,12 @@
+[
+  {
+    "id": 1371,
+    "source": "23",
+    "content": "项目名称：ACARS - 系统测试, 项目编码：TASK 23-27-00-730-806-010\n1. 执行供电任务（TASK 24-22-00-860-811）。\n2. 将机长时钟设为当前格林尼治标准时间（GMT）。\n3. 确认以下系统可用： 1) 甚高频（VHF）通信系统（TASK 23-12-00-730-801）； 2) 飞行数据记录器（FDR）系统（TASK 31-31-00-730-801）； 3) 停留刹车系统（TASK 32-44-00-710-801）； 4) 飞行管理计算机（FMC）系统（TASK 34-61-00-730-801）； 5) 旅客舱门系统（TASK 52-11-00-700-804）； 6) 后登机门系统（TASK 52-13-00-700-805）； 7) 货舱门系统（TASK 52-31-00-700-801）。\n4. 执行ACARS操作测试（TASK 23-27-00-740-816-010）。\n5. 执行ACARS飞机个性模块（APM）数据验证检查（TASK 23-27-35-700-801）。\n6. 初始化与打印测试： 1) 在两个CDU上按MENU键； 2) 按<ACARS旁的LSK，确认显示ACARS-APPLICATION MENU； 3) 进入TECHNICAL>菜单，再进入SYSTEM CONFIG页，核对软硬件件号； 4) 按*PRINT旁LSK，确认打印机输出信息。\n7. VHF链路测试： 1) 在RTP-1/2/3上选择VHF-3，确认ACTIVE窗显示“ACARS”或“DATA”； 2) 进入LINK STATUS页，确认频率及AOA COMM（或POA COMM）状态； 3) 执行VHF链路测试，确认显示“LINK TEST SUCCESSFUL”。\n8. 外设测试：确认各外设在PERIPHERALS页显示PRESENT且STAT为OK。\n9. OOOI传感器测试：依次开关各舱门、货舱门及EE舱门，确认状态变化；操作停留刹车及起落架模拟空/地模式，确认状态正确。\n10. 将ACARS燃油单位由磅（LBS）改为公斤（KGS）。\n11. 断电（TASK 24-22-00-860-812）。"
+  },
+  {
+    "id": 1423,
+    "source": "23",
+    "content": "项目名称：乘务员控制面板操作测试，项目编码：TASK 23-42-03-710-801。1. 执行ACP上电测试（SUBTASK 23-42-03-700-004）：1) 断开P6-1板D12位C01936号断路器“ATTENDANT PANELS”，再闭合；2) 检查集成开关组件（ISA）左上角LED：应在上电后2秒内点亮并熄灭；若未点亮，参考FIM 23-42 TASK 841；若持续点亮，参考FIM 23-42 TASK 839；3) 检查ACP触摸屏是否响应触控输入，若无响应，参考FIM 23-42 TASK 840。2. 执行客舱内话系统测试（SUBTASK 23-42-03-710-003）：执行TASK 23-42-00-710-803。3. 若更换前ACP，执行PC电源系统测试（SUBTASK 23-42-03-710-005）：执行TASK 23-81-00-710-803。4. 若更换前ACP，执行IFE系统测试（SUBTASK 23-42-03-710-006）：执行TASK 44-21-00-440-802和TASK 44-21-00-700-803。5. 若更换后ACP，执行水/废物系统测试（SUBTASK 23-42-03-710-007/009）：在后ACP选择ENVIRONMENT菜单，确认显示Potable Water、Vacuum Waste、LAV INOP及Clean Check Sensors（如适用），并显示实际液位；进入MAINTENANCE菜单，确认相关按钮存在且LAV INOP指示灯非橙色。6. 若更换前ACP且飞机装有OPS P/N 2316-BPS-03P-05，执行水/废物系统测试（SUBTASK 23-42-03-710-010）：在前ACP选择MAINTENANCE菜单→Vacuum Waste，确认Control Window显示LAV INOP Test，Status window显示LAV INOP和Clean Check Sensors按钮，且LAV INOP指示灯非橙色。7. 执行厕所烟雾探测测试（SUBTASK 23-42-03-710-008）：执行TASK 26-14-00-710-802。"
+  }
+]

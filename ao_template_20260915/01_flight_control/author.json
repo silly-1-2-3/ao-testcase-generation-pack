@@ -1,0 +1,873 @@
+[
+  {
+    "work_type": "模拟工种",
+    "index": "10",
+    "blocks": [
+      {
+        "kind": "text",
+        "text": "项目名称：后缘襟翼卸载系统功能测试\n项目编码：TASK 27-51-00-720-804"
+      },
+      {
+        "kind": "text",
+        "text": "原文 1. 准备测试："
+      },
+      {
+        "kind": "table",
+        "headers": [
+          "序号",
+          "项目内容"
+        ],
+        "rows": [
+          [
+            [
+              {
+                "kind": "text",
+                "text": "1.1"
+              }
+            ],
+            [
+              {
+                "kind": "text",
+                "text": "接通B液压系统压力，执行TASK 29-11-00-860-801；"
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "kind": "text",
+                "text": "1.2"
+              }
+            ],
+            [
+              {
+                "kind": "text",
+                "text": "打开电子设备接近门117A；注意：确保人员设备远离飞行操纵面等。"
+              }
+            ]
+          ]
+        ],
+        "widths": [
+          0.16,
+          0.84
+        ]
+      }
+    ],
+    "source_id": 2424,
+    "source_items": [
+      1
+    ]
+  },
+  {
+    "work_type": "模拟工种",
+    "index": "20",
+    "blocks": [
+      {
+        "kind": "text",
+        "text": "项目名称：后缘襟翼卸载系统功能测试\n项目编码：TASK 27-51-00-720-804"
+      },
+      {
+        "kind": "text",
+        "text": "原文 2. 功能测试："
+      },
+      {
+        "kind": "table",
+        "headers": [
+          "序号",
+          "项目内容"
+        ],
+        "rows": [
+          [
+            [
+              {
+                "kind": "text",
+                "text": "2.1"
+              }
+            ],
+            [
+              {
+                "kind": "text",
+                "text": "按FSEU前面板ON/OFF按钮开启显示；"
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "kind": "text",
+                "text": "2.2"
+              }
+            ],
+            [
+              {
+                "kind": "text",
+                "text": "执行卸载系统BITE测试："
+              },
+              {
+                "kind": "table",
+                "headers": [
+                  "项次",
+                  "操作与检查要求"
+                ],
+                "rows": [
+                  [
+                    [
+                      {
+                        "kind": "text",
+                        "text": "a)"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "text",
+                        "text": "按下箭头至显示GROUND TESTS?；"
+                      }
+                    ]
+                  ],
+                  [
+                    [
+                      {
+                        "kind": "text",
+                        "text": "b)"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "text",
+                        "text": "按YES选择；"
+                      }
+                    ]
+                  ],
+                  [
+                    [
+                      {
+                        "kind": "text",
+                        "text": "c)"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "text",
+                        "text": "按下箭头至TE FLAP LD REL?；"
+                      }
+                    ]
+                  ],
+                  [
+                    [
+                      {
+                        "kind": "text",
+                        "text": "d)"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "text",
+                        "text": "按YES选择；"
+                      }
+                    ]
+                  ],
+                  [
+                    [
+                      {
+                        "kind": "text",
+                        "text": "e)"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "text",
+                        "text": "按FSEU提示操作，确认P3-1面板FLAP LOAD RELIEF灯亮，且最终显示TEST PASSED；"
+                      }
+                    ]
+                  ]
+                ],
+                "widths": [
+                  0.14,
+                  0.86
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "kind": "text",
+                "text": "2.3"
+              }
+            ],
+            [
+              {
+                "kind": "text",
+                "text": "关闭FSEU显示；"
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "kind": "text",
+                "text": "2.4"
+              }
+            ],
+            [
+              {
+                "kind": "text",
+                "text": "断开以下跳开关并挂牌：P18-3面板C1 C00523、C2 C00238、C3 C01072、D3 C01071；"
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "kind": "text",
+                "text": "2.5"
+              }
+            ],
+            [
+              {
+                "kind": "text",
+                "text": "在左驾驶盘挂红色标签“PITOT PROBES COVERED”；"
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "kind": "text",
+                "text": "2.6"
+              }
+            ],
+            [
+              {
+                "kind": "text",
+                "text": "将空速测试设备接至左皮托管（执行TASK 34-11-00-790-803）；"
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "kind": "text",
+                "text": "2.7"
+              }
+            ],
+            [
+              {
+                "kind": "text",
+                "text": "确认P6-2面板A6 C00566跳开关闭合；"
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "kind": "text",
+                "text": "2.8"
+              }
+            ],
+            [
+              {
+                "kind": "text",
+                "text": "襟翼40单位测试："
+              },
+              {
+                "kind": "table",
+                "headers": [
+                  "项次",
+                  "操作与检查要求"
+                ],
+                "rows": [
+                  [
+                    [
+                      {
+                        "kind": "text",
+                        "text": "a)"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "text",
+                        "text": "放襟翼至40单位；"
+                      }
+                    ]
+                  ],
+                  [
+                    [
+                      {
+                        "kind": "text",
+                        "text": "b)"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "text",
+                        "text": "用COM-1914将空速升至164节（速率≤300节/分）；"
+                      }
+                    ]
+                  ],
+                  [
+                    [
+                      {
+                        "kind": "text",
+                        "text": "c)"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "text",
+                        "text": "确认襟翼收至30单位且灯亮；"
+                      }
+                    ]
+                  ],
+                  [
+                    [
+                      {
+                        "kind": "text",
+                        "text": "d)"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "text",
+                        "text": "降空速至157节；"
+                      }
+                    ]
+                  ],
+                  [
+                    [
+                      {
+                        "kind": "text",
+                        "text": "e)"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "text",
+                        "text": "确认襟翼回到40单位且灯灭；"
+                      }
+                    ]
+                  ]
+                ],
+                "widths": [
+                  0.14,
+                  0.86
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "kind": "text",
+                "text": "2.9"
+              }
+            ],
+            [
+              {
+                "kind": "text",
+                "text": "襟翼30单位测试："
+              },
+              {
+                "kind": "table",
+                "headers": [
+                  "项次",
+                  "操作与检查要求"
+                ],
+                "rows": [
+                  [
+                    [
+                      {
+                        "kind": "text",
+                        "text": "a)"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "text",
+                        "text": "收至30单位；"
+                      }
+                    ]
+                  ],
+                  [
+                    [
+                      {
+                        "kind": "text",
+                        "text": "b)"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "text",
+                        "text": "升空速至177节；"
+                      }
+                    ]
+                  ],
+                  [
+                    [
+                      {
+                        "kind": "text",
+                        "text": "c)"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "text",
+                        "text": "确认收至25单位且灯亮；"
+                      }
+                    ]
+                  ],
+                  [
+                    [
+                      {
+                        "kind": "text",
+                        "text": "d)"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "text",
+                        "text": "降空速至170节；"
+                      }
+                    ]
+                  ],
+                  [
+                    [
+                      {
+                        "kind": "text",
+                        "text": "e)"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "text",
+                        "text": "确认回到30单位且灯灭；"
+                      }
+                    ]
+                  ]
+                ],
+                "widths": [
+                  0.14,
+                  0.86
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "kind": "text",
+                "text": "2.10"
+              }
+            ],
+            [
+              {
+                "kind": "text",
+                "text": "襟翼25单位测试："
+              },
+              {
+                "kind": "table",
+                "headers": [
+                  "项次",
+                  "操作与检查要求"
+                ],
+                "rows": [
+                  [
+                    [
+                      {
+                        "kind": "text",
+                        "text": "a)"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "text",
+                        "text": "收至25单位；"
+                      }
+                    ]
+                  ],
+                  [
+                    [
+                      {
+                        "kind": "text",
+                        "text": "b)"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "text",
+                        "text": "升空速至192节；"
+                      }
+                    ]
+                  ],
+                  [
+                    [
+                      {
+                        "kind": "text",
+                        "text": "c)"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "text",
+                        "text": "确认收至15单位；"
+                      }
+                    ]
+                  ],
+                  [
+                    [
+                      {
+                        "kind": "text",
+                        "text": "d)"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "text",
+                        "text": "降空速至185节；"
+                      }
+                    ]
+                  ],
+                  [
+                    [
+                      {
+                        "kind": "text",
+                        "text": "e)"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "text",
+                        "text": "确认回到25单位；"
+                      }
+                    ]
+                  ]
+                ],
+                "widths": [
+                  0.14,
+                  0.86
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "kind": "text",
+                "text": "2.11"
+              }
+            ],
+            [
+              {
+                "kind": "text",
+                "text": "襟翼15单位测试："
+              },
+              {
+                "kind": "table",
+                "headers": [
+                  "项次",
+                  "操作与检查要求"
+                ],
+                "rows": [
+                  [
+                    [
+                      {
+                        "kind": "text",
+                        "text": "a)"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "text",
+                        "text": "收至15单位；"
+                      }
+                    ]
+                  ],
+                  [
+                    [
+                      {
+                        "kind": "text",
+                        "text": "b)"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "text",
+                        "text": "升空速至202节；"
+                      }
+                    ]
+                  ],
+                  [
+                    [
+                      {
+                        "kind": "text",
+                        "text": "c)"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "text",
+                        "text": "确认收至10单位；"
+                      }
+                    ]
+                  ],
+                  [
+                    [
+                      {
+                        "kind": "text",
+                        "text": "d)"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "text",
+                        "text": "降空速至195节；"
+                      }
+                    ]
+                  ],
+                  [
+                    [
+                      {
+                        "kind": "text",
+                        "text": "e)"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "text",
+                        "text": "确认回到15单位；"
+                      }
+                    ]
+                  ]
+                ],
+                "widths": [
+                  0.14,
+                  0.86
+                ]
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "kind": "text",
+                "text": "2.12"
+              }
+            ],
+            [
+              {
+                "kind": "text",
+                "text": "襟翼10单位测试："
+              },
+              {
+                "kind": "table",
+                "headers": [
+                  "项次",
+                  "操作与检查要求"
+                ],
+                "rows": [
+                  [
+                    [
+                      {
+                        "kind": "text",
+                        "text": "a)"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "text",
+                        "text": "收至10单位；"
+                      }
+                    ]
+                  ],
+                  [
+                    [
+                      {
+                        "kind": "text",
+                        "text": "b)"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "text",
+                        "text": "升空速至212节；"
+                      }
+                    ]
+                  ],
+                  [
+                    [
+                      {
+                        "kind": "text",
+                        "text": "c)"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "text",
+                        "text": "确认收至5单位；"
+                      }
+                    ]
+                  ],
+                  [
+                    [
+                      {
+                        "kind": "text",
+                        "text": "d)"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "text",
+                        "text": "降空速至205节；"
+                      }
+                    ]
+                  ],
+                  [
+                    [
+                      {
+                        "kind": "text",
+                        "text": "e)"
+                      }
+                    ],
+                    [
+                      {
+                        "kind": "text",
+                        "text": "确认回到10单位。"
+                      }
+                    ]
+                  ]
+                ],
+                "widths": [
+                  0.14,
+                  0.86
+                ]
+              }
+            ]
+          ]
+        ],
+        "widths": [
+          0.16,
+          0.84
+        ]
+      }
+    ],
+    "source_id": 2424,
+    "source_items": [
+      2
+    ]
+  },
+  {
+    "work_type": "模拟工种",
+    "index": "30",
+    "blocks": [
+      {
+        "kind": "text",
+        "text": "项目名称：后缘襟翼卸载系统功能测试\n项目编码：TASK 27-51-00-720-804"
+      },
+      {
+        "kind": "text",
+        "text": "原文 3. 恢复飞机状态："
+      },
+      {
+        "kind": "table",
+        "headers": [
+          "序号",
+          "项目内容"
+        ],
+        "rows": [
+          [
+            [
+              {
+                "kind": "text",
+                "text": "3.1"
+              }
+            ],
+            [
+              {
+                "kind": "text",
+                "text": "襟翼杆置UP位；"
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "kind": "text",
+                "text": "3.2"
+              }
+            ],
+            [
+              {
+                "kind": "text",
+                "text": "皮托管系统恢复环境压力（速率≤300节/分）；"
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "kind": "text",
+                "text": "3.3"
+              }
+            ],
+            [
+              {
+                "kind": "text",
+                "text": "拆除测试设备（注意：仅在环境压力下拆卸）；"
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "kind": "text",
+                "text": "3.4"
+              }
+            ],
+            [
+              {
+                "kind": "text",
+                "text": "移除驾驶盘标签；"
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "kind": "text",
+                "text": "3.5"
+              }
+            ],
+            [
+              {
+                "kind": "text",
+                "text": "断开B液压压力；"
+              }
+            ]
+          ],
+          [
+            [
+              {
+                "kind": "text",
+                "text": "3.6"
+              }
+            ],
+            [
+              {
+                "kind": "text",
+                "text": "关闭117A接近门。"
+              }
+            ]
+          ]
+        ],
+        "widths": [
+          0.16,
+          0.84
+        ]
+      }
+    ],
+    "source_id": 2424,
+    "source_items": [
+      3
+    ]
+  }
+]

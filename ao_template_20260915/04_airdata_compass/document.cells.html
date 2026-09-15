@@ -1,0 +1,613 @@
+<!doctype html><html><head><meta charset="utf-8"><title>矢量 PDF 表格结构提取</title><style>
+*{box-sizing:border-box}body{margin:0;background:#d8d8d8;font-family:Arial,'Microsoft YaHei',sans-serif;color:#222}
+.page{position:relative;margin:24px auto;background:#fff;box-shadow:0 2px 8px #777;page-break-after:always;overflow:hidden}
+.page-label{position:absolute;left:5px;top:3px;padding:1px 4px;background:rgba(255,255,255,.82);font-size:11px;color:#555;z-index:8}
+.canvas{position:absolute;inset:0}.rule{position:absolute;background:#777;display:block;z-index:1}.rule.h{height:1px}.rule.v{width:1px}
+.cell{position:absolute;border:1px solid rgba(30,110,210,.72);background:rgba(210,230,255,.16);z-index:3;overflow:hidden}
+.cell.page-text,.cell.container{border:0;background:transparent;outline:0;pointer-events:none}.cell.page-text{z-index:2}
+.word{position:absolute;white-space:pre;z-index:4;background:rgba(255,255,220,.72)}
+.debug{width:min(1100px,96vw);margin:-12px auto 24px;background:#fff;padding:6px 10px;font-size:12px}
+pre{white-space:pre-wrap;background:#f5f5f5;padding:8px;max-height:320px;overflow:auto}
+@media print{body{background:#fff}.page{margin:0;box-shadow:none}.debug{display:none}}
+.pdf-image{object-fit:contain;pointer-events:none}
+</style></head><body><section class="page" data-page="1" style="width:803.6px;height:1136.6px">
+<div class="page-label">第 1 页 · edges=30 · corners=62 · cells=36</div>
+<div class="canvas">
+<i class="rule h" style="left:58.1px;top:167.4px;width:687.2px"></i>
+<i class="rule h" style="left:58.1px;top:198.5px;width:687.2px"></i>
+<i class="rule h" style="left:58.1px;top:232.2px;width:687.2px"></i>
+<i class="rule h" style="left:212.0px;top:322.0px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:361.8px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:423.9px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:463.7px;width:523.8px"></i>
+<i class="rule h" style="left:301.2px;top:498.2px;width:429.2px"></i>
+<i class="rule h" style="left:301.2px;top:538.0px;width:429.2px"></i>
+<i class="rule h" style="left:301.2px;top:577.8px;width:429.2px"></i>
+<i class="rule h" style="left:301.2px;top:617.6px;width:429.2px"></i>
+<i class="rule h" style="left:301.2px;top:657.5px;width:429.2px"></i>
+<i class="rule h" style="left:301.2px;top:697.3px;width:429.2px"></i>
+<i class="rule h" style="left:301.2px;top:737.1px;width:429.2px"></i>
+<i class="rule h" style="left:301.2px;top:776.9px;width:429.2px"></i>
+<i class="rule h" style="left:301.2px;top:816.8px;width:429.2px"></i>
+<i class="rule h" style="left:301.2px;top:856.6px;width:429.2px"></i>
+<i class="rule h" style="left:212.0px;top:875.5px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:937.6px;width:523.8px"></i>
+<i class="rule h" style="left:58.1px;top:1004.4px;width:687.2px"></i>
+<i class="rule v" style="left:58.1px;top:167.4px;height:837.0px"></i>
+<i class="rule v" style="left:129.6px;top:198.5px;height:806.0px"></i>
+<i class="rule v" style="left:202.5px;top:198.5px;height:806.0px"></i>
+<i class="rule v" style="left:212.0px;top:322.0px;height:615.6px"></i>
+<i class="rule v" style="left:295.8px;top:322.0px;height:615.6px"></i>
+<i class="rule v" style="left:301.2px;top:498.2px;height:358.4px"></i>
+<i class="rule v" style="left:361.2px;top:498.2px;height:358.4px"></i>
+<i class="rule v" style="left:730.4px;top:498.2px;height:358.4px"></i>
+<i class="rule v" style="left:735.8px;top:322.0px;height:615.6px"></i>
+<i class="rule v" style="left:745.2px;top:167.4px;height:837.0px"></i>
+<div class="cell" style="left:58.1px;top:167.4px;width:687.2px;height:31.1px"><span class="word" style="left:254.5px;top:6.3px;font-size:13.4px;line-height:14.9px">********工作内容********</span></div>
+<div class="cell" style="left:58.1px;top:198.5px;width:71.6px;height:33.8px"><span class="word" style="left:6.8px;top:7.7px;font-size:12.8px;line-height:14.2px">工种</span></div>
+<div class="cell" style="left:129.6px;top:198.5px;width:72.9px;height:33.8px"><span class="word" style="left:6.8px;top:7.7px;font-size:12.8px;line-height:14.2px">序号</span></div>
+<div class="cell" style="left:202.5px;top:198.5px;width:542.7px;height:33.8px"><span class="word" style="left:6.8px;top:7.7px;font-size:12.8px;line-height:14.2px">工序内容</span></div>
+<div class="cell" style="left:58.1px;top:232.2px;width:71.6px;height:772.2px"><span class="word" style="left:6.8px;top:9.1px;font-size:11.2px;line-height:12.4px">模拟工种</span></div>
+<div class="cell" style="left:129.6px;top:232.2px;width:72.9px;height:772.2px"><span class="word" style="left:6.8px;top:9.1px;font-size:11.2px;line-height:12.4px">10</span></div>
+<div class="cell container" style="left:202.5px;top:232.2px;width:542.7px;height:772.2px"><span class="word" style="left:9.5px;top:9.0px;font-size:12.8px;line-height:14.2px">项目名称：大气数据基准 - 系统测试</span><span class="word" style="left:9.5px;top:31.3px;font-size:12.8px;line-height:14.2px">项目编码：TASK 34-21-00-730-802</span><span class="word" style="left:9.5px;top:60.3px;font-size:12.8px;line-height:14.2px">原文 1. 准备测试</span></div>
+<div class="cell" style="left:212.0px;top:322.0px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">序号</span></div>
+<div class="cell" style="left:295.7px;top:322.0px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">项目内容</span></div>
+<div class="cell" style="left:212.0px;top:361.8px;width:83.7px;height:62.1px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">1.1</span></div>
+<div class="cell" style="left:295.7px;top:361.8px;width:440.1px;height:62.1px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">打开并挂牌：P6-2 A6 C00566 FLIGHT CONTROL FLAP LOAD RELIEF</span><span class="word" style="left:5.5px;top:27.3px;font-size:12.8px;line-height:14.2px">（警告：防止舵面意外移动）</span></div>
+<div class="cell" style="left:212.0px;top:423.9px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">1.2</span></div>
+<div class="cell" style="left:295.7px;top:423.9px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">接通外电源（执行 TASK 24-22-00-860-813）</span></div>
+<div class="cell" style="left:212.0px;top:463.7px;width:83.7px;height:411.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">1.3</span></div>
+<div class="cell container" style="left:295.7px;top:463.7px;width:440.1px;height:411.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">遵守皮托管-静压系统加压注意事项：</span></div>
+<div class="cell" style="left:301.1px;top:498.2px;width:60.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">项次</span></div>
+<div class="cell" style="left:361.1px;top:498.2px;width:369.2px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">加压约束</span></div>
+<div class="cell" style="left:301.1px;top:538.0px;width:60.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">1</span></div>
+<div class="cell" style="left:361.1px;top:538.0px;width:369.2px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">ADIRS 须通电</span></div>
+<div class="cell" style="left:301.1px;top:577.8px;width:60.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">2</span></div>
+<div class="cell" style="left:361.1px;top:577.8px;width:369.2px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">压力变化需受控</span></div>
+<div class="cell" style="left:301.1px;top:617.6px;width:60.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">3</span></div>
+<div class="cell" style="left:361.1px;top:617.6px;width:369.2px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">静压范围 3.26–33.31 in Hg，总压 3.26–41.34 in Hg</span></div>
+<div class="cell" style="left:301.1px;top:657.5px;width:60.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">4</span></div>
+<div class="cell" style="left:361.1px;top:657.5px;width:369.2px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">静压与环境压差 ≤28 in Hg</span></div>
+<div class="cell" style="left:301.1px;top:697.3px;width:60.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">5</span></div>
+<div class="cell" style="left:361.1px;top:697.3px;width:369.2px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">空速/高度变化率分别 &lt;300 kt/min、&lt;5000 ft/min</span></div>
+<div class="cell" style="left:301.1px;top:737.1px;width:60.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">6</span></div>
+<div class="cell" style="left:361.1px;top:737.1px;width:369.2px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">pitot 压 &gt; static 压但差值 ≤10 in Hg</span></div>
+<div class="cell" style="left:301.1px;top:776.9px;width:60.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">7</span></div>
+<div class="cell" style="left:361.1px;top:776.9px;width:369.2px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">自动驾驶关闭</span></div>
+<div class="cell" style="left:301.1px;top:816.8px;width:60.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">8</span></div>
+<div class="cell" style="left:361.1px;top:816.8px;width:369.2px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">探头加热关闭</span></div>
+<div class="cell" style="left:212.0px;top:875.5px;width:83.7px;height:62.1px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">1.4</span></div>
+<div class="cell" style="left:295.7px;top:875.5px;width:440.1px;height:62.1px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">ATC 应答机置待命（SIA 702-710：Mode Select 置 STBY；SIA 711-</span><span class="word" style="left:5.5px;top:27.3px;font-size:12.8px;line-height:14.2px">714/716-999：Mode Reply 置 STBY）</span></div>
+<div class="cell page-text" style="left:0.0px;top:0.0px;width:803.6px;height:1136.6px"><span class="word" style="left:338.5px;top:57.4px;font-size:20.7px;line-height:23.0px">装配指令 AO</span><span class="word" style="left:58.1px;top:102.2px;font-size:11.5px;line-height:12.8px">大气数据与罗盘</span><span class="word" style="left:58.1px;top:129.2px;font-size:10.9px;line-height:12.2px">模拟排版数据 · 非实际作业依据</span><span class="word" style="left:591.0px;top:1063.4px;font-size:10.9px;line-height:12.2px">第 1 页 / 共 7 页</span></div>
+</div></section>
+<details class="debug"><summary>按闭合矩形提取的文本顺序（含页面兜底框）</summary>
+<pre>[1] ********工作内容********
+[2] 工种
+[3] 序号
+[4] 工序内容
+[5] 模拟工种
+[6] 10
+[7] 项目名称：大气数据基准 - 系统测试
+项目编码：TASK 34-21-00-730-802
+原文 1. 准备测试
+[8] 序号
+[9] 项目内容
+[10] 1.1
+[11] 打开并挂牌：P6-2 A6 C00566 FLIGHT CONTROL FLAP LOAD RELIEF
+（警告：防止舵面意外移动）
+[12] 1.2
+[13] 接通外电源（执行 TASK 24-22-00-860-813）
+[14] 1.3
+[15] 遵守皮托管-静压系统加压注意事项：
+[16] 项次
+[17] 加压约束
+[18] 1
+[19] ADIRS 须通电
+[20] 2
+[21] 压力变化需受控
+[22] 3
+[23] 静压范围 3.26–33.31 in Hg，总压 3.26–41.34 in Hg
+[24] 4
+[25] 静压与环境压差 ≤28 in Hg
+[26] 5
+[27] 空速/高度变化率分别 &lt;300 kt/min、&lt;5000 ft/min
+[28] 6
+[29] pitot 压 &gt; static 压但差值 ≤10 in Hg
+[30] 7
+[31] 自动驾驶关闭
+[32] 8
+[33] 探头加热关闭
+[34] 1.4
+[35] ATC 应答机置待命（SIA 702-710：Mode Select 置 STBY；SIA 711-
+714/716-999：Mode Reply 置 STBY）
+[36] 装配指令 AO
+大气数据与罗盘
+模拟排版数据 · 非实际作业依据
+第 1 页 / 共 7 页</pre></details>
+<section class="page" data-page="2" style="width:803.6px;height:1136.6px">
+<div class="page-label">第 2 页 · edges=31 · corners=56 · cells=30</div>
+<div class="canvas">
+<i class="rule h" style="left:58.1px;top:167.4px;width:687.2px"></i>
+<i class="rule h" style="left:58.1px;top:198.5px;width:687.2px"></i>
+<i class="rule h" style="left:58.1px;top:232.2px;width:687.2px"></i>
+<i class="rule h" style="left:212.0px;top:322.0px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:361.8px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:401.6px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:441.5px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:503.6px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:543.4px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:583.2px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:625.7px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:665.6px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:727.7px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:789.8px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:832.3px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:872.1px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:911.9px;width:523.8px"></i>
+<i class="rule h" style="left:58.1px;top:1004.4px;width:687.2px"></i>
+<i class="rule v" style="left:58.1px;top:167.4px;height:837.0px"></i>
+<i class="rule v" style="left:129.6px;top:198.5px;height:806.0px"></i>
+<i class="rule v" style="left:202.5px;top:198.5px;height:806.0px"></i>
+<i class="rule v" style="left:212.0px;top:322.0px;height:261.2px"></i>
+<i class="rule v" style="left:212.0px;top:625.7px;height:164.0px"></i>
+<i class="rule v" style="left:212.0px;top:832.3px;height:79.7px"></i>
+<i class="rule v" style="left:295.8px;top:322.0px;height:261.2px"></i>
+<i class="rule v" style="left:295.8px;top:625.7px;height:164.0px"></i>
+<i class="rule v" style="left:295.8px;top:832.3px;height:79.7px"></i>
+<i class="rule v" style="left:735.8px;top:322.0px;height:261.2px"></i>
+<i class="rule v" style="left:735.8px;top:625.7px;height:164.0px"></i>
+<i class="rule v" style="left:735.8px;top:832.3px;height:79.7px"></i>
+<i class="rule v" style="left:745.2px;top:167.4px;height:837.0px"></i>
+<div class="cell" style="left:58.1px;top:167.4px;width:687.2px;height:31.1px"><span class="word" style="left:254.5px;top:6.3px;font-size:13.4px;line-height:14.9px">********工作内容********</span></div>
+<div class="cell" style="left:58.1px;top:198.5px;width:71.6px;height:33.8px"><span class="word" style="left:6.8px;top:7.7px;font-size:12.8px;line-height:14.2px">工种</span></div>
+<div class="cell" style="left:129.6px;top:198.5px;width:72.9px;height:33.8px"><span class="word" style="left:6.8px;top:7.7px;font-size:12.8px;line-height:14.2px">序号</span></div>
+<div class="cell" style="left:202.5px;top:198.5px;width:542.7px;height:33.8px"><span class="word" style="left:6.8px;top:7.7px;font-size:12.8px;line-height:14.2px">工序内容</span></div>
+<div class="cell" style="left:58.1px;top:232.2px;width:71.6px;height:772.2px"><span class="word" style="left:6.8px;top:9.1px;font-size:11.2px;line-height:12.4px">模拟工种</span></div>
+<div class="cell" style="left:129.6px;top:232.2px;width:72.9px;height:772.2px"><span class="word" style="left:6.8px;top:9.1px;font-size:11.2px;line-height:12.4px">20</span></div>
+<div class="cell container" style="left:202.5px;top:232.2px;width:542.7px;height:772.2px"><span class="word" style="left:9.5px;top:9.0px;font-size:12.8px;line-height:14.2px">项目名称：大气数据基准 - 系统测试</span><span class="word" style="left:9.5px;top:31.3px;font-size:12.8px;line-height:14.2px">项目编码：TASK 34-21-00-730-802</span><span class="word" style="left:9.5px;top:60.3px;font-size:12.8px;line-height:14.2px">原文 2. ADM 与备用飞行显示器测试</span><span class="word" style="left:9.5px;top:364.1px;font-size:12.8px;line-height:14.2px">原文 3. TAT 探头及加热测试</span><span class="word" style="left:9.5px;top:570.6px;font-size:12.8px;line-height:14.2px">原文 4. 其他测试</span></div>
+<div class="cell" style="left:212.0px;top:322.0px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">序号</span></div>
+<div class="cell" style="left:295.7px;top:322.0px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">项目内容</span></div>
+<div class="cell" style="left:212.0px;top:361.8px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">2.1</span></div>
+<div class="cell" style="left:295.7px;top:361.8px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">断开客舱压差指示器静压管，调三处 BARO 至 29.92 in Hg</span></div>
+<div class="cell" style="left:212.0px;top:401.6px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">2.2</span></div>
+<div class="cell" style="left:295.7px;top:401.6px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">安装 AOA 测试夹具 SPL-1917，AOA 叶片置 0°±5°</span></div>
+<div class="cell" style="left:212.0px;top:441.5px;width:83.7px;height:62.1px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">2.3</span></div>
+<div class="cell" style="left:295.7px;top:441.5px;width:440.1px;height:62.1px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">连接测试设备 COM-1914，按表施加六组静压/总压，稳定 1 分钟后</span><span class="word" style="left:5.5px;top:27.3px;font-size:12.8px;line-height:14.2px">读数</span></div>
+<div class="cell" style="left:212.0px;top:503.6px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">2.4</span></div>
+<div class="cell" style="left:295.7px;top:503.6px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">验证主/备用高度、空速在容差内，且机长/副驾间差值符合要求</span></div>
+<div class="cell" style="left:212.0px;top:543.4px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">2.5</span></div>
+<div class="cell" style="left:295.7px;top:543.4px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">卸压、拆设备、恢复管路</span></div>
+<div class="cell" style="left:212.0px;top:625.7px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">序号</span></div>
+<div class="cell" style="left:295.7px;top:625.7px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">项目内容</span></div>
+<div class="cell" style="left:212.0px;top:665.6px;width:83.7px;height:62.1px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">3.1</span></div>
+<div class="cell" style="left:295.7px;top:665.6px;width:440.1px;height:62.1px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">用 STD-1336 温度计测 TAT 探头温度，对比发动机显示值（误差 ≤</span><span class="word" style="left:5.5px;top:27.3px;font-size:12.8px;line-height:14.2px">2°F）</span></div>
+<div class="cell" style="left:212.0px;top:727.7px;width:83.7px;height:62.1px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">3.2</span></div>
+<div class="cell" style="left:295.7px;top:727.7px;width:440.1px;height:62.1px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">按机型要求操作 PROBE HEAT A/B 开关，用数据总线分析仪（COM-15</span><span class="word" style="left:5.5px;top:27.3px;font-size:12.8px;line-height:14.2px">62/1579）验证 ADR label 270 相应位状态</span></div>
+<div class="cell" style="left:212.0px;top:832.3px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">序号</span></div>
+<div class="cell" style="left:295.7px;top:832.3px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">项目内容</span></div>
+<div class="cell" style="left:212.0px;top:872.1px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">4.1</span></div>
+<div class="cell" style="left:295.7px;top:872.1px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">AOA 传感器接口与加热测试参见 TASK 34-21-05-730-801</span></div>
+<div class="cell page-text" style="left:0.0px;top:0.0px;width:803.6px;height:1136.6px"><span class="word" style="left:338.5px;top:57.4px;font-size:20.7px;line-height:23.0px">装配指令 AO</span><span class="word" style="left:58.1px;top:102.2px;font-size:11.5px;line-height:12.8px">大气数据与罗盘</span><span class="word" style="left:58.1px;top:129.2px;font-size:10.9px;line-height:12.2px">模拟排版数据 · 非实际作业依据</span><span class="word" style="left:591.0px;top:1063.4px;font-size:10.9px;line-height:12.2px">第 2 页 / 共 7 页</span></div>
+</div></section>
+<details class="debug"><summary>按闭合矩形提取的文本顺序（含页面兜底框）</summary>
+<pre>[1] ********工作内容********
+[2] 工种
+[3] 序号
+[4] 工序内容
+[5] 模拟工种
+[6] 20
+[7] 项目名称：大气数据基准 - 系统测试
+项目编码：TASK 34-21-00-730-802
+原文 2. ADM 与备用飞行显示器测试
+原文 3. TAT 探头及加热测试
+原文 4. 其他测试
+[8] 序号
+[9] 项目内容
+[10] 2.1
+[11] 断开客舱压差指示器静压管，调三处 BARO 至 29.92 in Hg
+[12] 2.2
+[13] 安装 AOA 测试夹具 SPL-1917，AOA 叶片置 0°±5°
+[14] 2.3
+[15] 连接测试设备 COM-1914，按表施加六组静压/总压，稳定 1 分钟后
+读数
+[16] 2.4
+[17] 验证主/备用高度、空速在容差内，且机长/副驾间差值符合要求
+[18] 2.5
+[19] 卸压、拆设备、恢复管路
+[20] 序号
+[21] 项目内容
+[22] 3.1
+[23] 用 STD-1336 温度计测 TAT 探头温度，对比发动机显示值（误差 ≤
+2°F）
+[24] 3.2
+[25] 按机型要求操作 PROBE HEAT A/B 开关，用数据总线分析仪（COM-15
+62/1579）验证 ADR label 270 相应位状态
+[26] 序号
+[27] 项目内容
+[28] 4.1
+[29] AOA 传感器接口与加热测试参见 TASK 34-21-05-730-801
+[30] 装配指令 AO
+大气数据与罗盘
+模拟排版数据 · 非实际作业依据
+第 2 页 / 共 7 页</pre></details>
+<section class="page" data-page="3" style="width:803.6px;height:1136.6px">
+<div class="page-label">第 3 页 · edges=14 · corners=23 · cells=9</div>
+<div class="canvas">
+<i class="rule h" style="left:58.1px;top:167.4px;width:687.2px"></i>
+<i class="rule h" style="left:58.1px;top:198.5px;width:687.2px"></i>
+<i class="rule h" style="left:58.1px;top:232.2px;width:687.2px"></i>
+<i class="rule h" style="left:212.0px;top:241.7px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:281.5px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:343.6px;width:523.8px"></i>
+<i class="rule h" style="left:58.1px;top:1004.4px;width:687.2px"></i>
+<i class="rule v" style="left:58.1px;top:167.4px;height:837.0px"></i>
+<i class="rule v" style="left:129.6px;top:198.5px;height:806.0px"></i>
+<i class="rule v" style="left:202.5px;top:198.5px;height:806.0px"></i>
+<i class="rule v" style="left:212.0px;top:241.7px;height:101.9px"></i>
+<i class="rule v" style="left:295.8px;top:241.7px;height:101.9px"></i>
+<i class="rule v" style="left:735.8px;top:241.7px;height:101.9px"></i>
+<i class="rule v" style="left:745.2px;top:167.4px;height:837.0px"></i>
+<div class="cell" style="left:58.1px;top:167.4px;width:687.2px;height:31.1px"><span class="word" style="left:254.5px;top:6.3px;font-size:13.4px;line-height:14.9px">********工作内容********</span></div>
+<div class="cell" style="left:58.1px;top:198.5px;width:71.6px;height:33.8px"><span class="word" style="left:6.8px;top:7.7px;font-size:12.8px;line-height:14.2px">工种</span></div>
+<div class="cell" style="left:129.6px;top:198.5px;width:72.9px;height:33.8px"><span class="word" style="left:6.8px;top:7.7px;font-size:12.8px;line-height:14.2px">序号</span></div>
+<div class="cell" style="left:202.5px;top:198.5px;width:542.7px;height:33.8px"><span class="word" style="left:6.8px;top:7.7px;font-size:12.8px;line-height:14.2px">工序内容</span></div>
+<div class="cell" style="left:212.0px;top:241.7px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">序号</span></div>
+<div class="cell" style="left:295.7px;top:241.7px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">项目内容</span></div>
+<div class="cell" style="left:212.0px;top:281.5px;width:83.7px;height:62.1px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">4.2</span></div>
+<div class="cell" style="left:295.7px;top:281.5px;width:440.1px;height:62.1px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">ALTERNATE VMO/MMO 开关测试：在 118 区 EE 舱操作开关，验证 AD</span><span class="word" style="left:5.5px;top:27.3px;font-size:12.8px;line-height:14.2px">R label 270 bit 23 状态</span></div>
+<div class="cell page-text" style="left:0.0px;top:0.0px;width:803.6px;height:1136.6px"><span class="word" style="left:338.5px;top:57.4px;font-size:20.7px;line-height:23.0px">装配指令 AO</span><span class="word" style="left:58.1px;top:102.2px;font-size:11.5px;line-height:12.8px">大气数据与罗盘</span><span class="word" style="left:58.1px;top:129.2px;font-size:10.9px;line-height:12.2px">模拟排版数据 · 非实际作业依据</span><span class="word" style="left:58.1px;top:1024.3px;font-size:10.3px;line-height:11.5px">版式延续；同列空序号继承上页</span><span class="word" style="left:591.0px;top:1063.4px;font-size:10.9px;line-height:12.2px">第 3 页 / 共 7 页</span></div>
+</div></section>
+<details class="debug"><summary>按闭合矩形提取的文本顺序（含页面兜底框）</summary>
+<pre>[1] ********工作内容********
+[2] 工种
+[3] 序号
+[4] 工序内容
+[5] 序号
+[6] 项目内容
+[7] 4.2
+[8] ALTERNATE VMO/MMO 开关测试：在 118 区 EE 舱操作开关，验证 AD
+R label 270 bit 23 状态
+[9] 装配指令 AO
+大气数据与罗盘
+模拟排版数据 · 非实际作业依据
+版式延续；同列空序号继承上页
+第 3 页 / 共 7 页</pre></details>
+<section class="page" data-page="4" style="width:803.6px;height:1136.6px">
+<div class="page-label">第 4 页 · edges=16 · corners=29 · cells=16</div>
+<div class="canvas">
+<i class="rule h" style="left:58.1px;top:167.4px;width:687.2px"></i>
+<i class="rule h" style="left:58.1px;top:198.5px;width:687.2px"></i>
+<i class="rule h" style="left:58.1px;top:232.2px;width:687.2px"></i>
+<i class="rule h" style="left:212.0px;top:322.0px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:361.8px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:401.6px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:441.5px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:481.3px;width:523.8px"></i>
+<i class="rule h" style="left:58.1px;top:1004.4px;width:687.2px"></i>
+<i class="rule v" style="left:58.1px;top:167.4px;height:837.0px"></i>
+<i class="rule v" style="left:129.6px;top:198.5px;height:806.0px"></i>
+<i class="rule v" style="left:202.5px;top:198.5px;height:806.0px"></i>
+<i class="rule v" style="left:212.0px;top:322.0px;height:159.3px"></i>
+<i class="rule v" style="left:295.8px;top:322.0px;height:159.3px"></i>
+<i class="rule v" style="left:735.8px;top:322.0px;height:159.3px"></i>
+<i class="rule v" style="left:745.2px;top:167.4px;height:837.0px"></i>
+<div class="cell" style="left:58.1px;top:167.4px;width:687.2px;height:31.1px"><span class="word" style="left:254.5px;top:6.3px;font-size:13.4px;line-height:14.9px">********工作内容********</span></div>
+<div class="cell" style="left:58.1px;top:198.5px;width:71.6px;height:33.8px"><span class="word" style="left:6.8px;top:7.7px;font-size:12.8px;line-height:14.2px">工种</span></div>
+<div class="cell" style="left:129.6px;top:198.5px;width:72.9px;height:33.8px"><span class="word" style="left:6.8px;top:7.7px;font-size:12.8px;line-height:14.2px">序号</span></div>
+<div class="cell" style="left:202.5px;top:198.5px;width:542.7px;height:33.8px"><span class="word" style="left:6.8px;top:7.7px;font-size:12.8px;line-height:14.2px">工序内容</span></div>
+<div class="cell" style="left:58.1px;top:232.2px;width:71.6px;height:772.2px"><span class="word" style="left:6.8px;top:9.1px;font-size:11.2px;line-height:12.4px">模拟工种</span></div>
+<div class="cell" style="left:129.6px;top:232.2px;width:72.9px;height:772.2px"><span class="word" style="left:6.8px;top:9.1px;font-size:11.2px;line-height:12.4px">30</span></div>
+<div class="cell container" style="left:202.5px;top:232.2px;width:542.7px;height:772.2px"><span class="word" style="left:9.5px;top:9.0px;font-size:12.8px;line-height:14.2px">项目名称：大气数据基准 - 系统测试</span><span class="word" style="left:9.5px;top:31.3px;font-size:12.8px;line-height:14.2px">项目编码：TASK 34-21-00-730-802</span><span class="word" style="left:9.5px;top:60.3px;font-size:12.8px;line-height:14.2px">原文 5. 恢复飞机状态</span></div>
+<div class="cell" style="left:212.0px;top:322.0px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">序号</span></div>
+<div class="cell" style="left:295.7px;top:322.0px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">项目内容</span></div>
+<div class="cell" style="left:212.0px;top:361.8px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">5.1</span></div>
+<div class="cell" style="left:295.7px;top:361.8px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">闭合 FLAP LOAD RELIEF 跳开关</span></div>
+<div class="cell" style="left:212.0px;top:401.6px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">5.2</span></div>
+<div class="cell" style="left:295.7px;top:401.6px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">ALTERNATE VMO/MMO 开关置 NORM，盖上护盖并用 G01912 锁线保险</span></div>
+<div class="cell" style="left:212.0px;top:441.5px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">5.3</span></div>
+<div class="cell" style="left:295.7px;top:441.5px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">关闭 117A 电子设备舱门。</span></div>
+<div class="cell page-text" style="left:0.0px;top:0.0px;width:803.6px;height:1136.6px"><span class="word" style="left:338.5px;top:57.4px;font-size:20.7px;line-height:23.0px">装配指令 AO</span><span class="word" style="left:58.1px;top:102.2px;font-size:11.5px;line-height:12.8px">大气数据与罗盘</span><span class="word" style="left:58.1px;top:129.2px;font-size:10.9px;line-height:12.2px">模拟排版数据 · 非实际作业依据</span><span class="word" style="left:591.0px;top:1063.4px;font-size:10.9px;line-height:12.2px">第 4 页 / 共 7 页</span></div>
+</div></section>
+<details class="debug"><summary>按闭合矩形提取的文本顺序（含页面兜底框）</summary>
+<pre>[1] ********工作内容********
+[2] 工种
+[3] 序号
+[4] 工序内容
+[5] 模拟工种
+[6] 30
+[7] 项目名称：大气数据基准 - 系统测试
+项目编码：TASK 34-21-00-730-802
+原文 5. 恢复飞机状态
+[8] 序号
+[9] 项目内容
+[10] 5.1
+[11] 闭合 FLAP LOAD RELIEF 跳开关
+[12] 5.2
+[13] ALTERNATE VMO/MMO 开关置 NORM，盖上护盖并用 G01912 锁线保险
+[14] 5.3
+[15] 关闭 117A 电子设备舱门。
+[16] 装配指令 AO
+大气数据与罗盘
+模拟排版数据 · 非实际作业依据
+第 4 页 / 共 7 页</pre></details>
+<section class="page" data-page="5" style="width:803.6px;height:1136.6px">
+<div class="page-label">第 5 页 · edges=22 · corners=47 · cells=28</div>
+<div class="canvas">
+<i class="rule h" style="left:58.1px;top:167.4px;width:687.2px"></i>
+<i class="rule h" style="left:58.1px;top:198.5px;width:687.2px"></i>
+<i class="rule h" style="left:58.1px;top:232.2px;width:687.2px"></i>
+<i class="rule h" style="left:212.0px;top:351.0px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:390.8px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:430.7px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:492.8px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:554.9px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:594.7px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:634.5px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:674.3px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:736.4px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:798.5px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:838.4px;width:523.8px"></i>
+<i class="rule h" style="left:58.1px;top:1004.4px;width:687.2px"></i>
+<i class="rule v" style="left:58.1px;top:167.4px;height:837.0px"></i>
+<i class="rule v" style="left:129.6px;top:198.5px;height:806.0px"></i>
+<i class="rule v" style="left:202.5px;top:198.5px;height:806.0px"></i>
+<i class="rule v" style="left:212.0px;top:351.0px;height:487.4px"></i>
+<i class="rule v" style="left:295.8px;top:351.0px;height:487.4px"></i>
+<i class="rule v" style="left:735.8px;top:351.0px;height:487.4px"></i>
+<i class="rule v" style="left:745.2px;top:167.4px;height:837.0px"></i>
+<div class="cell" style="left:58.1px;top:167.4px;width:687.2px;height:31.1px"><span class="word" style="left:254.5px;top:6.3px;font-size:13.4px;line-height:14.9px">********工作内容********</span></div>
+<div class="cell" style="left:58.1px;top:198.5px;width:71.6px;height:33.8px"><span class="word" style="left:6.8px;top:7.7px;font-size:12.8px;line-height:14.2px">工种</span></div>
+<div class="cell" style="left:129.6px;top:198.5px;width:72.9px;height:33.8px"><span class="word" style="left:6.8px;top:7.7px;font-size:12.8px;line-height:14.2px">序号</span></div>
+<div class="cell" style="left:202.5px;top:198.5px;width:542.7px;height:33.8px"><span class="word" style="left:6.8px;top:7.7px;font-size:12.8px;line-height:14.2px">工序内容</span></div>
+<div class="cell" style="left:58.1px;top:232.2px;width:71.6px;height:772.2px"><span class="word" style="left:6.8px;top:9.1px;font-size:11.2px;line-height:12.4px">模拟工种</span></div>
+<div class="cell" style="left:129.6px;top:232.2px;width:72.9px;height:772.2px"><span class="word" style="left:6.8px;top:9.1px;font-size:11.2px;line-height:12.4px">40</span></div>
+<div class="cell container" style="left:202.5px;top:232.2px;width:542.7px;height:772.2px"><span class="word" style="left:9.5px;top:9.0px;font-size:12.8px;line-height:14.2px">项目名称：罗盘校准工具 – 主罗盘选项</span><span class="word" style="left:9.5px;top:31.3px;font-size:12.8px;line-height:14.2px">项目编码：TASK 34-23-00-820-801</span><span class="word" style="left:9.5px;top:60.3px;font-size:12.8px;line-height:14.2px">原文 1. 使用非磁性工具调整备用磁罗盘。</span><span class="word" style="left:9.5px;top:89.4px;font-size:12.8px;line-height:14.2px">原文 2. 校准器调整。</span></div>
+<div class="cell" style="left:212.0px;top:351.0px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">序号</span></div>
+<div class="cell" style="left:295.7px;top:351.0px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">项目内容</span></div>
+<div class="cell" style="left:212.0px;top:390.8px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">2.1</span></div>
+<div class="cell" style="left:295.7px;top:390.8px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">在罗盘摆动区中心放置非磁三脚架STD-1167。</span></div>
+<div class="cell" style="left:212.0px;top:430.7px;width:83.7px;height:62.1px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">2.2</span></div>
+<div class="cell" style="left:295.7px;top:430.7px;width:440.1px;height:62.1px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">从备用罗盘校准器（SCC，套件COM-1925）上拆下磁铁组件和旋钮组</span><span class="word" style="left:5.5px;top:27.3px;font-size:12.8px;line-height:14.2px">件。</span></div>
+<div class="cell" style="left:212.0px;top:492.8px;width:83.7px;height:62.1px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">2.3</span></div>
+<div class="cell" style="left:295.7px;top:492.8px;width:440.1px;height:62.1px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">将主磁罗盘（可用准确备用罗盘替代）用两颗螺钉装于SCC上，确保N</span><span class="word" style="left:5.5px;top:27.3px;font-size:12.8px;line-height:14.2px">-S/E-W调节螺钉处于中立位。</span></div>
+<div class="cell" style="left:212.0px;top:554.9px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">2.4</span></div>
+<div class="cell" style="left:295.7px;top:554.9px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">将SCC/主罗盘组件置于三脚架上并调平。</span></div>
+<div class="cell" style="left:212.0px;top:594.7px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">2.5</span></div>
+<div class="cell" style="left:295.7px;top:594.7px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">转动组件使主罗盘指示磁北（N）。</span></div>
+<div class="cell" style="left:212.0px;top:634.5px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">2.6</span></div>
+<div class="cell" style="left:295.7px;top:634.5px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">重新安装磁铁和旋钮组件。</span></div>
+<div class="cell" style="left:212.0px;top:674.3px;width:83.7px;height:62.1px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">2.7</span></div>
+<div class="cell" style="left:295.7px;top:674.3px;width:440.1px;height:62.1px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">调SCC上下刻度盘至索引线显示E，记录主罗盘航向；再调至W，记录</span><span class="word" style="left:5.5px;top:27.3px;font-size:12.8px;line-height:14.2px">航向。</span></div>
+<div class="cell" style="left:212.0px;top:736.4px;width:83.7px;height:62.1px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">2.8</span></div>
+<div class="cell" style="left:295.7px;top:736.4px;width:440.1px;height:62.1px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">调节SCC磁场抵消（MFCA）螺钉，使E/W方向误差最小化，并反复调整</span><span class="word" style="left:5.5px;top:27.3px;font-size:12.8px;line-height:14.2px">至误差最小。</span></div>
+<div class="cell" style="left:212.0px;top:798.5px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">2.9</span></div>
+<div class="cell" style="left:295.7px;top:798.5px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">拆下主罗盘。</span></div>
+<div class="cell page-text" style="left:0.0px;top:0.0px;width:803.6px;height:1136.6px"><span class="word" style="left:338.5px;top:57.4px;font-size:20.7px;line-height:23.0px">装配指令 AO</span><span class="word" style="left:58.1px;top:102.2px;font-size:11.5px;line-height:12.8px">大气数据与罗盘</span><span class="word" style="left:58.1px;top:129.2px;font-size:10.9px;line-height:12.2px">模拟排版数据 · 非实际作业依据</span><span class="word" style="left:591.0px;top:1063.4px;font-size:10.9px;line-height:12.2px">第 5 页 / 共 7 页</span></div>
+</div></section>
+<details class="debug"><summary>按闭合矩形提取的文本顺序（含页面兜底框）</summary>
+<pre>[1] ********工作内容********
+[2] 工种
+[3] 序号
+[4] 工序内容
+[5] 模拟工种
+[6] 40
+[7] 项目名称：罗盘校准工具 – 主罗盘选项
+项目编码：TASK 34-23-00-820-801
+原文 1. 使用非磁性工具调整备用磁罗盘。
+原文 2. 校准器调整。
+[8] 序号
+[9] 项目内容
+[10] 2.1
+[11] 在罗盘摆动区中心放置非磁三脚架STD-1167。
+[12] 2.2
+[13] 从备用罗盘校准器（SCC，套件COM-1925）上拆下磁铁组件和旋钮组
+件。
+[14] 2.3
+[15] 将主磁罗盘（可用准确备用罗盘替代）用两颗螺钉装于SCC上，确保N
+-S/E-W调节螺钉处于中立位。
+[16] 2.4
+[17] 将SCC/主罗盘组件置于三脚架上并调平。
+[18] 2.5
+[19] 转动组件使主罗盘指示磁北（N）。
+[20] 2.6
+[21] 重新安装磁铁和旋钮组件。
+[22] 2.7
+[23] 调SCC上下刻度盘至索引线显示E，记录主罗盘航向；再调至W，记录
+航向。
+[24] 2.8
+[25] 调节SCC磁场抵消（MFCA）螺钉，使E/W方向误差最小化，并反复调整
+至误差最小。
+[26] 2.9
+[27] 拆下主罗盘。
+[28] 装配指令 AO
+大气数据与罗盘
+模拟排版数据 · 非实际作业依据
+第 5 页 / 共 7 页</pre></details>
+<section class="page" data-page="6" style="width:803.6px;height:1136.6px">
+<div class="page-label">第 6 页 · edges=24 · corners=53 · cells=32</div>
+<div class="canvas">
+<i class="rule h" style="left:58.1px;top:167.4px;width:687.2px"></i>
+<i class="rule h" style="left:58.1px;top:198.5px;width:687.2px"></i>
+<i class="rule h" style="left:58.1px;top:232.2px;width:687.2px"></i>
+<i class="rule h" style="left:212.0px;top:322.0px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:361.8px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:423.9px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:486.0px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:525.8px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:565.7px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:605.5px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:645.3px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:685.1px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:725.0px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:764.8px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:804.6px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:844.4px;width:523.8px"></i>
+<i class="rule h" style="left:58.1px;top:1004.4px;width:687.2px"></i>
+<i class="rule v" style="left:58.1px;top:167.4px;height:837.0px"></i>
+<i class="rule v" style="left:129.6px;top:198.5px;height:806.0px"></i>
+<i class="rule v" style="left:202.5px;top:198.5px;height:806.0px"></i>
+<i class="rule v" style="left:212.0px;top:322.0px;height:522.5px"></i>
+<i class="rule v" style="left:295.8px;top:322.0px;height:522.5px"></i>
+<i class="rule v" style="left:735.8px;top:322.0px;height:522.5px"></i>
+<i class="rule v" style="left:745.2px;top:167.4px;height:837.0px"></i>
+<div class="cell" style="left:58.1px;top:167.4px;width:687.2px;height:31.1px"><span class="word" style="left:254.5px;top:6.3px;font-size:13.4px;line-height:14.9px">********工作内容********</span></div>
+<div class="cell" style="left:58.1px;top:198.5px;width:71.6px;height:33.8px"><span class="word" style="left:6.8px;top:7.7px;font-size:12.8px;line-height:14.2px">工种</span></div>
+<div class="cell" style="left:129.6px;top:198.5px;width:72.9px;height:33.8px"><span class="word" style="left:6.8px;top:7.7px;font-size:12.8px;line-height:14.2px">序号</span></div>
+<div class="cell" style="left:202.5px;top:198.5px;width:542.7px;height:33.8px"><span class="word" style="left:6.8px;top:7.7px;font-size:12.8px;line-height:14.2px">工序内容</span></div>
+<div class="cell" style="left:58.1px;top:232.2px;width:71.6px;height:772.2px"><span class="word" style="left:6.8px;top:9.1px;font-size:11.2px;line-height:12.4px">模拟工种</span></div>
+<div class="cell" style="left:129.6px;top:232.2px;width:72.9px;height:772.2px"><span class="word" style="left:6.8px;top:9.1px;font-size:11.2px;line-height:12.4px">50</span></div>
+<div class="cell container" style="left:202.5px;top:232.2px;width:542.7px;height:772.2px"><span class="word" style="left:9.5px;top:9.0px;font-size:12.8px;line-height:14.2px">项目名称：罗盘校准工具 – 主罗盘选项</span><span class="word" style="left:9.5px;top:31.3px;font-size:12.8px;line-height:14.2px">项目编码：TASK 34-23-00-820-801</span><span class="word" style="left:9.5px;top:60.3px;font-size:12.8px;line-height:14.2px">原文 3. 四点校准摆动程序。</span></div>
+<div class="cell" style="left:212.0px;top:322.0px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">序号</span></div>
+<div class="cell" style="left:295.7px;top:322.0px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">项目内容</span></div>
+<div class="cell" style="left:212.0px;top:361.8px;width:83.7px;height:62.1px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">3.1</span></div>
+<div class="cell" style="left:295.7px;top:361.8px;width:440.1px;height:62.1px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">将飞机拖至罗盘摆动区（参考TASK 09-11-00-580-801），确保周围2</span><span class="word" style="left:5.5px;top:27.3px;font-size:12.8px;line-height:14.2px">20英尺内无其他车辆。</span></div>
+<div class="cell" style="left:212.0px;top:423.9px;width:83.7px;height:62.1px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">3.2</span></div>
+<div class="cell" style="left:295.7px;top:423.9px;width:440.1px;height:62.1px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">在起落架空地传感器上安装脱作动器（参考TASK 32-09-00-860-80</span><span class="word" style="left:5.5px;top:27.3px;font-size:12.8px;line-height:14.2px">1），使起落架锁电磁阀通电20分钟。</span></div>
+<div class="cell" style="left:212.0px;top:486.0px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">3.3</span></div>
+<div class="cell" style="left:295.7px;top:486.0px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">接通飞行中常用电子设备、无线电及驾驶舱灯光。</span></div>
+<div class="cell" style="left:212.0px;top:525.8px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">3.4</span></div>
+<div class="cell" style="left:295.7px;top:525.8px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">将左EFIS控制面板ND模式选至VOR或ILS位。</span></div>
+<div class="cell" style="left:212.0px;top:565.7px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">3.5</span></div>
+<div class="cell" style="left:295.7px;top:565.7px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">松开支架螺钉，将备用罗盘支架向下倾斜约15°，再拧紧。</span></div>
+<div class="cell" style="left:212.0px;top:605.5px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">3.6</span></div>
+<div class="cell" style="left:295.7px;top:605.5px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">拆下备用罗盘左下和右上安装螺钉，用其将SCC装于罗盘正面。</span></div>
+<div class="cell" style="left:212.0px;top:645.3px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">3.7</span></div>
+<div class="cell" style="left:295.7px;top:645.3px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">断开备用罗盘电连接器。</span></div>
+<div class="cell" style="left:212.0px;top:685.1px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">3.8</span></div>
+<div class="cell" style="left:295.7px;top:685.1px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">调SCC刻度盘至E，记录备用罗盘航向；再调至W，记录航向。</span></div>
+<div class="cell" style="left:212.0px;top:725.0px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">3.9</span></div>
+<div class="cell" style="left:295.7px;top:725.0px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">调E-W螺钉使两次记录误差最小（尽量均分误差）。</span></div>
+<div class="cell" style="left:212.0px;top:764.8px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">3.10</span></div>
+<div class="cell" style="left:295.7px;top:764.8px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">同理调N-S方向（N/S航向），调N-S螺钉使误差最小。</span></div>
+<div class="cell" style="left:212.0px;top:804.6px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">3.11</span></div>
+<div class="cell" style="left:295.7px;top:804.6px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">反复调整E-W/N-S螺钉，直至各方向误差最小。</span></div>
+<div class="cell page-text" style="left:0.0px;top:0.0px;width:803.6px;height:1136.6px"><span class="word" style="left:338.5px;top:57.4px;font-size:20.7px;line-height:23.0px">装配指令 AO</span><span class="word" style="left:58.1px;top:102.2px;font-size:11.5px;line-height:12.8px">大气数据与罗盘</span><span class="word" style="left:58.1px;top:129.2px;font-size:10.9px;line-height:12.2px">模拟排版数据 · 非实际作业依据</span><span class="word" style="left:591.0px;top:1063.4px;font-size:10.9px;line-height:12.2px">第 6 页 / 共 7 页</span></div>
+</div></section>
+<details class="debug"><summary>按闭合矩形提取的文本顺序（含页面兜底框）</summary>
+<pre>[1] ********工作内容********
+[2] 工种
+[3] 序号
+[4] 工序内容
+[5] 模拟工种
+[6] 50
+[7] 项目名称：罗盘校准工具 – 主罗盘选项
+项目编码：TASK 34-23-00-820-801
+原文 3. 四点校准摆动程序。
+[8] 序号
+[9] 项目内容
+[10] 3.1
+[11] 将飞机拖至罗盘摆动区（参考TASK 09-11-00-580-801），确保周围2
+20英尺内无其他车辆。
+[12] 3.2
+[13] 在起落架空地传感器上安装脱作动器（参考TASK 32-09-00-860-80
+1），使起落架锁电磁阀通电20分钟。
+[14] 3.3
+[15] 接通飞行中常用电子设备、无线电及驾驶舱灯光。
+[16] 3.4
+[17] 将左EFIS控制面板ND模式选至VOR或ILS位。
+[18] 3.5
+[19] 松开支架螺钉，将备用罗盘支架向下倾斜约15°，再拧紧。
+[20] 3.6
+[21] 拆下备用罗盘左下和右上安装螺钉，用其将SCC装于罗盘正面。
+[22] 3.7
+[23] 断开备用罗盘电连接器。
+[24] 3.8
+[25] 调SCC刻度盘至E，记录备用罗盘航向；再调至W，记录航向。
+[26] 3.9
+[27] 调E-W螺钉使两次记录误差最小（尽量均分误差）。
+[28] 3.10
+[29] 同理调N-S方向（N/S航向），调N-S螺钉使误差最小。
+[30] 3.11
+[31] 反复调整E-W/N-S螺钉，直至各方向误差最小。
+[32] 装配指令 AO
+大气数据与罗盘
+模拟排版数据 · 非实际作业依据
+第 6 页 / 共 7 页</pre></details>
+<section class="page" data-page="7" style="width:803.6px;height:1136.6px">
+<div class="page-label">第 7 页 · edges=25 · corners=47 · cells=26</div>
+<div class="canvas">
+<i class="rule h" style="left:58.1px;top:167.4px;width:687.2px"></i>
+<i class="rule h" style="left:58.1px;top:198.5px;width:687.2px"></i>
+<i class="rule h" style="left:58.1px;top:232.2px;width:687.2px"></i>
+<i class="rule h" style="left:212.0px;top:322.0px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:361.8px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:401.6px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:441.5px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:481.3px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:521.1px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:563.6px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:603.5px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:643.3px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:683.1px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:722.9px;width:523.8px"></i>
+<i class="rule h" style="left:58.1px;top:1004.4px;width:687.2px"></i>
+<i class="rule v" style="left:58.1px;top:167.4px;height:837.0px"></i>
+<i class="rule v" style="left:129.6px;top:198.5px;height:806.0px"></i>
+<i class="rule v" style="left:202.5px;top:198.5px;height:806.0px"></i>
+<i class="rule v" style="left:212.0px;top:322.0px;height:199.1px"></i>
+<i class="rule v" style="left:212.0px;top:563.6px;height:159.3px"></i>
+<i class="rule v" style="left:295.8px;top:322.0px;height:199.1px"></i>
+<i class="rule v" style="left:295.8px;top:563.6px;height:159.3px"></i>
+<i class="rule v" style="left:735.8px;top:322.0px;height:199.1px"></i>
+<i class="rule v" style="left:735.8px;top:563.6px;height:159.3px"></i>
+<i class="rule v" style="left:745.2px;top:167.4px;height:837.0px"></i>
+<div class="cell" style="left:58.1px;top:167.4px;width:687.2px;height:31.1px"><span class="word" style="left:254.5px;top:6.3px;font-size:13.4px;line-height:14.9px">********工作内容********</span></div>
+<div class="cell" style="left:58.1px;top:198.5px;width:71.6px;height:33.8px"><span class="word" style="left:6.8px;top:7.7px;font-size:12.8px;line-height:14.2px">工种</span></div>
+<div class="cell" style="left:129.6px;top:198.5px;width:72.9px;height:33.8px"><span class="word" style="left:6.8px;top:7.7px;font-size:12.8px;line-height:14.2px">序号</span></div>
+<div class="cell" style="left:202.5px;top:198.5px;width:542.7px;height:33.8px"><span class="word" style="left:6.8px;top:7.7px;font-size:12.8px;line-height:14.2px">工序内容</span></div>
+<div class="cell" style="left:58.1px;top:232.2px;width:71.6px;height:772.2px"><span class="word" style="left:6.8px;top:9.1px;font-size:11.2px;line-height:12.4px">模拟工种</span></div>
+<div class="cell" style="left:129.6px;top:232.2px;width:72.9px;height:772.2px"><span class="word" style="left:6.8px;top:9.1px;font-size:11.2px;line-height:12.4px">60</span></div>
+<div class="cell container" style="left:202.5px;top:232.2px;width:542.7px;height:772.2px"><span class="word" style="left:9.5px;top:9.0px;font-size:12.8px;line-height:14.2px">项目名称：罗盘校准工具 – 主罗盘选项</span><span class="word" style="left:9.5px;top:31.3px;font-size:12.8px;line-height:14.2px">项目编码：TASK 34-23-00-820-801</span><span class="word" style="left:9.5px;top:60.3px;font-size:12.8px;line-height:14.2px">原文 4. 十二点精度摆动程序。</span><span class="word" style="left:9.5px;top:302.0px;font-size:12.8px;line-height:14.2px">原文 5. 恢复飞机状态。</span></div>
+<div class="cell" style="left:212.0px;top:322.0px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">序号</span></div>
+<div class="cell" style="left:295.7px;top:322.0px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">项目内容</span></div>
+<div class="cell" style="left:212.0px;top:361.8px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">4.1</span></div>
+<div class="cell" style="left:295.7px;top:361.8px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">在摆动区中心，依次将SCC调至0,30,…,330°磁航向。</span></div>
+<div class="cell" style="left:212.0px;top:401.6px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">4.2</span></div>
+<div class="cell" style="left:295.7px;top:401.6px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">记录各30°间隔的磁航向（MH）与备用罗盘航向（CH）。</span></div>
+<div class="cell" style="left:212.0px;top:441.5px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">4.3</span></div>
+<div class="cell" style="left:295.7px;top:441.5px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">将CH填入修正卡STEER栏（STEER = MH - D；000°时特殊处理）。</span></div>
+<div class="cell" style="left:212.0px;top:481.3px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">4.4</span></div>
+<div class="cell" style="left:295.7px;top:481.3px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">若剩余偏差超±5°，重复四点校准或执行FIM 34-23 TASK 801。</span></div>
+<div class="cell" style="left:212.0px;top:563.6px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">序号</span></div>
+<div class="cell" style="left:295.7px;top:563.6px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">项目内容</span></div>
+<div class="cell" style="left:212.0px;top:603.5px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">5.1</span></div>
+<div class="cell" style="left:295.7px;top:603.5px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">重连电连接器。</span></div>
+<div class="cell" style="left:212.0px;top:643.3px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">5.2</span></div>
+<div class="cell" style="left:295.7px;top:643.3px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">拆下SCC，装回备用罗盘原螺钉。</span></div>
+<div class="cell" style="left:212.0px;top:683.1px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">5.3</span></div>
+<div class="cell" style="left:295.7px;top:683.1px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">将支架复位并拧紧螺钉。</span></div>
+<div class="cell page-text" style="left:0.0px;top:0.0px;width:803.6px;height:1136.6px"><span class="word" style="left:338.5px;top:57.4px;font-size:20.7px;line-height:23.0px">装配指令 AO</span><span class="word" style="left:58.1px;top:102.2px;font-size:11.5px;line-height:12.8px">大气数据与罗盘</span><span class="word" style="left:58.1px;top:129.2px;font-size:10.9px;line-height:12.2px">模拟排版数据 · 非实际作业依据</span><span class="word" style="left:591.0px;top:1063.4px;font-size:10.9px;line-height:12.2px">第 7 页 / 共 7 页</span></div>
+</div></section>
+<details class="debug"><summary>按闭合矩形提取的文本顺序（含页面兜底框）</summary>
+<pre>[1] ********工作内容********
+[2] 工种
+[3] 序号
+[4] 工序内容
+[5] 模拟工种
+[6] 60
+[7] 项目名称：罗盘校准工具 – 主罗盘选项
+项目编码：TASK 34-23-00-820-801
+原文 4. 十二点精度摆动程序。
+原文 5. 恢复飞机状态。
+[8] 序号
+[9] 项目内容
+[10] 4.1
+[11] 在摆动区中心，依次将SCC调至0,30,…,330°磁航向。
+[12] 4.2
+[13] 记录各30°间隔的磁航向（MH）与备用罗盘航向（CH）。
+[14] 4.3
+[15] 将CH填入修正卡STEER栏（STEER = MH - D；000°时特殊处理）。
+[16] 4.4
+[17] 若剩余偏差超±5°，重复四点校准或执行FIM 34-23 TASK 801。
+[18] 序号
+[19] 项目内容
+[20] 5.1
+[21] 重连电连接器。
+[22] 5.2
+[23] 拆下SCC，装回备用罗盘原螺钉。
+[24] 5.3
+[25] 将支架复位并拧紧螺钉。
+[26] 装配指令 AO
+大气数据与罗盘
+模拟排版数据 · 非实际作业依据
+第 7 页 / 共 7 页</pre></details></body></html>

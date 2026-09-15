@@ -1,0 +1,1461 @@
+{
+  "format": "ao-structured-v3-reading-order",
+  "selection": {
+    "headers": "工种,序号,工序内容",
+    "matched_tables": 6,
+    "geometry_only": true
+  },
+  "images": [],
+  "tables": [
+    {
+      "page": 1,
+      "title": "",
+      "headers": [
+        "工种",
+        "序号",
+        "工序内容"
+      ],
+      "rows": [
+        [
+          {
+            "row": 1,
+            "column": 0,
+            "colspan": 1,
+            "content": [
+              {
+                "text": "模拟工种"
+              }
+            ]
+          },
+          {
+            "row": 1,
+            "column": 1,
+            "colspan": 1,
+            "content": [
+              {
+                "text": "10"
+              }
+            ]
+          },
+          {
+            "row": 1,
+            "column": 2,
+            "colspan": 1,
+            "nested_tables": [
+              {
+                "page": 1,
+                "title": "",
+                "headers": [
+                  "序号",
+                  "项目内容"
+                ],
+                "rows": [
+                  [
+                    {
+                      "row": 1,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "1.1"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 1,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "执行供电任务：TASK 24-22-00-860-811。"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 2,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "1.2"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 2,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "设置以下开关至 OFF 位：1/2 BLEED、APU BLEED、L/R PACK、WING\nANTI-ICE、1/2 ENG ANTI-ICE、1/2 ENGINE START；ISOLATION VALV\nE 置于 OPEN。"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 3,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "1.3"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 3,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "确认发动机油门杆在切断位，并挂“禁止操作”标签。"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 4,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "1.4"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 4,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "打开接近面板：192CL、192CR、311BL。"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 5,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "1.5"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 5,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "确认隔离活门位置指示器在 OPEN 位。"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 6,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "1.6"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 6,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "对左反推执行 TASK 78-31-00-010-801-F00（按指定顺序操作前缘、\n反推及风扇整流罩）。"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 7,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "1.7"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 7,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "确认左右发 5 级引气单向活门已安装。"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 8,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "1.8"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 8,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "确认 PRSOV 关闭；若未关闭，则更换（参考 TASK 36-11-04-000/40\n0-801）。"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 9,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "1.9"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 9,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "确认高压级活门关闭；若未关闭，则更换（参考 TASK 36-11-06-000\n/400-801）。"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 10,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "1.10"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 10,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "确认起动活门关闭；若未关闭，则更换（参考 TASK 80-11-03-000/4\n00-801-F00）。"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 11,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "1.11"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 11,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "确认流量控制活门、机翼及整流罩 TAI 活门均关闭；否则手动超控\n关闭。"
+                        }
+                      ]
+                    }
+                  ]
+                ]
+              }
+            ],
+            "content": [
+              {
+                "text": "项目名称：气源系统管路渗漏测试\n项目编码：TASK 36-13-00-700-801\n原文 1. 准备渗漏测试。"
+              }
+            ]
+          }
+        ]
+      ]
+    },
+    {
+      "page": 2,
+      "title": "",
+      "headers": [
+        "工种",
+        "序号",
+        "工序内容"
+      ],
+      "rows": [
+        [
+          {
+            "row": 1,
+            "column": 0,
+            "colspan": 1,
+            "content": [
+              {
+                "text": "模拟工种"
+              }
+            ]
+          },
+          {
+            "row": 1,
+            "column": 1,
+            "colspan": 1,
+            "content": [
+              {
+                "text": "20"
+              }
+            ]
+          },
+          {
+            "row": 1,
+            "column": 2,
+            "colspan": 1,
+            "nested_tables": [
+              {
+                "page": 2,
+                "title": "",
+                "headers": [
+                  "序号",
+                  "项目内容"
+                ],
+                "rows": [
+                  [
+                    {
+                      "row": 1,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "2.1"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 1,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "将 1/2 BLEED 开关置于 ON。"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 2,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "2.2"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 2,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "执行 TASK 36-00-00-860-802，通过地面气源供压。"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 3,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "2.3"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 3,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "使用棘轮扳手将 PRSOV 手动打开（注意：系统带压时 PRSOV 可能快\n速开启，导致工具脱手）。"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 4,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "2.4"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 4,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "系统加压至 42–48 psig（289–331 kPa）。"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 5,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "2.5"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 5,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "检查所有接头：允许弥散泄漏，集中泄漏（手距 12 英寸可感）必须\n修复。"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 6,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "2.6"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 6,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "测试交输下游管路：分别将 L/R PACK 置 AUTO，检查泄漏情况后恢\n复 OFF。"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 7,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "2.7"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 7,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "将 1/2 BLEED 开关置于 OFF。"
+                        }
+                      ]
+                    }
+                  ]
+                ]
+              }
+            ],
+            "content": [
+              {
+                "text": "项目名称：气源系统管路渗漏测试\n项目编码：TASK 36-13-00-700-801\n原文 2. 执行渗漏测试。"
+              }
+            ]
+          }
+        ]
+      ]
+    },
+    {
+      "page": 3,
+      "title": "",
+      "headers": [
+        "工种",
+        "序号",
+        "工序内容"
+      ],
+      "rows": [
+        [
+          {
+            "row": 1,
+            "column": 0,
+            "colspan": 1,
+            "content": [
+              {
+                "text": "模拟工种"
+              }
+            ]
+          },
+          {
+            "row": 1,
+            "column": 1,
+            "colspan": 1,
+            "content": [
+              {
+                "text": "30"
+              }
+            ]
+          },
+          {
+            "row": 1,
+            "column": 2,
+            "colspan": 1,
+            "nested_tables": [
+              {
+                "page": 3,
+                "title": "",
+                "headers": [
+                  "序号",
+                  "项目内容"
+                ],
+                "rows": [
+                  [
+                    {
+                      "row": 1,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "3.1"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 1,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "执行 TASK 36-00-00-860-806 泄压，确认 P5-10 压力表为 0。"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 2,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "3.2"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 2,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "对左反推执行 TASK 78-31-00-010-804-F00。"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 3,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "3.3"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 3,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "关闭 192CL、192CR、311BL 接近面板。"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 4,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "3.4"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 4,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "执行断电任务：TASK 24-22-00-860-812。"
+                        }
+                      ]
+                    }
+                  ]
+                ]
+              }
+            ],
+            "content": [
+              {
+                "text": "项目名称：气源系统管路渗漏测试\n项目编码：TASK 36-13-00-700-801\n原文 3. 恢复飞机状态。"
+              }
+            ]
+          }
+        ]
+      ]
+    },
+    {
+      "page": 4,
+      "title": "",
+      "headers": [
+        "工种",
+        "序号",
+        "工序内容"
+      ],
+      "rows": [
+        [
+          {
+            "row": 1,
+            "column": 0,
+            "colspan": 1,
+            "content": [
+              {
+                "text": "模拟工种"
+              }
+            ]
+          },
+          {
+            "row": 1,
+            "column": 1,
+            "colspan": 1,
+            "content": [
+              {
+                "text": "40"
+              }
+            ]
+          },
+          {
+            "row": 1,
+            "column": 2,
+            "colspan": 1,
+            "nested_tables": [
+              {
+                "page": 4,
+                "title": "",
+                "headers": [
+                  "序号",
+                  "项目内容"
+                ],
+                "rows": [
+                  [
+                    {
+                      "row": 1,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "1.1"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 1,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "必要时按 TASK 12-12-00-610-801 补油；"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 2,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "1.2"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 2,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "确认 AOA 在零位；"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 3,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "1.3"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 3,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "轮挡就位；"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 4,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "1.4"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 4,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "断开并挂牌 P6-2 A15/C01081、P6-3 C16/C01356、P92 F2/C01449\n跳开关；"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 5,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "1.5"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 5,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "若襟翼未全收，先供 B 系统液压将其收上后断压；"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 6,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "1.6"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 6,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "确认 PTU 控制活门位置指示器指向内后方（关闭位）。"
+                        }
+                      ]
+                    }
+                  ]
+                ]
+              }
+            ],
+            "content": [
+              {
+                "text": "项目名称：动力转换组件（PTU）系统测试\n项目编码：TASK 29-22-00-730-801\n原文 1. 准备："
+              }
+            ]
+          }
+        ]
+      ]
+    },
+    {
+      "page": 5,
+      "title": "",
+      "headers": [
+        "工种",
+        "序号",
+        "工序内容"
+      ],
+      "rows": [
+        [
+          {
+            "row": 1,
+            "column": 0,
+            "colspan": 1,
+            "content": [
+              {
+                "text": "模拟工种"
+              }
+            ]
+          },
+          {
+            "row": 1,
+            "column": 1,
+            "colspan": 1,
+            "content": [
+              {
+                "text": "50"
+              }
+            ]
+          },
+          {
+            "row": 1,
+            "column": 2,
+            "colspan": 1,
+            "nested_tables": [
+              {
+                "page": 5,
+                "title": "",
+                "headers": [
+                  "序号",
+                  "项目内容"
+                ],
+                "rows": [
+                  [
+                    {
+                      "row": 1,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "2.1"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 1,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "将 ALTERNATE FLAPS 臂开关置 ARM；"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 2,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "2.2"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 2,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "控制开关置 DOWN 使后缘襟翼至 1 单位，再将臂开关回 OFF，确认\nPTU 活门开启；"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 3,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "2.3"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 3,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "闭合 P6-2 A15/C01081 和 P6-3 C16/C01356，确认活门关闭；"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 4,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "2.4"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 4,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "断开 P6-2 A16/C01085，确认活门保持关闭；"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 5,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "2.5"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 5,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "断开 P6-3 C15/C01355，确认活门开启；"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 6,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "2.6"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 6,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "闭合 C15/C01355，确认活门关闭；"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 7,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "2.7"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 7,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "增压油箱（TASK 29-09-00-860-801）；"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 8,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "2.8"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 8,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "用 EDP 或地面车给 A 系统供压至 3000 psig，确认 PTU 不工作；"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 9,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "2.9"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 9,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "闭合 A16/C01085；"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 10,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "2.10"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 10,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "断开 A15/C01081 和 C16/C01356，确认 PTU 约 0.5 秒后启动；"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 11,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "2.11"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 11,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "轮挡就位后进入空中模式（TASK 32-09-00-860-801）；"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 12,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "2.12"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 12,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "左 AOA 逆时针转动使前缘缝翼全伸，用秒表 STD-1139 确认时间 ≤\n4 秒；"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 13,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "2.13"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 13,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "AOA 回零；"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 14,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "2.14"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 14,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "返回地面模式；"
+                        }
+                      ]
+                    }
+                  ]
+                ]
+              },
+              {
+                "page": 6,
+                "title": "",
+                "headers": [
+                  "序号",
+                  "项目内容"
+                ],
+                "rows": [
+                  [
+                    {
+                      "row": 1,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "2.15"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 1,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "臂开关置 ARM，控制开关置 UP 收后缘襟翼，再回 OFF，确认 PTU\n活门保持关闭；"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 2,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "2.16"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 2,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "臂开关回 OFF；"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 3,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "2.17"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 3,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "切断 A 系统液压；"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 4,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "2.18"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 4,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "襟翼手柄置 1 单位；"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 5,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "2.19"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 5,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "用 B 系统 EDP 供压验证低压电门；"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 6,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "2.20"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 6,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "切断 B 系统液压；"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 7,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "2.21"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 7,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "断开 P6-3 C15/C01355；"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 8,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "2.22"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 8,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "蹬舵使 A、B 系统压力 <200 psig，确认 PTU 活门开启；"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 9,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "2.23"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 9,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "用 EMDP 或地面车给 B 系统供压，确认 PTU 不工作且 A 系统压力\n不升；若异常则更换 PTU、单向活门及滤芯。"
+                        }
+                      ]
+                    }
+                  ]
+                ]
+              }
+            ],
+            "content": [
+              {
+                "text": "项目名称：动力转换组件（PTU）系统测试\n项目编码：TASK 29-22-00-730-801\n原文 2. 测试："
+              }
+            ]
+          }
+        ]
+      ]
+    },
+    {
+      "page": 7,
+      "title": "",
+      "headers": [
+        "工种",
+        "序号",
+        "工序内容"
+      ],
+      "rows": [
+        [
+          {
+            "row": 1,
+            "column": 0,
+            "colspan": 1,
+            "content": [
+              {
+                "text": "模拟工种"
+              }
+            ]
+          },
+          {
+            "row": 1,
+            "column": 1,
+            "colspan": 1,
+            "content": [
+              {
+                "text": "60"
+              }
+            ]
+          },
+          {
+            "row": 1,
+            "column": 2,
+            "colspan": 1,
+            "content": [
+              {
+                "text": "项目名称：动力转换组件（PTU）系统测试\n项目编码：TASK 29-22-00-730-801\n原文 3. 恢复：襟翼手柄回 UP；切断 B 系统液压；闭合所有跳开关。"
+              }
+            ]
+          }
+        ]
+      ]
+    }
+  ]
+}

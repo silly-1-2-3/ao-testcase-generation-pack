@@ -1,0 +1,2620 @@
+{
+  "format": "ao-structured-v3-reading-order",
+  "selection": {
+    "headers": "工种,序号,工序内容",
+    "matched_tables": 6,
+    "geometry_only": true
+  },
+  "images": [],
+  "tables": [
+    {
+      "page": 1,
+      "bbox": [
+        58.1,
+        198.5,
+        745.2,
+        1004.4
+      ],
+      "title": "",
+      "headers": [
+        "工种",
+        "序号",
+        "工序内容"
+      ],
+      "rows": [
+        [
+          {
+            "row": 1,
+            "column": 0,
+            "colspan": 1,
+            "text": "模拟工种",
+            "bbox": [
+              58.1,
+              232.2,
+              129.7,
+              1004.4
+            ],
+            "nested_tables": [],
+            "content": [
+              {
+                "type": "text",
+                "text": "模拟工种"
+              }
+            ]
+          },
+          {
+            "row": 1,
+            "column": 1,
+            "colspan": 1,
+            "text": "10",
+            "bbox": [
+              129.6,
+              232.2,
+              202.5,
+              1004.4
+            ],
+            "nested_tables": [],
+            "content": [
+              {
+                "type": "text",
+                "text": "10"
+              }
+            ]
+          },
+          {
+            "row": 1,
+            "column": 2,
+            "colspan": 1,
+            "text": "项目名称：气源系统管路渗漏测试\n项目编码：TASK 36-13-00-700-801\n原文 1. 准备渗漏测试。",
+            "bbox": [
+              202.5,
+              232.2,
+              745.2,
+              1004.4
+            ],
+            "nested_tables": [
+              {
+                "page": 1,
+                "bbox": [
+                  212.0,
+                  322.0,
+                  735.8,
+                  955.8
+                ],
+                "title": "",
+                "headers": [
+                  "序号",
+                  "项目内容"
+                ],
+                "rows": [
+                  [
+                    {
+                      "row": 1,
+                      "column": 0,
+                      "colspan": 1,
+                      "text": "1.1",
+                      "bbox": [
+                        212.0,
+                        361.8,
+                        295.7,
+                        401.6
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "1.1"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 1,
+                      "column": 1,
+                      "colspan": 1,
+                      "text": "执行供电任务：TASK 24-22-00-860-811。",
+                      "bbox": [
+                        295.7,
+                        361.8,
+                        735.8,
+                        401.6
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "执行供电任务：TASK 24-22-00-860-811。"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 2,
+                      "column": 0,
+                      "colspan": 1,
+                      "text": "1.2",
+                      "bbox": [
+                        212.0,
+                        401.6,
+                        295.7,
+                        486.0
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "1.2"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 2,
+                      "column": 1,
+                      "colspan": 1,
+                      "text": "设置以下开关至 OFF 位：1/2 BLEED、APU BLEED、L/R PACK、WING\nANTI-ICE、1/2 ENG ANTI-ICE、1/2 ENGINE START；ISOLATION VALV\nE 置于 OPEN。",
+                      "bbox": [
+                        295.7,
+                        401.6,
+                        735.8,
+                        486.0
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "设置以下开关至 OFF 位：1/2 BLEED、APU BLEED、L/R PACK、WING\nANTI-ICE、1/2 ENG ANTI-ICE、1/2 ENGINE START；ISOLATION VALV\nE 置于 OPEN。"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 3,
+                      "column": 0,
+                      "colspan": 1,
+                      "text": "1.3",
+                      "bbox": [
+                        212.0,
+                        486.0,
+                        295.7,
+                        525.8
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "1.3"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 3,
+                      "column": 1,
+                      "colspan": 1,
+                      "text": "确认发动机油门杆在切断位，并挂“禁止操作”标签。",
+                      "bbox": [
+                        295.7,
+                        486.0,
+                        735.8,
+                        525.8
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "确认发动机油门杆在切断位，并挂“禁止操作”标签。"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 4,
+                      "column": 0,
+                      "colspan": 1,
+                      "text": "1.4",
+                      "bbox": [
+                        212.0,
+                        525.8,
+                        295.7,
+                        565.6
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "1.4"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 4,
+                      "column": 1,
+                      "colspan": 1,
+                      "text": "打开接近面板：192CL、192CR、311BL。",
+                      "bbox": [
+                        295.7,
+                        525.8,
+                        735.8,
+                        565.6
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "打开接近面板：192CL、192CR、311BL。"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 5,
+                      "column": 0,
+                      "colspan": 1,
+                      "text": "1.5",
+                      "bbox": [
+                        212.0,
+                        565.7,
+                        295.7,
+                        605.5
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "1.5"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 5,
+                      "column": 1,
+                      "colspan": 1,
+                      "text": "确认隔离活门位置指示器在 OPEN 位。",
+                      "bbox": [
+                        295.7,
+                        565.7,
+                        735.8,
+                        605.5
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "确认隔离活门位置指示器在 OPEN 位。"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 6,
+                      "column": 0,
+                      "colspan": 1,
+                      "text": "1.6",
+                      "bbox": [
+                        212.0,
+                        605.5,
+                        295.7,
+                        667.6
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "1.6"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 6,
+                      "column": 1,
+                      "colspan": 1,
+                      "text": "对左反推执行 TASK 78-31-00-010-801-F00（按指定顺序操作前缘、\n反推及风扇整流罩）。",
+                      "bbox": [
+                        295.7,
+                        605.5,
+                        735.8,
+                        667.6
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "对左反推执行 TASK 78-31-00-010-801-F00（按指定顺序操作前缘、\n反推及风扇整流罩）。"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 7,
+                      "column": 0,
+                      "colspan": 1,
+                      "text": "1.7",
+                      "bbox": [
+                        212.0,
+                        667.6,
+                        295.7,
+                        707.4
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "1.7"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 7,
+                      "column": 1,
+                      "colspan": 1,
+                      "text": "确认左右发 5 级引气单向活门已安装。",
+                      "bbox": [
+                        295.7,
+                        667.6,
+                        735.8,
+                        707.4
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "确认左右发 5 级引气单向活门已安装。"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 8,
+                      "column": 0,
+                      "colspan": 1,
+                      "text": "1.8",
+                      "bbox": [
+                        212.0,
+                        707.4,
+                        295.7,
+                        769.5
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "1.8"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 8,
+                      "column": 1,
+                      "colspan": 1,
+                      "text": "确认 PRSOV 关闭；若未关闭，则更换（参考 TASK 36-11-04-000/40\n0-801）。",
+                      "bbox": [
+                        295.7,
+                        707.4,
+                        735.8,
+                        769.5
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "确认 PRSOV 关闭；若未关闭，则更换（参考 TASK 36-11-04-000/40\n0-801）。"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 9,
+                      "column": 0,
+                      "colspan": 1,
+                      "text": "1.9",
+                      "bbox": [
+                        212.0,
+                        769.5,
+                        295.7,
+                        831.6
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "1.9"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 9,
+                      "column": 1,
+                      "colspan": 1,
+                      "text": "确认高压级活门关闭；若未关闭，则更换（参考 TASK 36-11-06-000\n/400-801）。",
+                      "bbox": [
+                        295.7,
+                        769.5,
+                        735.8,
+                        831.6
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "确认高压级活门关闭；若未关闭，则更换（参考 TASK 36-11-06-000\n/400-801）。"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 10,
+                      "column": 0,
+                      "colspan": 1,
+                      "text": "1.10",
+                      "bbox": [
+                        212.0,
+                        831.6,
+                        295.7,
+                        893.7
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "1.10"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 10,
+                      "column": 1,
+                      "colspan": 1,
+                      "text": "确认起动活门关闭；若未关闭，则更换（参考 TASK 80-11-03-000/4\n00-801-F00）。",
+                      "bbox": [
+                        295.7,
+                        831.6,
+                        735.8,
+                        893.7
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "确认起动活门关闭；若未关闭，则更换（参考 TASK 80-11-03-000/4\n00-801-F00）。"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 11,
+                      "column": 0,
+                      "colspan": 1,
+                      "text": "1.11",
+                      "bbox": [
+                        212.0,
+                        893.7,
+                        295.7,
+                        955.8
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "1.11"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 11,
+                      "column": 1,
+                      "colspan": 1,
+                      "text": "确认流量控制活门、机翼及整流罩 TAI 活门均关闭；否则手动超控\n关闭。",
+                      "bbox": [
+                        295.7,
+                        893.7,
+                        735.8,
+                        955.8
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "确认流量控制活门、机翼及整流罩 TAI 活门均关闭；否则手动超控\n关闭。"
+                        }
+                      ]
+                    }
+                  ]
+                ],
+                "nested_tables": []
+              }
+            ],
+            "content": [
+              {
+                "type": "text",
+                "text": "项目名称：气源系统管路渗漏测试\n项目编码：TASK 36-13-00-700-801\n原文 1. 准备渗漏测试。"
+              }
+            ]
+          }
+        ]
+      ],
+      "nested_tables": []
+    },
+    {
+      "page": 2,
+      "bbox": [
+        58.1,
+        198.5,
+        745.2,
+        1004.4
+      ],
+      "title": "",
+      "headers": [
+        "工种",
+        "序号",
+        "工序内容"
+      ],
+      "rows": [
+        [
+          {
+            "row": 1,
+            "column": 0,
+            "colspan": 1,
+            "text": "模拟工种",
+            "bbox": [
+              58.1,
+              232.2,
+              129.7,
+              1004.4
+            ],
+            "nested_tables": [],
+            "content": [
+              {
+                "type": "text",
+                "text": "模拟工种"
+              }
+            ]
+          },
+          {
+            "row": 1,
+            "column": 1,
+            "colspan": 1,
+            "text": "20",
+            "bbox": [
+              129.6,
+              232.2,
+              202.5,
+              1004.4
+            ],
+            "nested_tables": [],
+            "content": [
+              {
+                "type": "text",
+                "text": "20"
+              }
+            ]
+          },
+          {
+            "row": 1,
+            "column": 2,
+            "colspan": 1,
+            "text": "项目名称：气源系统管路渗漏测试\n项目编码：TASK 36-13-00-700-801\n原文 2. 执行渗漏测试。",
+            "bbox": [
+              202.5,
+              232.2,
+              745.2,
+              1004.4
+            ],
+            "nested_tables": [
+              {
+                "page": 2,
+                "bbox": [
+                  212.0,
+                  322.0,
+                  735.8,
+                  707.4
+                ],
+                "title": "",
+                "headers": [
+                  "序号",
+                  "项目内容"
+                ],
+                "rows": [
+                  [
+                    {
+                      "row": 1,
+                      "column": 0,
+                      "colspan": 1,
+                      "text": "2.1",
+                      "bbox": [
+                        212.0,
+                        361.8,
+                        295.7,
+                        401.6
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "2.1"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 1,
+                      "column": 1,
+                      "colspan": 1,
+                      "text": "将 1/2 BLEED 开关置于 ON。",
+                      "bbox": [
+                        295.7,
+                        361.8,
+                        735.8,
+                        401.6
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "将 1/2 BLEED 开关置于 ON。"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 2,
+                      "column": 0,
+                      "colspan": 1,
+                      "text": "2.2",
+                      "bbox": [
+                        212.0,
+                        401.6,
+                        295.7,
+                        441.4
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "2.2"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 2,
+                      "column": 1,
+                      "colspan": 1,
+                      "text": "执行 TASK 36-00-00-860-802，通过地面气源供压。",
+                      "bbox": [
+                        295.7,
+                        401.6,
+                        735.8,
+                        441.4
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "执行 TASK 36-00-00-860-802，通过地面气源供压。"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 3,
+                      "column": 0,
+                      "colspan": 1,
+                      "text": "2.3",
+                      "bbox": [
+                        212.0,
+                        441.5,
+                        295.7,
+                        503.6
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "2.3"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 3,
+                      "column": 1,
+                      "colspan": 1,
+                      "text": "使用棘轮扳手将 PRSOV 手动打开（注意：系统带压时 PRSOV 可能快\n速开启，导致工具脱手）。",
+                      "bbox": [
+                        295.7,
+                        441.5,
+                        735.8,
+                        503.6
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "使用棘轮扳手将 PRSOV 手动打开（注意：系统带压时 PRSOV 可能快\n速开启，导致工具脱手）。"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 4,
+                      "column": 0,
+                      "colspan": 1,
+                      "text": "2.4",
+                      "bbox": [
+                        212.0,
+                        503.6,
+                        295.7,
+                        543.4
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "2.4"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 4,
+                      "column": 1,
+                      "colspan": 1,
+                      "text": "系统加压至 42–48 psig（289–331 kPa）。",
+                      "bbox": [
+                        295.7,
+                        503.6,
+                        735.8,
+                        543.4
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "系统加压至 42–48 psig（289–331 kPa）。"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 5,
+                      "column": 0,
+                      "colspan": 1,
+                      "text": "2.5",
+                      "bbox": [
+                        212.0,
+                        543.4,
+                        295.7,
+                        605.5
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "2.5"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 5,
+                      "column": 1,
+                      "colspan": 1,
+                      "text": "检查所有接头：允许弥散泄漏，集中泄漏（手距 12 英寸可感）必须\n修复。",
+                      "bbox": [
+                        295.7,
+                        543.4,
+                        735.8,
+                        605.5
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "检查所有接头：允许弥散泄漏，集中泄漏（手距 12 英寸可感）必须\n修复。"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 6,
+                      "column": 0,
+                      "colspan": 1,
+                      "text": "2.6",
+                      "bbox": [
+                        212.0,
+                        605.5,
+                        295.7,
+                        667.6
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "2.6"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 6,
+                      "column": 1,
+                      "colspan": 1,
+                      "text": "测试交输下游管路：分别将 L/R PACK 置 AUTO，检查泄漏情况后恢\n复 OFF。",
+                      "bbox": [
+                        295.7,
+                        605.5,
+                        735.8,
+                        667.6
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "测试交输下游管路：分别将 L/R PACK 置 AUTO，检查泄漏情况后恢\n复 OFF。"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 7,
+                      "column": 0,
+                      "colspan": 1,
+                      "text": "2.7",
+                      "bbox": [
+                        212.0,
+                        667.6,
+                        295.7,
+                        707.4
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "2.7"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 7,
+                      "column": 1,
+                      "colspan": 1,
+                      "text": "将 1/2 BLEED 开关置于 OFF。",
+                      "bbox": [
+                        295.7,
+                        667.6,
+                        735.8,
+                        707.4
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "将 1/2 BLEED 开关置于 OFF。"
+                        }
+                      ]
+                    }
+                  ]
+                ],
+                "nested_tables": []
+              }
+            ],
+            "content": [
+              {
+                "type": "text",
+                "text": "项目名称：气源系统管路渗漏测试\n项目编码：TASK 36-13-00-700-801\n原文 2. 执行渗漏测试。"
+              }
+            ]
+          }
+        ]
+      ],
+      "nested_tables": []
+    },
+    {
+      "page": 3,
+      "bbox": [
+        58.1,
+        198.5,
+        745.2,
+        1004.4
+      ],
+      "title": "",
+      "headers": [
+        "工种",
+        "序号",
+        "工序内容"
+      ],
+      "rows": [
+        [
+          {
+            "row": 1,
+            "column": 0,
+            "colspan": 1,
+            "text": "模拟工种",
+            "bbox": [
+              58.1,
+              232.2,
+              129.7,
+              1004.4
+            ],
+            "nested_tables": [],
+            "content": [
+              {
+                "type": "text",
+                "text": "模拟工种"
+              }
+            ]
+          },
+          {
+            "row": 1,
+            "column": 1,
+            "colspan": 1,
+            "text": "30",
+            "bbox": [
+              129.6,
+              232.2,
+              202.5,
+              1004.4
+            ],
+            "nested_tables": [],
+            "content": [
+              {
+                "type": "text",
+                "text": "30"
+              }
+            ]
+          },
+          {
+            "row": 1,
+            "column": 2,
+            "colspan": 1,
+            "text": "项目名称：气源系统管路渗漏测试\n项目编码：TASK 36-13-00-700-801\n原文 3. 恢复飞机状态。",
+            "bbox": [
+              202.5,
+              232.2,
+              745.2,
+              1004.4
+            ],
+            "nested_tables": [
+              {
+                "page": 3,
+                "bbox": [
+                  212.0,
+                  322.0,
+                  735.8,
+                  521.1
+                ],
+                "title": "",
+                "headers": [
+                  "序号",
+                  "项目内容"
+                ],
+                "rows": [
+                  [
+                    {
+                      "row": 1,
+                      "column": 0,
+                      "colspan": 1,
+                      "text": "3.1",
+                      "bbox": [
+                        212.0,
+                        361.8,
+                        295.7,
+                        401.6
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "3.1"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 1,
+                      "column": 1,
+                      "colspan": 1,
+                      "text": "执行 TASK 36-00-00-860-806 泄压，确认 P5-10 压力表为 0。",
+                      "bbox": [
+                        295.7,
+                        361.8,
+                        735.8,
+                        401.6
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "执行 TASK 36-00-00-860-806 泄压，确认 P5-10 压力表为 0。"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 2,
+                      "column": 0,
+                      "colspan": 1,
+                      "text": "3.2",
+                      "bbox": [
+                        212.0,
+                        401.6,
+                        295.7,
+                        441.4
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "3.2"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 2,
+                      "column": 1,
+                      "colspan": 1,
+                      "text": "对左反推执行 TASK 78-31-00-010-804-F00。",
+                      "bbox": [
+                        295.7,
+                        401.6,
+                        735.8,
+                        441.4
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "对左反推执行 TASK 78-31-00-010-804-F00。"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 3,
+                      "column": 0,
+                      "colspan": 1,
+                      "text": "3.3",
+                      "bbox": [
+                        212.0,
+                        441.5,
+                        295.7,
+                        481.3
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "3.3"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 3,
+                      "column": 1,
+                      "colspan": 1,
+                      "text": "关闭 192CL、192CR、311BL 接近面板。",
+                      "bbox": [
+                        295.7,
+                        441.5,
+                        735.8,
+                        481.3
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "关闭 192CL、192CR、311BL 接近面板。"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 4,
+                      "column": 0,
+                      "colspan": 1,
+                      "text": "3.4",
+                      "bbox": [
+                        212.0,
+                        481.3,
+                        295.7,
+                        521.1
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "3.4"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 4,
+                      "column": 1,
+                      "colspan": 1,
+                      "text": "执行断电任务：TASK 24-22-00-860-812。",
+                      "bbox": [
+                        295.7,
+                        481.3,
+                        735.8,
+                        521.1
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "执行断电任务：TASK 24-22-00-860-812。"
+                        }
+                      ]
+                    }
+                  ]
+                ],
+                "nested_tables": []
+              }
+            ],
+            "content": [
+              {
+                "type": "text",
+                "text": "项目名称：气源系统管路渗漏测试\n项目编码：TASK 36-13-00-700-801\n原文 3. 恢复飞机状态。"
+              }
+            ]
+          }
+        ]
+      ],
+      "nested_tables": []
+    },
+    {
+      "page": 4,
+      "bbox": [
+        58.1,
+        198.5,
+        745.2,
+        1004.4
+      ],
+      "title": "",
+      "headers": [
+        "工种",
+        "序号",
+        "工序内容"
+      ],
+      "rows": [
+        [
+          {
+            "row": 1,
+            "column": 0,
+            "colspan": 1,
+            "text": "模拟工种",
+            "bbox": [
+              58.1,
+              232.2,
+              129.7,
+              1004.4
+            ],
+            "nested_tables": [],
+            "content": [
+              {
+                "type": "text",
+                "text": "模拟工种"
+              }
+            ]
+          },
+          {
+            "row": 1,
+            "column": 1,
+            "colspan": 1,
+            "text": "40",
+            "bbox": [
+              129.6,
+              232.2,
+              202.5,
+              1004.4
+            ],
+            "nested_tables": [],
+            "content": [
+              {
+                "type": "text",
+                "text": "40"
+              }
+            ]
+          },
+          {
+            "row": 1,
+            "column": 2,
+            "colspan": 1,
+            "text": "项目名称：动力转换组件（PTU）系统测试\n项目编码：TASK 29-22-00-730-801\n原文 1. 准备：",
+            "bbox": [
+              202.5,
+              232.2,
+              745.2,
+              1004.4
+            ],
+            "nested_tables": [
+              {
+                "page": 4,
+                "bbox": [
+                  212.0,
+                  322.0,
+                  735.8,
+                  623.0
+                ],
+                "title": "",
+                "headers": [
+                  "序号",
+                  "项目内容"
+                ],
+                "rows": [
+                  [
+                    {
+                      "row": 1,
+                      "column": 0,
+                      "colspan": 1,
+                      "text": "1.1",
+                      "bbox": [
+                        212.0,
+                        361.8,
+                        295.7,
+                        401.6
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "1.1"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 1,
+                      "column": 1,
+                      "colspan": 1,
+                      "text": "必要时按 TASK 12-12-00-610-801 补油；",
+                      "bbox": [
+                        295.7,
+                        361.8,
+                        735.8,
+                        401.6
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "必要时按 TASK 12-12-00-610-801 补油；"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 2,
+                      "column": 0,
+                      "colspan": 1,
+                      "text": "1.2",
+                      "bbox": [
+                        212.0,
+                        401.6,
+                        295.7,
+                        441.4
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "1.2"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 2,
+                      "column": 1,
+                      "colspan": 1,
+                      "text": "确认 AOA 在零位；",
+                      "bbox": [
+                        295.7,
+                        401.6,
+                        735.8,
+                        441.4
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "确认 AOA 在零位；"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 3,
+                      "column": 0,
+                      "colspan": 1,
+                      "text": "1.3",
+                      "bbox": [
+                        212.0,
+                        441.5,
+                        295.7,
+                        481.3
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "1.3"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 3,
+                      "column": 1,
+                      "colspan": 1,
+                      "text": "轮挡就位；",
+                      "bbox": [
+                        295.7,
+                        441.5,
+                        735.8,
+                        481.3
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "轮挡就位；"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 4,
+                      "column": 0,
+                      "colspan": 1,
+                      "text": "1.4",
+                      "bbox": [
+                        212.0,
+                        481.3,
+                        295.7,
+                        543.4
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "1.4"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 4,
+                      "column": 1,
+                      "colspan": 1,
+                      "text": "断开并挂牌 P6-2 A15/C01081、P6-3 C16/C01356、P92 F2/C01449\n跳开关；",
+                      "bbox": [
+                        295.7,
+                        481.3,
+                        735.8,
+                        543.4
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "断开并挂牌 P6-2 A15/C01081、P6-3 C16/C01356、P92 F2/C01449\n跳开关；"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 5,
+                      "column": 0,
+                      "colspan": 1,
+                      "text": "1.5",
+                      "bbox": [
+                        212.0,
+                        543.4,
+                        295.7,
+                        583.2
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "1.5"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 5,
+                      "column": 1,
+                      "colspan": 1,
+                      "text": "若襟翼未全收，先供 B 系统液压将其收上后断压；",
+                      "bbox": [
+                        295.7,
+                        543.4,
+                        735.8,
+                        583.2
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "若襟翼未全收，先供 B 系统液压将其收上后断压；"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 6,
+                      "column": 0,
+                      "colspan": 1,
+                      "text": "1.6",
+                      "bbox": [
+                        212.0,
+                        583.2,
+                        295.7,
+                        623.0
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "1.6"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 6,
+                      "column": 1,
+                      "colspan": 1,
+                      "text": "确认 PTU 控制活门位置指示器指向内后方（关闭位）。",
+                      "bbox": [
+                        295.7,
+                        583.2,
+                        735.8,
+                        623.0
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "确认 PTU 控制活门位置指示器指向内后方（关闭位）。"
+                        }
+                      ]
+                    }
+                  ]
+                ],
+                "nested_tables": []
+              }
+            ],
+            "content": [
+              {
+                "type": "text",
+                "text": "项目名称：动力转换组件（PTU）系统测试\n项目编码：TASK 29-22-00-730-801\n原文 1. 准备："
+              }
+            ]
+          }
+        ]
+      ],
+      "nested_tables": []
+    },
+    {
+      "page": 5,
+      "bbox": [
+        58.1,
+        198.5,
+        745.2,
+        1004.4
+      ],
+      "title": "",
+      "headers": [
+        "工种",
+        "序号",
+        "工序内容"
+      ],
+      "rows": [
+        [
+          {
+            "row": 1,
+            "column": 0,
+            "colspan": 1,
+            "text": "模拟工种",
+            "bbox": [
+              58.1,
+              232.2,
+              129.7,
+              1004.4
+            ],
+            "nested_tables": [],
+            "content": [
+              {
+                "type": "text",
+                "text": "模拟工种"
+              }
+            ]
+          },
+          {
+            "row": 1,
+            "column": 1,
+            "colspan": 1,
+            "text": "50",
+            "bbox": [
+              129.6,
+              232.2,
+              202.5,
+              1004.4
+            ],
+            "nested_tables": [],
+            "content": [
+              {
+                "type": "text",
+                "text": "50"
+              }
+            ]
+          },
+          {
+            "row": 1,
+            "column": 2,
+            "colspan": 1,
+            "text": "项目名称：动力转换组件（PTU）系统测试\n项目编码：TASK 29-22-00-730-801\n原文 2. 测试：",
+            "bbox": [
+              202.5,
+              232.2,
+              745.2,
+              1004.4
+            ],
+            "nested_tables": [
+              {
+                "page": 5,
+                "bbox": [
+                  212.0,
+                  322.0,
+                  735.8,
+                  963.9
+                ],
+                "title": "",
+                "headers": [
+                  "序号",
+                  "项目内容"
+                ],
+                "rows": [
+                  [
+                    {
+                      "row": 1,
+                      "column": 0,
+                      "colspan": 1,
+                      "text": "2.1",
+                      "bbox": [
+                        212.0,
+                        361.8,
+                        295.7,
+                        401.6
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "2.1"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 1,
+                      "column": 1,
+                      "colspan": 1,
+                      "text": "将 ALTERNATE FLAPS 臂开关置 ARM；",
+                      "bbox": [
+                        295.7,
+                        361.8,
+                        735.8,
+                        401.6
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "将 ALTERNATE FLAPS 臂开关置 ARM；"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 2,
+                      "column": 0,
+                      "colspan": 1,
+                      "text": "2.2",
+                      "bbox": [
+                        212.0,
+                        401.6,
+                        295.7,
+                        463.7
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "2.2"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 2,
+                      "column": 1,
+                      "colspan": 1,
+                      "text": "控制开关置 DOWN 使后缘襟翼至 1 单位，再将臂开关回 OFF，确认\nPTU 活门开启；",
+                      "bbox": [
+                        295.7,
+                        401.6,
+                        735.8,
+                        463.7
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "控制开关置 DOWN 使后缘襟翼至 1 单位，再将臂开关回 OFF，确认\nPTU 活门开启；"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 3,
+                      "column": 0,
+                      "colspan": 1,
+                      "text": "2.3",
+                      "bbox": [
+                        212.0,
+                        463.7,
+                        295.7,
+                        503.5
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "2.3"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 3,
+                      "column": 1,
+                      "colspan": 1,
+                      "text": "闭合 P6-2 A15/C01081 和 P6-3 C16/C01356，确认活门关闭；",
+                      "bbox": [
+                        295.7,
+                        463.7,
+                        735.8,
+                        503.5
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "闭合 P6-2 A15/C01081 和 P6-3 C16/C01356，确认活门关闭；"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 4,
+                      "column": 0,
+                      "colspan": 1,
+                      "text": "2.4",
+                      "bbox": [
+                        212.0,
+                        503.6,
+                        295.7,
+                        543.4
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "2.4"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 4,
+                      "column": 1,
+                      "colspan": 1,
+                      "text": "断开 P6-2 A16/C01085，确认活门保持关闭；",
+                      "bbox": [
+                        295.7,
+                        503.6,
+                        735.8,
+                        543.4
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "断开 P6-2 A16/C01085，确认活门保持关闭；"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 5,
+                      "column": 0,
+                      "colspan": 1,
+                      "text": "2.5",
+                      "bbox": [
+                        212.0,
+                        543.4,
+                        295.7,
+                        583.2
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "2.5"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 5,
+                      "column": 1,
+                      "colspan": 1,
+                      "text": "断开 P6-3 C15/C01355，确认活门开启；",
+                      "bbox": [
+                        295.7,
+                        543.4,
+                        735.8,
+                        583.2
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "断开 P6-3 C15/C01355，确认活门开启；"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 6,
+                      "column": 0,
+                      "colspan": 1,
+                      "text": "2.6",
+                      "bbox": [
+                        212.0,
+                        583.2,
+                        295.7,
+                        623.0
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "2.6"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 6,
+                      "column": 1,
+                      "colspan": 1,
+                      "text": "闭合 C15/C01355，确认活门关闭；",
+                      "bbox": [
+                        295.7,
+                        583.2,
+                        735.8,
+                        623.0
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "闭合 C15/C01355，确认活门关闭；"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 7,
+                      "column": 0,
+                      "colspan": 1,
+                      "text": "2.7",
+                      "bbox": [
+                        212.0,
+                        623.0,
+                        295.7,
+                        662.8
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "2.7"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 7,
+                      "column": 1,
+                      "colspan": 1,
+                      "text": "增压油箱（TASK 29-09-00-860-801）；",
+                      "bbox": [
+                        295.7,
+                        623.0,
+                        735.8,
+                        662.8
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "增压油箱（TASK 29-09-00-860-801）；"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 8,
+                      "column": 0,
+                      "colspan": 1,
+                      "text": "2.8",
+                      "bbox": [
+                        212.0,
+                        662.9,
+                        295.7,
+                        702.7
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "2.8"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 8,
+                      "column": 1,
+                      "colspan": 1,
+                      "text": "用 EDP 或地面车给 A 系统供压至 3000 psig，确认 PTU 不工作；",
+                      "bbox": [
+                        295.7,
+                        662.9,
+                        735.8,
+                        702.7
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "用 EDP 或地面车给 A 系统供压至 3000 psig，确认 PTU 不工作；"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 9,
+                      "column": 0,
+                      "colspan": 1,
+                      "text": "2.9",
+                      "bbox": [
+                        212.0,
+                        702.7,
+                        295.7,
+                        742.5
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "2.9"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 9,
+                      "column": 1,
+                      "colspan": 1,
+                      "text": "闭合 A16/C01085；",
+                      "bbox": [
+                        295.7,
+                        702.7,
+                        735.8,
+                        742.5
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "闭合 A16/C01085；"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 10,
+                      "column": 0,
+                      "colspan": 1,
+                      "text": "2.10",
+                      "bbox": [
+                        212.0,
+                        742.5,
+                        295.7,
+                        782.3
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "2.10"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 10,
+                      "column": 1,
+                      "colspan": 1,
+                      "text": "断开 A15/C01081 和 C16/C01356，确认 PTU 约 0.5 秒后启动；",
+                      "bbox": [
+                        295.7,
+                        742.5,
+                        735.8,
+                        782.3
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "断开 A15/C01081 和 C16/C01356，确认 PTU 约 0.5 秒后启动；"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 11,
+                      "column": 0,
+                      "colspan": 1,
+                      "text": "2.11",
+                      "bbox": [
+                        212.0,
+                        782.3,
+                        295.7,
+                        822.1
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "2.11"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 11,
+                      "column": 1,
+                      "colspan": 1,
+                      "text": "轮挡就位后进入空中模式（TASK 32-09-00-860-801）；",
+                      "bbox": [
+                        295.7,
+                        782.3,
+                        735.8,
+                        822.1
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "轮挡就位后进入空中模式（TASK 32-09-00-860-801）；"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 12,
+                      "column": 0,
+                      "colspan": 1,
+                      "text": "2.12",
+                      "bbox": [
+                        212.0,
+                        822.2,
+                        295.7,
+                        884.3
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "2.12"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 12,
+                      "column": 1,
+                      "colspan": 1,
+                      "text": "左 AOA 逆时针转动使前缘缝翼全伸，用秒表 STD-1139 确认时间 ≤\n4 秒；",
+                      "bbox": [
+                        295.7,
+                        822.2,
+                        735.8,
+                        884.3
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "左 AOA 逆时针转动使前缘缝翼全伸，用秒表 STD-1139 确认时间 ≤\n4 秒；"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 13,
+                      "column": 0,
+                      "colspan": 1,
+                      "text": "2.13",
+                      "bbox": [
+                        212.0,
+                        884.3,
+                        295.7,
+                        924.1
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "2.13"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 13,
+                      "column": 1,
+                      "colspan": 1,
+                      "text": "AOA 回零；",
+                      "bbox": [
+                        295.7,
+                        884.3,
+                        735.8,
+                        924.1
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "AOA 回零；"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 14,
+                      "column": 0,
+                      "colspan": 1,
+                      "text": "2.14",
+                      "bbox": [
+                        212.0,
+                        924.1,
+                        295.7,
+                        963.9
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "2.14"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 14,
+                      "column": 1,
+                      "colspan": 1,
+                      "text": "返回地面模式；",
+                      "bbox": [
+                        295.7,
+                        924.1,
+                        735.8,
+                        963.9
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "返回地面模式；"
+                        }
+                      ]
+                    }
+                  ]
+                ],
+                "nested_tables": []
+              },
+              {
+                "page": 6,
+                "bbox": [
+                  212.0,
+                  241.7,
+                  735.8,
+                  684.5
+                ],
+                "title": "",
+                "headers": [
+                  "序号",
+                  "项目内容"
+                ],
+                "rows": [
+                  [
+                    {
+                      "row": 1,
+                      "column": 0,
+                      "colspan": 1,
+                      "text": "2.15",
+                      "bbox": [
+                        212.0,
+                        281.5,
+                        295.7,
+                        343.6
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "2.15"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 1,
+                      "column": 1,
+                      "colspan": 1,
+                      "text": "臂开关置 ARM，控制开关置 UP 收后缘襟翼，再回 OFF，确认 PTU\n活门保持关闭；",
+                      "bbox": [
+                        295.7,
+                        281.5,
+                        735.8,
+                        343.6
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "臂开关置 ARM，控制开关置 UP 收后缘襟翼，再回 OFF，确认 PTU\n活门保持关闭；"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 2,
+                      "column": 0,
+                      "colspan": 1,
+                      "text": "2.16",
+                      "bbox": [
+                        212.0,
+                        343.6,
+                        295.7,
+                        383.4
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "2.16"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 2,
+                      "column": 1,
+                      "colspan": 1,
+                      "text": "臂开关回 OFF；",
+                      "bbox": [
+                        295.7,
+                        343.6,
+                        735.8,
+                        383.4
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "臂开关回 OFF；"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 3,
+                      "column": 0,
+                      "colspan": 1,
+                      "text": "2.17",
+                      "bbox": [
+                        212.0,
+                        383.4,
+                        295.7,
+                        423.2
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "2.17"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 3,
+                      "column": 1,
+                      "colspan": 1,
+                      "text": "切断 A 系统液压；",
+                      "bbox": [
+                        295.7,
+                        383.4,
+                        735.8,
+                        423.2
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "切断 A 系统液压；"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 4,
+                      "column": 0,
+                      "colspan": 1,
+                      "text": "2.18",
+                      "bbox": [
+                        212.0,
+                        423.2,
+                        295.7,
+                        463.0
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "2.18"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 4,
+                      "column": 1,
+                      "colspan": 1,
+                      "text": "襟翼手柄置 1 单位；",
+                      "bbox": [
+                        295.7,
+                        423.2,
+                        735.8,
+                        463.0
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "襟翼手柄置 1 单位；"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 5,
+                      "column": 0,
+                      "colspan": 1,
+                      "text": "2.19",
+                      "bbox": [
+                        212.0,
+                        463.1,
+                        295.7,
+                        502.9
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "2.19"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 5,
+                      "column": 1,
+                      "colspan": 1,
+                      "text": "用 B 系统 EDP 供压验证低压电门；",
+                      "bbox": [
+                        295.7,
+                        463.1,
+                        735.8,
+                        502.9
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "用 B 系统 EDP 供压验证低压电门；"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 6,
+                      "column": 0,
+                      "colspan": 1,
+                      "text": "2.20",
+                      "bbox": [
+                        212.0,
+                        502.9,
+                        295.7,
+                        542.7
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "2.20"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 6,
+                      "column": 1,
+                      "colspan": 1,
+                      "text": "切断 B 系统液压；",
+                      "bbox": [
+                        295.7,
+                        502.9,
+                        735.8,
+                        542.7
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "切断 B 系统液压；"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 7,
+                      "column": 0,
+                      "colspan": 1,
+                      "text": "2.21",
+                      "bbox": [
+                        212.0,
+                        542.7,
+                        295.7,
+                        582.5
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "2.21"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 7,
+                      "column": 1,
+                      "colspan": 1,
+                      "text": "断开 P6-3 C15/C01355；",
+                      "bbox": [
+                        295.7,
+                        542.7,
+                        735.8,
+                        582.5
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "断开 P6-3 C15/C01355；"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 8,
+                      "column": 0,
+                      "colspan": 1,
+                      "text": "2.22",
+                      "bbox": [
+                        212.0,
+                        582.5,
+                        295.7,
+                        622.3
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "2.22"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 8,
+                      "column": 1,
+                      "colspan": 1,
+                      "text": "蹬舵使 A、B 系统压力 <200 psig，确认 PTU 活门开启；",
+                      "bbox": [
+                        295.7,
+                        582.5,
+                        735.8,
+                        622.3
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "蹬舵使 A、B 系统压力 <200 psig，确认 PTU 活门开启；"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 9,
+                      "column": 0,
+                      "colspan": 1,
+                      "text": "2.23",
+                      "bbox": [
+                        212.0,
+                        622.4,
+                        295.7,
+                        684.5
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "2.23"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 9,
+                      "column": 1,
+                      "colspan": 1,
+                      "text": "用 EMDP 或地面车给 B 系统供压，确认 PTU 不工作且 A 系统压力\n不升；若异常则更换 PTU、单向活门及滤芯。",
+                      "bbox": [
+                        295.7,
+                        622.4,
+                        735.8,
+                        684.5
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "用 EMDP 或地面车给 B 系统供压，确认 PTU 不工作且 A 系统压力\n不升；若异常则更换 PTU、单向活门及滤芯。"
+                        }
+                      ]
+                    }
+                  ]
+                ],
+                "nested_tables": []
+              }
+            ],
+            "content": [
+              {
+                "type": "text",
+                "text": "项目名称：动力转换组件（PTU）系统测试\n项目编码：TASK 29-22-00-730-801\n原文 2. 测试："
+              }
+            ]
+          }
+        ]
+      ],
+      "nested_tables": []
+    },
+    {
+      "page": 7,
+      "bbox": [
+        58.1,
+        198.5,
+        745.2,
+        1004.4
+      ],
+      "title": "",
+      "headers": [
+        "工种",
+        "序号",
+        "工序内容"
+      ],
+      "rows": [
+        [
+          {
+            "row": 1,
+            "column": 0,
+            "colspan": 1,
+            "text": "模拟工种",
+            "bbox": [
+              58.1,
+              232.2,
+              129.7,
+              1004.4
+            ],
+            "nested_tables": [],
+            "content": [
+              {
+                "type": "text",
+                "text": "模拟工种"
+              }
+            ]
+          },
+          {
+            "row": 1,
+            "column": 1,
+            "colspan": 1,
+            "text": "60",
+            "bbox": [
+              129.6,
+              232.2,
+              202.5,
+              1004.4
+            ],
+            "nested_tables": [],
+            "content": [
+              {
+                "type": "text",
+                "text": "60"
+              }
+            ]
+          },
+          {
+            "row": 1,
+            "column": 2,
+            "colspan": 1,
+            "text": "项目名称：动力转换组件（PTU）系统测试\n项目编码：TASK 29-22-00-730-801\n原文 3. 恢复：襟翼手柄回 UP；切断 B 系统液压；闭合所有跳开关。",
+            "bbox": [
+              202.5,
+              232.2,
+              745.2,
+              1004.4
+            ],
+            "nested_tables": [],
+            "content": [
+              {
+                "type": "text",
+                "text": "项目名称：动力转换组件（PTU）系统测试\n项目编码：TASK 29-22-00-730-801\n原文 3. 恢复：襟翼手柄回 UP；切断 B 系统液压；闭合所有跳开关。"
+              }
+            ]
+          }
+        ]
+      ],
+      "nested_tables": []
+    }
+  ]
+}

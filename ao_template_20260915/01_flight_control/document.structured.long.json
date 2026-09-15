@@ -1,0 +1,2455 @@
+{
+  "format": "ao-structured-v3-reading-order",
+  "selection": {
+    "headers": "工种,序号,工序内容",
+    "matched_tables": 3,
+    "geometry_only": true
+  },
+  "images": [],
+  "tables": [
+    {
+      "page": 1,
+      "bbox": [
+        58.1,
+        198.5,
+        745.2,
+        1004.4
+      ],
+      "title": "",
+      "headers": [
+        "工种",
+        "序号",
+        "工序内容"
+      ],
+      "rows": [
+        [
+          {
+            "row": 1,
+            "column": 0,
+            "colspan": 1,
+            "text": "模拟工种",
+            "bbox": [
+              58.1,
+              232.2,
+              129.7,
+              1004.4
+            ],
+            "nested_tables": [],
+            "content": [
+              {
+                "type": "text",
+                "text": "模拟工种"
+              }
+            ]
+          },
+          {
+            "row": 1,
+            "column": 1,
+            "colspan": 1,
+            "text": "10",
+            "bbox": [
+              129.6,
+              232.2,
+              202.5,
+              1004.4
+            ],
+            "nested_tables": [],
+            "content": [
+              {
+                "type": "text",
+                "text": "10"
+              }
+            ]
+          },
+          {
+            "row": 1,
+            "column": 2,
+            "colspan": 1,
+            "text": "项目名称：后缘襟翼卸载系统功能测试\n项目编码：TASK 27-51-00-720-804\n原文 1. 准备测试：",
+            "bbox": [
+              202.5,
+              232.2,
+              745.2,
+              1004.4
+            ],
+            "nested_tables": [
+              {
+                "page": 1,
+                "bbox": [
+                  212.0,
+                  322.0,
+                  735.8,
+                  441.4
+                ],
+                "title": "",
+                "headers": [
+                  "序号",
+                  "项目内容"
+                ],
+                "rows": [
+                  [
+                    {
+                      "row": 1,
+                      "column": 0,
+                      "colspan": 1,
+                      "text": "1.1",
+                      "bbox": [
+                        212.0,
+                        361.8,
+                        295.7,
+                        401.6
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "1.1"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 1,
+                      "column": 1,
+                      "colspan": 1,
+                      "text": "接通B液压系统压力，执行TASK 29-11-00-860-801；",
+                      "bbox": [
+                        295.7,
+                        361.8,
+                        735.8,
+                        401.6
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "接通B液压系统压力，执行TASK 29-11-00-860-801；"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 2,
+                      "column": 0,
+                      "colspan": 1,
+                      "text": "1.2",
+                      "bbox": [
+                        212.0,
+                        401.6,
+                        295.7,
+                        441.4
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "1.2"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 2,
+                      "column": 1,
+                      "colspan": 1,
+                      "text": "打开电子设备接近门117A；注意：确保人员设备远离飞行操纵面等。",
+                      "bbox": [
+                        295.7,
+                        401.6,
+                        735.8,
+                        441.4
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "打开电子设备接近门117A；注意：确保人员设备远离飞行操纵面等。"
+                        }
+                      ]
+                    }
+                  ]
+                ],
+                "nested_tables": []
+              }
+            ],
+            "content": [
+              {
+                "type": "text",
+                "text": "项目名称：后缘襟翼卸载系统功能测试\n项目编码：TASK 27-51-00-720-804\n原文 1. 准备测试："
+              }
+            ]
+          }
+        ]
+      ],
+      "nested_tables": []
+    },
+    {
+      "page": 2,
+      "bbox": [
+        58.1,
+        198.5,
+        745.2,
+        1004.4
+      ],
+      "title": "",
+      "headers": [
+        "工种",
+        "序号",
+        "工序内容"
+      ],
+      "rows": [
+        [
+          {
+            "row": 1,
+            "column": 0,
+            "colspan": 1,
+            "text": "模拟工种",
+            "bbox": [
+              58.1,
+              232.2,
+              129.7,
+              1004.4
+            ],
+            "nested_tables": [],
+            "content": [
+              {
+                "type": "text",
+                "text": "模拟工种"
+              }
+            ]
+          },
+          {
+            "row": 1,
+            "column": 1,
+            "colspan": 1,
+            "text": "20",
+            "bbox": [
+              129.6,
+              232.2,
+              202.5,
+              1004.4
+            ],
+            "nested_tables": [],
+            "content": [
+              {
+                "type": "text",
+                "text": "20"
+              }
+            ]
+          },
+          {
+            "row": 1,
+            "column": 2,
+            "colspan": 1,
+            "text": "项目名称：后缘襟翼卸载系统功能测试\n项目编码：TASK 27-51-00-720-804\n原文 2. 功能测试：",
+            "bbox": [
+              202.5,
+              232.2,
+              745.2,
+              1004.4
+            ],
+            "nested_tables": [
+              {
+                "page": 2,
+                "bbox": [
+                  212.0,
+                  322.0,
+                  735.8,
+                  937.6
+                ],
+                "title": "",
+                "headers": [
+                  "序号",
+                  "项目内容"
+                ],
+                "rows": [
+                  [
+                    {
+                      "row": 1,
+                      "column": 0,
+                      "colspan": 1,
+                      "text": "2.1",
+                      "bbox": [
+                        212.0,
+                        361.8,
+                        295.7,
+                        401.6
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "2.1"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 1,
+                      "column": 1,
+                      "colspan": 1,
+                      "text": "按FSEU前面板ON/OFF按钮开启显示；",
+                      "bbox": [
+                        295.7,
+                        361.8,
+                        735.8,
+                        401.6
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "按FSEU前面板ON/OFF按钮开启显示；"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 2,
+                      "column": 0,
+                      "colspan": 1,
+                      "text": "2.2",
+                      "bbox": [
+                        212.0,
+                        401.6,
+                        295.7,
+                        716.2
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "2.2"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 2,
+                      "column": 1,
+                      "colspan": 1,
+                      "text": "执行卸载系统BITE测试：",
+                      "bbox": [
+                        295.7,
+                        401.6,
+                        735.8,
+                        716.2
+                      ],
+                      "nested_tables": [
+                        {
+                          "page": 2,
+                          "bbox": [
+                            301.1,
+                            436.1,
+                            730.3,
+                            697.3
+                          ],
+                          "title": "",
+                          "headers": [
+                            "项次",
+                            "操作与检查要求"
+                          ],
+                          "rows": [
+                            [
+                              {
+                                "row": 1,
+                                "column": 0,
+                                "colspan": 1,
+                                "text": "a)",
+                                "bbox": [
+                                  301.1,
+                                  475.9,
+                                  361.2,
+                                  515.7
+                                ],
+                                "nested_tables": [],
+                                "content": [
+                                  {
+                                    "type": "text",
+                                    "text": "a)"
+                                  }
+                                ]
+                              },
+                              {
+                                "row": 1,
+                                "column": 1,
+                                "colspan": 1,
+                                "text": "按下箭头至显示GROUND TESTS?；",
+                                "bbox": [
+                                  361.1,
+                                  475.9,
+                                  730.3,
+                                  515.7
+                                ],
+                                "nested_tables": [],
+                                "content": [
+                                  {
+                                    "type": "text",
+                                    "text": "按下箭头至显示GROUND TESTS?；"
+                                  }
+                                ]
+                              }
+                            ],
+                            [
+                              {
+                                "row": 2,
+                                "column": 0,
+                                "colspan": 1,
+                                "text": "b)",
+                                "bbox": [
+                                  301.1,
+                                  515.7,
+                                  361.2,
+                                  555.5
+                                ],
+                                "nested_tables": [],
+                                "content": [
+                                  {
+                                    "type": "text",
+                                    "text": "b)"
+                                  }
+                                ]
+                              },
+                              {
+                                "row": 2,
+                                "column": 1,
+                                "colspan": 1,
+                                "text": "按YES选择；",
+                                "bbox": [
+                                  361.1,
+                                  515.7,
+                                  730.3,
+                                  555.5
+                                ],
+                                "nested_tables": [],
+                                "content": [
+                                  {
+                                    "type": "text",
+                                    "text": "按YES选择；"
+                                  }
+                                ]
+                              }
+                            ],
+                            [
+                              {
+                                "row": 3,
+                                "column": 0,
+                                "colspan": 1,
+                                "text": "c)",
+                                "bbox": [
+                                  301.1,
+                                  555.5,
+                                  361.2,
+                                  595.3
+                                ],
+                                "nested_tables": [],
+                                "content": [
+                                  {
+                                    "type": "text",
+                                    "text": "c)"
+                                  }
+                                ]
+                              },
+                              {
+                                "row": 3,
+                                "column": 1,
+                                "colspan": 1,
+                                "text": "按下箭头至TE FLAP LD REL?；",
+                                "bbox": [
+                                  361.1,
+                                  555.5,
+                                  730.3,
+                                  595.3
+                                ],
+                                "nested_tables": [],
+                                "content": [
+                                  {
+                                    "type": "text",
+                                    "text": "按下箭头至TE FLAP LD REL?；"
+                                  }
+                                ]
+                              }
+                            ],
+                            [
+                              {
+                                "row": 4,
+                                "column": 0,
+                                "colspan": 1,
+                                "text": "d)",
+                                "bbox": [
+                                  301.1,
+                                  595.4,
+                                  361.2,
+                                  635.2
+                                ],
+                                "nested_tables": [],
+                                "content": [
+                                  {
+                                    "type": "text",
+                                    "text": "d)"
+                                  }
+                                ]
+                              },
+                              {
+                                "row": 4,
+                                "column": 1,
+                                "colspan": 1,
+                                "text": "按YES选择；",
+                                "bbox": [
+                                  361.1,
+                                  595.4,
+                                  730.3,
+                                  635.2
+                                ],
+                                "nested_tables": [],
+                                "content": [
+                                  {
+                                    "type": "text",
+                                    "text": "按YES选择；"
+                                  }
+                                ]
+                              }
+                            ],
+                            [
+                              {
+                                "row": 5,
+                                "column": 0,
+                                "colspan": 1,
+                                "text": "e)",
+                                "bbox": [
+                                  301.1,
+                                  635.2,
+                                  361.2,
+                                  697.3
+                                ],
+                                "nested_tables": [],
+                                "content": [
+                                  {
+                                    "type": "text",
+                                    "text": "e)"
+                                  }
+                                ]
+                              },
+                              {
+                                "row": 5,
+                                "column": 1,
+                                "colspan": 1,
+                                "text": "按FSEU提示操作，确认P3-1面板FLAP LOAD RELIEF灯亮，\n且最终显示TEST PASSED；",
+                                "bbox": [
+                                  361.1,
+                                  635.2,
+                                  730.3,
+                                  697.3
+                                ],
+                                "nested_tables": [],
+                                "content": [
+                                  {
+                                    "type": "text",
+                                    "text": "按FSEU提示操作，确认P3-1面板FLAP LOAD RELIEF灯亮，\n且最终显示TEST PASSED；"
+                                  }
+                                ]
+                              }
+                            ]
+                          ],
+                          "nested_tables": []
+                        }
+                      ],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "执行卸载系统BITE测试："
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 3,
+                      "column": 0,
+                      "colspan": 1,
+                      "text": "2.3",
+                      "bbox": [
+                        212.0,
+                        716.2,
+                        295.7,
+                        756.0
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "2.3"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 3,
+                      "column": 1,
+                      "colspan": 1,
+                      "text": "关闭FSEU显示；",
+                      "bbox": [
+                        295.7,
+                        716.2,
+                        735.8,
+                        756.0
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "关闭FSEU显示；"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 4,
+                      "column": 0,
+                      "colspan": 1,
+                      "text": "2.4",
+                      "bbox": [
+                        212.0,
+                        756.0,
+                        295.7,
+                        818.1
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "2.4"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 4,
+                      "column": 1,
+                      "colspan": 1,
+                      "text": "断开以下跳开关并挂牌：P18-3面板C1 C00523、C2 C00238、C3 C010\n72、D3 C01071；",
+                      "bbox": [
+                        295.7,
+                        756.0,
+                        735.8,
+                        818.1
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "断开以下跳开关并挂牌：P18-3面板C1 C00523、C2 C00238、C3 C010\n72、D3 C01071；"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 5,
+                      "column": 0,
+                      "colspan": 1,
+                      "text": "2.5",
+                      "bbox": [
+                        212.0,
+                        818.1,
+                        295.7,
+                        857.9
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "2.5"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 5,
+                      "column": 1,
+                      "colspan": 1,
+                      "text": "在左驾驶盘挂红色标签“PITOT PROBES COVERED”；",
+                      "bbox": [
+                        295.7,
+                        818.1,
+                        735.8,
+                        857.9
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "在左驾驶盘挂红色标签“PITOT PROBES COVERED”；"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 6,
+                      "column": 0,
+                      "colspan": 1,
+                      "text": "2.6",
+                      "bbox": [
+                        212.0,
+                        857.9,
+                        295.7,
+                        897.7
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "2.6"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 6,
+                      "column": 1,
+                      "colspan": 1,
+                      "text": "将空速测试设备接至左皮托管（执行TASK 34-11-00-790-803）；",
+                      "bbox": [
+                        295.7,
+                        857.9,
+                        735.8,
+                        897.7
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "将空速测试设备接至左皮托管（执行TASK 34-11-00-790-803）；"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 7,
+                      "column": 0,
+                      "colspan": 1,
+                      "text": "2.7",
+                      "bbox": [
+                        212.0,
+                        897.8,
+                        295.7,
+                        937.6
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "2.7"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 7,
+                      "column": 1,
+                      "colspan": 1,
+                      "text": "确认P6-2面板A6 C00566跳开关闭合；",
+                      "bbox": [
+                        295.7,
+                        897.8,
+                        735.8,
+                        937.6
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "确认P6-2面板A6 C00566跳开关闭合；"
+                        }
+                      ]
+                    }
+                  ]
+                ],
+                "nested_tables": []
+              },
+              {
+                "page": 3,
+                "bbox": [
+                  212.0,
+                  241.7,
+                  735.8,
+                  866.1
+                ],
+                "title": "",
+                "headers": [
+                  "序号",
+                  "项目内容"
+                ],
+                "rows": [
+                  [
+                    {
+                      "row": 1,
+                      "column": 0,
+                      "colspan": 1,
+                      "text": "2.8",
+                      "bbox": [
+                        212.0,
+                        281.5,
+                        295.7,
+                        573.8
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "2.8"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 1,
+                      "column": 1,
+                      "colspan": 1,
+                      "text": "襟翼40单位测试：",
+                      "bbox": [
+                        295.7,
+                        281.5,
+                        735.8,
+                        573.8
+                      ],
+                      "nested_tables": [
+                        {
+                          "page": 3,
+                          "bbox": [
+                            301.1,
+                            315.9,
+                            730.3,
+                            554.8
+                          ],
+                          "title": "",
+                          "headers": [
+                            "项次",
+                            "操作与检查要求"
+                          ],
+                          "rows": [
+                            [
+                              {
+                                "row": 1,
+                                "column": 0,
+                                "colspan": 1,
+                                "text": "a)",
+                                "bbox": [
+                                  301.1,
+                                  355.7,
+                                  361.2,
+                                  395.5
+                                ],
+                                "nested_tables": [],
+                                "content": [
+                                  {
+                                    "type": "text",
+                                    "text": "a)"
+                                  }
+                                ]
+                              },
+                              {
+                                "row": 1,
+                                "column": 1,
+                                "colspan": 1,
+                                "text": "放襟翼至40单位；",
+                                "bbox": [
+                                  361.1,
+                                  355.7,
+                                  730.3,
+                                  395.5
+                                ],
+                                "nested_tables": [],
+                                "content": [
+                                  {
+                                    "type": "text",
+                                    "text": "放襟翼至40单位；"
+                                  }
+                                ]
+                              }
+                            ],
+                            [
+                              {
+                                "row": 2,
+                                "column": 0,
+                                "colspan": 1,
+                                "text": "b)",
+                                "bbox": [
+                                  301.1,
+                                  395.6,
+                                  361.2,
+                                  435.4
+                                ],
+                                "nested_tables": [],
+                                "content": [
+                                  {
+                                    "type": "text",
+                                    "text": "b)"
+                                  }
+                                ]
+                              },
+                              {
+                                "row": 2,
+                                "column": 1,
+                                "colspan": 1,
+                                "text": "用COM-1914将空速升至164节（速率≤300节/分）；",
+                                "bbox": [
+                                  361.1,
+                                  395.6,
+                                  730.3,
+                                  435.4
+                                ],
+                                "nested_tables": [],
+                                "content": [
+                                  {
+                                    "type": "text",
+                                    "text": "用COM-1914将空速升至164节（速率≤300节/分）；"
+                                  }
+                                ]
+                              }
+                            ],
+                            [
+                              {
+                                "row": 3,
+                                "column": 0,
+                                "colspan": 1,
+                                "text": "c)",
+                                "bbox": [
+                                  301.1,
+                                  435.4,
+                                  361.2,
+                                  475.2
+                                ],
+                                "nested_tables": [],
+                                "content": [
+                                  {
+                                    "type": "text",
+                                    "text": "c)"
+                                  }
+                                ]
+                              },
+                              {
+                                "row": 3,
+                                "column": 1,
+                                "colspan": 1,
+                                "text": "确认襟翼收至30单位且灯亮；",
+                                "bbox": [
+                                  361.1,
+                                  435.4,
+                                  730.3,
+                                  475.2
+                                ],
+                                "nested_tables": [],
+                                "content": [
+                                  {
+                                    "type": "text",
+                                    "text": "确认襟翼收至30单位且灯亮；"
+                                  }
+                                ]
+                              }
+                            ],
+                            [
+                              {
+                                "row": 4,
+                                "column": 0,
+                                "colspan": 1,
+                                "text": "d)",
+                                "bbox": [
+                                  301.1,
+                                  475.2,
+                                  361.2,
+                                  515.0
+                                ],
+                                "nested_tables": [],
+                                "content": [
+                                  {
+                                    "type": "text",
+                                    "text": "d)"
+                                  }
+                                ]
+                              },
+                              {
+                                "row": 4,
+                                "column": 1,
+                                "colspan": 1,
+                                "text": "降空速至157节；",
+                                "bbox": [
+                                  361.1,
+                                  475.2,
+                                  730.3,
+                                  515.0
+                                ],
+                                "nested_tables": [],
+                                "content": [
+                                  {
+                                    "type": "text",
+                                    "text": "降空速至157节；"
+                                  }
+                                ]
+                              }
+                            ],
+                            [
+                              {
+                                "row": 5,
+                                "column": 0,
+                                "colspan": 1,
+                                "text": "e)",
+                                "bbox": [
+                                  301.1,
+                                  515.0,
+                                  361.2,
+                                  554.8
+                                ],
+                                "nested_tables": [],
+                                "content": [
+                                  {
+                                    "type": "text",
+                                    "text": "e)"
+                                  }
+                                ]
+                              },
+                              {
+                                "row": 5,
+                                "column": 1,
+                                "colspan": 1,
+                                "text": "确认襟翼回到40单位且灯灭；",
+                                "bbox": [
+                                  361.1,
+                                  515.0,
+                                  730.3,
+                                  554.8
+                                ],
+                                "nested_tables": [],
+                                "content": [
+                                  {
+                                    "type": "text",
+                                    "text": "确认襟翼回到40单位且灯灭；"
+                                  }
+                                ]
+                              }
+                            ]
+                          ],
+                          "nested_tables": []
+                        }
+                      ],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "襟翼40单位测试："
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 2,
+                      "column": 0,
+                      "colspan": 1,
+                      "text": "2.9",
+                      "bbox": [
+                        212.0,
+                        573.8,
+                        295.7,
+                        866.1
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "2.9"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 2,
+                      "column": 1,
+                      "colspan": 1,
+                      "text": "襟翼30单位测试：",
+                      "bbox": [
+                        295.7,
+                        573.8,
+                        735.8,
+                        866.1
+                      ],
+                      "nested_tables": [
+                        {
+                          "page": 3,
+                          "bbox": [
+                            301.1,
+                            608.2,
+                            730.3,
+                            847.1
+                          ],
+                          "title": "",
+                          "headers": [
+                            "项次",
+                            "操作与检查要求"
+                          ],
+                          "rows": [
+                            [
+                              {
+                                "row": 1,
+                                "column": 0,
+                                "colspan": 1,
+                                "text": "a)",
+                                "bbox": [
+                                  301.1,
+                                  648.0,
+                                  361.2,
+                                  687.8
+                                ],
+                                "nested_tables": [],
+                                "content": [
+                                  {
+                                    "type": "text",
+                                    "text": "a)"
+                                  }
+                                ]
+                              },
+                              {
+                                "row": 1,
+                                "column": 1,
+                                "colspan": 1,
+                                "text": "收至30单位；",
+                                "bbox": [
+                                  361.1,
+                                  648.0,
+                                  730.3,
+                                  687.8
+                                ],
+                                "nested_tables": [],
+                                "content": [
+                                  {
+                                    "type": "text",
+                                    "text": "收至30单位；"
+                                  }
+                                ]
+                              }
+                            ],
+                            [
+                              {
+                                "row": 2,
+                                "column": 0,
+                                "colspan": 1,
+                                "text": "b)",
+                                "bbox": [
+                                  301.1,
+                                  687.8,
+                                  361.2,
+                                  727.6
+                                ],
+                                "nested_tables": [],
+                                "content": [
+                                  {
+                                    "type": "text",
+                                    "text": "b)"
+                                  }
+                                ]
+                              },
+                              {
+                                "row": 2,
+                                "column": 1,
+                                "colspan": 1,
+                                "text": "升空速至177节；",
+                                "bbox": [
+                                  361.1,
+                                  687.8,
+                                  730.3,
+                                  727.6
+                                ],
+                                "nested_tables": [],
+                                "content": [
+                                  {
+                                    "type": "text",
+                                    "text": "升空速至177节；"
+                                  }
+                                ]
+                              }
+                            ],
+                            [
+                              {
+                                "row": 3,
+                                "column": 0,
+                                "colspan": 1,
+                                "text": "c)",
+                                "bbox": [
+                                  301.1,
+                                  727.7,
+                                  361.2,
+                                  767.5
+                                ],
+                                "nested_tables": [],
+                                "content": [
+                                  {
+                                    "type": "text",
+                                    "text": "c)"
+                                  }
+                                ]
+                              },
+                              {
+                                "row": 3,
+                                "column": 1,
+                                "colspan": 1,
+                                "text": "确认收至25单位且灯亮；",
+                                "bbox": [
+                                  361.1,
+                                  727.7,
+                                  730.3,
+                                  767.5
+                                ],
+                                "nested_tables": [],
+                                "content": [
+                                  {
+                                    "type": "text",
+                                    "text": "确认收至25单位且灯亮；"
+                                  }
+                                ]
+                              }
+                            ],
+                            [
+                              {
+                                "row": 4,
+                                "column": 0,
+                                "colspan": 1,
+                                "text": "d)",
+                                "bbox": [
+                                  301.1,
+                                  767.5,
+                                  361.2,
+                                  807.3
+                                ],
+                                "nested_tables": [],
+                                "content": [
+                                  {
+                                    "type": "text",
+                                    "text": "d)"
+                                  }
+                                ]
+                              },
+                              {
+                                "row": 4,
+                                "column": 1,
+                                "colspan": 1,
+                                "text": "降空速至170节；",
+                                "bbox": [
+                                  361.1,
+                                  767.5,
+                                  730.3,
+                                  807.3
+                                ],
+                                "nested_tables": [],
+                                "content": [
+                                  {
+                                    "type": "text",
+                                    "text": "降空速至170节；"
+                                  }
+                                ]
+                              }
+                            ],
+                            [
+                              {
+                                "row": 5,
+                                "column": 0,
+                                "colspan": 1,
+                                "text": "e)",
+                                "bbox": [
+                                  301.1,
+                                  807.3,
+                                  361.2,
+                                  847.1
+                                ],
+                                "nested_tables": [],
+                                "content": [
+                                  {
+                                    "type": "text",
+                                    "text": "e)"
+                                  }
+                                ]
+                              },
+                              {
+                                "row": 5,
+                                "column": 1,
+                                "colspan": 1,
+                                "text": "确认回到30单位且灯灭；",
+                                "bbox": [
+                                  361.1,
+                                  807.3,
+                                  730.3,
+                                  847.1
+                                ],
+                                "nested_tables": [],
+                                "content": [
+                                  {
+                                    "type": "text",
+                                    "text": "确认回到30单位且灯灭；"
+                                  }
+                                ]
+                              }
+                            ]
+                          ],
+                          "nested_tables": []
+                        }
+                      ],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "襟翼30单位测试："
+                        }
+                      ]
+                    }
+                  ]
+                ],
+                "nested_tables": []
+              },
+              {
+                "page": 4,
+                "bbox": [
+                  212.0,
+                  241.7,
+                  735.8,
+                  866.1
+                ],
+                "title": "",
+                "headers": [
+                  "序号",
+                  "项目内容"
+                ],
+                "rows": [
+                  [
+                    {
+                      "row": 1,
+                      "column": 0,
+                      "colspan": 1,
+                      "text": "2.10",
+                      "bbox": [
+                        212.0,
+                        281.5,
+                        295.7,
+                        573.8
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "2.10"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 1,
+                      "column": 1,
+                      "colspan": 1,
+                      "text": "襟翼25单位测试：",
+                      "bbox": [
+                        295.7,
+                        281.5,
+                        735.8,
+                        573.8
+                      ],
+                      "nested_tables": [
+                        {
+                          "page": 4,
+                          "bbox": [
+                            301.1,
+                            315.9,
+                            730.3,
+                            554.8
+                          ],
+                          "title": "",
+                          "headers": [
+                            "项次",
+                            "操作与检查要求"
+                          ],
+                          "rows": [
+                            [
+                              {
+                                "row": 1,
+                                "column": 0,
+                                "colspan": 1,
+                                "text": "a)",
+                                "bbox": [
+                                  301.1,
+                                  355.7,
+                                  361.2,
+                                  395.5
+                                ],
+                                "nested_tables": [],
+                                "content": [
+                                  {
+                                    "type": "text",
+                                    "text": "a)"
+                                  }
+                                ]
+                              },
+                              {
+                                "row": 1,
+                                "column": 1,
+                                "colspan": 1,
+                                "text": "收至25单位；",
+                                "bbox": [
+                                  361.1,
+                                  355.7,
+                                  730.3,
+                                  395.5
+                                ],
+                                "nested_tables": [],
+                                "content": [
+                                  {
+                                    "type": "text",
+                                    "text": "收至25单位；"
+                                  }
+                                ]
+                              }
+                            ],
+                            [
+                              {
+                                "row": 2,
+                                "column": 0,
+                                "colspan": 1,
+                                "text": "b)",
+                                "bbox": [
+                                  301.1,
+                                  395.6,
+                                  361.2,
+                                  435.4
+                                ],
+                                "nested_tables": [],
+                                "content": [
+                                  {
+                                    "type": "text",
+                                    "text": "b)"
+                                  }
+                                ]
+                              },
+                              {
+                                "row": 2,
+                                "column": 1,
+                                "colspan": 1,
+                                "text": "升空速至192节；",
+                                "bbox": [
+                                  361.1,
+                                  395.6,
+                                  730.3,
+                                  435.4
+                                ],
+                                "nested_tables": [],
+                                "content": [
+                                  {
+                                    "type": "text",
+                                    "text": "升空速至192节；"
+                                  }
+                                ]
+                              }
+                            ],
+                            [
+                              {
+                                "row": 3,
+                                "column": 0,
+                                "colspan": 1,
+                                "text": "c)",
+                                "bbox": [
+                                  301.1,
+                                  435.4,
+                                  361.2,
+                                  475.2
+                                ],
+                                "nested_tables": [],
+                                "content": [
+                                  {
+                                    "type": "text",
+                                    "text": "c)"
+                                  }
+                                ]
+                              },
+                              {
+                                "row": 3,
+                                "column": 1,
+                                "colspan": 1,
+                                "text": "确认收至15单位；",
+                                "bbox": [
+                                  361.1,
+                                  435.4,
+                                  730.3,
+                                  475.2
+                                ],
+                                "nested_tables": [],
+                                "content": [
+                                  {
+                                    "type": "text",
+                                    "text": "确认收至15单位；"
+                                  }
+                                ]
+                              }
+                            ],
+                            [
+                              {
+                                "row": 4,
+                                "column": 0,
+                                "colspan": 1,
+                                "text": "d)",
+                                "bbox": [
+                                  301.1,
+                                  475.2,
+                                  361.2,
+                                  515.0
+                                ],
+                                "nested_tables": [],
+                                "content": [
+                                  {
+                                    "type": "text",
+                                    "text": "d)"
+                                  }
+                                ]
+                              },
+                              {
+                                "row": 4,
+                                "column": 1,
+                                "colspan": 1,
+                                "text": "降空速至185节；",
+                                "bbox": [
+                                  361.1,
+                                  475.2,
+                                  730.3,
+                                  515.0
+                                ],
+                                "nested_tables": [],
+                                "content": [
+                                  {
+                                    "type": "text",
+                                    "text": "降空速至185节；"
+                                  }
+                                ]
+                              }
+                            ],
+                            [
+                              {
+                                "row": 5,
+                                "column": 0,
+                                "colspan": 1,
+                                "text": "e)",
+                                "bbox": [
+                                  301.1,
+                                  515.0,
+                                  361.2,
+                                  554.8
+                                ],
+                                "nested_tables": [],
+                                "content": [
+                                  {
+                                    "type": "text",
+                                    "text": "e)"
+                                  }
+                                ]
+                              },
+                              {
+                                "row": 5,
+                                "column": 1,
+                                "colspan": 1,
+                                "text": "确认回到25单位；",
+                                "bbox": [
+                                  361.1,
+                                  515.0,
+                                  730.3,
+                                  554.8
+                                ],
+                                "nested_tables": [],
+                                "content": [
+                                  {
+                                    "type": "text",
+                                    "text": "确认回到25单位；"
+                                  }
+                                ]
+                              }
+                            ]
+                          ],
+                          "nested_tables": []
+                        }
+                      ],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "襟翼25单位测试："
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 2,
+                      "column": 0,
+                      "colspan": 1,
+                      "text": "2.11",
+                      "bbox": [
+                        212.0,
+                        573.8,
+                        295.7,
+                        866.1
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "2.11"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 2,
+                      "column": 1,
+                      "colspan": 1,
+                      "text": "襟翼15单位测试：",
+                      "bbox": [
+                        295.7,
+                        573.8,
+                        735.8,
+                        866.1
+                      ],
+                      "nested_tables": [
+                        {
+                          "page": 4,
+                          "bbox": [
+                            301.1,
+                            608.2,
+                            730.3,
+                            847.1
+                          ],
+                          "title": "",
+                          "headers": [
+                            "项次",
+                            "操作与检查要求"
+                          ],
+                          "rows": [
+                            [
+                              {
+                                "row": 1,
+                                "column": 0,
+                                "colspan": 1,
+                                "text": "a)",
+                                "bbox": [
+                                  301.1,
+                                  648.0,
+                                  361.2,
+                                  687.8
+                                ],
+                                "nested_tables": [],
+                                "content": [
+                                  {
+                                    "type": "text",
+                                    "text": "a)"
+                                  }
+                                ]
+                              },
+                              {
+                                "row": 1,
+                                "column": 1,
+                                "colspan": 1,
+                                "text": "收至15单位；",
+                                "bbox": [
+                                  361.1,
+                                  648.0,
+                                  730.3,
+                                  687.8
+                                ],
+                                "nested_tables": [],
+                                "content": [
+                                  {
+                                    "type": "text",
+                                    "text": "收至15单位；"
+                                  }
+                                ]
+                              }
+                            ],
+                            [
+                              {
+                                "row": 2,
+                                "column": 0,
+                                "colspan": 1,
+                                "text": "b)",
+                                "bbox": [
+                                  301.1,
+                                  687.8,
+                                  361.2,
+                                  727.6
+                                ],
+                                "nested_tables": [],
+                                "content": [
+                                  {
+                                    "type": "text",
+                                    "text": "b)"
+                                  }
+                                ]
+                              },
+                              {
+                                "row": 2,
+                                "column": 1,
+                                "colspan": 1,
+                                "text": "升空速至202节；",
+                                "bbox": [
+                                  361.1,
+                                  687.8,
+                                  730.3,
+                                  727.6
+                                ],
+                                "nested_tables": [],
+                                "content": [
+                                  {
+                                    "type": "text",
+                                    "text": "升空速至202节；"
+                                  }
+                                ]
+                              }
+                            ],
+                            [
+                              {
+                                "row": 3,
+                                "column": 0,
+                                "colspan": 1,
+                                "text": "c)",
+                                "bbox": [
+                                  301.1,
+                                  727.7,
+                                  361.2,
+                                  767.5
+                                ],
+                                "nested_tables": [],
+                                "content": [
+                                  {
+                                    "type": "text",
+                                    "text": "c)"
+                                  }
+                                ]
+                              },
+                              {
+                                "row": 3,
+                                "column": 1,
+                                "colspan": 1,
+                                "text": "确认收至10单位；",
+                                "bbox": [
+                                  361.1,
+                                  727.7,
+                                  730.3,
+                                  767.5
+                                ],
+                                "nested_tables": [],
+                                "content": [
+                                  {
+                                    "type": "text",
+                                    "text": "确认收至10单位；"
+                                  }
+                                ]
+                              }
+                            ],
+                            [
+                              {
+                                "row": 4,
+                                "column": 0,
+                                "colspan": 1,
+                                "text": "d)",
+                                "bbox": [
+                                  301.1,
+                                  767.5,
+                                  361.2,
+                                  807.3
+                                ],
+                                "nested_tables": [],
+                                "content": [
+                                  {
+                                    "type": "text",
+                                    "text": "d)"
+                                  }
+                                ]
+                              },
+                              {
+                                "row": 4,
+                                "column": 1,
+                                "colspan": 1,
+                                "text": "降空速至195节；",
+                                "bbox": [
+                                  361.1,
+                                  767.5,
+                                  730.3,
+                                  807.3
+                                ],
+                                "nested_tables": [],
+                                "content": [
+                                  {
+                                    "type": "text",
+                                    "text": "降空速至195节；"
+                                  }
+                                ]
+                              }
+                            ],
+                            [
+                              {
+                                "row": 5,
+                                "column": 0,
+                                "colspan": 1,
+                                "text": "e)",
+                                "bbox": [
+                                  301.1,
+                                  807.3,
+                                  361.2,
+                                  847.1
+                                ],
+                                "nested_tables": [],
+                                "content": [
+                                  {
+                                    "type": "text",
+                                    "text": "e)"
+                                  }
+                                ]
+                              },
+                              {
+                                "row": 5,
+                                "column": 1,
+                                "colspan": 1,
+                                "text": "确认回到15单位；",
+                                "bbox": [
+                                  361.1,
+                                  807.3,
+                                  730.3,
+                                  847.1
+                                ],
+                                "nested_tables": [],
+                                "content": [
+                                  {
+                                    "type": "text",
+                                    "text": "确认回到15单位；"
+                                  }
+                                ]
+                              }
+                            ]
+                          ],
+                          "nested_tables": []
+                        }
+                      ],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "襟翼15单位测试："
+                        }
+                      ]
+                    }
+                  ]
+                ],
+                "nested_tables": []
+              },
+              {
+                "page": 5,
+                "bbox": [
+                  212.0,
+                  241.7,
+                  735.8,
+                  573.8
+                ],
+                "title": "",
+                "headers": [
+                  "序号",
+                  "项目内容"
+                ],
+                "rows": [
+                  [
+                    {
+                      "row": 1,
+                      "column": 0,
+                      "colspan": 1,
+                      "text": "2.12",
+                      "bbox": [
+                        212.0,
+                        281.5,
+                        295.7,
+                        573.8
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "2.12"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 1,
+                      "column": 1,
+                      "colspan": 1,
+                      "text": "襟翼10单位测试：",
+                      "bbox": [
+                        295.7,
+                        281.5,
+                        735.8,
+                        573.8
+                      ],
+                      "nested_tables": [
+                        {
+                          "page": 5,
+                          "bbox": [
+                            301.1,
+                            315.9,
+                            730.3,
+                            554.8
+                          ],
+                          "title": "",
+                          "headers": [
+                            "项次",
+                            "操作与检查要求"
+                          ],
+                          "rows": [
+                            [
+                              {
+                                "row": 1,
+                                "column": 0,
+                                "colspan": 1,
+                                "text": "a)",
+                                "bbox": [
+                                  301.1,
+                                  355.7,
+                                  361.2,
+                                  395.5
+                                ],
+                                "nested_tables": [],
+                                "content": [
+                                  {
+                                    "type": "text",
+                                    "text": "a)"
+                                  }
+                                ]
+                              },
+                              {
+                                "row": 1,
+                                "column": 1,
+                                "colspan": 1,
+                                "text": "收至10单位；",
+                                "bbox": [
+                                  361.1,
+                                  355.7,
+                                  730.3,
+                                  395.5
+                                ],
+                                "nested_tables": [],
+                                "content": [
+                                  {
+                                    "type": "text",
+                                    "text": "收至10单位；"
+                                  }
+                                ]
+                              }
+                            ],
+                            [
+                              {
+                                "row": 2,
+                                "column": 0,
+                                "colspan": 1,
+                                "text": "b)",
+                                "bbox": [
+                                  301.1,
+                                  395.6,
+                                  361.2,
+                                  435.4
+                                ],
+                                "nested_tables": [],
+                                "content": [
+                                  {
+                                    "type": "text",
+                                    "text": "b)"
+                                  }
+                                ]
+                              },
+                              {
+                                "row": 2,
+                                "column": 1,
+                                "colspan": 1,
+                                "text": "升空速至212节；",
+                                "bbox": [
+                                  361.1,
+                                  395.6,
+                                  730.3,
+                                  435.4
+                                ],
+                                "nested_tables": [],
+                                "content": [
+                                  {
+                                    "type": "text",
+                                    "text": "升空速至212节；"
+                                  }
+                                ]
+                              }
+                            ],
+                            [
+                              {
+                                "row": 3,
+                                "column": 0,
+                                "colspan": 1,
+                                "text": "c)",
+                                "bbox": [
+                                  301.1,
+                                  435.4,
+                                  361.2,
+                                  475.2
+                                ],
+                                "nested_tables": [],
+                                "content": [
+                                  {
+                                    "type": "text",
+                                    "text": "c)"
+                                  }
+                                ]
+                              },
+                              {
+                                "row": 3,
+                                "column": 1,
+                                "colspan": 1,
+                                "text": "确认收至5单位；",
+                                "bbox": [
+                                  361.1,
+                                  435.4,
+                                  730.3,
+                                  475.2
+                                ],
+                                "nested_tables": [],
+                                "content": [
+                                  {
+                                    "type": "text",
+                                    "text": "确认收至5单位；"
+                                  }
+                                ]
+                              }
+                            ],
+                            [
+                              {
+                                "row": 4,
+                                "column": 0,
+                                "colspan": 1,
+                                "text": "d)",
+                                "bbox": [
+                                  301.1,
+                                  475.2,
+                                  361.2,
+                                  515.0
+                                ],
+                                "nested_tables": [],
+                                "content": [
+                                  {
+                                    "type": "text",
+                                    "text": "d)"
+                                  }
+                                ]
+                              },
+                              {
+                                "row": 4,
+                                "column": 1,
+                                "colspan": 1,
+                                "text": "降空速至205节；",
+                                "bbox": [
+                                  361.1,
+                                  475.2,
+                                  730.3,
+                                  515.0
+                                ],
+                                "nested_tables": [],
+                                "content": [
+                                  {
+                                    "type": "text",
+                                    "text": "降空速至205节；"
+                                  }
+                                ]
+                              }
+                            ],
+                            [
+                              {
+                                "row": 5,
+                                "column": 0,
+                                "colspan": 1,
+                                "text": "e)",
+                                "bbox": [
+                                  301.1,
+                                  515.0,
+                                  361.2,
+                                  554.8
+                                ],
+                                "nested_tables": [],
+                                "content": [
+                                  {
+                                    "type": "text",
+                                    "text": "e)"
+                                  }
+                                ]
+                              },
+                              {
+                                "row": 5,
+                                "column": 1,
+                                "colspan": 1,
+                                "text": "确认回到10单位。",
+                                "bbox": [
+                                  361.1,
+                                  515.0,
+                                  730.3,
+                                  554.8
+                                ],
+                                "nested_tables": [],
+                                "content": [
+                                  {
+                                    "type": "text",
+                                    "text": "确认回到10单位。"
+                                  }
+                                ]
+                              }
+                            ]
+                          ],
+                          "nested_tables": []
+                        }
+                      ],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "襟翼10单位测试："
+                        }
+                      ]
+                    }
+                  ]
+                ],
+                "nested_tables": []
+              }
+            ],
+            "content": [
+              {
+                "type": "text",
+                "text": "项目名称：后缘襟翼卸载系统功能测试\n项目编码：TASK 27-51-00-720-804\n原文 2. 功能测试："
+              }
+            ]
+          }
+        ]
+      ],
+      "nested_tables": []
+    },
+    {
+      "page": 6,
+      "bbox": [
+        58.1,
+        198.5,
+        745.2,
+        1004.4
+      ],
+      "title": "",
+      "headers": [
+        "工种",
+        "序号",
+        "工序内容"
+      ],
+      "rows": [
+        [
+          {
+            "row": 1,
+            "column": 0,
+            "colspan": 1,
+            "text": "模拟工种",
+            "bbox": [
+              58.1,
+              232.2,
+              129.7,
+              1004.4
+            ],
+            "nested_tables": [],
+            "content": [
+              {
+                "type": "text",
+                "text": "模拟工种"
+              }
+            ]
+          },
+          {
+            "row": 1,
+            "column": 1,
+            "colspan": 1,
+            "text": "30",
+            "bbox": [
+              129.6,
+              232.2,
+              202.5,
+              1004.4
+            ],
+            "nested_tables": [],
+            "content": [
+              {
+                "type": "text",
+                "text": "30"
+              }
+            ]
+          },
+          {
+            "row": 1,
+            "column": 2,
+            "colspan": 1,
+            "text": "项目名称：后缘襟翼卸载系统功能测试\n项目编码：TASK 27-51-00-720-804\n原文 3. 恢复飞机状态：",
+            "bbox": [
+              202.5,
+              232.2,
+              745.2,
+              1004.4
+            ],
+            "nested_tables": [
+              {
+                "page": 6,
+                "bbox": [
+                  212.0,
+                  322.0,
+                  735.8,
+                  600.7
+                ],
+                "title": "",
+                "headers": [
+                  "序号",
+                  "项目内容"
+                ],
+                "rows": [
+                  [
+                    {
+                      "row": 1,
+                      "column": 0,
+                      "colspan": 1,
+                      "text": "3.1",
+                      "bbox": [
+                        212.0,
+                        361.8,
+                        295.7,
+                        401.6
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "3.1"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 1,
+                      "column": 1,
+                      "colspan": 1,
+                      "text": "襟翼杆置UP位；",
+                      "bbox": [
+                        295.7,
+                        361.8,
+                        735.8,
+                        401.6
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "襟翼杆置UP位；"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 2,
+                      "column": 0,
+                      "colspan": 1,
+                      "text": "3.2",
+                      "bbox": [
+                        212.0,
+                        401.6,
+                        295.7,
+                        441.4
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "3.2"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 2,
+                      "column": 1,
+                      "colspan": 1,
+                      "text": "皮托管系统恢复环境压力（速率≤300节/分）；",
+                      "bbox": [
+                        295.7,
+                        401.6,
+                        735.8,
+                        441.4
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "皮托管系统恢复环境压力（速率≤300节/分）；"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 3,
+                      "column": 0,
+                      "colspan": 1,
+                      "text": "3.3",
+                      "bbox": [
+                        212.0,
+                        441.5,
+                        295.7,
+                        481.3
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "3.3"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 3,
+                      "column": 1,
+                      "colspan": 1,
+                      "text": "拆除测试设备（注意：仅在环境压力下拆卸）；",
+                      "bbox": [
+                        295.7,
+                        441.5,
+                        735.8,
+                        481.3
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "拆除测试设备（注意：仅在环境压力下拆卸）；"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 4,
+                      "column": 0,
+                      "colspan": 1,
+                      "text": "3.4",
+                      "bbox": [
+                        212.0,
+                        481.3,
+                        295.7,
+                        521.1
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "3.4"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 4,
+                      "column": 1,
+                      "colspan": 1,
+                      "text": "移除驾驶盘标签；",
+                      "bbox": [
+                        295.7,
+                        481.3,
+                        735.8,
+                        521.1
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "移除驾驶盘标签；"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 5,
+                      "column": 0,
+                      "colspan": 1,
+                      "text": "3.5",
+                      "bbox": [
+                        212.0,
+                        521.1,
+                        295.7,
+                        560.9
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "3.5"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 5,
+                      "column": 1,
+                      "colspan": 1,
+                      "text": "断开B液压压力；",
+                      "bbox": [
+                        295.7,
+                        521.1,
+                        735.8,
+                        560.9
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "断开B液压压力；"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 6,
+                      "column": 0,
+                      "colspan": 1,
+                      "text": "3.6",
+                      "bbox": [
+                        212.0,
+                        560.9,
+                        295.7,
+                        600.7
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "3.6"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 6,
+                      "column": 1,
+                      "colspan": 1,
+                      "text": "关闭117A接近门。",
+                      "bbox": [
+                        295.7,
+                        560.9,
+                        735.8,
+                        600.7
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "关闭117A接近门。"
+                        }
+                      ]
+                    }
+                  ]
+                ],
+                "nested_tables": []
+              }
+            ],
+            "content": [
+              {
+                "type": "text",
+                "text": "项目名称：后缘襟翼卸载系统功能测试\n项目编码：TASK 27-51-00-720-804\n原文 3. 恢复飞机状态："
+              }
+            ]
+          }
+        ]
+      ],
+      "nested_tables": []
+    }
+  ]
+}

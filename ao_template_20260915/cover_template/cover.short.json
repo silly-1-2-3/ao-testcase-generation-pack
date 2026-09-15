@@ -1,0 +1,185 @@
+{
+  "format": "ao-cover-template-v1",
+  "fields": {
+    "编号": "$no$",
+    "版次": "$rev$",
+    "预估天数": "$days$",
+    "机种代号": "$model$",
+    "密级": "$sec$",
+    "有效性": "$validity$",
+    "名称/说明": "$description$",
+    "换版说明": "$revision_notes$",
+    "工作说明": "$work_notes$",
+    "注意事项": "$precautions$"
+  },
+  "tables": [
+    {
+      "page": 1,
+      "title": "所需产品图样及设计文件",
+      "headers": [
+        "图样编号/设计技术文件编号",
+        "图样名称/设计技术文件名称",
+        "版次"
+      ],
+      "rows": [
+        [
+          {
+            "row": 1,
+            "column": 0,
+            "colspan": 1,
+            "content": [
+              {
+                "text": "$drawing_id$"
+              }
+            ]
+          },
+          {
+            "row": 1,
+            "column": 1,
+            "colspan": 1,
+            "content": [
+              {
+                "text": "$drawing_name$"
+              }
+            ]
+          },
+          {
+            "row": 1,
+            "column": 2,
+            "colspan": 1,
+            "content": [
+              {
+                "text": "$draw_rev$"
+              }
+            ]
+          }
+        ]
+      ]
+    },
+    {
+      "page": 1,
+      "title": "所需其他技术文件",
+      "headers": [
+        "技术文件编号",
+        "名称",
+        "版次"
+      ],
+      "rows": [
+        [
+          {
+            "row": 1,
+            "column": 0,
+            "colspan": 1,
+            "content": [
+              {
+                "text": "$doc_id$"
+              }
+            ]
+          },
+          {
+            "row": 1,
+            "column": 1,
+            "colspan": 1,
+            "content": [
+              {
+                "text": "$doc_name$"
+              }
+            ]
+          },
+          {
+            "row": 1,
+            "column": 2,
+            "colspan": 1,
+            "content": [
+              {
+                "text": "$doc_rev$"
+              }
+            ]
+          }
+        ],
+        [
+          {
+            "row": 2,
+            "column": 0,
+            "colspan": 1,
+            "content": [
+              {
+                "text": "$doc_id2$"
+              }
+            ]
+          },
+          {
+            "row": 2,
+            "column": 1,
+            "colspan": 1,
+            "content": [
+              {
+                "text": "$doc_name2$"
+              }
+            ]
+          },
+          {
+            "row": 2,
+            "column": 2,
+            "colspan": 1,
+            "content": [
+              {
+                "text": "$doc_rev2$"
+              }
+            ]
+          }
+        ]
+      ]
+    },
+    {
+      "page": 1,
+      "title": "设备汇总",
+      "headers": [
+        "设备编号",
+        "设备名称",
+        "设备参数"
+      ],
+      "rows": [
+        [
+          {
+            "row": 1,
+            "column": 0,
+            "colspan": 1,
+            "content": [
+              {
+                "text": "$eq_id$"
+              }
+            ]
+          },
+          {
+            "row": 1,
+            "column": 1,
+            "colspan": 1,
+            "content": [
+              {
+                "text": "$eq_name$"
+              }
+            ]
+          },
+          {
+            "row": 1,
+            "column": 2,
+            "colspan": 1,
+            "content": [
+              {
+                "text": "$eq_param$"
+              }
+            ]
+          }
+        ]
+      ]
+    }
+  ],
+  "change_record": {
+    "相关页次": "$pages$",
+    "更改标志": "$mark$",
+    "更改单编号/划改原因": "$reason$",
+    "划改人员": "$by$",
+    "更改日期": "$date$"
+  }
+}

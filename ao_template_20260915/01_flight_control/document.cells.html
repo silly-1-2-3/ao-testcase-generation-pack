@@ -1,0 +1,555 @@
+<!doctype html><html><head><meta charset="utf-8"><title>矢量 PDF 表格结构提取</title><style>
+*{box-sizing:border-box}body{margin:0;background:#d8d8d8;font-family:Arial,'Microsoft YaHei',sans-serif;color:#222}
+.page{position:relative;margin:24px auto;background:#fff;box-shadow:0 2px 8px #777;page-break-after:always;overflow:hidden}
+.page-label{position:absolute;left:5px;top:3px;padding:1px 4px;background:rgba(255,255,255,.82);font-size:11px;color:#555;z-index:8}
+.canvas{position:absolute;inset:0}.rule{position:absolute;background:#777;display:block;z-index:1}.rule.h{height:1px}.rule.v{width:1px}
+.cell{position:absolute;border:1px solid rgba(30,110,210,.72);background:rgba(210,230,255,.16);z-index:3;overflow:hidden}
+.cell.page-text,.cell.container{border:0;background:transparent;outline:0;pointer-events:none}.cell.page-text{z-index:2}
+.word{position:absolute;white-space:pre;z-index:4;background:rgba(255,255,220,.72)}
+.debug{width:min(1100px,96vw);margin:-12px auto 24px;background:#fff;padding:6px 10px;font-size:12px}
+pre{white-space:pre-wrap;background:#f5f5f5;padding:8px;max-height:320px;overflow:auto}
+@media print{body{background:#fff}.page{margin:0;box-shadow:none}.debug{display:none}}
+.pdf-image{object-fit:contain;pointer-events:none}
+</style></head><body><section class="page" data-page="1" style="width:803.6px;height:1136.6px">
+<div class="page-label">第 1 页 · edges=15 · corners=26 · cells=14</div>
+<div class="canvas">
+<i class="rule h" style="left:58.1px;top:167.4px;width:687.2px"></i>
+<i class="rule h" style="left:58.1px;top:198.5px;width:687.2px"></i>
+<i class="rule h" style="left:58.1px;top:232.2px;width:687.2px"></i>
+<i class="rule h" style="left:212.0px;top:322.0px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:361.8px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:401.6px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:441.5px;width:523.8px"></i>
+<i class="rule h" style="left:58.1px;top:1004.4px;width:687.2px"></i>
+<i class="rule v" style="left:58.1px;top:167.4px;height:837.0px"></i>
+<i class="rule v" style="left:129.6px;top:198.5px;height:806.0px"></i>
+<i class="rule v" style="left:202.5px;top:198.5px;height:806.0px"></i>
+<i class="rule v" style="left:212.0px;top:322.0px;height:119.5px"></i>
+<i class="rule v" style="left:295.8px;top:322.0px;height:119.5px"></i>
+<i class="rule v" style="left:735.8px;top:322.0px;height:119.5px"></i>
+<i class="rule v" style="left:745.2px;top:167.4px;height:837.0px"></i>
+<div class="cell" style="left:58.1px;top:167.4px;width:687.2px;height:31.1px"><span class="word" style="left:254.5px;top:6.3px;font-size:13.4px;line-height:14.9px">********工作内容********</span></div>
+<div class="cell" style="left:58.1px;top:198.5px;width:71.6px;height:33.8px"><span class="word" style="left:6.8px;top:7.7px;font-size:12.8px;line-height:14.2px">工种</span></div>
+<div class="cell" style="left:129.6px;top:198.5px;width:72.9px;height:33.8px"><span class="word" style="left:6.8px;top:7.7px;font-size:12.8px;line-height:14.2px">序号</span></div>
+<div class="cell" style="left:202.5px;top:198.5px;width:542.7px;height:33.8px"><span class="word" style="left:6.8px;top:7.7px;font-size:12.8px;line-height:14.2px">工序内容</span></div>
+<div class="cell" style="left:58.1px;top:232.2px;width:71.6px;height:772.2px"><span class="word" style="left:6.8px;top:9.1px;font-size:11.2px;line-height:12.4px">模拟工种</span></div>
+<div class="cell" style="left:129.6px;top:232.2px;width:72.9px;height:772.2px"><span class="word" style="left:6.8px;top:9.1px;font-size:11.2px;line-height:12.4px">10</span></div>
+<div class="cell container" style="left:202.5px;top:232.2px;width:542.7px;height:772.2px"><span class="word" style="left:9.5px;top:9.0px;font-size:12.8px;line-height:14.2px">项目名称：后缘襟翼卸载系统功能测试</span><span class="word" style="left:9.5px;top:31.3px;font-size:12.8px;line-height:14.2px">项目编码：TASK 27-51-00-720-804</span><span class="word" style="left:9.5px;top:60.3px;font-size:12.8px;line-height:14.2px">原文 1. 准备测试：</span></div>
+<div class="cell" style="left:212.0px;top:322.0px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">序号</span></div>
+<div class="cell" style="left:295.7px;top:322.0px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">项目内容</span></div>
+<div class="cell" style="left:212.0px;top:361.8px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">1.1</span></div>
+<div class="cell" style="left:295.7px;top:361.8px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">接通B液压系统压力，执行TASK 29-11-00-860-801；</span></div>
+<div class="cell" style="left:212.0px;top:401.6px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">1.2</span></div>
+<div class="cell" style="left:295.7px;top:401.6px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">打开电子设备接近门117A；注意：确保人员设备远离飞行操纵面等。</span></div>
+<div class="cell page-text" style="left:0.0px;top:0.0px;width:803.6px;height:1136.6px"><span class="word" style="left:338.5px;top:57.4px;font-size:20.7px;line-height:23.0px">装配指令 AO</span><span class="word" style="left:58.1px;top:102.2px;font-size:11.5px;line-height:12.8px">飞行操纵系统</span><span class="word" style="left:58.1px;top:129.2px;font-size:10.9px;line-height:12.2px">模拟排版数据 · 非实际作业依据</span><span class="word" style="left:591.0px;top:1063.4px;font-size:10.9px;line-height:12.2px">第 1 页 / 共 6 页</span></div>
+</div></section>
+<details class="debug"><summary>按闭合矩形提取的文本顺序（含页面兜底框）</summary>
+<pre>[1] ********工作内容********
+[2] 工种
+[3] 序号
+[4] 工序内容
+[5] 模拟工种
+[6] 10
+[7] 项目名称：后缘襟翼卸载系统功能测试
+项目编码：TASK 27-51-00-720-804
+原文 1. 准备测试：
+[8] 序号
+[9] 项目内容
+[10] 1.1
+[11] 接通B液压系统压力，执行TASK 29-11-00-860-801；
+[12] 1.2
+[13] 打开电子设备接近门117A；注意：确保人员设备远离飞行操纵面等。
+[14] 装配指令 AO
+飞行操纵系统
+模拟排版数据 · 非实际作业依据
+第 1 页 / 共 6 页</pre></details>
+<section class="page" data-page="2" style="width:803.6px;height:1136.6px">
+<div class="page-label">第 2 页 · edges=30 · corners=62 · cells=36</div>
+<div class="canvas">
+<i class="rule h" style="left:58.1px;top:167.4px;width:687.2px"></i>
+<i class="rule h" style="left:58.1px;top:198.5px;width:687.2px"></i>
+<i class="rule h" style="left:58.1px;top:232.2px;width:687.2px"></i>
+<i class="rule h" style="left:212.0px;top:322.0px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:361.8px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:401.6px;width:523.8px"></i>
+<i class="rule h" style="left:301.2px;top:436.1px;width:429.2px"></i>
+<i class="rule h" style="left:301.2px;top:475.9px;width:429.2px"></i>
+<i class="rule h" style="left:301.2px;top:515.7px;width:429.2px"></i>
+<i class="rule h" style="left:301.2px;top:555.5px;width:429.2px"></i>
+<i class="rule h" style="left:301.2px;top:595.4px;width:429.2px"></i>
+<i class="rule h" style="left:301.2px;top:635.2px;width:429.2px"></i>
+<i class="rule h" style="left:301.2px;top:697.3px;width:429.2px"></i>
+<i class="rule h" style="left:212.0px;top:716.2px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:756.0px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:818.1px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:857.9px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:897.8px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:937.6px;width:523.8px"></i>
+<i class="rule h" style="left:58.1px;top:1004.4px;width:687.2px"></i>
+<i class="rule v" style="left:58.1px;top:167.4px;height:837.0px"></i>
+<i class="rule v" style="left:129.6px;top:198.5px;height:806.0px"></i>
+<i class="rule v" style="left:202.5px;top:198.5px;height:806.0px"></i>
+<i class="rule v" style="left:212.0px;top:322.0px;height:615.6px"></i>
+<i class="rule v" style="left:295.8px;top:322.0px;height:615.6px"></i>
+<i class="rule v" style="left:301.2px;top:436.1px;height:261.2px"></i>
+<i class="rule v" style="left:361.2px;top:436.1px;height:261.2px"></i>
+<i class="rule v" style="left:730.4px;top:436.1px;height:261.2px"></i>
+<i class="rule v" style="left:735.8px;top:322.0px;height:615.6px"></i>
+<i class="rule v" style="left:745.2px;top:167.4px;height:837.0px"></i>
+<div class="cell" style="left:58.1px;top:167.4px;width:687.2px;height:31.1px"><span class="word" style="left:254.5px;top:6.3px;font-size:13.4px;line-height:14.9px">********工作内容********</span></div>
+<div class="cell" style="left:58.1px;top:198.5px;width:71.6px;height:33.8px"><span class="word" style="left:6.8px;top:7.7px;font-size:12.8px;line-height:14.2px">工种</span></div>
+<div class="cell" style="left:129.6px;top:198.5px;width:72.9px;height:33.8px"><span class="word" style="left:6.8px;top:7.7px;font-size:12.8px;line-height:14.2px">序号</span></div>
+<div class="cell" style="left:202.5px;top:198.5px;width:542.7px;height:33.8px"><span class="word" style="left:6.8px;top:7.7px;font-size:12.8px;line-height:14.2px">工序内容</span></div>
+<div class="cell" style="left:58.1px;top:232.2px;width:71.6px;height:772.2px"><span class="word" style="left:6.8px;top:9.1px;font-size:11.2px;line-height:12.4px">模拟工种</span></div>
+<div class="cell" style="left:129.6px;top:232.2px;width:72.9px;height:772.2px"><span class="word" style="left:6.8px;top:9.1px;font-size:11.2px;line-height:12.4px">20</span></div>
+<div class="cell container" style="left:202.5px;top:232.2px;width:542.7px;height:772.2px"><span class="word" style="left:9.5px;top:9.0px;font-size:12.8px;line-height:14.2px">项目名称：后缘襟翼卸载系统功能测试</span><span class="word" style="left:9.5px;top:31.3px;font-size:12.8px;line-height:14.2px">项目编码：TASK 27-51-00-720-804</span><span class="word" style="left:9.5px;top:60.3px;font-size:12.8px;line-height:14.2px">原文 2. 功能测试：</span></div>
+<div class="cell" style="left:212.0px;top:322.0px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">序号</span></div>
+<div class="cell" style="left:295.7px;top:322.0px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">项目内容</span></div>
+<div class="cell" style="left:212.0px;top:361.8px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">2.1</span></div>
+<div class="cell" style="left:295.7px;top:361.8px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">按FSEU前面板ON/OFF按钮开启显示；</span></div>
+<div class="cell" style="left:212.0px;top:401.6px;width:83.7px;height:314.6px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">2.2</span></div>
+<div class="cell container" style="left:295.7px;top:401.6px;width:440.1px;height:314.6px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">执行卸载系统BITE测试：</span></div>
+<div class="cell" style="left:301.1px;top:436.1px;width:60.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">项次</span></div>
+<div class="cell" style="left:361.1px;top:436.1px;width:369.2px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">操作与检查要求</span></div>
+<div class="cell" style="left:301.1px;top:475.9px;width:60.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">a)</span></div>
+<div class="cell" style="left:361.1px;top:475.9px;width:369.2px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">按下箭头至显示GROUND TESTS?；</span></div>
+<div class="cell" style="left:301.1px;top:515.7px;width:60.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">b)</span></div>
+<div class="cell" style="left:361.1px;top:515.7px;width:369.2px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">按YES选择；</span></div>
+<div class="cell" style="left:301.1px;top:555.5px;width:60.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">c)</span></div>
+<div class="cell" style="left:361.1px;top:555.5px;width:369.2px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">按下箭头至TE FLAP LD REL?；</span></div>
+<div class="cell" style="left:301.1px;top:595.4px;width:60.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">d)</span></div>
+<div class="cell" style="left:361.1px;top:595.4px;width:369.2px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">按YES选择；</span></div>
+<div class="cell" style="left:301.1px;top:635.2px;width:60.1px;height:62.1px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">e)</span></div>
+<div class="cell" style="left:361.1px;top:635.2px;width:369.2px;height:62.1px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">按FSEU提示操作，确认P3-1面板FLAP LOAD RELIEF灯亮，</span><span class="word" style="left:5.5px;top:27.3px;font-size:12.8px;line-height:14.2px">且最终显示TEST PASSED；</span></div>
+<div class="cell" style="left:212.0px;top:716.2px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">2.3</span></div>
+<div class="cell" style="left:295.7px;top:716.2px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">关闭FSEU显示；</span></div>
+<div class="cell" style="left:212.0px;top:756.0px;width:83.7px;height:62.1px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">2.4</span></div>
+<div class="cell" style="left:295.7px;top:756.0px;width:440.1px;height:62.1px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">断开以下跳开关并挂牌：P18-3面板C1 C00523、C2 C00238、C3 C010</span><span class="word" style="left:5.5px;top:27.3px;font-size:12.8px;line-height:14.2px">72、D3 C01071；</span></div>
+<div class="cell" style="left:212.0px;top:818.1px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">2.5</span></div>
+<div class="cell" style="left:295.7px;top:818.1px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">在左驾驶盘挂红色标签“PITOT PROBES COVERED”；</span></div>
+<div class="cell" style="left:212.0px;top:857.9px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">2.6</span></div>
+<div class="cell" style="left:295.7px;top:857.9px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">将空速测试设备接至左皮托管（执行TASK 34-11-00-790-803）；</span></div>
+<div class="cell" style="left:212.0px;top:897.8px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">2.7</span></div>
+<div class="cell" style="left:295.7px;top:897.8px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">确认P6-2面板A6 C00566跳开关闭合；</span></div>
+<div class="cell page-text" style="left:0.0px;top:0.0px;width:803.6px;height:1136.6px"><span class="word" style="left:338.5px;top:57.4px;font-size:20.7px;line-height:23.0px">装配指令 AO</span><span class="word" style="left:58.1px;top:102.2px;font-size:11.5px;line-height:12.8px">飞行操纵系统</span><span class="word" style="left:58.1px;top:129.2px;font-size:10.9px;line-height:12.2px">模拟排版数据 · 非实际作业依据</span><span class="word" style="left:591.0px;top:1063.4px;font-size:10.9px;line-height:12.2px">第 2 页 / 共 6 页</span></div>
+</div></section>
+<details class="debug"><summary>按闭合矩形提取的文本顺序（含页面兜底框）</summary>
+<pre>[1] ********工作内容********
+[2] 工种
+[3] 序号
+[4] 工序内容
+[5] 模拟工种
+[6] 20
+[7] 项目名称：后缘襟翼卸载系统功能测试
+项目编码：TASK 27-51-00-720-804
+原文 2. 功能测试：
+[8] 序号
+[9] 项目内容
+[10] 2.1
+[11] 按FSEU前面板ON/OFF按钮开启显示；
+[12] 2.2
+[13] 执行卸载系统BITE测试：
+[14] 项次
+[15] 操作与检查要求
+[16] a)
+[17] 按下箭头至显示GROUND TESTS?；
+[18] b)
+[19] 按YES选择；
+[20] c)
+[21] 按下箭头至TE FLAP LD REL?；
+[22] d)
+[23] 按YES选择；
+[24] e)
+[25] 按FSEU提示操作，确认P3-1面板FLAP LOAD RELIEF灯亮，
+且最终显示TEST PASSED；
+[26] 2.3
+[27] 关闭FSEU显示；
+[28] 2.4
+[29] 断开以下跳开关并挂牌：P18-3面板C1 C00523、C2 C00238、C3 C010
+72、D3 C01071；
+[30] 2.5
+[31] 在左驾驶盘挂红色标签“PITOT PROBES COVERED”；
+[32] 2.6
+[33] 将空速测试设备接至左皮托管（执行TASK 34-11-00-790-803）；
+[34] 2.7
+[35] 确认P6-2面板A6 C00566跳开关闭合；
+[36] 装配指令 AO
+飞行操纵系统
+模拟排版数据 · 非实际作业依据
+第 2 页 / 共 6 页</pre></details>
+<section class="page" data-page="3" style="width:803.6px;height:1136.6px">
+<div class="page-label">第 3 页 · edges=35 · corners=68 · cells=35</div>
+<div class="canvas">
+<i class="rule h" style="left:58.1px;top:167.4px;width:687.2px"></i>
+<i class="rule h" style="left:58.1px;top:198.5px;width:687.2px"></i>
+<i class="rule h" style="left:58.1px;top:232.2px;width:687.2px"></i>
+<i class="rule h" style="left:212.0px;top:241.7px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:281.5px;width:523.8px"></i>
+<i class="rule h" style="left:301.2px;top:315.9px;width:429.2px"></i>
+<i class="rule h" style="left:301.2px;top:355.7px;width:429.2px"></i>
+<i class="rule h" style="left:301.2px;top:395.6px;width:429.2px"></i>
+<i class="rule h" style="left:301.2px;top:435.4px;width:429.2px"></i>
+<i class="rule h" style="left:301.2px;top:475.2px;width:429.2px"></i>
+<i class="rule h" style="left:301.2px;top:515.0px;width:429.2px"></i>
+<i class="rule h" style="left:301.2px;top:554.9px;width:429.2px"></i>
+<i class="rule h" style="left:212.0px;top:573.8px;width:523.8px"></i>
+<i class="rule h" style="left:301.2px;top:608.2px;width:429.2px"></i>
+<i class="rule h" style="left:301.2px;top:648.0px;width:429.2px"></i>
+<i class="rule h" style="left:301.2px;top:687.8px;width:429.2px"></i>
+<i class="rule h" style="left:301.2px;top:727.7px;width:429.2px"></i>
+<i class="rule h" style="left:301.2px;top:767.5px;width:429.2px"></i>
+<i class="rule h" style="left:301.2px;top:807.3px;width:429.2px"></i>
+<i class="rule h" style="left:301.2px;top:847.1px;width:429.2px"></i>
+<i class="rule h" style="left:212.0px;top:866.0px;width:523.8px"></i>
+<i class="rule h" style="left:58.1px;top:1004.4px;width:687.2px"></i>
+<i class="rule v" style="left:58.1px;top:167.4px;height:837.0px"></i>
+<i class="rule v" style="left:129.6px;top:198.5px;height:806.0px"></i>
+<i class="rule v" style="left:202.5px;top:198.5px;height:806.0px"></i>
+<i class="rule v" style="left:212.0px;top:241.7px;height:624.4px"></i>
+<i class="rule v" style="left:295.8px;top:241.7px;height:624.4px"></i>
+<i class="rule v" style="left:301.2px;top:315.9px;height:239.0px"></i>
+<i class="rule v" style="left:301.2px;top:608.2px;height:238.9px"></i>
+<i class="rule v" style="left:361.2px;top:315.9px;height:239.0px"></i>
+<i class="rule v" style="left:361.2px;top:608.2px;height:238.9px"></i>
+<i class="rule v" style="left:730.4px;top:315.9px;height:239.0px"></i>
+<i class="rule v" style="left:730.4px;top:608.2px;height:238.9px"></i>
+<i class="rule v" style="left:735.8px;top:241.7px;height:624.4px"></i>
+<i class="rule v" style="left:745.2px;top:167.4px;height:837.0px"></i>
+<div class="cell" style="left:58.1px;top:167.4px;width:687.2px;height:31.1px"><span class="word" style="left:254.5px;top:6.3px;font-size:13.4px;line-height:14.9px">********工作内容********</span></div>
+<div class="cell" style="left:58.1px;top:198.5px;width:71.6px;height:33.8px"><span class="word" style="left:6.8px;top:7.7px;font-size:12.8px;line-height:14.2px">工种</span></div>
+<div class="cell" style="left:129.6px;top:198.5px;width:72.9px;height:33.8px"><span class="word" style="left:6.8px;top:7.7px;font-size:12.8px;line-height:14.2px">序号</span></div>
+<div class="cell" style="left:202.5px;top:198.5px;width:542.7px;height:33.8px"><span class="word" style="left:6.8px;top:7.7px;font-size:12.8px;line-height:14.2px">工序内容</span></div>
+<div class="cell" style="left:212.0px;top:241.7px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">序号</span></div>
+<div class="cell" style="left:295.7px;top:241.7px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">项目内容</span></div>
+<div class="cell" style="left:212.0px;top:281.5px;width:83.7px;height:292.3px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">2.8</span></div>
+<div class="cell container" style="left:295.7px;top:281.5px;width:440.1px;height:292.3px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">襟翼40单位测试：</span></div>
+<div class="cell" style="left:301.1px;top:315.9px;width:60.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">项次</span></div>
+<div class="cell" style="left:361.1px;top:315.9px;width:369.2px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">操作与检查要求</span></div>
+<div class="cell" style="left:301.1px;top:355.7px;width:60.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">a)</span></div>
+<div class="cell" style="left:361.1px;top:355.7px;width:369.2px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">放襟翼至40单位；</span></div>
+<div class="cell" style="left:301.1px;top:395.6px;width:60.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">b)</span></div>
+<div class="cell" style="left:361.1px;top:395.6px;width:369.2px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">用COM-1914将空速升至164节（速率≤300节/分）；</span></div>
+<div class="cell" style="left:301.1px;top:435.4px;width:60.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">c)</span></div>
+<div class="cell" style="left:361.1px;top:435.4px;width:369.2px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">确认襟翼收至30单位且灯亮；</span></div>
+<div class="cell" style="left:301.1px;top:475.2px;width:60.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">d)</span></div>
+<div class="cell" style="left:361.1px;top:475.2px;width:369.2px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">降空速至157节；</span></div>
+<div class="cell" style="left:301.1px;top:515.0px;width:60.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">e)</span></div>
+<div class="cell" style="left:361.1px;top:515.0px;width:369.2px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">确认襟翼回到40单位且灯灭；</span></div>
+<div class="cell" style="left:212.0px;top:573.8px;width:83.7px;height:292.3px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">2.9</span></div>
+<div class="cell container" style="left:295.7px;top:573.8px;width:440.1px;height:292.3px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">襟翼30单位测试：</span></div>
+<div class="cell" style="left:301.1px;top:608.2px;width:60.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">项次</span></div>
+<div class="cell" style="left:361.1px;top:608.2px;width:369.2px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">操作与检查要求</span></div>
+<div class="cell" style="left:301.1px;top:648.0px;width:60.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">a)</span></div>
+<div class="cell" style="left:361.1px;top:648.0px;width:369.2px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">收至30单位；</span></div>
+<div class="cell" style="left:301.1px;top:687.8px;width:60.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">b)</span></div>
+<div class="cell" style="left:361.1px;top:687.8px;width:369.2px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">升空速至177节；</span></div>
+<div class="cell" style="left:301.1px;top:727.7px;width:60.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">c)</span></div>
+<div class="cell" style="left:361.1px;top:727.7px;width:369.2px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">确认收至25单位且灯亮；</span></div>
+<div class="cell" style="left:301.1px;top:767.5px;width:60.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">d)</span></div>
+<div class="cell" style="left:361.1px;top:767.5px;width:369.2px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">降空速至170节；</span></div>
+<div class="cell" style="left:301.1px;top:807.3px;width:60.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">e)</span></div>
+<div class="cell" style="left:361.1px;top:807.3px;width:369.2px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">确认回到30单位且灯灭；</span></div>
+<div class="cell page-text" style="left:0.0px;top:0.0px;width:803.6px;height:1136.6px"><span class="word" style="left:338.5px;top:57.4px;font-size:20.7px;line-height:23.0px">装配指令 AO</span><span class="word" style="left:58.1px;top:102.2px;font-size:11.5px;line-height:12.8px">飞行操纵系统</span><span class="word" style="left:58.1px;top:129.2px;font-size:10.9px;line-height:12.2px">模拟排版数据 · 非实际作业依据</span><span class="word" style="left:58.1px;top:1024.3px;font-size:10.3px;line-height:11.5px">版式延续；同列空序号继承上页</span><span class="word" style="left:591.0px;top:1063.4px;font-size:10.9px;line-height:12.2px">第 3 页 / 共 6 页</span></div>
+</div></section>
+<details class="debug"><summary>按闭合矩形提取的文本顺序（含页面兜底框）</summary>
+<pre>[1] ********工作内容********
+[2] 工种
+[3] 序号
+[4] 工序内容
+[5] 序号
+[6] 项目内容
+[7] 2.8
+[8] 襟翼40单位测试：
+[9] 项次
+[10] 操作与检查要求
+[11] a)
+[12] 放襟翼至40单位；
+[13] b)
+[14] 用COM-1914将空速升至164节（速率≤300节/分）；
+[15] c)
+[16] 确认襟翼收至30单位且灯亮；
+[17] d)
+[18] 降空速至157节；
+[19] e)
+[20] 确认襟翼回到40单位且灯灭；
+[21] 2.9
+[22] 襟翼30单位测试：
+[23] 项次
+[24] 操作与检查要求
+[25] a)
+[26] 收至30单位；
+[27] b)
+[28] 升空速至177节；
+[29] c)
+[30] 确认收至25单位且灯亮；
+[31] d)
+[32] 降空速至170节；
+[33] e)
+[34] 确认回到30单位且灯灭；
+[35] 装配指令 AO
+飞行操纵系统
+模拟排版数据 · 非实际作业依据
+版式延续；同列空序号继承上页
+第 3 页 / 共 6 页</pre></details>
+<section class="page" data-page="4" style="width:803.6px;height:1136.6px">
+<div class="page-label">第 4 页 · edges=35 · corners=68 · cells=35</div>
+<div class="canvas">
+<i class="rule h" style="left:58.1px;top:167.4px;width:687.2px"></i>
+<i class="rule h" style="left:58.1px;top:198.5px;width:687.2px"></i>
+<i class="rule h" style="left:58.1px;top:232.2px;width:687.2px"></i>
+<i class="rule h" style="left:212.0px;top:241.7px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:281.5px;width:523.8px"></i>
+<i class="rule h" style="left:301.2px;top:315.9px;width:429.2px"></i>
+<i class="rule h" style="left:301.2px;top:355.7px;width:429.2px"></i>
+<i class="rule h" style="left:301.2px;top:395.6px;width:429.2px"></i>
+<i class="rule h" style="left:301.2px;top:435.4px;width:429.2px"></i>
+<i class="rule h" style="left:301.2px;top:475.2px;width:429.2px"></i>
+<i class="rule h" style="left:301.2px;top:515.0px;width:429.2px"></i>
+<i class="rule h" style="left:301.2px;top:554.9px;width:429.2px"></i>
+<i class="rule h" style="left:212.0px;top:573.8px;width:523.8px"></i>
+<i class="rule h" style="left:301.2px;top:608.2px;width:429.2px"></i>
+<i class="rule h" style="left:301.2px;top:648.0px;width:429.2px"></i>
+<i class="rule h" style="left:301.2px;top:687.8px;width:429.2px"></i>
+<i class="rule h" style="left:301.2px;top:727.7px;width:429.2px"></i>
+<i class="rule h" style="left:301.2px;top:767.5px;width:429.2px"></i>
+<i class="rule h" style="left:301.2px;top:807.3px;width:429.2px"></i>
+<i class="rule h" style="left:301.2px;top:847.1px;width:429.2px"></i>
+<i class="rule h" style="left:212.0px;top:866.0px;width:523.8px"></i>
+<i class="rule h" style="left:58.1px;top:1004.4px;width:687.2px"></i>
+<i class="rule v" style="left:58.1px;top:167.4px;height:837.0px"></i>
+<i class="rule v" style="left:129.6px;top:198.5px;height:806.0px"></i>
+<i class="rule v" style="left:202.5px;top:198.5px;height:806.0px"></i>
+<i class="rule v" style="left:212.0px;top:241.7px;height:624.4px"></i>
+<i class="rule v" style="left:295.8px;top:241.7px;height:624.4px"></i>
+<i class="rule v" style="left:301.2px;top:315.9px;height:239.0px"></i>
+<i class="rule v" style="left:301.2px;top:608.2px;height:238.9px"></i>
+<i class="rule v" style="left:361.2px;top:315.9px;height:239.0px"></i>
+<i class="rule v" style="left:361.2px;top:608.2px;height:238.9px"></i>
+<i class="rule v" style="left:730.4px;top:315.9px;height:239.0px"></i>
+<i class="rule v" style="left:730.4px;top:608.2px;height:238.9px"></i>
+<i class="rule v" style="left:735.8px;top:241.7px;height:624.4px"></i>
+<i class="rule v" style="left:745.2px;top:167.4px;height:837.0px"></i>
+<div class="cell" style="left:58.1px;top:167.4px;width:687.2px;height:31.1px"><span class="word" style="left:254.5px;top:6.3px;font-size:13.4px;line-height:14.9px">********工作内容********</span></div>
+<div class="cell" style="left:58.1px;top:198.5px;width:71.6px;height:33.8px"><span class="word" style="left:6.8px;top:7.7px;font-size:12.8px;line-height:14.2px">工种</span></div>
+<div class="cell" style="left:129.6px;top:198.5px;width:72.9px;height:33.8px"><span class="word" style="left:6.8px;top:7.7px;font-size:12.8px;line-height:14.2px">序号</span></div>
+<div class="cell" style="left:202.5px;top:198.5px;width:542.7px;height:33.8px"><span class="word" style="left:6.8px;top:7.7px;font-size:12.8px;line-height:14.2px">工序内容</span></div>
+<div class="cell" style="left:212.0px;top:241.7px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">序号</span></div>
+<div class="cell" style="left:295.7px;top:241.7px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">项目内容</span></div>
+<div class="cell" style="left:212.0px;top:281.5px;width:83.7px;height:292.3px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">2.10</span></div>
+<div class="cell container" style="left:295.7px;top:281.5px;width:440.1px;height:292.3px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">襟翼25单位测试：</span></div>
+<div class="cell" style="left:301.1px;top:315.9px;width:60.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">项次</span></div>
+<div class="cell" style="left:361.1px;top:315.9px;width:369.2px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">操作与检查要求</span></div>
+<div class="cell" style="left:301.1px;top:355.7px;width:60.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">a)</span></div>
+<div class="cell" style="left:361.1px;top:355.7px;width:369.2px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">收至25单位；</span></div>
+<div class="cell" style="left:301.1px;top:395.6px;width:60.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">b)</span></div>
+<div class="cell" style="left:361.1px;top:395.6px;width:369.2px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">升空速至192节；</span></div>
+<div class="cell" style="left:301.1px;top:435.4px;width:60.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">c)</span></div>
+<div class="cell" style="left:361.1px;top:435.4px;width:369.2px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">确认收至15单位；</span></div>
+<div class="cell" style="left:301.1px;top:475.2px;width:60.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">d)</span></div>
+<div class="cell" style="left:361.1px;top:475.2px;width:369.2px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">降空速至185节；</span></div>
+<div class="cell" style="left:301.1px;top:515.0px;width:60.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">e)</span></div>
+<div class="cell" style="left:361.1px;top:515.0px;width:369.2px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">确认回到25单位；</span></div>
+<div class="cell" style="left:212.0px;top:573.8px;width:83.7px;height:292.3px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">2.11</span></div>
+<div class="cell container" style="left:295.7px;top:573.8px;width:440.1px;height:292.3px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">襟翼15单位测试：</span></div>
+<div class="cell" style="left:301.1px;top:608.2px;width:60.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">项次</span></div>
+<div class="cell" style="left:361.1px;top:608.2px;width:369.2px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">操作与检查要求</span></div>
+<div class="cell" style="left:301.1px;top:648.0px;width:60.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">a)</span></div>
+<div class="cell" style="left:361.1px;top:648.0px;width:369.2px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">收至15单位；</span></div>
+<div class="cell" style="left:301.1px;top:687.8px;width:60.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">b)</span></div>
+<div class="cell" style="left:361.1px;top:687.8px;width:369.2px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">升空速至202节；</span></div>
+<div class="cell" style="left:301.1px;top:727.7px;width:60.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">c)</span></div>
+<div class="cell" style="left:361.1px;top:727.7px;width:369.2px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">确认收至10单位；</span></div>
+<div class="cell" style="left:301.1px;top:767.5px;width:60.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">d)</span></div>
+<div class="cell" style="left:361.1px;top:767.5px;width:369.2px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">降空速至195节；</span></div>
+<div class="cell" style="left:301.1px;top:807.3px;width:60.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">e)</span></div>
+<div class="cell" style="left:361.1px;top:807.3px;width:369.2px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">确认回到15单位；</span></div>
+<div class="cell page-text" style="left:0.0px;top:0.0px;width:803.6px;height:1136.6px"><span class="word" style="left:338.5px;top:57.4px;font-size:20.7px;line-height:23.0px">装配指令 AO</span><span class="word" style="left:58.1px;top:102.2px;font-size:11.5px;line-height:12.8px">飞行操纵系统</span><span class="word" style="left:58.1px;top:129.2px;font-size:10.9px;line-height:12.2px">模拟排版数据 · 非实际作业依据</span><span class="word" style="left:58.1px;top:1024.3px;font-size:10.3px;line-height:11.5px">版式延续；同列空序号继承上页</span><span class="word" style="left:591.0px;top:1063.4px;font-size:10.9px;line-height:12.2px">第 4 页 / 共 6 页</span></div>
+</div></section>
+<details class="debug"><summary>按闭合矩形提取的文本顺序（含页面兜底框）</summary>
+<pre>[1] ********工作内容********
+[2] 工种
+[3] 序号
+[4] 工序内容
+[5] 序号
+[6] 项目内容
+[7] 2.10
+[8] 襟翼25单位测试：
+[9] 项次
+[10] 操作与检查要求
+[11] a)
+[12] 收至25单位；
+[13] b)
+[14] 升空速至192节；
+[15] c)
+[16] 确认收至15单位；
+[17] d)
+[18] 降空速至185节；
+[19] e)
+[20] 确认回到25单位；
+[21] 2.11
+[22] 襟翼15单位测试：
+[23] 项次
+[24] 操作与检查要求
+[25] a)
+[26] 收至15单位；
+[27] b)
+[28] 升空速至202节；
+[29] c)
+[30] 确认收至10单位；
+[31] d)
+[32] 降空速至195节；
+[33] e)
+[34] 确认回到15单位；
+[35] 装配指令 AO
+飞行操纵系统
+模拟排版数据 · 非实际作业依据
+版式延续；同列空序号继承上页
+第 4 页 / 共 6 页</pre></details>
+<section class="page" data-page="5" style="width:803.6px;height:1136.6px">
+<div class="page-label">第 5 页 · edges=24 · corners=44 · cells=21</div>
+<div class="canvas">
+<i class="rule h" style="left:58.1px;top:167.4px;width:687.2px"></i>
+<i class="rule h" style="left:58.1px;top:198.5px;width:687.2px"></i>
+<i class="rule h" style="left:58.1px;top:232.2px;width:687.2px"></i>
+<i class="rule h" style="left:212.0px;top:241.7px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:281.5px;width:523.8px"></i>
+<i class="rule h" style="left:301.2px;top:315.9px;width:429.2px"></i>
+<i class="rule h" style="left:301.2px;top:355.7px;width:429.2px"></i>
+<i class="rule h" style="left:301.2px;top:395.6px;width:429.2px"></i>
+<i class="rule h" style="left:301.2px;top:435.4px;width:429.2px"></i>
+<i class="rule h" style="left:301.2px;top:475.2px;width:429.2px"></i>
+<i class="rule h" style="left:301.2px;top:515.0px;width:429.2px"></i>
+<i class="rule h" style="left:301.2px;top:554.9px;width:429.2px"></i>
+<i class="rule h" style="left:212.0px;top:573.8px;width:523.8px"></i>
+<i class="rule h" style="left:58.1px;top:1004.4px;width:687.2px"></i>
+<i class="rule v" style="left:58.1px;top:167.4px;height:837.0px"></i>
+<i class="rule v" style="left:129.6px;top:198.5px;height:806.0px"></i>
+<i class="rule v" style="left:202.5px;top:198.5px;height:806.0px"></i>
+<i class="rule v" style="left:212.0px;top:241.7px;height:332.1px"></i>
+<i class="rule v" style="left:295.8px;top:241.7px;height:332.1px"></i>
+<i class="rule v" style="left:301.2px;top:315.9px;height:239.0px"></i>
+<i class="rule v" style="left:361.2px;top:315.9px;height:239.0px"></i>
+<i class="rule v" style="left:730.4px;top:315.9px;height:239.0px"></i>
+<i class="rule v" style="left:735.8px;top:241.7px;height:332.1px"></i>
+<i class="rule v" style="left:745.2px;top:167.4px;height:837.0px"></i>
+<div class="cell" style="left:58.1px;top:167.4px;width:687.2px;height:31.1px"><span class="word" style="left:254.5px;top:6.3px;font-size:13.4px;line-height:14.9px">********工作内容********</span></div>
+<div class="cell" style="left:58.1px;top:198.5px;width:71.6px;height:33.8px"><span class="word" style="left:6.8px;top:7.7px;font-size:12.8px;line-height:14.2px">工种</span></div>
+<div class="cell" style="left:129.6px;top:198.5px;width:72.9px;height:33.8px"><span class="word" style="left:6.8px;top:7.7px;font-size:12.8px;line-height:14.2px">序号</span></div>
+<div class="cell" style="left:202.5px;top:198.5px;width:542.7px;height:33.8px"><span class="word" style="left:6.8px;top:7.7px;font-size:12.8px;line-height:14.2px">工序内容</span></div>
+<div class="cell" style="left:212.0px;top:241.7px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">序号</span></div>
+<div class="cell" style="left:295.7px;top:241.7px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">项目内容</span></div>
+<div class="cell" style="left:212.0px;top:281.5px;width:83.7px;height:292.3px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">2.12</span></div>
+<div class="cell container" style="left:295.7px;top:281.5px;width:440.1px;height:292.3px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">襟翼10单位测试：</span></div>
+<div class="cell" style="left:301.1px;top:315.9px;width:60.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">项次</span></div>
+<div class="cell" style="left:361.1px;top:315.9px;width:369.2px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">操作与检查要求</span></div>
+<div class="cell" style="left:301.1px;top:355.7px;width:60.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">a)</span></div>
+<div class="cell" style="left:361.1px;top:355.7px;width:369.2px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">收至10单位；</span></div>
+<div class="cell" style="left:301.1px;top:395.6px;width:60.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">b)</span></div>
+<div class="cell" style="left:361.1px;top:395.6px;width:369.2px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">升空速至212节；</span></div>
+<div class="cell" style="left:301.1px;top:435.4px;width:60.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">c)</span></div>
+<div class="cell" style="left:361.1px;top:435.4px;width:369.2px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">确认收至5单位；</span></div>
+<div class="cell" style="left:301.1px;top:475.2px;width:60.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">d)</span></div>
+<div class="cell" style="left:361.1px;top:475.2px;width:369.2px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">降空速至205节；</span></div>
+<div class="cell" style="left:301.1px;top:515.0px;width:60.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">e)</span></div>
+<div class="cell" style="left:361.1px;top:515.0px;width:369.2px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">确认回到10单位。</span></div>
+<div class="cell page-text" style="left:0.0px;top:0.0px;width:803.6px;height:1136.6px"><span class="word" style="left:338.5px;top:57.4px;font-size:20.7px;line-height:23.0px">装配指令 AO</span><span class="word" style="left:58.1px;top:102.2px;font-size:11.5px;line-height:12.8px">飞行操纵系统</span><span class="word" style="left:58.1px;top:129.2px;font-size:10.9px;line-height:12.2px">模拟排版数据 · 非实际作业依据</span><span class="word" style="left:58.1px;top:1024.3px;font-size:10.3px;line-height:11.5px">版式延续；同列空序号继承上页</span><span class="word" style="left:591.0px;top:1063.4px;font-size:10.9px;line-height:12.2px">第 5 页 / 共 6 页</span></div>
+</div></section>
+<details class="debug"><summary>按闭合矩形提取的文本顺序（含页面兜底框）</summary>
+<pre>[1] ********工作内容********
+[2] 工种
+[3] 序号
+[4] 工序内容
+[5] 序号
+[6] 项目内容
+[7] 2.12
+[8] 襟翼10单位测试：
+[9] 项次
+[10] 操作与检查要求
+[11] a)
+[12] 收至10单位；
+[13] b)
+[14] 升空速至212节；
+[15] c)
+[16] 确认收至5单位；
+[17] d)
+[18] 降空速至205节；
+[19] e)
+[20] 确认回到10单位。
+[21] 装配指令 AO
+飞行操纵系统
+模拟排版数据 · 非实际作业依据
+版式延续；同列空序号继承上页
+第 5 页 / 共 6 页</pre></details>
+<section class="page" data-page="6" style="width:803.6px;height:1136.6px">
+<div class="page-label">第 6 页 · edges=19 · corners=38 · cells=22</div>
+<div class="canvas">
+<i class="rule h" style="left:58.1px;top:167.4px;width:687.2px"></i>
+<i class="rule h" style="left:58.1px;top:198.5px;width:687.2px"></i>
+<i class="rule h" style="left:58.1px;top:232.2px;width:687.2px"></i>
+<i class="rule h" style="left:212.0px;top:322.0px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:361.8px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:401.6px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:441.5px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:481.3px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:521.1px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:560.9px;width:523.8px"></i>
+<i class="rule h" style="left:212.0px;top:600.8px;width:523.8px"></i>
+<i class="rule h" style="left:58.1px;top:1004.4px;width:687.2px"></i>
+<i class="rule v" style="left:58.1px;top:167.4px;height:837.0px"></i>
+<i class="rule v" style="left:129.6px;top:198.5px;height:806.0px"></i>
+<i class="rule v" style="left:202.5px;top:198.5px;height:806.0px"></i>
+<i class="rule v" style="left:212.0px;top:322.0px;height:278.8px"></i>
+<i class="rule v" style="left:295.8px;top:322.0px;height:278.8px"></i>
+<i class="rule v" style="left:735.8px;top:322.0px;height:278.8px"></i>
+<i class="rule v" style="left:745.2px;top:167.4px;height:837.0px"></i>
+<div class="cell" style="left:58.1px;top:167.4px;width:687.2px;height:31.1px"><span class="word" style="left:254.5px;top:6.3px;font-size:13.4px;line-height:14.9px">********工作内容********</span></div>
+<div class="cell" style="left:58.1px;top:198.5px;width:71.6px;height:33.8px"><span class="word" style="left:6.8px;top:7.7px;font-size:12.8px;line-height:14.2px">工种</span></div>
+<div class="cell" style="left:129.6px;top:198.5px;width:72.9px;height:33.8px"><span class="word" style="left:6.8px;top:7.7px;font-size:12.8px;line-height:14.2px">序号</span></div>
+<div class="cell" style="left:202.5px;top:198.5px;width:542.7px;height:33.8px"><span class="word" style="left:6.8px;top:7.7px;font-size:12.8px;line-height:14.2px">工序内容</span></div>
+<div class="cell" style="left:58.1px;top:232.2px;width:71.6px;height:772.2px"><span class="word" style="left:6.8px;top:9.1px;font-size:11.2px;line-height:12.4px">模拟工种</span></div>
+<div class="cell" style="left:129.6px;top:232.2px;width:72.9px;height:772.2px"><span class="word" style="left:6.8px;top:9.1px;font-size:11.2px;line-height:12.4px">30</span></div>
+<div class="cell container" style="left:202.5px;top:232.2px;width:542.7px;height:772.2px"><span class="word" style="left:9.5px;top:9.0px;font-size:12.8px;line-height:14.2px">项目名称：后缘襟翼卸载系统功能测试</span><span class="word" style="left:9.5px;top:31.3px;font-size:12.8px;line-height:14.2px">项目编码：TASK 27-51-00-720-804</span><span class="word" style="left:9.5px;top:60.3px;font-size:12.8px;line-height:14.2px">原文 3. 恢复飞机状态：</span></div>
+<div class="cell" style="left:212.0px;top:322.0px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">序号</span></div>
+<div class="cell" style="left:295.7px;top:322.0px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">项目内容</span></div>
+<div class="cell" style="left:212.0px;top:361.8px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">3.1</span></div>
+<div class="cell" style="left:295.7px;top:361.8px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">襟翼杆置UP位；</span></div>
+<div class="cell" style="left:212.0px;top:401.6px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">3.2</span></div>
+<div class="cell" style="left:295.7px;top:401.6px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">皮托管系统恢复环境压力（速率≤300节/分）；</span></div>
+<div class="cell" style="left:212.0px;top:441.5px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">3.3</span></div>
+<div class="cell" style="left:295.7px;top:441.5px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">拆除测试设备（注意：仅在环境压力下拆卸）；</span></div>
+<div class="cell" style="left:212.0px;top:481.3px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">3.4</span></div>
+<div class="cell" style="left:295.7px;top:481.3px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">移除驾驶盘标签；</span></div>
+<div class="cell" style="left:212.0px;top:521.1px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">3.5</span></div>
+<div class="cell" style="left:295.7px;top:521.1px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">断开B液压压力；</span></div>
+<div class="cell" style="left:212.0px;top:560.9px;width:83.7px;height:39.8px"><span class="word" style="left:5.4px;top:5.0px;font-size:12.8px;line-height:14.2px">3.6</span></div>
+<div class="cell" style="left:295.7px;top:560.9px;width:440.1px;height:39.8px"><span class="word" style="left:5.5px;top:5.0px;font-size:12.8px;line-height:14.2px">关闭117A接近门。</span></div>
+<div class="cell page-text" style="left:0.0px;top:0.0px;width:803.6px;height:1136.6px"><span class="word" style="left:338.5px;top:57.4px;font-size:20.7px;line-height:23.0px">装配指令 AO</span><span class="word" style="left:58.1px;top:102.2px;font-size:11.5px;line-height:12.8px">飞行操纵系统</span><span class="word" style="left:58.1px;top:129.2px;font-size:10.9px;line-height:12.2px">模拟排版数据 · 非实际作业依据</span><span class="word" style="left:591.0px;top:1063.4px;font-size:10.9px;line-height:12.2px">第 6 页 / 共 6 页</span></div>
+</div></section>
+<details class="debug"><summary>按闭合矩形提取的文本顺序（含页面兜底框）</summary>
+<pre>[1] ********工作内容********
+[2] 工种
+[3] 序号
+[4] 工序内容
+[5] 模拟工种
+[6] 30
+[7] 项目名称：后缘襟翼卸载系统功能测试
+项目编码：TASK 27-51-00-720-804
+原文 3. 恢复飞机状态：
+[8] 序号
+[9] 项目内容
+[10] 3.1
+[11] 襟翼杆置UP位；
+[12] 3.2
+[13] 皮托管系统恢复环境压力（速率≤300节/分）；
+[14] 3.3
+[15] 拆除测试设备（注意：仅在环境压力下拆卸）；
+[16] 3.4
+[17] 移除驾驶盘标签；
+[18] 3.5
+[19] 断开B液压压力；
+[20] 3.6
+[21] 关闭117A接近门。
+[22] 装配指令 AO
+飞行操纵系统
+模拟排版数据 · 非实际作业依据
+第 6 页 / 共 6 页</pre></details></body></html>

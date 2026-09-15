@@ -1,0 +1,817 @@
+[
+  {
+    "name": "01_flight_control",
+    "pages": 6,
+    "pdf_images": 0,
+    "json_images": 0,
+    "out_of_page_chars": [],
+    "missing_author_texts": [],
+    "tables": [
+      {
+        "depth": 0,
+        "headers": [
+          "工种",
+          "序号",
+          "工序内容"
+        ],
+        "rows": 1
+      },
+      {
+        "depth": 1,
+        "headers": [
+          "序号",
+          "项目内容"
+        ],
+        "rows": 2
+      },
+      {
+        "depth": 0,
+        "headers": [
+          "工种",
+          "序号",
+          "工序内容"
+        ],
+        "rows": 1
+      },
+      {
+        "depth": 1,
+        "headers": [
+          "序号",
+          "项目内容"
+        ],
+        "rows": 7
+      },
+      {
+        "depth": 2,
+        "headers": [
+          "项次",
+          "操作与检查要求"
+        ],
+        "rows": 5
+      },
+      {
+        "depth": 1,
+        "headers": [
+          "序号",
+          "项目内容"
+        ],
+        "rows": 2
+      },
+      {
+        "depth": 2,
+        "headers": [
+          "项次",
+          "操作与检查要求"
+        ],
+        "rows": 5
+      },
+      {
+        "depth": 2,
+        "headers": [
+          "项次",
+          "操作与检查要求"
+        ],
+        "rows": 5
+      },
+      {
+        "depth": 1,
+        "headers": [
+          "序号",
+          "项目内容"
+        ],
+        "rows": 2
+      },
+      {
+        "depth": 2,
+        "headers": [
+          "项次",
+          "操作与检查要求"
+        ],
+        "rows": 5
+      },
+      {
+        "depth": 2,
+        "headers": [
+          "项次",
+          "操作与检查要求"
+        ],
+        "rows": 5
+      },
+      {
+        "depth": 1,
+        "headers": [
+          "序号",
+          "项目内容"
+        ],
+        "rows": 1
+      },
+      {
+        "depth": 2,
+        "headers": [
+          "项次",
+          "操作与检查要求"
+        ],
+        "rows": 5
+      },
+      {
+        "depth": 0,
+        "headers": [
+          "工种",
+          "序号",
+          "工序内容"
+        ],
+        "rows": 1
+      },
+      {
+        "depth": 1,
+        "headers": [
+          "序号",
+          "项目内容"
+        ],
+        "rows": 6
+      }
+    ],
+    "fonts": [
+      "AAAAAA+FangSong",
+      "AAAAAA+SimSun-0",
+      "AAAAAB+FangSong"
+    ],
+    "root_indices_checked": [
+      "10",
+      "20",
+      "30"
+    ],
+    "source_coverage": [
+      {
+        "id": 2424,
+        "ordered_character_coverage": true
+      }
+    ]
+  },
+  {
+    "name": "02_autoflight",
+    "pages": 6,
+    "pdf_images": 0,
+    "json_images": 0,
+    "out_of_page_chars": [],
+    "missing_author_texts": [],
+    "tables": [
+      {
+        "depth": 0,
+        "headers": [
+          "工种",
+          "序号",
+          "工序内容"
+        ],
+        "rows": 1
+      },
+      {
+        "depth": 1,
+        "headers": [
+          "序号",
+          "项目内容"
+        ],
+        "rows": 3
+      },
+      {
+        "depth": 0,
+        "headers": [
+          "工种",
+          "序号",
+          "工序内容"
+        ],
+        "rows": 1
+      },
+      {
+        "depth": 1,
+        "headers": [
+          "序号",
+          "项目内容"
+        ],
+        "rows": 9
+      },
+      {
+        "depth": 0,
+        "headers": [
+          "工种",
+          "序号",
+          "工序内容"
+        ],
+        "rows": 1
+      },
+      {
+        "depth": 0,
+        "headers": [
+          "工种",
+          "序号",
+          "工序内容"
+        ],
+        "rows": 1
+      },
+      {
+        "depth": 1,
+        "headers": [
+          "序号",
+          "项目内容"
+        ],
+        "rows": 8
+      },
+      {
+        "depth": 2,
+        "headers": [
+          "项次",
+          "操作与检查要求"
+        ],
+        "rows": 3
+      },
+      {
+        "depth": 0,
+        "headers": [
+          "工种",
+          "序号",
+          "工序内容"
+        ],
+        "rows": 1
+      },
+      {
+        "depth": 1,
+        "headers": [
+          "序号",
+          "项目内容"
+        ],
+        "rows": 5
+      },
+      {
+        "depth": 0,
+        "headers": [
+          "工种",
+          "序号",
+          "工序内容"
+        ],
+        "rows": 1
+      },
+      {
+        "depth": 1,
+        "headers": [
+          "序号",
+          "项目内容"
+        ],
+        "rows": 5
+      }
+    ],
+    "fonts": [
+      "AAAAAA+FangSong",
+      "AAAAAA+SimSun-0",
+      "AAAAAB+FangSong"
+    ],
+    "root_indices_checked": [
+      "10",
+      "20",
+      "30",
+      "40",
+      "50",
+      "60"
+    ],
+    "source_coverage": [
+      {
+        "id": 1151,
+        "ordered_character_coverage": true
+      },
+      {
+        "id": 1161,
+        "ordered_character_coverage": true
+      }
+    ]
+  },
+  {
+    "name": "03_communication",
+    "pages": 6,
+    "pdf_images": 0,
+    "json_images": 0,
+    "out_of_page_chars": [],
+    "missing_author_texts": [],
+    "tables": [
+      {
+        "depth": 0,
+        "headers": [
+          "工种",
+          "序号",
+          "工序内容"
+        ],
+        "rows": 1
+      },
+      {
+        "depth": 1,
+        "headers": [
+          "序号",
+          "项目内容"
+        ],
+        "rows": 7
+      },
+      {
+        "depth": 0,
+        "headers": [
+          "工种",
+          "序号",
+          "工序内容"
+        ],
+        "rows": 1
+      },
+      {
+        "depth": 1,
+        "headers": [
+          "序号",
+          "项目内容"
+        ],
+        "rows": 4
+      },
+      {
+        "depth": 1,
+        "headers": [
+          "序号",
+          "项目内容"
+        ],
+        "rows": 3
+      },
+      {
+        "depth": 0,
+        "headers": [
+          "工种",
+          "序号",
+          "工序内容"
+        ],
+        "rows": 1
+      },
+      {
+        "depth": 0,
+        "headers": [
+          "工种",
+          "序号",
+          "工序内容"
+        ],
+        "rows": 1
+      },
+      {
+        "depth": 1,
+        "headers": [
+          "序号",
+          "项目内容"
+        ],
+        "rows": 3
+      },
+      {
+        "depth": 0,
+        "headers": [
+          "工种",
+          "序号",
+          "工序内容"
+        ],
+        "rows": 1
+      },
+      {
+        "depth": 0,
+        "headers": [
+          "工种",
+          "序号",
+          "工序内容"
+        ],
+        "rows": 1
+      }
+    ],
+    "fonts": [
+      "AAAAAA+FangSong",
+      "AAAAAA+SimSun-0",
+      "AAAAAB+FangSong"
+    ],
+    "root_indices_checked": [
+      "10",
+      "20",
+      "30",
+      "40",
+      "50",
+      "60"
+    ],
+    "source_coverage": [
+      {
+        "id": 1371,
+        "ordered_character_coverage": true
+      },
+      {
+        "id": 1423,
+        "ordered_character_coverage": true
+      }
+    ]
+  },
+  {
+    "name": "04_airdata_compass",
+    "pages": 7,
+    "pdf_images": 0,
+    "json_images": 0,
+    "out_of_page_chars": [],
+    "missing_author_texts": [],
+    "tables": [
+      {
+        "depth": 0,
+        "headers": [
+          "工种",
+          "序号",
+          "工序内容"
+        ],
+        "rows": 1
+      },
+      {
+        "depth": 1,
+        "headers": [
+          "序号",
+          "项目内容"
+        ],
+        "rows": 4
+      },
+      {
+        "depth": 2,
+        "headers": [
+          "项次",
+          "加压约束"
+        ],
+        "rows": 8
+      },
+      {
+        "depth": 0,
+        "headers": [
+          "工种",
+          "序号",
+          "工序内容"
+        ],
+        "rows": 1
+      },
+      {
+        "depth": 1,
+        "headers": [
+          "序号",
+          "项目内容"
+        ],
+        "rows": 5
+      },
+      {
+        "depth": 1,
+        "headers": [
+          "序号",
+          "项目内容"
+        ],
+        "rows": 2
+      },
+      {
+        "depth": 1,
+        "headers": [
+          "序号",
+          "项目内容"
+        ],
+        "rows": 1
+      },
+      {
+        "depth": 1,
+        "headers": [
+          "序号",
+          "项目内容"
+        ],
+        "rows": 1
+      },
+      {
+        "depth": 0,
+        "headers": [
+          "工种",
+          "序号",
+          "工序内容"
+        ],
+        "rows": 1
+      },
+      {
+        "depth": 1,
+        "headers": [
+          "序号",
+          "项目内容"
+        ],
+        "rows": 3
+      },
+      {
+        "depth": 0,
+        "headers": [
+          "工种",
+          "序号",
+          "工序内容"
+        ],
+        "rows": 1
+      },
+      {
+        "depth": 1,
+        "headers": [
+          "序号",
+          "项目内容"
+        ],
+        "rows": 9
+      },
+      {
+        "depth": 0,
+        "headers": [
+          "工种",
+          "序号",
+          "工序内容"
+        ],
+        "rows": 1
+      },
+      {
+        "depth": 1,
+        "headers": [
+          "序号",
+          "项目内容"
+        ],
+        "rows": 11
+      },
+      {
+        "depth": 0,
+        "headers": [
+          "工种",
+          "序号",
+          "工序内容"
+        ],
+        "rows": 1
+      },
+      {
+        "depth": 1,
+        "headers": [
+          "序号",
+          "项目内容"
+        ],
+        "rows": 4
+      },
+      {
+        "depth": 1,
+        "headers": [
+          "序号",
+          "项目内容"
+        ],
+        "rows": 3
+      }
+    ],
+    "fonts": [
+      "AAAAAA+FangSong",
+      "AAAAAA+SimSun-0",
+      "AAAAAB+FangSong"
+    ],
+    "root_indices_checked": [
+      "10",
+      "20",
+      "30",
+      "40",
+      "50",
+      "60"
+    ],
+    "source_coverage": [
+      {
+        "id": 4153,
+        "ordered_character_coverage": true
+      },
+      {
+        "id": 4176,
+        "ordered_character_coverage": true
+      }
+    ]
+  },
+  {
+    "name": "05_pneumatic_hydraulic",
+    "pages": 7,
+    "pdf_images": 0,
+    "json_images": 0,
+    "out_of_page_chars": [],
+    "missing_author_texts": [],
+    "tables": [
+      {
+        "depth": 0,
+        "headers": [
+          "工种",
+          "序号",
+          "工序内容"
+        ],
+        "rows": 1
+      },
+      {
+        "depth": 1,
+        "headers": [
+          "序号",
+          "项目内容"
+        ],
+        "rows": 11
+      },
+      {
+        "depth": 0,
+        "headers": [
+          "工种",
+          "序号",
+          "工序内容"
+        ],
+        "rows": 1
+      },
+      {
+        "depth": 1,
+        "headers": [
+          "序号",
+          "项目内容"
+        ],
+        "rows": 7
+      },
+      {
+        "depth": 0,
+        "headers": [
+          "工种",
+          "序号",
+          "工序内容"
+        ],
+        "rows": 1
+      },
+      {
+        "depth": 1,
+        "headers": [
+          "序号",
+          "项目内容"
+        ],
+        "rows": 4
+      },
+      {
+        "depth": 0,
+        "headers": [
+          "工种",
+          "序号",
+          "工序内容"
+        ],
+        "rows": 1
+      },
+      {
+        "depth": 1,
+        "headers": [
+          "序号",
+          "项目内容"
+        ],
+        "rows": 6
+      },
+      {
+        "depth": 0,
+        "headers": [
+          "工种",
+          "序号",
+          "工序内容"
+        ],
+        "rows": 1
+      },
+      {
+        "depth": 1,
+        "headers": [
+          "序号",
+          "项目内容"
+        ],
+        "rows": 14
+      },
+      {
+        "depth": 1,
+        "headers": [
+          "序号",
+          "项目内容"
+        ],
+        "rows": 9
+      },
+      {
+        "depth": 0,
+        "headers": [
+          "工种",
+          "序号",
+          "工序内容"
+        ],
+        "rows": 1
+      }
+    ],
+    "fonts": [
+      "AAAAAA+FangSong",
+      "AAAAAA+SimSun-0",
+      "AAAAAB+FangSong"
+    ],
+    "root_indices_checked": [
+      "10",
+      "20",
+      "30",
+      "40",
+      "50",
+      "60"
+    ],
+    "source_coverage": [
+      {
+        "id": 4492,
+        "ordered_character_coverage": true
+      },
+      {
+        "id": 3196,
+        "ordered_character_coverage": true
+      }
+    ]
+  },
+  {
+    "name": "template",
+    "pages": 3,
+    "pdf_images": 1,
+    "json_images": 1,
+    "out_of_page_chars": [],
+    "missing_author_texts": [],
+    "tables": [
+      {
+        "depth": 0,
+        "headers": [
+          "工种",
+          "序号",
+          "工序内容"
+        ],
+        "rows": 1
+      },
+      {
+        "depth": 1,
+        "headers": [
+          "设备编号",
+          "设备名称",
+          "设备参数"
+        ],
+        "rows": 1
+      },
+      {
+        "depth": 0,
+        "headers": [
+          "工种",
+          "序号",
+          "工序内容"
+        ],
+        "rows": 1
+      },
+      {
+        "depth": 1,
+        "headers": [
+          "序号",
+          "项目内容"
+        ],
+        "rows": 2
+      },
+      {
+        "depth": 2,
+        "headers": [
+          "检查项目",
+          "目标值",
+          "实测值"
+        ],
+        "rows": 2
+      },
+      {
+        "depth": 0,
+        "headers": [
+          "工种",
+          "序号",
+          "工序内容"
+        ],
+        "rows": 1
+      },
+      {
+        "depth": 1,
+        "headers": [
+          "图样编号/设计技术文件编\n号",
+          "图样名称/设计技术文件名称",
+          "版次"
+        ],
+        "rows": 1
+      },
+      {
+        "depth": 1,
+        "headers": [
+          "技术文件编号",
+          "名称",
+          "版次"
+        ],
+        "rows": 1
+      },
+      {
+        "depth": 1,
+        "headers": [
+          "名称",
+          "件号",
+          "版次",
+          "单装数量",
+          "备注"
+        ],
+        "rows": 1
+      }
+    ],
+    "fonts": [
+      "AAAAAA+FangSong",
+      "AAAAAA+SimSun-0"
+    ],
+    "template_variables_checked": 42,
+    "root_indices_checked": [
+      "$index$",
+      "$index2$",
+      "$index3$"
+    ]
+  }
+]

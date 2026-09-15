@@ -350,8 +350,14 @@ def _attach_nested(tables: list[Table], cells: list[Cell], tolerance: float) -> 
         owners = [cell for cell in cells if _contains(cell.bbox, child.bbox, tolerance)]
         if owners:
             child.parent_cell = min(owners, key=lambda cell: _area(cell.bbox))
-            if child not in parent.nested:
-                parent.nested.append(child)
+        else:
+            # A continued outer table can contain only an inner grid on the
+            # new page, without a large physical parent cell around it.  The
+            # last header cell is only a parent marker here; the cross-page
+            # merge later selects the real destination column by x overlap.
+            child.parent_cell = parent.header_cells[-1]
+        if child not in parent.nested:
+            parent.nested.append(child)
 
 
 def _remove_child_rows(table: Table, candidates: list[Table], tolerance: float) -> None:
@@ -408,9 +414,92 @@ def _inherit_sequence_columns(pages: list[list[Table]]) -> None:
                         cell.text = state[(key, column)]
 
 
+def _column_for_cell(table: Table, cell: Cell) -> int:
+    """Map a cell to the column bands defined by the repeated header row."""
+    overlaps = [_overlap_x(cell.bbox, header.bbox) for header in table.header_cells]
+    return max(range(len(overlaps)), key=lambda index: overlaps[index]) if overlaps else 0
+
+
+def _sequence_columns(table: Table) -> list[int]:
+    return [
+        index for index, cell in enumerate(table.header_cells)
+        if _norm(cell.text) in {"序号", "编号", "工步"}
+    ]
+
+
+def _content_column(table: Table) -> int:
+    for index, cell in reversed(list(enumerate(table.header_cells))):
+        if _norm(cell.text) in {"工序内容", "项目内容", "内容"}:
+            return index
+    return max(0, len(table.header_cells) - 1)
+
+
+def _has_sequence_value(table: Table) -> bool:
+    sequence = set(_sequence_columns(table))
+    return any(
+        cell.text.strip() and _column_for_cell(table, cell) in sequence
+        for row in table.rows for cell in row
+    )
+
+
+def _merge_cell_text(target: Cell, continuation: Cell) -> None:
+    text = continuation.text.strip()
+    if text:
+        target.text = (target.text.rstrip() + "\n" + text).strip()
+    continuations = getattr(target, "continuations", [])
+    continuations.append(continuation)
+    setattr(target, "continuations", continuations)
+
+
+def _merge_cross_page_tables(roots: list[Table]) -> list[Table]:
+    """Merge repeated-header pages whose sequence column is intentionally blank.
+
+    Header cell x ranges act as persistent column bands.  A same-header table
+    on the immediately following page is a continuation only when it has no
+    value in a sequence column.  Text cells are appended to the matching last
+    row columns, and inner tables are tagged for the previous content column.
+    """
+    merged: list[Table] = []
+    latest: dict[tuple[str, ...], tuple[Table, int]] = {}
+    for table in sorted(roots, key=lambda item: (item.page, item.bbox[1], item.bbox[0])):
+        signature = tuple(_norm(cell.text) for cell in table.header_cells)
+        previous_state = latest.get(signature)
+        can_continue = (
+            bool(_sequence_columns(table))
+            and not _has_sequence_value(table)
+            and previous_state is not None
+            and table.page == previous_state[1] + 1
+        )
+        if not can_continue:
+            merged.append(table)
+            latest[signature] = (table, table.page)
+            continue
+
+        previous = previous_state[0]
+        target_row = previous.rows[-1] if previous.rows else []
+        for row in table.rows:
+            for source_cell in row:
+                column = _column_for_cell(table, source_cell)
+                targets = [
+                    cell for cell in target_row
+                    if _column_for_cell(previous, cell) == column
+                ]
+                if targets:
+                    _merge_cell_text(targets[-1], source_cell)
+                else:
+                    target_row.append(source_cell)
+
+        destination_column = _content_column(previous)
+        for child in table.nested:
+            setattr(child, "cross_page_column", destination_column)
+            previous.nested.append(child)
+        latest[signature] = (previous, table.page)
+    return merged
+
+
 def _cell_json(table: Table, cell: Cell, row_number: int) -> dict[str, Any]:
     overlaps = [_overlap_x(cell.bbox, header.bbox) for header in table.header_cells]
-    column = max(range(len(overlaps)), key=lambda index: overlaps[index]) if overlaps else 0
+    column = _column_for_cell(table, cell)
     colspan = max(1, sum(value > 1.0 for value in overlaps[column:]))
     result: dict[str, Any] = {
         "row": row_number,
@@ -418,6 +507,7 @@ def _cell_json(table: Table, cell: Cell, row_number: int) -> dict[str, Any]:
         "colspan": colspan,
         "text": cell.text,
         "bbox": [round(value, 2) for value in cell.bbox],
+        "_source_page": cell.page,
     }
     if cell.images:
         result["images"] = [
@@ -429,11 +519,30 @@ def _cell_json(table: Table, cell: Cell, row_number: int) -> dict[str, Any]:
             }
             for image in cell.images
         ]
+    continuations = getattr(cell, "continuations", [])
+    if continuations:
+        result["_continuations"] = [
+            {
+                "page": item.page,
+                "bbox": [round(value, 2) for value in item.bbox],
+                "text": item.text,
+                "images": [
+                    {
+                        "page": image.page,
+                        "src": image.src,
+                        "bbox": image.bbox,
+                        "alt": image.alt,
+                    }
+                    for image in item.images
+                ],
+            }
+            for item in continuations
+        ]
     return result
 
 
 def _table_json(table: Table) -> dict[str, Any]:
-    return {
+    result = {
         "page": table.page,
         "bbox": [round(value, 2) for value in table.bbox],
         "title": table.title,
@@ -444,6 +553,9 @@ def _table_json(table: Table) -> dict[str, Any]:
         ],
         "nested_tables": [_table_json(child) for child in table.nested],
     }
+    if hasattr(table, "cross_page_column"):
+        result["_cross_page_column"] = int(table.cross_page_column)
+    return result
 
 
 def _extract_tables(pages: dict[int, list[Cell]], images: list[ImageRef],
@@ -500,6 +612,7 @@ def _extract_tables(pages: dict[int, list[Cell]], images: list[ImageRef],
         table for tables in page_tables for table in tables
         if table.parent_cell is None
     ]
+    roots = _merge_cross_page_tables(roots)
     return {
         "format": "ao-structured-v2",
         "selection": {
@@ -582,13 +695,21 @@ def _move_nested_tables_into_cells(table: dict, tolerance: float) -> None:
     table["rows"] = [row for row in table.get("rows", []) if row]
     remaining = []
     for child in list(table.get("nested_tables", [])):
-        child_bbox = child.get("bbox", [0, 0, 0, 0])
-        owners = [
-            cell for row in table.get("rows", []) for cell in row
-            if _contains(cell.get("bbox", [0, 0, 0, 0]), child_bbox, tolerance)
-        ]
+        forced_column = child.pop("_cross_page_column", None)
+        if forced_column is not None:
+            owners = [
+                cell for row in table.get("rows", []) for cell in row
+                if int(cell.get("column", -1)) == int(forced_column)
+            ]
+        else:
+            child_bbox = child.get("bbox", [0, 0, 0, 0])
+            owners = [
+                cell for row in table.get("rows", []) for cell in row
+                if _contains(cell.get("bbox", [0, 0, 0, 0]), child_bbox, tolerance)
+            ]
         if owners:
-            owner = min(owners, key=lambda cell: _area(cell["bbox"]))
+            owner = (owners[-1] if forced_column is not None
+                     else min(owners, key=lambda cell: _area(cell["bbox"])))
             owner.setdefault("nested_tables", []).append(child)
         else:
             remaining.append(child)
@@ -779,13 +900,28 @@ def _enrich_reading_order(payload: dict, cell_html: Path,
         page = int(table.get("page", 0))
         for row in table.get("rows", []):
             for cell in row:
+                source_page = int(cell.pop("_source_page", page))
                 layout = next(
                     (item for item in parser.cells
-                     if item.page == page
+                     if item.page == source_page
                      and _same_bbox(item.bbox, cell.get("bbox", []), tolerance)),
                     None,
                 )
                 cell["content"] = _ordered_content(layout, cell)
+                for continuation in cell.pop("_continuations", []):
+                    continuation_page = int(continuation.get("page", source_page))
+                    continuation_layout = next(
+                        (item for item in parser.cells
+                         if item.page == continuation_page
+                         and _same_bbox(
+                             item.bbox, continuation.get("bbox", []), tolerance
+                         )),
+                        None,
+                    )
+                    cell["content"].extend(_ordered_content(
+                        continuation_layout,
+                        continuation,
+                    ))
                 for child in cell.get("nested_tables", []):
                     enrich_table(child)
         for child in table.get("nested_tables", []):
