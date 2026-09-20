@@ -18,6 +18,6 @@ python pre/server.py --host 127.0.0.1 --port 8081
 
 表头配置位于 `pdf_extract/file_templates.txt`，格式是 `文件名正则 ::=>:: 表头`；详细规则见 `pdf_extract/README.md`。默认拆卡表头为 `工种,序号,工序内容|序号,项目内容`，它决定哪些表按序号拆成 AO 输入，并不等于提取表头。没有匹配表时，整份正文和图片作为一个文档内容块，不丢弃全文。
 
-环境变量：`AO_PDF_TEMPLATES` 指定表头配置；`AO_PDF_WORK_DIR` 指定上传和结果目录（默认 `output/pdf_web`）。单个 PDF 上限 40 MiB，转换串行执行。保留 source PDF、图片、中间 HTML、long/short JSON 和原始 short 副本；long JSON 不会伪造人工修改后的旧坐标。浏览器用 IndexedDB 保存卡片结果，请及时导出；服务默认只监听本机，不要直接开放公网。
+环境变量：`AO_PDF_TEMPLATES` 指定表头配置；`AO_PDF_WORK_DIR` 指定上传和结果目录（未设置时使用系统临时目录下的 `ao_pdf_workflow`，避免只读仓库触发 Windows WinError 5）。单个 PDF 上限 40 MiB，转换串行执行。保留 source PDF、图片、中间 HTML、long/short JSON 和原始 short 副本；long JSON 不会伪造人工修改后的旧坐标。浏览器用 IndexedDB 保存卡片结果，请及时导出；服务默认只监听本机，不要直接开放公网。
 
 面向程序的接口包括：`POST /api/pdf/convert`、`GET /api/pdf/{id}`、`PUT /api/pdf/{id}/tables/{index}`、`POST /api/pdf/{id}/approve`、`GET /api/pdf/{id}/files/{name}`、`GET /api/pdf/{id}/preview/{page}.png`、`POST /api/pdf/export-results`。

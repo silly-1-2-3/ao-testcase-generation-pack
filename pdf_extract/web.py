@@ -14,6 +14,7 @@ import re
 import shutil
 import sys
 import threading
+import tempfile
 import uuid
 import zipfile
 
@@ -26,8 +27,14 @@ LIMIT=40*1024*1024
 
 
 def register_pdf_routes(app, project_root):
-    root=Path(os.environ.get('AO_PDF_WORK_DIR',str(Path(project_root)/'output/pdf_web'))).resolve()
+    # Keep runtime uploads outside the source checkout by default.  Some
+    # Windows deployments copy the repository read-only; writing under
+    # PROJECT_ROOT/output then raises WinError 5 before PDF parsing starts.
+    default_root=Path(tempfile.gettempdir())/'ao_pdf_workflow'
+    root=Path(os.environ.get('AO_PDF_WORK_DIR',str(default_root))).resolve()
+    root.mkdir(parents=True,exist_ok=True)
     template_file=Path(os.environ.get('AO_PDF_TEMPLATES',str(SOURCE.parent/'file_templates.txt')))
+    card_template_file=Path(os.environ.get('AO_PDF_CARD_TEMPLATES',str(SOURCE.parent/'card_templates.txt')))
     gate=asyncio.Semaphore(1)
     lock=threading.RLock()
 
@@ -58,14 +65,15 @@ def register_pdf_routes(app, project_root):
             page_count=source.page_count
         return dict(**meta,document_id=document_id,payload=payload,
                     page_count=page_count,
-                    cards=cards.make_cards(payload,document_id,meta['filename'],meta['card_headers']) if meta['approved'] else [],
+                    cards=cards.make_cards(payload,document_id,meta['filename'],meta['card_headers']) if meta['approved'] and meta.get('cards_enabled',True) else [],
                     files={p.name:f'/api/pdf/{document_id}/files/{p.name}' for p in path.iterdir()
                            if p.is_file() and p.suffix in {'.html','.json','.pdf'} and p.name!='meta.json'})
 
-    def convert(data,filename,file_template,headers,card_headers):
+    def convert(data,filename,file_template,headers,card_headers,cards_enabled=True):
         pdf,structured,templates,cards,review=modules()
         kind=file_template.strip() or Path(filename).stem
         selected=headers.strip() or templates.resolve(kind,template_file)
+        selected_cards=card_headers.strip() or templates.resolve_card(kind,card_template_file) or cards.DEFAULT_HEADERS
         ident=uuid.uuid4().hex;path=root/ident;path.mkdir(parents=True)
         (path/'source.pdf').write_bytes(data)
         pdf.extract(path/'source.pdf',path/'document.cells.html')
@@ -74,17 +82,17 @@ def register_pdf_routes(app, project_root):
         shutil.copyfile(path/'document.structured.short.json',path/'document.original.short.json')
         review.write_review(path/'document.cells.html',selected,2.5,found,{})
         save(path/'meta.json',dict(filename=filename,file_template=kind,headers=selected,
-                                  card_headers=card_headers or cards.DEFAULT_HEADERS,approved=False,revision=0,
+                                  card_headers=selected_cards,cards_enabled=bool(cards_enabled),approved=False,revision=0,
                                   warning=payload['selection'].get('fallback','')))
         return snapshot(ident)
 
     @app.get('/api/pdf/templates')
     async def get_templates():
         _,_,templates,cards,_=modules()
-        return dict(templates=templates.load(template_file),card_headers=cards.DEFAULT_HEADERS,max_bytes=LIMIT)
+        return dict(templates=templates.load(template_file),card_templates=templates.load(card_template_file),card_headers=cards.DEFAULT_HEADERS,max_bytes=LIMIT)
 
     @app.post('/api/pdf/convert')
-    async def upload(request:Request,filename:str='document.pdf',file_template:str='',headers:str='',card_headers:str=''):
+    async def upload(request:Request,filename:str='document.pdf',file_template:str='',headers:str='',card_headers:str='',cards:bool=True):
         # Not a file-system path import. A typed local path belongs in the file
         # chooser; remote clients must upload bytes, never access server paths.
         filename=filename.replace('\\','/').split('/')[-1][:180]
@@ -95,13 +103,21 @@ def register_pdf_routes(app, project_root):
             data.extend(chunk)
         if b'%PDF-' not in data[:1024]:raise HTTPException(400,'Not a PDF file')
         async with gate:
-            try:return await asyncio.to_thread(convert,bytes(data),filename,file_template,headers,card_headers)
+            try:return await asyncio.to_thread(convert,bytes(data),filename,file_template,headers,card_headers,cards)
             except HTTPException:raise
             except Exception as exc:raise HTTPException(422,f'PDF conversion failed: {exc}') from exc
 
     @app.get('/api/pdf/{document_id}')
     async def get_document(document_id:str):
         with lock:return snapshot(document_id)
+
+    @app.delete('/api/pdf/{document_id}')
+    async def delete_document(document_id:str):
+        """Remove one uploaded document and its derived artifacts."""
+        with lock:
+            path=folder(document_id)
+            shutil.rmtree(path)
+        return {'deleted':document_id}
 
     @app.put('/api/pdf/{document_id}/tables/{index}')
     async def edit_table(document_id:str,index:int,request:Request):

@@ -3,6 +3,7 @@ import re
 from pathlib import Path
 
 DEFAULT_FILE = Path(__file__).resolve().parents[1]/'file_templates.txt'
+DEFAULT_CARD_FILE = Path(__file__).resolve().parents[1]/'card_templates.txt'
 DELIMITER = '::=>::'
 
 
@@ -30,3 +31,10 @@ def resolve(file_template, path=DEFAULT_FILE):
     if len(found)!=1:
         raise ValueError(f'File template {file_template!r}: expected one regex match, got {len(found)}')
     return found[0]['headers']
+
+def resolve_card(file_template, path=DEFAULT_CARD_FILE):
+    """Resolve card-splitting headers independently from extraction headers."""
+    found=[e for e in load(path) if re.fullmatch(e['pattern'],file_template,re.IGNORECASE)]
+    if len(found)>1:
+        raise ValueError(f'Card template {file_template!r}: expected one regex match, got {len(found)}')
+    return found[0]['headers'] if found else None

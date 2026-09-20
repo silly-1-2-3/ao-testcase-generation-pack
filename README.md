@@ -13,6 +13,14 @@ Linux 服务器**上完成以下工作：
 所有示例命令均从项目根目录 `ao-testcase-generation` 执行。
 ---
 
+## PDF 提取与网页入口
+
+PDF 提取代码位于 [`pdf_extract/`](pdf_extract/)。它提供矢量 PDF → 中间版式 HTML → long/short JSON → AO 卡片的本地流程，并附带示例输入和成功输出。网页服务及前端入口位于 [`web/`](web/)，启动说明见 [`web/README.md`](web/README.md)。
+
+仓库中的 `pre/` 是历史兼容目录，后续不再向其中增加 PDF 功能或新页面；如果部署现有网页服务，请将 `pre/` 中本轮新增的服务器、静态页面和说明迁移到 `web/`，以 `web/server.py` 和 `web/static/` 为准。
+
+我孙笑川求求你了，pre/指的是presentation不是preprocess，真的不懂这个文件夹里面怎么塞了东西。
+
 ## 1. 当前系统边界
 
 主流程采用以下本地链路：
@@ -61,12 +69,12 @@ pre/server.py
 
 ## 2. 四类运行任务
 
-| 任务 | Conda 环境 | 是否先运行 `vllm serve` |
-|---|---|---|
-| 启动 Base+LoRA HTTP 推理服务 | `ao-qwen35-vllm` | 当前任务本身 |
-| 启动网页、设备检索和 Excel 导出 | `ao-retrieval` | 是 |
-| Base/LoRA 离线批量评测 | `ao-qwen35-vllm` | 否 |
-| 从数据开始重新训练 | `ao-qwen35-train` | 否 |
+| 任务                     | Conda 环境          | 是否先运行 `vllm serve` |
+| ---------------------- | ----------------- | ------------------ |
+| 启动 Base+LoRA HTTP 推理服务 | `ao-qwen35-vllm`  | 当前任务本身             |
+| 启动网页、设备检索和 Excel 导出    | `ao-retrieval`    | 是                  |
+| Base/LoRA 离线批量评测       | `ao-qwen35-vllm`  | 否                  |
+| 从数据开始重新训练              | `ao-qwen35-train` | 否                  |
 
 设备 CSV 转换、BM25+BGE 建库和命令行检索也使用 `ao-retrieval`。
 
@@ -156,19 +164,19 @@ BGE 模型通常放在项目目录外，例如：
 
 当前训练清单和评测清单记录的主要版本为：
 
-| 项目 | 已验证值 |
-|---|---|
-| 操作系统 | Linux x86_64 |
-| Python | 3.11 |
-| GPU | NVIDIA A800 80GB PCIe |
-| Compute Capability | 8.0 / SM80 |
-| PyTorch | 2.11.0 |
-| PyTorch CUDA runtime | 12.9 |
-| Transformers | 5.14.1 |
-| Datasets | 5.0.0 |
-| PEFT | 0.19.1 |
-| Accelerate | 1.14.0 |
-| vLLM | 0.24.0+cu129 |
+| 项目                   | 已验证值                  |
+| -------------------- | --------------------- |
+| 操作系统                 | Linux x86_64          |
+| Python               | 3.11                  |
+| GPU                  | NVIDIA A800 80GB PCIe |
+| Compute Capability   | 8.0 / SM80            |
+| PyTorch              | 2.11.0                |
+| PyTorch CUDA runtime | 12.9                  |
+| Transformers         | 5.14.1                |
+| Datasets             | 5.0.0                 |
+| PEFT                 | 0.19.1                |
+| Accelerate           | 1.14.0                |
+| vLLM                 | 0.24.0+cu129          |
 
 训练、vLLM 和检索网页使用三个独立环境：
 
@@ -243,7 +251,6 @@ retrieval/production/CSV_SCHEMA_MAPPING.md
 
 `pre/tests/` 和 `retrieval/production/tests/` 不参与正式运行，但建议保留在源码
 仓库和研发环境中，用于验证 Excel、前端人工修订和检索安全逻辑。
-
 
 ### 5.2 需要重新训练
 
@@ -572,7 +579,6 @@ Base 与 Base+LoRA 共用同一个检索器，但分别生成审计结果。
 
 - 存在完整评测目录时，网页会展示汇总指标、字段指标和逐样本结果。
 - 不存在评测目录时，历史评测面板显示不可用，但实时 Base/LoRA 推理仍可运行。
-
 
 ### 8.4 网页中的实时推理、人工修订和 Excel
 
@@ -971,19 +977,18 @@ python train/eval_model_vllm.py \
   --output_dir eval_results/qwen35_lora_prefixfix_test_full
 ```
 
-
 ### 11.4 评测输出
 
 每次成功评测生成：
 
-| 文件 | 作用 |
-|---|---|
-| `evaluation_manifest.json` | 模型、Adapter、数据、版本、GPU、哈希和参数 |
-| `base_predictions.jsonl` | Base 逐样本输出、解析状态和评分 |
-| `lora_predictions.jsonl` | LoRA 逐样本输出、解析状态和评分 |
-| `base_metrics.json` | Base 汇总指标 |
-| `lora_metrics.json` | LoRA 汇总指标 |
-| `vllm_compare_summary.json` | Base/LoRA 汇总及成对差值 |
+| 文件                          | 作用                         |
+| --------------------------- | -------------------------- |
+| `evaluation_manifest.json`  | 模型、Adapter、数据、版本、GPU、哈希和参数 |
+| `base_predictions.jsonl`    | Base 逐样本输出、解析状态和评分         |
+| `lora_predictions.jsonl`    | LoRA 逐样本输出、解析状态和评分         |
+| `base_metrics.json`         | Base 汇总指标                  |
+| `lora_metrics.json`         | LoRA 汇总指标                  |
+| `vllm_compare_summary.json` | Base/LoRA 汇总及成对差值          |
 
 当前 `eval_sft.jsonl` 的 615 条参考结果为：
 

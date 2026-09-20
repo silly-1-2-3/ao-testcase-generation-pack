@@ -28,7 +28,10 @@ def build_parser() -> argparse.ArgumentParser:
     )
     parser.add_argument('--file-template','-ft',help='file type matched against template regexes')
     parser.add_argument('--templates',type=Path,default=templates.DEFAULT_FILE,help='UTF-8 regex ::=>:: headers text file')
-    parser.add_argument('--card-headers',default='工种,序号,工序内容|序号,项目内容',help='header groups whose rows become generation cards')
+    parser.add_argument('--card-template','-ct',help='file type matched against card_templates.txt')
+    parser.add_argument('--card-templates',type=Path,default=templates.DEFAULT_CARD_FILE,help='UTF-8 regex ::=>:: card header text file')
+    parser.add_argument('--card-headers',default=None,help='header groups whose rows become generation cards; overrides -ct')
+    parser.add_argument('--no-cards',action='store_true',help='write an empty cards JSON; keep all intermediate outputs downloadable')
     parser.add_argument("--tolerance", type=float, default=structured.DEFAULT_TOLERANCE)
     parser.add_argument("--pages", help="optional page list/range, e.g. 1,3-5")
     parser.add_argument("--scale", type=float, default=1.35)
@@ -77,7 +80,9 @@ def main() -> int:
     structured.write_outputs(payload, output_html, full_json, compact_json)
     review.write_review(cell_html, args.headers, args.tolerance, tables, decisions)
     compact=structured.compact_payload(payload)
-    card_data=cards.make_cards(compact,'local',args.pdf.name if args.pdf else 'document',args.card_headers)
+    card_kind=args.card_template or args.file_template or (args.pdf.name if args.pdf else 'document')
+    card_headers=args.card_headers or templates.resolve_card(card_kind,args.card_templates) or cards.DEFAULT_HEADERS
+    card_data=[] if args.no_cards else cards.make_cards(compact,'local',args.pdf.name if args.pdf else 'document',card_headers)
     (args.output_dir/'document.cards.json').write_text(json.dumps(card_data,ensure_ascii=False,indent=2),encoding='utf8')
 
     print(f"[ok] tables={len(payload['tables'])} images={len(payload['images'])}")

@@ -73,6 +73,17 @@ def make_cards(payload, doc_id, filename, header_spec=DEFAULT_HEADERS):
                         remaining=[c for c in cell.get('nested_tables',[]) if not has_match(c)]
                         if remaining: cell['nested_tables']=remaining
                         else: cell.pop('nested_tables',None)
+                    # The outer step is a real input block too.  Its text is
+                    # kept as the parent card; matched child tables are then
+                    # emitted as additional, independent cards below.
+                    parent_index=''
+                    if seq is not None:
+                        parent_cell=next((c for c in parent if c.get('column')==seq),{})
+                        parent_index=''.join(x.get('text','') for x in parent_cell.get('content',[])).strip()
+                    parent_key=parent_index or f'row-{ri+1}'
+                    parent_value={k:copy.deepcopy(v) for k,v in t.items() if k not in {'rows','nested_tables'}}
+                    parent_value['rows']=[parent]
+                    ordered.append(('parent',parent_value,f'{path}.{parent_key}',f'工步 {parent_key}' if seq is not None else parent_key))
                     for ci,kid in enumerate(kids):
                         ordered.append(('child',kid,f'{path}.r{ri}.n{ci}',context+[{'headers':t['headers'],'rows':[parent]}]))
                     continue
@@ -86,6 +97,9 @@ def make_cards(payload, doc_id, filename, header_spec=DEFAULT_HEADERS):
                     ordered.append(('group',key))
                 groups[key].append(row)
             for event in ordered:
+                if event[0]=='parent':
+                    add(event[1],event[2],event[3],context)
+                    continue
                 if event[0]=='child':
                     visit(*event[1:])
                     continue
