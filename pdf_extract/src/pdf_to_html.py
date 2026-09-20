@@ -55,14 +55,24 @@ def _merge_segments(segments: Iterable[tuple], horizontal: bool, tolerance: floa
             coordinates.append((x, y0, y1))
     coordinates.sort(key=lambda item: (item[0], item[1], item[2]))
 
-    merged = []
+    bands = []
     for coordinate, start, end in coordinates:
-        if (merged and abs(merged[-1][0] - coordinate) <= tolerance
-                and start <= merged[-1][2] + tolerance):
-            old = merged[-1]
-            merged[-1] = old[0], min(old[1], start), max(old[2], end)
+        if bands and abs(bands[-1][0] - coordinate) <= tolerance:
+            bands[-1][1].append((start, end))
         else:
-            merged.append((coordinate, start, end))
+            bands.append((coordinate, [(start, end)]))
+    merged = []
+    for coordinate, intervals in bands:
+        runs = []
+        # Sort along the line AFTER grouping near-equal x/y coordinates.
+        # Otherwise a later parallel edge may start above an earlier segment
+        # and incorrectly bridge a genuine gap (creating phantom cell walls).
+        for start, end in sorted(intervals):
+            if runs and start <= runs[-1][1] + tolerance:
+                runs[-1] = (runs[-1][0], max(runs[-1][1], end))
+            else:
+                runs.append((start, end))
+        merged.extend((coordinate, start, end) for start, end in runs)
     if horizontal:
         return [(start, coordinate, end, coordinate)
                 for coordinate, start, end in merged if end > start]
@@ -277,8 +287,11 @@ def _cell_records(rectangles, words, page_width: float, page_height: float,
             "y1": rectangles[index][3],
             "words": cell_words,
         }
+        # Empty cells are structural evidence: blank sequence columns on a
+        # continuation page, empty measurements, and inner-table containers.
+        # Dropping them turns aligned rows into seemingly incompatible grids.
         for index, cell_words in sorted(
-            owners.items(), key=lambda item: (
+            ((index, owners[index]) for index in range(len(rectangles))), key=lambda item: (
                 rectangles[item[0]][1], rectangles[item[0]][0]
             )
         )
@@ -347,7 +360,12 @@ def _cell_html(cell, scale: float) -> str:
         classes.append("page-text")
     if cell.get("is_container"):
         classes.append("container")
-    return f'<div class="{" ".join(classes)}" style="{style}">{"".join(spans)}</div>'
+    background = cell.get('background', '')
+    if background:
+        style += f';background:{background}'
+    attrs = (f' data-background="{background}"'
+             f' data-background-coverage="{cell.get("background_coverage", 0)}"')
+    return f'<div class="{" ".join(classes)}"{attrs} style="{style}">{"".join(spans)}</div>'
 
 
 def _parse_pages(specification: str | None, page_count: int) -> set[int]:
@@ -496,6 +514,7 @@ def extract(
     axis_tol: float = DEFAULT_AXIS_TOLERANCE,
     merge_tol: float = DEFAULT_MERGE_TOLERANCE,
     scale: float = 1.35,
+    white_tolerance: float = .02,
 ) -> None:
     """Write geometry-preserving cell HTML and decoded images for ``pdf``."""
     sections = []
@@ -520,8 +539,10 @@ def extract(
                 min_rect_area_ratio,
                 merge_tol,
             )
+            from background import annotate_cells
+            annotate_cells(cells, page, white_tolerance=white_tolerance)
             bits = [
-                f'<section class="page" data-page="{page_number}" '
+                f'<section class="page" data-page="{page_number}" id="page-{page_number}" '
                 f'style="width:{page.width * scale:.1f}px;'
                 f'height:{page.height * scale:.1f}px">',
                 f'<div class="page-label">第 {page_number} 页 · '

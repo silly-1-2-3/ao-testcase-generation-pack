@@ -90,6 +90,9 @@ class Cell:
     bbox: list[float]
     text: str = ""
     images: list[ImageRef] = field(default_factory=list)
+    is_page: bool = False
+    background: str = ''
+    background_coverage: float = 0.
 
 
 @dataclass
@@ -101,9 +104,17 @@ class Table:
     nested: list["Table"] = field(default_factory=list)
     parent_cell: Cell | None = None
     title: str = ""
+    orientation: str = 'vertical'
+    direction_reason: str = 'default: no decisive background pattern'
+    needs_review: bool = True
 
     @property
     def headers(self) -> list[str]:
+        if self.orientation == 'horizontal':
+            return [row[0].text.strip() for row in [self.header_cells] + self.rows]
+        if self.orientation == 'horizontal-pairs':
+            return [c.text.strip() for row in [self.header_cells] + self.rows
+                    for c in row[::2]]
         return [cell.text.strip() for cell in self.header_cells]
 
 
@@ -134,6 +145,12 @@ class CellHtmlParser(HTMLParser):
             bbox = _bbox_from_style(attributes.get("style", ""))
             if bbox:
                 self.cell = Cell(self.page, len(self.pages[self.page]), bbox)
+                self.cell.background = attributes.get('data-background', '')
+                self.cell.background_coverage = float(attributes.get('data-background-coverage') or 0)
+                self.cell.is_page = (
+                    "container" in classes and abs(bbox[0]) < 0.1
+                    and abs(bbox[1]) < 0.1
+                )
                 self.cell_depth = 1
                 self.cell_parts = []
             return
@@ -241,7 +258,7 @@ def _header_candidates(cells: list[Cell], specifications: list[list[str]],
 
 
 def _candidate_table(header: list[Cell], all_cells: list[Cell],
-                     tolerance: float) -> Table:
+                     tolerance: float, allow_split_header: bool = False) -> Table:
     x0 = min(cell.bbox[0] for cell in header)
     x1 = max(cell.bbox[2] for cell in header)
     header_bottom = max(cell.bbox[3] for cell in header)
@@ -255,15 +272,36 @@ def _candidate_table(header: list[Cell], all_cells: list[Cell],
     frontier = header_bottom
     for row in _cluster_rows(eligible, tolerance):
         top = min(cell.bbox[1] for cell in row)
-        if selected_rows and top > frontier + tolerance * 2:
+        if top < frontier - tolerance:
+            # Inner cells start inside an already accepted tall body cell.
+            # They belong to an independent nested-grid candidate, not this row.
+            continue
+        if top > frontier + tolerance * 2:
             break
         usable = [
             cell for cell in row
-            if _overlap_x(cell.bbox, [x0, 0, x1, cell.bbox[3]]) > tolerance
+            if cell.bbox[0] >= x0 - tolerance
+            and cell.bbox[2] <= x1 + tolerance
         ]
-        if usable:
-            selected_rows.append(usable)
-            frontier = max(frontier, max(cell.bbox[3] for cell in usable))
+        if not _tiles_width(usable, x0, x1, tolerance):
+            break
+        if len(header) > 1 and not _aligned_partition(header, usable, tolerance):
+            # Explicit, fixed labels establish the parent fields. Permit
+            # several physical value cells under one known merged header.
+            if not (allow_split_header and all(any(
+                c.bbox[0] >= h.bbox[0]-tolerance and c.bbox[2] <= h.bbox[2]+tolerance
+                for h in header) for c in usable)):
+                break
+        if len(header) > 1:
+            # A fresh coloured header begins a new sibling block, not a data
+            # row. A merged full-width title is exempt (it owns the subtable).
+            if _horizontal_pattern(usable) or (
+                selected_rows and all(c.background for c in usable)
+                and not all(c.background for r in selected_rows for c in r)
+            ):
+                break
+        selected_rows.append(usable)
+        frontier = max(cell.bbox[3] for cell in usable)
     bottom = max(
         [cell.bbox[3] for cell in header]
         + [cell.bbox[3] for row in selected_rows for cell in row]
@@ -280,50 +318,145 @@ def _step_like(text: str) -> bool:
     return bool(re.fullmatch(r"\s*\d+(?:\.\d+)?\s*", text or ""))
 
 
-def _automatic_grids(cells: list[Cell], tolerance: float) -> list[Table]:
-    rows = _cluster_rows(cells, tolerance)
-    candidates = []
-    for index, row in enumerate(rows):
-        header = [cell for cell in row if _norm(cell.text)]
-        if len(header) < 2 or _step_like(header[0].text):
-            continue
-        x0 = min(cell.bbox[0] for cell in header)
-        x1 = max(cell.bbox[2] for cell in header)
-        data_rows = []
-        frontier = max(cell.bbox[3] for cell in header)
-        for next_row in rows[index + 1:]:
-            top = min(cell.bbox[1] for cell in next_row)
-            if data_rows and top > frontier + tolerance * 2:
-                break
-            usable = [
-                cell for cell in next_row
-                if _overlap_x(cell.bbox, [x0, 0, x1, cell.bbox[3]]) > tolerance
-            ]
-            if usable:
-                data_rows.append(usable)
-                frontier = max(frontier, max(cell.bbox[3] for cell in usable))
-        if not data_rows:
-            continue
-        bbox = [x0, min(cell.bbox[1] for cell in header), x1, frontier]
-        if any(_area(cell.bbox) > _area(bbox) * 0.72 for cell in header):
-            continue
-        title = ""
-        if (index and len(rows[index - 1]) == 1
-                and abs(rows[index - 1][0].bbox[3] - header[0].bbox[1])
-                <= tolerance * 3):
-            title = rows[index - 1][0].text.strip()
-        candidates.append(Table(header[0].page, header, data_rows, bbox, title=title))
+def _tiles_width(row: list[Cell], x0: float, x1: float, tolerance: float) -> bool:
+    """A row must span this table, without gaps or overlapping inner cells."""
+    ordered = sorted(row, key=lambda c: c.bbox[0])
+    return bool(ordered) and (
+        abs(ordered[0].bbox[0] - x0) <= tolerance
+        and abs(ordered[-1].bbox[2] - x1) <= tolerance
+        and all(abs(a.bbox[2] - b.bbox[0]) <= tolerance
+                for a, b in zip(ordered, ordered[1:]))
+    )
 
-    unique = []
-    for table in sorted(candidates, key=lambda item: (item.bbox[1], -_area(item.bbox))):
-        if any(
-            _contains(other.bbox, table.bbox, tolerance)
-            and abs(other.bbox[1] - table.bbox[1]) <= tolerance
-            for other in unique
-        ):
+
+def _aligned_partition(header: list[Cell], row: list[Cell], tolerance: float) -> bool:
+    # Body cells may merge adjacent header columns, but cannot invent a new
+    # column boundary. The meaning of differently partitioned form blocks is
+    # deliberately not inferred from their text here.
+    boundaries = [c.bbox[0] for c in header] + [header[-1].bbox[2]]
+    return all(any(abs(x - b) <= tolerance for b in boundaries)
+               for c in row for x in (c.bbox[0], c.bbox[2]))
+
+
+def _horizontal_pattern(row: list[Cell]) -> str | None:
+    if len(row) < 2 or not row[0].background:
+        return None
+    flags = [bool(c.background) for c in row]
+    if flags == [True] + [False] * (len(row)-1):
+        return 'horizontal'
+    if len(row) % 2 == 0 and flags == [i % 2 == 0 for i in range(len(row))]:
+        return 'horizontal-pairs'
+    return None
+
+
+def _horizontal_candidate(start, rows, tolerance):
+    first = rows[start]
+    mode = _horizontal_pattern(first)
+    if not mode or not _tiles_width(first, first[0].bbox[0], first[-1].bbox[2], tolerance):
+        return None
+    selected = []
+    frontier = first[0].bbox[1]
+    for row in rows[start:]:
+        if row[0].bbox[1] < frontier-tolerance:
             continue
-        unique.append(table)
-    return unique
+        if row[0].bbox[1] > frontier+2*tolerance:
+            break
+        pattern = _horizontal_pattern(row)
+        if (not pattern and not any(c.background for c in row)
+                and _tiles_width(row, first[0].bbox[0], first[-1].bbox[2], tolerance)
+                and len(selected) == 1):
+            # A single shaded top-left cell fits both readings. It is not
+            # enough evidence for a horizontal table with unshaded rows below.
+            return None
+        if not pattern or not _tiles_width(row, first[0].bbox[0], first[-1].bbox[2], tolerance):
+            break
+        if max(c.bbox[3] for c in row)-min(c.bbox[3] for c in row) > tolerance:
+            break
+        # Two-column rows can be combined with alternating label/value rows.
+        if mode == 'horizontal' and (len(row) != len(first) or pattern != mode
+                                     or not _aligned_partition(first, row, tolerance)):
+            break
+        if mode == 'horizontal-pairs' and pattern == 'horizontal' and len(row) != 2:
+            break
+        selected.append(row)
+        frontier = max(c.bbox[3] for c in row)
+    if not selected:
+        return None
+    return Table(first[0].page, first, selected[1:],
+                 [first[0].bbox[0], first[0].bbox[1], first[-1].bbox[2], frontier],
+                 orientation=mode, direction_reason='background: shaded labels beside unshaded values',
+                 needs_review=False)
+
+
+def _automatic_grids(cells: list[Cell], tolerance: float) -> list[Table]:
+    real_cells = [c for c in cells if not c.is_page and not (
+        not c.text.strip() and not c.images
+        and min(c.bbox[2]-c.bbox[0],c.bbox[3]-c.bbox[1]) <= 2*tolerance
+    )]
+    rows = _cluster_rows(real_cells, tolerance)
+    candidates: list[Table] = []
+    consumed: set[int] = set()
+    for row_index, row in enumerate(rows):
+        if any(id(c) in consumed for c in row) or not any(_norm(c.text) for c in row):
+            continue
+        horizontal = _horizontal_candidate(row_index, rows, tolerance)
+        if horizontal:
+            candidates.append(horizontal)
+            consumed.update(id(c) for r in [horizontal.header_cells]+horizontal.rows for c in r)
+            continue
+        candidate = _candidate_table(row, real_cells, tolerance)
+        if not candidate.rows:
+            continue
+        if len(row) == 1:
+            # Exception: a full-width merged title may own the subdivided
+            # table immediately below it. Do not consume that child's header.
+            if len(candidate.rows[0]) == 1:
+                # A genuine one-column table still follows first-row/data-row
+                # semantics. A narrow signature strip must not steal one
+                # column from a wider grid starting underneath it.
+                global_next = next((r for r in rows
+                    if abs(r[0].bbox[1]-candidate.rows[0][0].bbox[1]) <= tolerance), [])
+                if len(global_next) != 1:
+                    continue
+                prefix = []
+                for body_row in candidate.rows:
+                    if len(body_row) != 1:
+                        break
+                    prefix.append(body_row)
+                candidate.rows = prefix
+                candidate.bbox[3] = max(c.bbox[3] for r in prefix for c in r)
+                consumed.update(id(c) for r in prefix for c in r)
+        elif not _tiles_width(row, candidate.bbox[0], candidate.bbox[2], tolerance):
+            continue
+        else:
+            # Data rows of an aligned table cannot become competing headers.
+            consumed.update(id(c) for r in candidate.rows for c in r)
+        if all(c.background for c in row) and any(
+            not c.background for r in candidate.rows for c in r
+        ):
+            candidate.direction_reason = 'background: shaded first row above unshaded values'
+            candidate.needs_review = False
+        candidates.append(candidate)
+    return candidates
+
+
+def _nested_owner(parent: Table, child: Table, tolerance: float) -> Cell | None:
+    """True cell containment, with one explicit merged-title exception."""
+    if parent is child or not _contains(parent.bbox, child.bbox, tolerance):
+        return None
+    same_width = (abs(parent.bbox[0] - child.bbox[0]) <= tolerance
+                  and abs(parent.bbox[2] - child.bbox[2]) <= tolerance)
+    if same_width:
+        if (len(parent.header_cells) == 1
+                and abs(parent.header_cells[0].bbox[3] - child.bbox[1]) <= tolerance * 2):
+            return parent.header_cells[0]
+        return None
+    if _width(child.bbox) >= _width(parent.bbox) - tolerance:
+        return None
+    physical = parent.rows if parent.orientation == 'vertical' else [parent.header_cells]+parent.rows
+    owners = [c for row in physical for c in row
+              if not c.is_page and _contains(c.bbox, child.bbox, tolerance)]
+    return min(owners, key=lambda c: _area(c.bbox)) if owners else None
 
 
 def _deduplicate(tables: list[Table], tolerance: float) -> list[Table]:
@@ -342,29 +475,20 @@ def _attach_nested(tables: list[Table], cells: list[Cell], tolerance: float) -> 
     for child in sorted(tables, key=lambda item: _area(item.bbox)):
         parents = [
             parent for parent in tables
-            if parent is not child and _contains(parent.bbox, child.bbox, tolerance)
+            if _nested_owner(parent, child, tolerance) is not None
         ]
         if not parents:
             continue
         parent = min(parents, key=lambda item: _area(item.bbox))
-        owners = [cell for cell in cells if _contains(cell.bbox, child.bbox, tolerance)]
-        if owners:
-            child.parent_cell = min(owners, key=lambda cell: _area(cell.bbox))
-        else:
-            # A continued outer table can contain only an inner grid on the
-            # new page, without a large physical parent cell around it.  The
-            # last header cell is only a parent marker here; the cross-page
-            # merge later selects the real destination column by x overlap.
-            child.parent_cell = parent.header_cells[-1]
+        child.parent_cell = _nested_owner(parent, child, tolerance)
         if child not in parent.nested:
             parent.nested.append(child)
 
 
 def _remove_child_rows(table: Table, candidates: list[Table], tolerance: float) -> None:
-    children = [
-        child for child in candidates
-        if child is not table and _contains(table.bbox, child.bbox, tolerance)
-    ]
+    children = list(table.nested)
+    for child in children:
+        children.extend(child.nested)
     child_cells = {
         id(cell)
         for child in children
@@ -398,6 +522,8 @@ def _inherit_sequence_columns(pages: list[list[Table]]) -> None:
     state: dict[tuple[str, int], str] = {}
     for tables in pages:
         for table in tables:
+            if table.orientation != 'vertical':
+                continue
             key = "|".join(_norm(cell.text) for cell in table.header_cells)
             sequence_columns = [
                 index for index, cell in enumerate(table.header_cells)
@@ -421,6 +547,8 @@ def _column_for_cell(table: Table, cell: Cell) -> int:
 
 
 def _sequence_columns(table: Table) -> list[int]:
+    if table.orientation != 'vertical':
+        return []
     return [
         index for index, cell in enumerate(table.header_cells)
         if _norm(cell.text) in {"序号", "编号", "工步"}
@@ -552,67 +680,165 @@ def _table_json(table: Table) -> dict[str, Any]:
             for row_number, row in enumerate(table.rows, 1)
         ],
         "nested_tables": [_table_json(child) for child in table.nested],
+        "table_id": _table_id(table),
+        "orientation": table.orientation,
+        "direction_evidence": {"reason": table.direction_reason, "needs_review": table.needs_review},
     }
+    if table.orientation != 'vertical':
+        physical = [table.header_cells] + table.rows
+        if table.orientation == 'horizontal-pairs':
+            logical = [[c for row in physical for c in row[1::2]]]
+        else:
+            logical = [list(column) for column in zip(*(row[1:] for row in physical))]
+        result['rows'] = []
+        for number, row in enumerate(logical, 1):
+            output = []
+            for column, cell in enumerate(row):
+                item = _cell_json(table, cell, number)
+                item.update(column=column, colspan=1)
+                output.append(item)
+            result['rows'].append(output)
     if hasattr(table, "cross_page_column"):
         result["_cross_page_column"] = int(table.cross_page_column)
     return result
 
 
+def _table_id(table: Table) -> str:
+    return f'p{table.page}-'+'-'.join(f'{v:.1f}' for v in table.bbox)
+
+
+def _explicit_horizontal(cells, specifications, tolerance):
+    """Match a fixed header sequence down a column, without colour evidence."""
+    tables = []
+    for wanted in specifications:
+        if len(wanted) < 2:
+            continue
+        for first in cells:
+            if _norm(first.text) != wanted[0]:
+                continue
+            labels = [first]
+            for label in wanted[1:]:
+                candidates = [c for c in cells if _norm(c.text) == label
+                              and abs(c.bbox[0]-first.bbox[0]) <= tolerance
+                              and abs(c.bbox[2]-first.bbox[2]) <= tolerance
+                              and abs(c.bbox[1]-labels[-1].bbox[3]) <= 2*tolerance]
+                if len(candidates) != 1:
+                    break
+                labels.append(candidates[0])
+            if len(labels) != len(wanted):
+                continue
+            rows = []
+            for label in labels:
+                row = [label]
+                for c in sorted(cells, key=lambda c:c.bbox[0]):
+                    if (c is not label and abs(c.bbox[1]-label.bbox[1]) <= tolerance
+                            and abs(c.bbox[3]-label.bbox[3]) <= tolerance
+                            and abs(c.bbox[0]-row[-1].bbox[2]) <= tolerance):
+                        row.append(c)
+                rows.append(row)
+            if (len(rows[0]) < 2 or any(len(r)!=len(rows[0]) for r in rows)
+                    or any(not _aligned_partition(rows[0], r, tolerance) for r in rows)):
+                continue
+            tables.append(Table(first.page, rows[0], rows[1:],
+                                [first.bbox[0],first.bbox[1],rows[0][-1].bbox[2],labels[-1].bbox[3]],
+                                orientation='horizontal', direction_reason='explicit first-column header match',
+                                needs_review=False))
+    return tables
+
+
+def _set_direction(table: Table, direction: str, tolerance: float = DEFAULT_TOLERANCE) -> None:
+    physical = [table.header_cells] + table.rows
+    if direction == 'vertical' and len(physical) < 2:
+        raise ValueError(f'{_table_id(table)}: first-row header would leave no data row; refusing to discard all values')
+    if direction == 'horizontal' and (
+        len(physical[0]) < 2 or any(len(row) != len(physical[0]) for row in physical)
+        or any(not _aligned_partition(physical[0], row, tolerance) for row in physical)
+    ):
+        raise ValueError(f'{_table_id(table)}: horizontal requires an aligned rectangular grid; use horizontal-pairs for alternating fields')
+    if direction == 'horizontal-pairs' and any(len(row) % 2 for row in physical):
+        raise ValueError(f'{_table_id(table)}: alternating label/value requires even cell counts in every row')
+    if direction != 'vertical' and any(
+        max(c.bbox[3] for c in row)-min(c.bbox[3] for c in row) > tolerance
+        for row in physical
+    ):
+        raise ValueError(f'{_table_id(table)}: horizontal row-spanning cells need a more detailed structure correction')
+    table.orientation = direction
+    table.direction_reason = 'manual/machine override'
+    table.needs_review = False
+
+
 def _extract_tables(pages: dict[int, list[Cell]], images: list[ImageRef],
-                    header_spec: str, tolerance: float) -> dict[str, Any]:
+                    header_spec: str, tolerance: float, overrides=None, review=None) -> dict[str, Any]:
     specifications = parse_header_specs(header_spec)
     wildcard = specifications == [["*"]]
     page_tables = []
+    seen = set()
     for page_number in sorted(pages):
-        cells = pages[page_number]
+        cells = [c for c in pages[page_number] if not c.is_page and not (
+            not c.text.strip() and not c.images
+            and min(c.bbox[2]-c.bbox[0],c.bbox[3]-c.bbox[1]) <= 2*tolerance
+        )]
         _assign_images(
             cells,
             [image for image in images if image.page == page_number],
             tolerance,
         )
-        explicit = [
-            _candidate_table(header, cells, tolerance)
+        explicit = [] if wildcard else [
+            _candidate_table(header, cells, tolerance, allow_split_header=True)
             for header in _header_candidates(cells, specifications, tolerance)
         ]
+        if not wildcard:
+            explicit.extend(_explicit_horizontal(cells, specifications, tolerance))
         automatic = _automatic_grids(cells, tolerance)
         if not wildcard:
+            explicit.extend(t for t in automatic if _matches_header(t.headers, specifications))
             automatic = [
                 candidate for candidate in automatic
-                if any(_contains(parent.bbox, candidate.bbox, tolerance)
+                if any(_nested_owner(parent, candidate, tolerance) is not None
                        for parent in explicit)
             ]
-            automatic = [
-                candidate for candidate in automatic
-                if not any(
-                    parent.bbox[1] < candidate.bbox[1]
-                    and min(_width(parent.bbox), _width(candidate.bbox))
-                    / max(_width(parent.bbox), _width(candidate.bbox)) >= 0.90
-                    for parent in explicit
-                )
-            ]
-            automatic = [
-                candidate for candidate in automatic
-                if not any(
-                    other is not candidate
-                    and other.bbox[1] < candidate.bbox[1]
-                    <= other.bbox[3] + tolerance
-                    and min(_width(other.bbox), _width(candidate.bbox))
-                    / max(_width(other.bbox), _width(candidate.bbox)) >= 0.90
-                    for other in automatic
-                )
-            ]
         candidates = _deduplicate(explicit + automatic, tolerance)
+        for table in candidates:
+            ident = _table_id(table)
+            seen.add(ident)
+            # Explicit header matches remain authoritative for vertical tables.
+            if any(table is t for t in explicit) and table.orientation == 'vertical':
+                table.direction_reason = 'explicit header match'
+                table.needs_review = False
+            direction = (overrides or {}).get(ident, 'auto')
+            automatic_orientation = table.orientation
+            if direction not in {'auto', 'vertical', 'horizontal', 'horizontal-pairs'}:
+                raise ValueError(f'Invalid orientation {direction!r} for {ident}')
+            if direction != 'auto':
+                _set_direction(table, direction, tolerance)
+            if review is not None:
+                review.append({
+                    'table_id': ident, 'page': table.page, 'bbox': table.bbox,
+                    'orientation': table.orientation, 'reason': table.direction_reason,
+                    'automatic_orientation': automatic_orientation,
+                    'needs_review': table.needs_review,
+                    'grid': [[{'text': c.text, 'bbox': c.bbox, 'background': c.background}
+                              for c in row] for row in [table.header_cells]+table.rows],
+                })
         _attach_nested(candidates, cells, tolerance)
         for table in candidates:
             _remove_child_rows(table, candidates, tolerance)
         page_tables.append(candidates)
+    unknown = set(overrides or {})-seen
+    if unknown:
+        raise ValueError('Unknown table IDs in overrides: '+', '.join(sorted(unknown)))
 
-    _inherit_sequence_columns(page_tables)
-    roots = [
-        table for tables in page_tables for table in tables
-        if table.parent_cell is None
-    ]
-    roots = _merge_cross_page_tables(roots)
+    # Merge actual repeated-header tables even when they live under a merged
+    # title wrapper. Do this BEFORE filling blank sequence values; otherwise
+    # the continuation detector would see the inherited number as new input.
+    all_tables = [table for tables in page_tables for table in tables]
+    retained = _merge_cross_page_tables(all_tables)
+    retained_ids = {id(table) for table in retained}
+    for table in retained:
+        table.nested = [child for child in table.nested if id(child) in retained_ids]
+        table.nested.sort(key=lambda t:(t.page,t.bbox[1],t.bbox[0]))
+    _inherit_sequence_columns([retained])
+    roots = [table for table in retained if table.parent_cell is None]
     return {
         "format": "ao-structured-v2",
         "selection": {
@@ -636,6 +862,10 @@ def _extract_tables(pages: dict[int, list[Cell]], images: list[ImageRef],
 
 
 def _postprocess_nested_columns(table: dict, tolerance: float) -> None:
+    if table.get('orientation', 'vertical') != 'vertical':
+        for child in table.get('nested_tables', []):
+            _postprocess_nested_columns(child, tolerance)
+        return
     titles = {
         child.get("title", "") for child in table.get("nested_tables", [])
         if child.get("title")
@@ -646,6 +876,9 @@ def _postprocess_nested_columns(table: dict, tolerance: float) -> None:
             if not (len(row) == 1 and row[0].get("text", "").strip() in titles)
         ]
     for child in table.get("nested_tables", []):
+        if child.get('orientation', 'vertical') != 'vertical':
+            _postprocess_nested_columns(child, tolerance)
+            continue
         if child.get("rows"):
             first_row = child["rows"][0]
             first_y0 = min(
@@ -759,7 +992,7 @@ class CellLayout:
 class CellLayoutParser(HTMLParser):
     """Read absolute cell boxes and relative word positions from cell HTML."""
 
-    def __init__(self) -> None:
+    def __init__(self, include_page_text=False) -> None:
         super().__init__(convert_charrefs=True)
         self.page = 0
         self.cells: list[CellLayout] = []
@@ -768,6 +1001,7 @@ class CellLayoutParser(HTMLParser):
         self.span_depth = 0
         self.span_style: dict[str, float | str] = {}
         self.span_text: list[str] = []
+        self.include_page_text = include_page_text
 
     def handle_starttag(self, tag: str, attrs) -> None:
         attributes = {key: value or "" for key, value in attrs}
@@ -777,7 +1011,7 @@ class CellLayoutParser(HTMLParser):
             return
         if self.page <= 0:
             return
-        if tag == "div" and "cell" in classes and "page-text" not in classes:
+        if tag == "div" and "cell" in classes and (self.include_page_text or "page-text" not in classes):
             bbox = _bbox_from_style(attributes.get("style", ""))
             if bbox:
                 self.cell = CellLayout(self.page, bbox)
@@ -932,17 +1166,70 @@ def _enrich_reading_order(payload: dict, cell_html: Path,
     payload["format"] = "ao-structured-v3-reading-order"
 
 
-def extract(cell_html: Path, headers: str, tolerance: float) -> dict[str, Any]:
+def extract(cell_html: Path, headers: str, tolerance: float, *, overrides=None, review=None) -> dict[str, Any]:
     """Return the full nested representation for an intermediate cell HTML."""
     pages, images = load_cell_html(cell_html)
-    payload = _extract_tables(pages, images, headers, tolerance)
+    payload = _extract_tables(pages, images, headers, tolerance, overrides, review)
     for table in payload["tables"]:
         _postprocess_nested_columns(table, tolerance)
         _move_nested_tables_into_cells(table, tolerance)
     payload["tables"] = [table for table in payload["tables"] if _prune_empty(table)]
     payload["selection"]["matched_tables"] = len(payload["tables"])
     _enrich_reading_order(payload, cell_html)
+    for table in payload['tables']:
+        _combine_field_values(table)
+    if not payload['tables']:
+        payload['tables'] = [_document_fallback(cell_html, payload['images'], pages)]
+        payload['selection']['fallback'] = 'document: no matching table; all positioned text/images retained'
+        payload['selection']['matched_tables'] = 0
     return payload
+
+
+def _document_fallback(cell_html, images, pages):
+    parser = CellLayoutParser(include_page_text=True)
+    parser.feed(cell_html.read_text(encoding='utf8'))
+    rows = []
+    for number, page in enumerate(sorted(pages), 1):
+        layouts = [c for c in parser.cells if c.page == page]
+        box = [0,0,max((c.bbox[2] for c in layouts),default=1),
+               max((c.bbox[3] for c in layouts),default=1)]
+        fragments = [f for c in layouts for f in c.fragments]
+        layout = CellLayout(page,box,fragments)
+        cell = dict(row=number,column=0,colspan=1,page=page,bbox=box,text='',
+                    images=[im for im in images if im['page']==page])
+        cell['content'] = _ordered_content(layout,cell)
+        cell['text'] = '\n'.join(v.get('text','') for v in cell['content'] if v.get('type')=='text')
+        rows.append([cell])
+    return dict(page=1,title='文档内容',headers=['文档内容'],rows=rows,
+                nested_tables=[],orientation='vertical',source_mode='document_fallback',
+                table_id='document',bbox=[0,0,1,1])
+
+
+def _combine_field_values(table):
+    """Keep a known merged header's physical values as separate content blocks."""
+    for child in table.get('nested_tables', []):
+        _combine_field_values(child)
+    for row in table.get('rows', []):
+        for cell in row:
+            for child in cell.get('nested_tables', []):
+                _combine_field_values(child)
+        grouped = {}
+        for cell in row:
+            column = cell['column']
+            if column not in grouped:
+                grouped[column] = cell
+                continue
+            previous = grouped[column]
+            previous.setdefault('source_cells', [previous['bbox'][:]]).append(cell['bbox'][:])
+            previous['bbox'] = [min(previous['bbox'][0],cell['bbox'][0]),
+                                min(previous['bbox'][1],cell['bbox'][1]),
+                                max(previous['bbox'][2],cell['bbox'][2]),
+                                max(previous['bbox'][3],cell['bbox'][3])]
+            previous['text'] = previous.get('text','')+'\n'+cell.get('text','')
+            previous.setdefault('content',[]).extend(cell.get('content',[]))
+            previous.setdefault('nested_tables',[]).extend(cell.get('nested_tables',[]))
+            previous.setdefault('images',[]).extend(cell.get('images',[]))
+        row[:] = list(grouped.values())
 
 
 def _image_link(image: dict) -> str:
@@ -957,7 +1244,7 @@ def _render_cell(cell: dict, level: int) -> str:
         for item in content:
             if item.get("type") == "image":
                 parts.append(f'<div class="cell-image">{_image_link(item)}</div>')
-            elif item.get("type") == "text":
+            elif item.get("type") == "text" or 'text' in item:
                 text = html.escape(str(item.get("text", ""))).replace("\n", "<br>")
                 parts.append(f'<div class="cell-text">{text}</div>')
     else:
@@ -975,6 +1262,18 @@ def _render_table(table: dict, level: int = 2) -> str:
     heading_level = min(6, level)
     headers = table.get("headers", [])
     title = html.escape(" / ".join(map(str, headers)))
+    if table.get('orientation', 'vertical') != 'vertical':
+        output = [f'<section class="table-block"><h{heading_level}>{title}</h{heading_level}>',
+                  '<p>横向标签—值（按字段逐项展示）</p><table><tbody>']
+        for column, label in enumerate(headers):
+            output.append('<tr><th>'+html.escape(str(label))+'</th>')
+            for row in table.get('rows', []):
+                cell = next((c for c in row if c.get('column') == column), {})
+                output.append('<td>'+_render_cell(cell, level)+'</td>')
+            output.append('</tr>')
+        output.append('</tbody></table>')
+        output.extend(_render_table(child, level+1) for child in table.get('nested_tables', []))
+        return ''.join(output)+'</section>'
     output = [
         f'<section class="table-block"><h{heading_level}>{title}</h{heading_level}>',
         "<table><thead><tr>",
@@ -1008,6 +1307,7 @@ def render_html(payload: dict) -> str:
         "table table{margin:.6em 0;background:#f7fbff}.cell-text{white-space:normal}"
         ".cell-image{margin:.55em 0;padding:.35em;background:#fff8dc;border-left:3px solid #e5a000}"
         ".image-link{font-weight:600;color:#075cab}</style></head><body>"
+        + '<p><a href="document.review.html">复核 / 修改表格方向</a> · <a href="document.cells.html">原始版式中间 HTML</a></p>'
         + (f"<h1>图片资源</h1><ul>{image_links}</ul>" if image_links else "")
         + body
         + "</body></html>"
@@ -1028,7 +1328,7 @@ def _compact(value: Any) -> Any:
     is_cell = "content" in value and "row" in value and "column" in value
     result = {}
     for key, child in value.items():
-        if key == "bbox":
+        if key in {"bbox", "source_cells", "table_id", "direction_evidence"}:
             continue
         if is_cell and key in {"text", "images"}:
             continue

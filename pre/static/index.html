@@ -89,6 +89,7 @@ pre{white-space:pre-wrap;word-break:break-word;background:#111827;color:#dbeafe;
   .main{padding:18px}.summary-grid,.compare-grid,.status-grid{grid-template-columns:1fr}
 }
 </style>
+<link rel="stylesheet" href="pdf-workflow.css">
 </head>
 <body>
 <div class="layout">
@@ -100,6 +101,7 @@ pre{white-space:pre-wrap;word-break:break-word;background:#111827;color:#dbeafe;
     <div class="nav">
       <button class="active" data-panel="eval" onclick="showPanel('eval')">📊 成对评测</button>
       <button data-panel="infer" onclick="showPanel('infer')">⚡ 实时对比</button>
+      <a class="pdf-button secondary" href="pdf.html" style="margin:8px 0;display:block;text-align:center">PDF 转换与核验</a>
       <button data-panel="status" onclick="showPanel('status')">ℹ️ 系统状态</button>
     </div>
     <div class="mini-status">
@@ -156,6 +158,10 @@ pre{white-space:pre-wrap;word-break:break-word;background:#111827;color:#dbeafe;
     </section>
 
     <section id="panel-infer" class="panel">
+      <section id="aoPdfCards" class="ao-card-strip">
+        <div class="ao-card-tools"><b>已核验文档 · 用例卡片</b><a class="btn secondary small" href="pdf.html">导入 PDF</a><button id="pdfRefreshCards" class="btn secondary small">读取已核验卡片</button><button id="pdfRunAll" class="btn small">全部导入并生成</button><button id="pdfStopBatch" class="btn secondary small" disabled>本条完成后停止</button><button id="pdfExportAll" class="btn secondary small">导出所有表格</button></div>
+        <div id="pdfCardBelt" class="ao-card-belt"><span class="muted">先在 PDF 页面核验文档，或继续直接输入文本。</span></div><div id="pdfBatchStatus"></div>
+      </section>
       <div class="card">
         <h2>同一 AO 实时对比</h2>
         <p class="muted">后端会并行请求 <b>qwen35-base</b> 和 <b>qwen35-lora</b>。两侧使用相同 System Prompt、AO 文本和生成参数，不携带历史对话。</p>
@@ -688,9 +694,13 @@ async function exportLiveWorkbook(key,button){
     },1200);
   }
 }
+let inferenceBusy=false;
 async function runComparison(){
+  if(inferenceBusy)return null;
   const ao=document.getElementById("aoInput").value.trim();
   if(ao.length<20){document.getElementById("inferStatus").textContent="AO 文本至少需要 20 个字符";return}
+  window.aoPdfHooks?.beforeRun();
+  inferenceBusy=true;
   const button=document.getElementById("compareButton");
   const status=document.getElementById("inferStatus");
   const requestedPromptMode=document.getElementById("promptMode").value;
@@ -719,12 +729,17 @@ async function runComparison(){
       (comparison.row_count_delta!=null?" · LoRA 行数变化 "+(comparison.row_count_delta>=0?"+":"")+comparison.row_count_delta:"")+
       "</div>";
     status.textContent=data.success?"对比完成":"部分请求失败";
+    window.aoPdfHooks?.afterRun(data,ao,requestedPromptMode);
+    return data;
   }catch(error){
     const message='<div class="notice error">'+esc(error.message)+"</div>";
     document.getElementById("baseLive").innerHTML=message;
     document.getElementById("loraLive").innerHTML=message;
     status.textContent="请求失败";
+    return null;
   }finally{
+    inferenceBusy=false;
+    window.aoPdfHooks?.settled();
     button.disabled=false;button.textContent="同时运行 Base 与 LoRA";
   }
 }
@@ -802,5 +817,6 @@ loadSamples();
 checkHealth();
 setInterval(checkHealth,30000);
 </script>
+<script src="pdf-cards.js"></script>
 </body>
 </html>

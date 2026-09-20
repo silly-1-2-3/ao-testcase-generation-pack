@@ -1502,6 +1502,9 @@ async def close_http_client():
     _http_client = None
 
 
+from pdf_extract.web import register_pdf_routes
+register_pdf_routes(app, PROJECT_ROOT)
+
 static_dir = Path(__file__).parent / "static"
 app.mount("/", StaticFiles(directory=str(static_dir), html=True), name="static")
 

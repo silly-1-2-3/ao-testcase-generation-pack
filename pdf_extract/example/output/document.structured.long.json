@@ -1,7 +1,7 @@
 {
   "format": "ao-structured-v3-reading-order",
   "selection": {
-    "headers": "工种,序号,工序内容|序号,项目内容",
+    "headers": "工种,序号,工序内容|序号,项目内容|序号,检查操作程序,响应及显示",
     "matched_tables": 5,
     "geometry_only": true
   },
@@ -96,7 +96,13 @@
           }
         ]
       ],
-      "nested_tables": []
+      "nested_tables": [],
+      "table_id": "p2-86.1-163.0-716.2-656.5",
+      "orientation": "vertical",
+      "direction_evidence": {
+        "reason": "explicit header match",
+        "needs_review": false
+      }
     },
     {
       "page": 3,
@@ -299,7 +305,13 @@
                     }
                   ]
                 ],
-                "nested_tables": []
+                "nested_tables": [],
+                "table_id": "p4-250.1-188.3-711.8-788.4",
+                "orientation": "vertical",
+                "direction_evidence": {
+                  "reason": "explicit header match",
+                  "needs_review": false
+                }
               }
             ],
             "content": [
@@ -311,7 +323,13 @@
           }
         ]
       ],
-      "nested_tables": []
+      "nested_tables": [],
+      "table_id": "p3-89.1-170.4-714.2-940.7",
+      "orientation": "vertical",
+      "direction_evidence": {
+        "reason": "explicit header match",
+        "needs_review": false
+      }
     },
     {
       "page": 5,
@@ -371,7 +389,7 @@
             "row": 1,
             "column": 2,
             "colspan": 1,
-            "text": "项目名称：xx功能检查 项目编码：\n按照xx通电检查技术条件xxx-JTxxx-xx的第x条第k)~t)条进行xx检查，并将结果填写于表5-8中。\n工检：________________ 复检：________________",
+            "text": "项目名称：xx功能检查 项目编码：\n按照xx通电检查技术条件xxx-JTxxx-xx的第x条第k)~t)条进行xx检查，并将结果填写于表5-8中。\n工检：________________ 复检：________________\n专检：________________",
             "bbox": [
               243.3,
               178.9,
@@ -382,26 +400,175 @@
               {
                 "page": 5,
                 "bbox": [
-                  304.1,
-                  325.7,
+                  248.4,
+                  306.1,
                   696.9,
                   391.5
                 ],
-                "title": "表5 xx记录表",
+                "title": "",
                 "headers": [
+                  "表5 xx记录表",
                   "",
-                  "设备输入1",
-                  "设备输入2",
-                  "条件3",
-                  "目标值1\n(km/h)",
-                  "实测值1\n(km/h)",
-                  "目标值2\n(km/h)",
-                  "实测值2\n(m)"
+                  "",
+                  "",
+                  "",
+                  "",
+                  "",
+                  ""
                 ],
                 "rows": [
                   [
                     {
                       "row": 1,
+                      "column": 0,
+                      "colspan": 1,
+                      "text": "",
+                      "bbox": [
+                        248.4,
+                        325.7,
+                        304.1,
+                        372.6
+                      ],
+                      "nested_tables": [],
+                      "content": []
+                    },
+                    {
+                      "row": 1,
+                      "column": 1,
+                      "colspan": 1,
+                      "text": "设备输入1",
+                      "bbox": [
+                        304.1,
+                        325.7,
+                        362.8,
+                        372.6
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "设备输入1"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 1,
+                      "column": 2,
+                      "colspan": 1,
+                      "text": "设备输入2",
+                      "bbox": [
+                        362.8,
+                        325.7,
+                        418.2,
+                        372.6
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "设备输入2"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 1,
+                      "column": 3,
+                      "colspan": 1,
+                      "text": "条件3",
+                      "bbox": [
+                        418.2,
+                        325.7,
+                        473.6,
+                        372.6
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "条件3"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 1,
+                      "column": 4,
+                      "colspan": 1,
+                      "text": "目标值1\n(km/h)",
+                      "bbox": [
+                        473.5,
+                        325.7,
+                        529.9,
+                        372.6
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "目标值1\n(km/h)"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 1,
+                      "column": 5,
+                      "colspan": 1,
+                      "text": "实测值1\n(km/h)",
+                      "bbox": [
+                        529.9,
+                        325.7,
+                        585.6,
+                        372.6
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "实测值1\n(km/h)"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 1,
+                      "column": 6,
+                      "colspan": 1,
+                      "text": "目标值2\n(km/h)",
+                      "bbox": [
+                        585.6,
+                        325.7,
+                        641.3,
+                        372.6
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "目标值2\n(km/h)"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 1,
+                      "column": 7,
+                      "colspan": 1,
+                      "text": "实测值2\n(m)",
+                      "bbox": [
+                        641.2,
+                        325.7,
+                        696.9,
+                        372.6
+                      ],
+                      "nested_tables": [],
+                      "content": [
+                        {
+                          "type": "text",
+                          "text": "实测值2\n(m)"
+                        }
+                      ]
+                    }
+                  ],
+                  [
+                    {
+                      "row": 2,
                       "column": 0,
                       "colspan": 1,
                       "text": "1#x",
@@ -420,7 +587,7 @@
                       ]
                     },
                     {
-                      "row": 1,
+                      "row": 2,
                       "column": 1,
                       "colspan": 1,
                       "text": "ax",
@@ -439,7 +606,7 @@
                       ]
                     },
                     {
-                      "row": 1,
+                      "row": 2,
                       "column": 2,
                       "colspan": 1,
                       "text": "cz",
@@ -458,7 +625,7 @@
                       ]
                     },
                     {
-                      "row": 1,
+                      "row": 2,
                       "column": 3,
                       "colspan": 1,
                       "text": "cs",
@@ -477,7 +644,7 @@
                       ]
                     },
                     {
-                      "row": 1,
+                      "row": 2,
                       "column": 4,
                       "colspan": 1,
                       "text": "XXX",
@@ -496,7 +663,21 @@
                       ]
                     },
                     {
-                      "row": 1,
+                      "row": 2,
+                      "column": 5,
+                      "colspan": 1,
+                      "text": "",
+                      "bbox": [
+                        529.9,
+                        372.6,
+                        585.6,
+                        391.5
+                      ],
+                      "nested_tables": [],
+                      "content": []
+                    },
+                    {
+                      "row": 2,
                       "column": 6,
                       "colspan": 1,
                       "text": "XXX",
@@ -513,10 +694,30 @@
                           "text": "XXX"
                         }
                       ]
+                    },
+                    {
+                      "row": 2,
+                      "column": 7,
+                      "colspan": 1,
+                      "text": "",
+                      "bbox": [
+                        641.2,
+                        372.6,
+                        696.9,
+                        391.5
+                      ],
+                      "nested_tables": [],
+                      "content": []
                     }
                   ]
                 ],
-                "nested_tables": []
+                "nested_tables": [],
+                "table_id": "p5-248.4-306.1-696.9-391.5",
+                "orientation": "vertical",
+                "direction_evidence": {
+                  "reason": "default: no decisive background pattern",
+                  "needs_review": true
+                }
               },
               {
                 "page": 5,
@@ -573,40 +774,31 @@
                     }
                   ]
                 ],
-                "nested_tables": []
+                "nested_tables": [],
+                "table_id": "p5-248.4-595.0-711.1-847.4",
+                "orientation": "vertical",
+                "direction_evidence": {
+                  "reason": "explicit header match",
+                  "needs_review": false
+                }
               }
             ],
             "content": [
               {
                 "type": "text",
-                "text": "项目名称：xx功能检查 项目编码：\n按照xx通电检查技术条件xxx-JTxxx-xx的第x条第k)~t)条进行xx检查，并将结果填写于表5-8中。\n工检：________________ 复检：________________"
-              }
-            ]
-          }
-        ],
-        [
-          {
-            "row": 4,
-            "column": 2,
-            "colspan": 1,
-            "text": "专检：________________",
-            "bbox": [
-              248.4,
-              391.5,
-              304.1,
-              595.0
-            ],
-            "nested_tables": [],
-            "content": [
-              {
-                "type": "text",
-                "text": "专检：________________"
+                "text": "项目名称：xx功能检查 项目编码：\n按照xx通电检查技术条件xxx-JTxxx-xx的第x条第k)~t)条进行xx检查，并将结果填写于表5-8中。\n工检：________________ 复检：________________\n专检：________________"
               }
             ]
           }
         ]
       ],
-      "nested_tables": []
+      "nested_tables": [],
+      "table_id": "p5-87.1-159.3-716.1-858.0",
+      "orientation": "vertical",
+      "direction_evidence": {
+        "reason": "explicit header match",
+        "needs_review": false
+      }
     },
     {
       "page": 6,
@@ -727,6 +919,20 @@
                           "text": "确认XX应位于XX位置"
                         }
                       ]
+                    },
+                    {
+                      "row": 1,
+                      "column": 2,
+                      "colspan": 1,
+                      "text": "",
+                      "bbox": [
+                        450.2,
+                        287.6,
+                        647.3,
+                        302.8
+                      ],
+                      "nested_tables": [],
+                      "content": []
                     }
                   ],
                   [
@@ -907,7 +1113,13 @@
                     }
                   ]
                 ],
-                "nested_tables": []
+                "nested_tables": [],
+                "table_id": "p6-257.9-273.0-647.3-347.3",
+                "orientation": "vertical",
+                "direction_evidence": {
+                  "reason": "explicit header match",
+                  "needs_review": false
+                }
               }
             ],
             "content": [
@@ -978,7 +1190,13 @@
           }
         ]
       ],
-      "nested_tables": []
+      "nested_tables": [],
+      "table_id": "p6-90.5-165.7-713.4-656.1",
+      "orientation": "vertical",
+      "direction_evidence": {
+        "reason": "explicit header match",
+        "needs_review": false
+      }
     },
     {
       "page": 8,
@@ -1084,7 +1302,13 @@
           }
         ]
       ],
-      "nested_tables": []
+      "nested_tables": [],
+      "table_id": "p8-57.4-143.4-746.2-468.4",
+      "orientation": "vertical",
+      "direction_evidence": {
+        "reason": "explicit header match",
+        "needs_review": false
+      }
     }
   ]
 }

@@ -1,7 +1,7 @@
 {
   "format": "ao-structured-v3-reading-order",
   "selection": {
-    "headers": "工种,序号,工序内容|序号,项目内容",
+    "headers": "工种,序号,工序内容|序号,项目内容|序号,检查操作程序,响应及显示",
     "matched_tables": 5,
     "geometry_only": true
   },
@@ -56,7 +56,8 @@
             ]
           }
         ]
-      ]
+      ],
+      "orientation": "vertical"
     },
     {
       "page": 3,
@@ -167,7 +168,8 @@
                       ]
                     }
                   ]
-                ]
+                ],
+                "orientation": "vertical"
               }
             ],
             "content": [
@@ -177,7 +179,8 @@
             ]
           }
         ]
-      ]
+      ],
+      "orientation": "vertical"
     },
     {
       "page": 5,
@@ -216,16 +219,16 @@
             "nested_tables": [
               {
                 "page": 5,
-                "title": "表5 xx记录表",
+                "title": "",
                 "headers": [
+                  "表5 xx记录表",
                   "",
-                  "设备输入1",
-                  "设备输入2",
-                  "条件3",
-                  "目标值1\n(km/h)",
-                  "实测值1\n(km/h)",
-                  "目标值2\n(km/h)",
-                  "实测值2\n(m)"
+                  "",
+                  "",
+                  "",
+                  "",
+                  "",
+                  ""
                 ],
                 "rows": [
                   [
@@ -233,11 +236,7 @@
                       "row": 1,
                       "column": 0,
                       "colspan": 1,
-                      "content": [
-                        {
-                          "text": "1#x"
-                        }
-                      ]
+                      "content": []
                     },
                     {
                       "row": 1,
@@ -245,7 +244,7 @@
                       "colspan": 1,
                       "content": [
                         {
-                          "text": "ax"
+                          "text": "设备输入1"
                         }
                       ]
                     },
@@ -255,7 +254,7 @@
                       "colspan": 1,
                       "content": [
                         {
-                          "text": "cz"
+                          "text": "设备输入2"
                         }
                       ]
                     },
@@ -265,7 +264,7 @@
                       "colspan": 1,
                       "content": [
                         {
-                          "text": "cs"
+                          "text": "条件3"
                         }
                       ]
                     },
@@ -275,7 +274,17 @@
                       "colspan": 1,
                       "content": [
                         {
-                          "text": "XXX"
+                          "text": "目标值1\n(km/h)"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 1,
+                      "column": 5,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "实测值1\n(km/h)"
                         }
                       ]
                     },
@@ -285,12 +294,97 @@
                       "colspan": 1,
                       "content": [
                         {
-                          "text": "XXX"
+                          "text": "目标值2\n(km/h)"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 1,
+                      "column": 7,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "实测值2\n(m)"
                         }
                       ]
                     }
+                  ],
+                  [
+                    {
+                      "row": 2,
+                      "column": 0,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "1#x"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 2,
+                      "column": 1,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "ax"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 2,
+                      "column": 2,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "cz"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 2,
+                      "column": 3,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "cs"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 2,
+                      "column": 4,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "XXX"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 2,
+                      "column": 5,
+                      "colspan": 1,
+                      "content": []
+                    },
+                    {
+                      "row": 2,
+                      "column": 6,
+                      "colspan": 1,
+                      "content": [
+                        {
+                          "text": "XXX"
+                        }
+                      ]
+                    },
+                    {
+                      "row": 2,
+                      "column": 7,
+                      "colspan": 1,
+                      "content": []
+                    }
                   ]
-                ]
+                ],
+                "orientation": "vertical"
               },
               {
                 "page": 5,
@@ -322,29 +416,19 @@
                       ]
                     }
                   ]
-                ]
+                ],
+                "orientation": "vertical"
               }
             ],
             "content": [
               {
-                "text": "项目名称：xx功能检查 项目编码：\n按照xx通电检查技术条件xxx-JTxxx-xx的第x条第k)~t)条进行xx检查，并将结果填写于表5-8中。\n工检：________________ 复检：________________"
-              }
-            ]
-          }
-        ],
-        [
-          {
-            "row": 4,
-            "column": 2,
-            "colspan": 1,
-            "content": [
-              {
-                "text": "专检：________________"
+                "text": "项目名称：xx功能检查 项目编码：\n按照xx通电检查技术条件xxx-JTxxx-xx的第x条第k)~t)条进行xx检查，并将结果填写于表5-8中。\n工检：________________ 复检：________________\n专检：________________"
               }
             ]
           }
         ]
-      ]
+      ],
+      "orientation": "vertical"
     },
     {
       "page": 6,
@@ -410,6 +494,12 @@
                           "text": "确认XX应位于XX位置"
                         }
                       ]
+                    },
+                    {
+                      "row": 1,
+                      "column": 2,
+                      "colspan": 1,
+                      "content": []
                     }
                   ],
                   [
@@ -508,7 +598,8 @@
                       ]
                     }
                   ]
-                ]
+                ],
+                "orientation": "vertical"
               }
             ],
             "content": [
@@ -550,7 +641,8 @@
             ]
           }
         ]
-      ]
+      ],
+      "orientation": "vertical"
     },
     {
       "page": 8,
@@ -600,7 +692,8 @@
             ]
           }
         ]
-      ]
+      ],
+      "orientation": "vertical"
     }
   ]
 }
